@@ -1,0 +1,643 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="ab84ca3e-10df-496c-b160-2ddccce75965" name="Default" comment="" />
+    <ignored path="proyecto.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <ignored path=".idea/dataSources.local.xml" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="proyecto" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
+      <file leaf-file-name="Nav.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/View/Structure/Nav.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1309">
+              <caret line="92" column="36" lean-forward="true" selection-start-line="92" selection-start-column="36" selection-end-line="92" selection-end-column="36" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="consultarUsuario.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/View/Usuario/consultarUsuario.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="91" column="90" lean-forward="true" selection-start-line="91" selection-start-column="90" selection-end-line="91" selection-end-column="90" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/css/style.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="228">
+              <caret line="168" column="28" lean-forward="false" selection-start-line="168" selection-start-column="28" selection-end-line="168" selection-end-column="28" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Usuarios.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Model/Usuarios.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="53" column="87" lean-forward="false" selection-start-line="53" selection-start-column="87" selection-end-line="53" selection-end-column="87" />
+              <folding>
+                <marker date="1520877613940" expanded="true" signature="709:974" ph="INSERT INTO usuario... " />
+                <marker date="1520877613940" expanded="true" signature="1101:1188" ph="SELECT * FRO... usuario" />
+                <marker date="1520877613940" expanded="true" signature="1517:1562" ph="SELECT * FRO... usuario" />
+                <marker date="1520877613940" expanded="true" signature="1696:1838" ph="SELECT * FRO... usuario" />
+                <marker date="1520877613940" expanded="true" signature="1966:2102" ph="SELECT t.Nom... usuario" />
+                <marker date="1520877613940" expanded="true" signature="2370:2539" ph="UPDATE usuario... " />
+                <marker date="1520877613940" expanded="true" signature="2631:2679" ph="SELECT * FRO... usuario" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UsuariosController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Controller/UsuariosController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="97" column="34" lean-forward="false" selection-start-line="97" selection-start-column="34" selection-end-line="97" selection-end-column="34" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="CSS File" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>after</find>
+      <find>usuario</find>
+      <find>estudi</find>
+      <find>var_dump</find>
+      <find>loguin</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Views/Mensaje_Vista.php" />
+        <option value="$PROJECT_DIR$/Views/USUARIOS_Borrar_Vista.php" />
+        <option value="$PROJECT_DIR$/Views/USUARIOS_Insertar_Vista.php" />
+        <option value="$PROJECT_DIR$/Views/USUARIOS_Show_Vista.php" />
+        <option value="$PROJECT_DIR$/Views/USUARIOS_Modificar_Vista.php" />
+        <option value="$PROJECT_DIR$/Views/USUARIOS_Consultar_Vista.php" />
+        <option value="$PROJECT_DIR$/Views/Structure/Nav.php" />
+        <option value="$PROJECT_DIR$/lib/css/prueba.css" />
+        <option value="$PROJECT_DIR$/proxectosTutelados.html" />
+        <option value="$PROJECT_DIR$/Views/Login_Vista.php" />
+        <option value="$PROJECT_DIR$/proyectos tutelados.html" />
+        <option value="$PROJECT_DIR$/Controller/paginaController.php" />
+        <option value="$PROJECT_DIR$/index.php" />
+        <option value="$PROJECT_DIR$/View/Structure/Footer.php" />
+        <option value="$PROJECT_DIR$/View/listarUsuarios.php" />
+        <option value="$PROJECT_DIR$/View/Structure/NavIzq.php" />
+        <option value="$PROJECT_DIR$/Model/ConnectDB.php" />
+        <option value="$PROJECT_DIR$/Controller/ActualizadorController.php" />
+        <option value="$PROJECT_DIR$/Controller/EstudianteController.php" />
+        <option value="$PROJECT_DIR$/Model/Estudiante.php" />
+        <option value="$PROJECT_DIR$/lib/bootstrap/css/bootstrap.min.css" />
+        <option value="$PROJECT_DIR$/View/modificarDocente.php" />
+        <option value="$PROJECT_DIR$/View/Structure/prueba.php" />
+        <option value="$PROJECT_DIR$/lib/bootstrap/js/npm.js" />
+        <option value="$PROJECT_DIR$/View/login.php" />
+        <option value="$PROJECT_DIR$/View/consultarDocente.php" />
+        <option value="$PROJECT_DIR$/Controller/DocenteController.php" />
+        <option value="$PROJECT_DIR$/Model/Docente.php" />
+        <option value="$PROJECT_DIR$/View/consultarArticulo.php" />
+        <option value="$PROJECT_DIR$/View/consultarCongreso.php" />
+        <option value="$PROJECT_DIR$/View/modificarArticulo.php" />
+        <option value="$PROJECT_DIR$/View/modificarCongreso.php" />
+        <option value="$PROJECT_DIR$/View/consultarUsuario.php" />
+        <option value="$PROJECT_DIR$/View/modificarUsuario.php" />
+        <option value="$PROJECT_DIR$/View/registrarse.php" />
+        <option value="$PROJECT_DIR$/View/listarUsuario.php" />
+        <option value="$PROJECT_DIR$/View/home.php" />
+        <option value="$PROJECT_DIR$/View/Usuario/listarUsuario.php" />
+        <option value="$PROJECT_DIR$/View/Structure/NavSimple.php" />
+        <option value="$PROJECT_DIR$/View/Structure/Header.php" />
+        <option value="$PROJECT_DIR$/View/homeUsuario.php" />
+        <option value="$PROJECT_DIR$/View/Usuario/registrarse.php" />
+        <option value="$PROJECT_DIR$/BD/Base_Datos.sql" />
+        <option value="$PROJECT_DIR$/Model/Universidad.php" />
+        <option value="$PROJECT_DIR$/Model/TituloAcademico.php" />
+        <option value="$PROJECT_DIR$/View/Usuario/homeUsuario.php" />
+        <option value="$PROJECT_DIR$/View/Structure/Nav.php" />
+        <option value="$PROJECT_DIR$/lib/css/style.css" />
+        <option value="$PROJECT_DIR$/Controller/UsuariosController.php" />
+        <option value="$PROJECT_DIR$/Model/Usuarios.php" />
+        <option value="$PROJECT_DIR$/View/Usuario/consultarUsuario.php" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-9" />
+    <option name="y" value="-9" />
+    <option name="width" value="1386" />
+    <option name="height" value="788" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="www" type="b2602c69:ProjectViewProjectNode" />
+              <item name="www" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="www" type="b2602c69:ProjectViewProjectNode" />
+              <item name="www" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="BD" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="www" type="b2602c69:ProjectViewProjectNode" />
+              <item name="www" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Controller" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="www" type="b2602c69:ProjectViewProjectNode" />
+              <item name="www" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="lib" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="www" type="b2602c69:ProjectViewProjectNode" />
+              <item name="www" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="lib" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="css" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="www" type="b2602c69:ProjectViewProjectNode" />
+              <item name="www" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Model" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="www" type="b2602c69:ProjectViewProjectNode" />
+              <item name="www" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="View" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="www" type="b2602c69:ProjectViewProjectNode" />
+              <item name="www" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="View" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Structure" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="www" type="b2602c69:ProjectViewProjectNode" />
+              <item name="www" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="View" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Usuario" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="js.eslint.eslintPackage" value="" />
+    <property name="HbShouldOpenHtmlAsHb" value="" />
+    <property name="settings.editor.selected.configurable" value="settings.github" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\wamp\www\lib" />
+      <recent name="C:\wamp\www\View\Usuario" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\wamp\www\View\Structure" />
+      <recent name="C:\wamp\www\Model" />
+      <recent name="C:\wamp\www\Controller" />
+      <recent name="C:\wamp\www\View" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
+      <config-file value="" />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" working-dir="">
+      <method />
+    </configuration>
+    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpBehatConfigurationType" factoryName="Behat">
+      <BehatRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpSpecConfigurationType" factoryName="PHPSpec">
+      <PhpTestRunnerSettings />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run" />
+      <scripts />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="mocha-javascript-test-runner" factoryName="Mocha">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <working-directory />
+      <pass-parent-env>true</pass-parent-env>
+      <envs />
+      <ui />
+      <extra-mocha-options />
+      <test-kind>DIRECTORY</test-kind>
+      <test-directory />
+      <recursive>false</recursive>
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
+    </configuration>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ab84ca3e-10df-496c-b160-2ddccce75965" name="Default" comment="" />
+      <created>1477248415302</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1477248415302</updated>
+      <workItem from="1477248416562" duration="19348000" />
+      <workItem from="1478075986402" duration="1175000" />
+      <workItem from="1478339787085" duration="1203000" />
+      <workItem from="1478449386654" duration="17273000" />
+      <workItem from="1478598960583" duration="3758000" />
+      <workItem from="1478621991780" duration="9800000" />
+      <workItem from="1479140695049" duration="2075000" />
+      <workItem from="1479143287084" duration="32398000" />
+      <workItem from="1479299119913" duration="7318000" />
+      <workItem from="1480607574564" duration="905000" />
+      <workItem from="1481020139307" duration="2982000" />
+      <workItem from="1481105855127" duration="4151000" />
+      <workItem from="1481620787011" duration="25659000" />
+      <workItem from="1481825208263" duration="5786000" />
+      <workItem from="1481884212882" duration="49268000" />
+      <workItem from="1482947359835" duration="4232000" />
+      <workItem from="1485855875561" duration="2135000" />
+      <workItem from="1485859334709" duration="8288000" />
+      <workItem from="1491317164026" duration="22624000" />
+      <workItem from="1500452175914" duration="17174000" />
+      <workItem from="1501578102243" duration="14589000" />
+      <workItem from="1502270413457" duration="7284000" />
+      <workItem from="1502355830734" duration="4423000" />
+      <workItem from="1504009064718" duration="121000" />
+      <workItem from="1507818389408" duration="6527000" />
+      <workItem from="1507883668109" duration="5542000" />
+      <workItem from="1511550327454" duration="6152000" />
+      <workItem from="1516544854835" duration="2928000" />
+      <workItem from="1520680698015" duration="14545000" />
+      <workItem from="1520870958069" duration="4952000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="309100000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14787701" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.118435755" sideWeight="0.51458335" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.078688525" sideWeight="0.48541668" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+      <collection />
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Models/USUARIOS_Modelo.php" />
+    <entry file="file://$PROJECT_DIR$/Views/Login_Vista.php" />
+    <entry file="file://$PROJECT_DIR$/Controller/PinchoController.php" />
+    <entry file="file://$PROJECT_DIR$/Controller/paginaController.php" />
+    <entry file="file://$PROJECT_DIR$/View/Structure/NavIzq.php" />
+    <entry file="file://$PROJECT_DIR$/Controller/ActualizadorController.php" />
+    <entry file="file://$PROJECT_DIR$/View/Structure/Footer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Controller/EstudianteController.php" />
+    <entry file="file://$PROJECT_DIR$/lib/bootstrap/css/bootstrap-theme.min.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="332">
+          <caret line="13" column="22325" lean-forward="false" selection-start-line="13" selection-start-column="22323" selection-end-line="13" selection-end-column="22325" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/bootstrap/css/bootstrap.min.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="37">
+          <caret line="13" column="20007" lean-forward="true" selection-start-line="13" selection-start-column="20007" selection-end-line="13" selection-end-column="20007" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/Structure/pruebas.php" />
+    <entry file="file://$PROJECT_DIR$/lib/bootstrap/js/npm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="12" column="28" lean-forward="true" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/proyectos tutelados.html" />
+    <entry file="file://$PROJECT_DIR$/Model/Estudiante.php" />
+    <entry file="file://$PROJECT_DIR$/Model/Docente.php" />
+    <entry file="file://$PROJECT_DIR$/Model/ConnectDB.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" column="35" lean-forward="false" selection-start-line="2" selection-start-column="28" selection-end-line="2" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Controller/DocenteController.php" />
+    <entry file="file://$PROJECT_DIR$/View/Structure/prueba.php" />
+    <entry file="file://D:/Descargas/Pinchitos/Pinchitos/Controller/ActualizadorController.php" />
+    <entry file="file://D:/Descargas/fractumIU-master/fractumIU-master/www/View/structure/nav.php" />
+    <entry file="file://$PROJECT_DIR$/View/modificarDocente.php" />
+    <entry file="file://$PROJECT_DIR$/View/listarDocente.php" />
+    <entry file="file://D:/Descargas/Pinchitos/Pinchitos/View/darAltaRuta.php" />
+    <entry file="file://$PROJECT_DIR$/View/Usuario/consultarUsuario.php" />
+    <entry file="file://$PROJECT_DIR$/index.php" />
+    <entry file="file://$PROJECT_DIR$/View/consultarArticulo.php" />
+    <entry file="file://$PROJECT_DIR$/View/consultarCongreso.php" />
+    <entry file="file://$PROJECT_DIR$/View/modificarArticulo.php" />
+    <entry file="file://$PROJECT_DIR$/View/modificarCongreso.php" />
+    <entry file="file://$PROJECT_DIR$/View/modificarUsuario.php" />
+    <entry file="file://$PROJECT_DIR$/lib/icons/kurriculum_icono.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://D:/Descargas/fractumIU-master/fractumIU-master/www/View/usuarios/Login.php" />
+    <entry file="file://D:/Descargas/fractumIU-master/fractumIU-master/www/Controller/usuariosController.php" />
+    <entry file="file://$PROJECT_DIR$/View/errores.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/home.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="3" column="21" lean-forward="false" selection-start-line="3" selection-start-column="21" selection-end-line="3" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/Structure/Header.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="16" column="19" lean-forward="false" selection-start-line="16" selection-start-column="19" selection-end-line="16" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/Usuario/listarUsuario.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="22" lean-forward="false" selection-start-line="3" selection-start-column="22" selection-end-line="3" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/registrarse.php" />
+    <entry file="file://$PROJECT_DIR$/../apps/phpmyadmin3.5.1/config.inc.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/Structure/NavSimple.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="63" column="54" lean-forward="false" selection-start-line="63" selection-start-column="54" selection-end-line="63" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BD/Base_Datos.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2625">
+          <caret line="309" column="38" lean-forward="false" selection-start-line="309" selection-start-column="38" selection-end-line="309" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/Usuario/consultarUsuario.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/Usuario/registrarse.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1190">
+          <caret line="70" column="100" lean-forward="false" selection-start-line="70" selection-start-column="100" selection-end-line="70" selection-end-column="100" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Model/TituloAcademico.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="24" column="64" lean-forward="false" selection-start-line="24" selection-start-column="48" selection-end-line="24" selection-end-column="64" />
+          <folding>
+            <marker date="1520670728000" expanded="true" signature="648:676" ph="INSERT INTO titulo_academico... " />
+            <marker date="1520670728000" expanded="true" signature="648:820" ph="INSERT INTO titulo_academico... " />
+            <marker date="1520670728000" expanded="true" signature="1271:1455" ph="UPDATE titulo... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Model/Universidad.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding>
+            <marker date="1520670728000" expanded="true" signature="647:815" ph="INSERT INTO universidad... " />
+            <marker date="1520670728000" expanded="true" signature="1034:1083" ph="SELECT * FRO... universidad" />
+            <marker date="1520670728000" expanded="true" signature="1082:1083" ph="SELECT * FRO... universidad" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/Structure/Nav.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1309">
+          <caret line="92" column="36" lean-forward="true" selection-start-line="92" selection-start-column="36" selection-end-line="92" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="168" column="28" lean-forward="false" selection-start-line="168" selection-start-column="28" selection-end-line="168" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Controller/UsuariosController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="97" column="34" lean-forward="false" selection-start-line="97" selection-start-column="34" selection-end-line="97" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Model/Usuarios.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="53" column="87" lean-forward="false" selection-start-line="53" selection-start-column="87" selection-end-line="53" selection-end-column="87" />
+          <folding>
+            <marker date="1520877613940" expanded="true" signature="709:974" ph="INSERT INTO usuario... " />
+            <marker date="1520877613940" expanded="true" signature="1101:1188" ph="SELECT * FRO... usuario" />
+            <marker date="1520877613940" expanded="true" signature="1517:1562" ph="SELECT * FRO... usuario" />
+            <marker date="1520877613940" expanded="true" signature="1696:1838" ph="SELECT * FRO... usuario" />
+            <marker date="1520877613940" expanded="true" signature="1966:2102" ph="SELECT t.Nom... usuario" />
+            <marker date="1520877613940" expanded="true" signature="2370:2539" ph="UPDATE usuario... " />
+            <marker date="1520877613940" expanded="true" signature="2631:2679" ph="SELECT * FRO... usuario" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/Usuario/consultarUsuario.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="91" column="90" lean-forward="true" selection-start-line="91" selection-start-column="90" selection-end-line="91" selection-end-column="90" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
