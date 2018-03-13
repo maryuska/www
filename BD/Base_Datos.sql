@@ -156,10 +156,19 @@ CREATE TABLE IF NOT EXISTS `proyectoDirigido` (
   `CalificacionPD` enum('Aprobado','Notable','Sobresaliente','Matricula') default NULL,
   `URLPD` varchar(100)COLLATE latin1_spanish_ci NOT NULL default '',
   `CotutorPD` varchar(100)COLLATE latin1_spanish_ci NOT NULL default '',
-  `TutorPD` varchar(100)COLLATE latin1_spanish_ci NOT NULL default '',
   `TipoPD` enum('PFC','TFG','TFM') default NULL,
     PRIMARY KEY (`CodigoPD`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+
+
+
+
+
+INSERT INTO `proyectoDirigido` VALUES ('1246783', 'titulo1', 'maria guillermes vazquez', '0000-00-00','Sobresaliente','','','PFC'),
+                                      ('3455r676', 'titulo2', 'maria guillermes vazquez', '0000-00-00','Notable','','','TFG'),
+                                      ('567657', 'titulo3', 'maria guillermes vazquez', '0000-00-00','Sobresaliente','','','PFC'),
+                                      ('46587856', 'titulo4', 'maria guillermes vazquez', '0000-00-00','Matricula','','','TFG'),
+                                      ('5678678', 'titulo5', 'maria guillermes vazquez', '0000-00-00','Notable','','','TFM');
 
 -- --------------------------------------------------------
 
@@ -245,10 +254,13 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `PasswordU` varchar(32)COLLATE latin1_spanish_ci NOT NULL default '',
   `NombreU` varchar(15)COLLATE latin1_spanish_ci NOT NULL default '',
   `ApellidosU` varchar(30)COLLATE latin1_spanish_ci NOT NULL default '',
-
   `TipoContrato` varchar(40)COLLATE latin1_spanish_ci NOT NULL default '',
   `Centro` varchar(100)COLLATE latin1_spanish_ci NOT NULL default '',
   `Departamento` varchar(100)COLLATE latin1_spanish_ci NOT NULL default '',
+  `Telefono` varchar(15)COLLATE latin1_spanish_ci NOT NULL default '',
+  `Mail` varchar(100)COLLATE latin1_spanish_ci NOT NULL default '',
+  `DNI` varchar(10)COLLATE latin1_spanish_ci NOT NULL default '',
+  `FechaNacimiento` date default NULL,
    PRIMARY KEY (`LoginU`)
 
 
@@ -258,7 +270,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 -- Dumping data for table `usuario`
 --
 
-INSERT INTO `usuario` VALUES ('admin', 'e0b7feb3cf3e7d177da400774de0af5b', 'Administrador', '','','','');
+INSERT INTO `usuario` VALUES ('admin', 'e0b7feb3cf3e7d177da400774de0af5b', 'Administrador', '','','','','','','','');
 
 
 -- --------------------------------------------------------
@@ -473,14 +485,6 @@ ALTER TABLE `tad`
 --
 -- Filtros para la tabla `universidad`
 --
-ALTER TABLE `universidad`
-  ADD CONSTRAINT `universidad_ibfk_1` FOREIGN KEY (`LoginU`) REFERENCES `usuario` (`LoginU`);
---
--- Filtros para la tabla `titulo_academico`
---
-ALTER TABLE `titulo_academico`
-  ADD CONSTRAINT `titulo_academico_ibfk_1` FOREIGN KEY (`LoginU`) REFERENCES `usuario` (`LoginU`);
-
 --
 -- Filtros para la tabla `docente_articulo`
 --

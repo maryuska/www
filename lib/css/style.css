@@ -122,12 +122,12 @@ input[type="submit"]{
 
 .tdTitulo{
     font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
-    font-size:12px;
+    font-size:14px;
     font-weight:bold;
     color:#ff7514;
     background-color:#4C4C4C;
     border: 0px solid #000000;
-    height:24px;
+    height:26px;
     padding:5px;
 }
 

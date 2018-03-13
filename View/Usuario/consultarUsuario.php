@@ -5,7 +5,7 @@ require_once '../../View/Structure/Header.php';
 require_once '../../View/Structure/Nav.php';
 
 ?>
-<div class="row">
+
     <div class="col-md-10 izquierda">
 
         <div class="row">
@@ -75,13 +75,13 @@ require_once '../../View/Structure/Nav.php';
             </div>
             <div class="col-md-5">
 
-                <?php  $rows2 = $_SESSION["ConsultaUA"];
+
+                <?php  $rows2 = $_SESSION["ConsultaUT"];
 
                 foreach ($rows2 as $row2) { ?>
 
                         <form  action="../../Controller/UsuariosController.php" method="post" role='form'>
 
-                            <!-- Text input-->
                             <h3> Títulos Académicos </h3>
 
                             <div class="text-center">
@@ -103,47 +103,44 @@ require_once '../../View/Structure/Nav.php';
                                         </tr>
                                   </table>
                             </div>
-
                         </form>
-                <?php }
 
-                $rows3 = $_SESSION["ConsultaUT"];
+                <?php } ?>
+                <?php  $rows3 = $_SESSION["ConsultaUA"];
 
                 foreach ($rows3 as $row3) { ?>
 
+                    <form  action="../../Controller/UsuariosController.php" method="post" role='form'>
 
+                        <h3> Universidades </h3>
 
-                        <form  action="../../Controller/UsuariosController.php" method="post" role='form'>
+                        <div class="text-center">
 
-                            <h3> Universidades  </h3>
+                            <table class="text-center ">
+                                <tr>
+                                    <th class="text-center " width="200px" >Nombre</th>
+                                    <th class="text-center "  width="200px">Inicio</th>
+                                    <th class="text-center" width="200px">Fin</th>
+                                </tr>
+                            </table>
 
-                            <div class="text-center">
+                            <table class="text-center ">
 
-                                <table class="text-center ">
-                                    <tr>
-                                        <th class="text-center " width="200px" >Nombre</th>
-                                        <th class="text-center "  width="200px">Inicio</th>
-                                        <th class="text-center" width="200px">Fin</th>
-                                    </tr>
-                                </table>
-
-                                <table class="text-center ">
-
-                                    <tr>
-                                        <td class="text-center" width="200px" name = "NombreUniversidad"><?php echo $row3['NombreTitulo']; ?> </td>
-                                        <td class="text-center" width="200px" name = "FechaInicio"><?php echo $row3['FechaTitulo']; ?> </td>
-                                        <td class="text-center"  width="200px" name = "FechaFin"><?php echo $row3['CentroTitulo']; ?> </td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </form>
-
+                                <tr>
+                                    <td class="text-center" width="200px" name = "NombreUniversidad"><?php echo $row3['NombreUniversidad']; ?> </td>
+                                    <td class="text-center" width="200px" name = "FechaInicio"><?php echo $row3['FechaInicio']; ?> </td>
+                                    <td class="text-center"  width="200px" name = "FechaFin"><?php echo $row3['FechaFin']; ?> </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </form>
 
                 <?php } ?>
+
             </div>
         </div>
     </div>
-</div>
+
 
 
 

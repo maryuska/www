@@ -51,7 +51,7 @@ public function consultarUsuario($Login){
     }
 
     public function ConsultarUniversidades($Login){
-        $sql = mysql_query("SELECT uni.NombreUniversidad, uni.FechaInicio, uni.FechaFin FROM usuario u, universidad uni WHERE u.LoginU = '$Login' AND uni.LoginU= u.LoginU") or die(mysql_error());
+        $sql = mysql_query("SELECT * FROM usuario u, universidad uni WHERE u.LoginU = '$Login' AND uni.LoginU= u.LoginU") or die(mysql_error());
         return $sql;
     }
 

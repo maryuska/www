@@ -80,16 +80,6 @@ switch ($evento) {
             array_push($consulta, $row);
         }
 
-        //lista datos universidades del usuario
-
-        $consultarUniversidad = $Usuario->ConsultarUniversidades($Login);
-
-        $consultaUA = array();
-        while($row2 = mysql_fetch_array($consultarUsuarioUniversidad)){
-            array_push($consultaUA, $row2);
-        }
-
-
 		//lista datos de titulos del usuario
         $consultarTitulo = $Usuario->ConsultarTitulos($Login);
 
@@ -97,11 +87,18 @@ switch ($evento) {
         while($row3 = mysql_fetch_array($consultarTitulo)){
             array_push($consultaUT, $row3);
         }
+        //lista datos universidades del usuario
+
+        $consultarUniversidad = $Usuario->ConsultarUniversidades($Login);
+
+        $consultaUA = array();
+        while($row2 = mysql_fetch_array($consultarUniversidad)){
+            array_push($consultaUA, $row2);
+        }
 
         $_SESSION["ConsultarU"] = $consulta;
-		$_SESSION["ConsultaUA"] = $consultaUA;
         $_SESSION["ConsultaUT"] = $consultaUT;
-
+        $_SESSION["ConsultaUA"] = $consultaUA;
 
 		header("location: ../../View/Usuario/consultarUsuario.php");
     break;

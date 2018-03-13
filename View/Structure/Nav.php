@@ -213,24 +213,24 @@ function Usuario(){
 </nav>
 
 <!-- Content -->
-<div class="container">
+<div class="container col-md-2 ">
     <div class="row">
 
-        <div class="col-md-2 ">
+        <div class="">
             <div>
                 <!--usuario logueado-->
                 <p class="lead text-center"> <?php echo $_SESSION["loginU"]; ?></p>
                 <!--menu lateral izquierdo-->
                 <ul class=" list-col  ">
                     <li class="dropdown" >
-                        <a class="options" type='submit' name = 'accion' onclick="location.href = '../../Controller/ArticulosController.php?evento=ListarArticulos'"> Artículos</a>
+                        <a class="options" type='submit' name = 'accion' onclick="location.href = '../../Controller/ArticulosController.php?evento=listarArticulos'"> Artículos</a>
                     </li>
                 </ul>
 
 
                 <ul class=" list-col  ">
                     <li class="dropdown" >
-                        <a class="options" type='submit' name = 'accion' onclick="location.href = '../../Controller/CongresosController.php?evento=ListarCongresos'"> Congresos</a>
+                        <a class="options" type='submit' name = 'accion' onclick="location.href = '../../Controller/CongresosController.php?evento=listarCongresos'"> Congresos</a>
                     </li>
                 </ul>
 
@@ -239,37 +239,37 @@ function Usuario(){
 
                 <ul class=" list-col  ">
                     <li class="dropdown" >
-                        <a class="options" type='submit' name = 'accion' onclick="location.href = '../../Controller/LibrosController.php?evento=ListarLibros'"> Libros</a>
+                        <a class="options" type='submit' name = 'accion' onclick="location.href = '../../Controller/LibrosController.php?evento=listarLibros'"> Libros</a>
 
                     </li>
                 </ul>
                 <ul class=" list-col  ">
                     <li class="dropdown" >
-                        <a class="options" type='submit' name = 'accion' onclick="location.href = '../../Controller/PonenciasController.php?evento=ListarPonencias'"> Ponencias</a>
+                        <a class="options" type='submit' name = 'accion' onclick="location.href = '../../Controller/PonenciasController.php?evento=listarPonencias'"> Ponencias</a>
 
                     </li>
                 </ul>
                 <ul class=" list-col  ">
                     <li class="dropdown" >
-                        <a class="options" type='submit' name = 'accion' onclick="location.href = '../../Controller/ProyectosController.php?evento=ListarProyectos'"> Proyectos</a>
+                        <a class="options" type='submit' name = 'accion' onclick="location.href = '../../Controller/ProyectosController.php?evento=listarProyectos'"> Proyectos</a>
 
                     </li>
                 </ul>
                 <ul class=" list-col  ">
                     <li class="dropdown" >
-                        <a class="options" type='submit' name = 'accion' onclick="location.href = '../../Controller/ProyectosDirigidosController.php?evento=ListarProyectosDirigidos'"> Proyectos dirigidos</a>
+                        <a class="options" type='submit' name = 'accion' onclick="location.href = '../../Controller/ProyectosDirigidosController.php?evento=listarProyectosDirigidos'"> Proyectos dirigidos</a>
 
                     </li>
                 </ul>
                 <ul class=" list-col  ">
                     <li class="dropdown" >
-                        <a class="options" type='submit' name = 'accion' onclick="location.href = '../../Controller/TADController.php?evento=ListarTAD'"> TAD</a>
+                        <a class="options" type='submit' name = 'accion' onclick="location.href = '../../Controller/TADController.php?evento=listarTAD'"> TAD</a>
 
                     </li>
                 </ul>
                 <ul class=" list-col  ">
                     <li class="dropdown" >
-                        <a class="options" type='submit' name = 'accion' onclick="location.href = '../../Controller/TechnicareportController.php?evento=ListarTechnicareport'"> Technicareport</a>
+                        <a class="options" type='submit' name = 'accion' onclick="location.href = '../../Controller/TechnicareportController.php?evento=listarTechnicareport'"> Technicareport</a>
 
                     </li>
                 </ul>
