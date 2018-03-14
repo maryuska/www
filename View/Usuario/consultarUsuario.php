@@ -6,140 +6,169 @@ require_once '../../View/Structure/Nav.php';
 
 ?>
 
-    <div class="col-md-10 izquierda">
-
-        <div class="row">
-            <div class="col-md-5">
-
-                <?php $rows = $_SESSION["ConsultarU"];
-
-                foreach ($rows as $row) { ?>
+<div class="col-md-10 izquierda">
+<div class="form-group col-lg-6">
+    <div class="panel panel-default">
 
 
+        <?php $rows = $_SESSION["ConsultarU"];
 
-                    <form  action="../../Controller/UsuariosController.php" method="post" role='form'>
-                        <h3> Datos personales </h3>
-
-                        <div class="form-group">
-                            <label  for="LoginU">Login </label>
-                            <input id="LoginU" type="LoginU"  class="form-control"value="<?php echo $row['LoginU']; ?>" disabled>
-                        </div>
+        foreach ($rows as $row) { ?>
 
 
-                        <!-- Text input-->
-                        <div class="form-group">
-                            <label for="NombreU">Nombre </label>
 
-                            <input id="NombreU"  type="NombreU"  class="form-control "value="<?php echo $row['NombreU']; ?>" disabled>
-                        </div>
+        <div class="tdTitulo">
+             Datos personales
+        </div>
 
-                        <!-- Text input-->
-                        <div class="form-group">
-                            <label for="ApellidosU">Apellidos </label>
-
-                            <input id="ApellidosU"  type="ApellidosU"  class="form-control "value="<?php echo $row['ApellidosU']; ?>" disabled>
-                        </div>
+        <div class="panel-body">
 
 
-                        <!-- Text input-->
-                        <div class="form-group">
-                            <label  for="TipoContratoU">Tipo Contrato</label>
-
-                            <input id="TipoContratoU"  type="TipoContratoU"  class="form-control "value="<?php echo $row['TipoContrato']; ?>" disabled>
-                        </div>
-
-                        <!-- Text input-->
-                        <div class="form-group">
-                            <label for="CentroU">Centro</label>
-
-                            <input id="CentroU" type="CentroU" class="form-control "value="<?php echo $row['Centro']; ?>" disabled>
-                        </div>
-
-                        <!-- Text input-->
-                        <div class="form-group">
-                            <label  for="DepartamentoU">Departamento</label>
-
-                            <input id="DepartamentoU"  type="DepartamentoU"  class="form-control "value="<?php echo $row['Departamento']; ?>" disabled>
-                        </div>
-
-                        <!-- Button
-
-                        <a href="modificarUsuario.php" class="btn  btn-orange" value="Modificar Datos">Modificar Datos</a>
-
-                        -->
-                    </form>
-
-                <?php } ?>
-
-
+            <div class="form-group">
+                <label  for="LoginU">Login </label>
+                <input id="LoginU" type="LoginU"  class="form-control"value="<?php echo $row['LoginU']; ?>" disabled>
             </div>
-            <div class="col-md-5">
 
 
-                <?php  $rows2 = $_SESSION["ConsultaUT"];
+            <!-- Text input-->
+            <div class="form-group">
+                <label for="NombreU">Nombre </label>
 
-                foreach ($rows2 as $row2) { ?>
+                <input id="NombreU"  type="NombreU"  class="form-control "value="<?php echo $row['NombreU']; ?>" disabled>
+            </div>
 
-                        <form  action="../../Controller/UsuariosController.php" method="post" role='form'>
+            <!-- Text input-->
+            <div class="form-group">
+                <label for="ApellidosU">Apellidos </label>
 
-                            <h3> Títulos Académicos </h3>
+                <input id="ApellidosU"  type="ApellidosU"  class="form-control "value="<?php echo $row['ApellidosU']; ?>" disabled>
+            </div>
 
-                            <div class="text-center">
 
-                                <table class="text-center ">
-                                    <tr>
-                                        <th class="text-center " width="200px" >Nombre</th>
-                                        <th class="text-center "  width="200px">Fecha</th>
-                                        <th class="text-center" width="200px">Centro</th>
-                                    </tr>
-                                </table>
+            <!-- Text input-->
+            <div class="form-group">
+                <label  for="TipoContratoU">Tipo Contrato</label>
 
-                                 <table class="text-center ">
+                <input id="TipoContratoU"  type="TipoContratoU"  class="form-control "value="<?php echo $row['TipoContrato']; ?>" disabled>
+            </div>
 
-                                        <tr>
-                                            <td class="text-center" width="200px" name = "NombreTitulo"><?php echo $row2['NombreTitulo']; ?> </td>
-                                            <td class="text-center" width="200px" name = "FechaTitulo"><?php echo $row2['FechaTitulo']; ?> </td>
-                                            <td class="text-center"  width="200px" name = "CentroTitulo"><?php echo $row2['CentroTitulo']; ?> </td>
-                                        </tr>
-                                  </table>
-                            </div>
-                        </form>
+            <!-- Text input-->
+            <div class="form-group">
+                <label for="CentroU">Centro</label>
 
-                <?php } ?>
-                <?php  $rows3 = $_SESSION["ConsultaUA"];
+                <input id="CentroU" type="CentroU" class="form-control "value="<?php echo $row['Centro']; ?>" disabled>
+            </div>
 
-                foreach ($rows3 as $row3) { ?>
+            <!-- Text input-->
+            <div class="form-group">
+                <label  for="DepartamentoU">Departamento</label>
 
-                    <form  action="../../Controller/UsuariosController.php" method="post" role='form'>
+                <input id="DepartamentoU"  type="DepartamentoU"  class="form-control "value="<?php echo $row['Departamento']; ?>" disabled>
+            </div>
 
-                        <h3> Universidades </h3>
+            <!-- Button
 
-                        <div class="text-center">
+            <a href="modificarUsuario.php" class="btn  btn-orange" value="Modificar Datos">Modificar Datos</a>
 
-                            <table class="text-center ">
-                                <tr>
-                                    <th class="text-center " width="200px" >Nombre</th>
-                                    <th class="text-center "  width="200px">Inicio</th>
-                                    <th class="text-center" width="200px">Fin</th>
-                                </tr>
-                            </table>
+            -->
+            </form>
 
-                            <table class="text-center ">
+            <?php } ?>
 
-                                <tr>
-                                    <td class="text-center" width="200px" name = "NombreUniversidad"><?php echo $row3['NombreUniversidad']; ?> </td>
-                                    <td class="text-center" width="200px" name = "FechaInicio"><?php echo $row3['FechaInicio']; ?> </td>
-                                    <td class="text-center"  width="200px" name = "FechaFin"><?php echo $row3['FechaFin']; ?> </td>
-                                </tr>
-                            </table>
-                        </div>
-                    </form>
 
-                <?php } ?>
+
+
+
+        </div>
+    </div>
+</div>
+
+
+
+    <div class="form-group col-lg-6">
+        <div class="panel panel-default">
+
+
+            <?php  $rows2 = $_SESSION["ConsultaUT"];
+
+            foreach ($rows2 as $row2) { ?>
+                <div class="tdTitulo">
+                     Títulos Académicos
+                </div>
+
+                <form  action="../../Controller/UsuariosController.php" method="post" role='form'>
+
+
+                    <div class="text-center">
+
+                        <table class="text-center ">
+                            <tr>
+                                <th class="text-center " width="200px" >Nombre</th>
+                                <th class="text-center "  width="200px">Fecha</th>
+                                <th class="text-center" width="200px">Centro</th>
+                            </tr>
+                        </table>
+
+                        <table class="text-center ">
+
+                            <tr>
+                                <td class="text-center" width="200px" name = "NombreTitulo"><?php echo $row2['NombreTitulo']; ?> </td>
+                                <td class="text-center" width="200px" name = "FechaTitulo"><?php echo $row2['FechaTitulo']; ?> </td>
+                                <td class="text-center"  width="200px" name = "CentroTitulo"><?php echo $row2['CentroTitulo']; ?> </td>
+                            </tr>
+                        </table>
+                    </div>
+                </form>
+
+            <?php } ?>
 
             </div>
         </div>
+
+
+
+    <div class="form-group col-lg-6">
+        <div class="panel panel-default">
+
+
+            <?php  $rows3 = $_SESSION["ConsultaUA"];
+
+            foreach ($rows3 as $row3) { ?>
+                <div class="tdTitulo">
+                     Universidades
+                </div>
+
+                <form  action="../../Controller/UsuariosController.php" method="post" role='form'>
+
+
+                    <div class="text-center">
+
+                        <table class="text-center ">
+                            <tr>
+                                <th class="text-center " width="200px" >Nombre</th>
+                                <th class="text-center "  width="200px">Inicio</th>
+                                <th class="text-center" width="200px">Fin</th>
+                            </tr>
+                        </table>
+
+                        <table class="text-center ">
+
+                            <tr>
+                                <td class="text-center" width="200px" name = "NombreUniversidad"><?php echo $row3['NombreUniversidad']; ?> </td>
+                                <td class="text-center" width="200px" name = "FechaInicio"><?php echo $row3['FechaInicio']; ?> </td>
+                                <td class="text-center"  width="200px" name = "FechaFin"><?php echo $row3['FechaFin']; ?> </td>
+                            </tr>
+                        </table>
+                    </div>
+                </form>
+
+            <?php } ?>
+
+        </div>
     </div>
+
+</div>
+
 
 
 

@@ -10,16 +10,42 @@ switch ($evento) {
 
         $proyectoDirigido = new ProyectosDirigidos($_POST["CodigoPD"],$_POST["TituloPD"],$_POST["AlumnoPD"],$_POST["FechaLecturaPD"],$_POST["CalificacionPD"],$_POST["URLPD"],$_POST["CotutorPD"],$_POST["TipoPD"]);
         $proyectoDirigido->AltaProyectoDirigido();
-
         header("location: ProyectosDirigidosController.php?evento=listarProyectosDirigidos");
-        //header("location: ../View/home.php");
-
 
     break;
 
 
+    case 'consultarProyectoDirigido':
+
+        $proyectoDirigido = new ProyectosDirigidos($_POST["CodigoPD"],$_POST["TituloPD"],$_POST["AlumnoPD"],$_POST["FechaLecturaPD"],$_POST["CalificacionPD"],$_POST["URLPD"],$_POST["CotutorPD"],$_POST["TipoPD"]);
+        $CodigoP = $_REQUEST['CodigoPD'];
+        $consultaPD = $proyectoDirigido->ConsultarProyectoDirigido($CodigoP);
+        $consulta = array();
+        while($row1 = mysql_fetch_array($consultaPD)){
+            array_push($consulta, $row1);
+        }
+        $_SESSION["consultarProyectoDirigido"] = $consulta;
+
+        header("location: ../../View/ProyectoDirigido/modificarProyectoDirigido.php");
+
+        break;
+
     case 'modificarProyectosDirigidos':
 
+        $CodigoPD = $_POST['CodigoPD'];
+        $TituloPD = $_POST['TituloPD'];
+        $AlumnoPD = $_POST['AlumnoPD'];
+        $FechaLecturaPD = $_POST['FechaLecturaPD'];
+        $CalificacionPD = $_POST['CalificacionPD'];
+        $URLPD = $_POST['URLPD'];
+        $CotutorPD = $_POST['CotutorPD'];
+        $TipoPD = $_POST['TipoPD'];
+
+
+        $proyectoDirigido = new ProyectosDirigidos($CodigoPD, $TituloPD, $AlumnoPD, $FechaLecturaPD, $CalificacionPD, $URLPD, $CotutorPD, $TipoPD );
+        $proyectoDirigido->ModificarProyectoDirigido($CodigoPD);
+
+        header("location: ProyectosDirigidosController.php?evento=listarProyectosDirigidos");
 
     break;
 

@@ -31,7 +31,7 @@ function Visitante(){
                     <span class="icon-bar"></span>
                 </button>
 
-                <a class="navbar-brand " href="#"><img  src="../lib/icons/kurriculum_icono.png" ></a>
+                <a class="navbar-brand " href="#"><img  src="../../lib/icons/kurriculum_icono.png" ></a>
 
             </div>
             <div  class="navbar-collapse collapse navbar-ex2-collapse">
@@ -103,7 +103,7 @@ function Usuario(){
                 <span class="icon-bar"></span>
             </button>
 
-            <a class="navbar-brand " href="#"><img  src="lib/icons/kurriculum_icono.png" ></a>
+            <a class="navbar-brand " href="#"><img  src="../../lib/icons/kurriculum_icono.png" ></a>
 
         </div>
         <div  class="navbar-collapse collapse navbar-ex2-collapse">

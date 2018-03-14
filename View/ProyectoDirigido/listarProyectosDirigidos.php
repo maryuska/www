@@ -9,7 +9,7 @@ require_once '../../View/Structure/Nav.php';
             <!--Tabs-nav opciones-->
             <div class="clearfix">
                 <!--Tabs-nav-->
-                <ul class="nav nav-tabs tab-answers">
+                <ul class="nav nav-tabs">
                     <li class="active "><a title="Proyectos mas recientes " href="#tab1" data-toggle="tab">Mas recientes</a></li>
                     <li ><a title="Proyectos fin de carreira" href="#tab2" data-toggle="tab">PFC</a></li>
                     <li ><a title="Proyectos fin de grado" href="#tab3" data-toggle="tab">PFG</a></li>
@@ -63,7 +63,7 @@ require_once '../../View/Structure/Nav.php';
 
                                 </tr>
                                 <p align="center">
-                                    <input  type='submit' name = 'accion' value='Modificar'>
+                                    <button type="button" class="btn btn-orange " onclick="window.location.href='../../Controller/ProyectosDirigidosController.php?evento=consultarProyectoDirigido&CodigoPD=<?php echo $row['CodigoPD']; ?>'">Modificar</button>
                                 </p>
                             </div>
                         </div>
@@ -110,7 +110,7 @@ require_once '../../View/Structure/Nav.php';
 
                                 </tr>
                                 <p align="center">
-                                    <input  type='submit' name = 'accion' value='Modificar'>
+                                    <input  type='submit' name = 'evento' value='modificarProyectosDirigidos'>
                                 </p>
                             </div>
                         </div>
@@ -156,7 +156,7 @@ require_once '../../View/Structure/Nav.php';
 
                                         </tr>
                                         <p align="center">
-                                            <input  type='submit' name = 'accion' value='Modificar'>
+                                            <input  type='submit' name = 'evento' value='modificarProyectosDirigidos'>
                                         </p>
                                     </div>
                                 </div>
@@ -201,7 +201,7 @@ require_once '../../View/Structure/Nav.php';
 
                                         </tr>
                                         <p align="center">
-                                            <input  type='submit' name = 'accion' value='Modificar'>
+                                            <input  type='submit' name = 'evento' value='modificarProyectosDirigidos'>
                                         </p>
                                     </div>
                                 </div>

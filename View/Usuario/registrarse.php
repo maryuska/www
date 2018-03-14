@@ -10,8 +10,6 @@ require_once '../../View/Structure/NavSimple.php';
 
     <div class="tab-content">
 
-        <!-- //registrar usuario tipo docente -->
-         <div role="tabpanel" class="tab-pane active " id="Docente">
              <form id="formulario" class="form-horizontal" enctype="multipart/form-data" action="../../Controller/UsuariosController.php" method="post" role="form">
 
              <!-- Form Name -->
