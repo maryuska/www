@@ -23,8 +23,8 @@
       <file leaf-file-name="insertarProyectoDirigido.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/View/ProyectoDirigido/insertarProyectoDirigido.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="415">
-              <caret line="55" column="95" lean-forward="true" selection-start-line="55" selection-start-column="95" selection-end-line="55" selection-end-column="95" />
+            <state relative-caret-position="228">
+              <caret line="29" column="80" lean-forward="true" selection-start-line="29" selection-start-column="69" selection-end-line="29" selection-end-column="80" />
               <folding />
             </state>
           </provider>
@@ -40,11 +40,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="modificarProyectoDirigido.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="modificarProyectoDirigido.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/View/ProyectoDirigido/modificarProyectoDirigido.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="59" column="83" lean-forward="true" selection-start-line="59" selection-start-column="83" selection-end-line="59" selection-end-column="83" />
+            <state relative-caret-position="255">
+              <caret line="18" column="22" lean-forward="true" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -53,32 +53,32 @@
       <file leaf-file-name="ProyectosDirigidosController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Controller/ProyectosDirigidosController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="32" column="37" lean-forward="false" selection-start-line="32" selection-start-column="10" selection-end-line="32" selection-end-column="37" />
+            <state relative-caret-position="313">
+              <caret line="50" column="0" lean-forward="true" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProyectosDirigidos.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ProyectosDirigidos.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Model/ProyectosDirigidos.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="42" column="57" lean-forward="true" selection-start-line="42" selection-start-column="57" selection-end-line="42" selection-end-column="57" />
+            <state relative-caret-position="357">
+              <caret line="44" column="188" lean-forward="false" selection-start-line="44" selection-start-column="188" selection-end-line="44" selection-end-column="188" />
               <folding>
-                <marker date="1521055883248" expanded="true" signature="877:1182" ph="INSERT INTO usuario... " />
-                <marker date="1521055883248" expanded="true" signature="1382:1441" ph="SELECT * FRO... proyectoDirigido" />
-                <marker date="1521055883248" expanded="true" signature="1585:1898" ph="UPDATE proyectoDirigido... " />
-                <marker date="1521055883248" expanded="true" signature="2062:2092" ph="SELECT * FRO... proyectoDirigido" />
-                <marker date="1521055883248" expanded="true" signature="2062:2093" ph="SELECT * FRO... proyectoDirigido" />
-                <marker date="1521055883248" expanded="true" signature="2062:2122" ph="SELECT * FRO... proyectoDirigido" />
-                <marker date="1521055883248" expanded="true" signature="2290:2320" ph="SELECT * FRO... proyectoDirigido" />
-                <marker date="1521055883248" expanded="true" signature="2290:2341" ph="SELECT * FRO... proyectoDirigido" />
-                <marker date="1521055883248" expanded="true" signature="2506:2557" ph="SELECT * FRO... proyectoDirigido" />
-                <marker date="1521055883248" expanded="true" signature="2724:2754" ph="SELECT * FRO... proyectoDirigido" />
-                <marker date="1521055883248" expanded="true" signature="2724:2775" ph="SELECT * FRO... proyectoDirigido" />
-                <marker date="1521055883248" expanded="true" signature="3027:3196" ph="UPDATE usuario... " />
-                <marker date="1521055883248" expanded="true" signature="3288:3336" ph="SELECT * FRO... usuario" />
+                <marker date="1521306856297" expanded="true" signature="877:1182" ph="INSERT INTO usuario... " />
+                <marker date="1521306856297" expanded="true" signature="1382:1441" ph="SELECT * FRO... proyectoDirigido" />
+                <marker date="1521306856297" expanded="true" signature="1585:1898" ph="UPDATE proyectoDirigido... " />
+                <marker date="1521306856297" expanded="true" signature="2061:2091" ph="SELECT * FRO... proyectoDirigido" />
+                <marker date="1521306856297" expanded="true" signature="2061:2092" ph="SELECT * FRO... proyectoDirigido" />
+                <marker date="1521306856297" expanded="true" signature="2061:2121" ph="SELECT * FRO... proyectoDirigido" />
+                <marker date="1521306856297" expanded="true" signature="2289:2319" ph="SELECT * FRO... proyectoDirigido" />
+                <marker date="1521306856297" expanded="true" signature="2289:2340" ph="SELECT * FRO... proyectoDirigido" />
+                <marker date="1521306856297" expanded="true" signature="2505:2556" ph="SELECT * FRO... proyectoDirigido" />
+                <marker date="1521306856297" expanded="true" signature="2723:2753" ph="SELECT * FRO... proyectoDirigido" />
+                <marker date="1521306856297" expanded="true" signature="2723:2774" ph="SELECT * FRO... proyectoDirigido" />
+                <marker date="1521306856297" expanded="true" signature="3026:3195" ph="UPDATE usuario... " />
+                <marker date="1521306856297" expanded="true" signature="3287:3335" ph="SELECT * FRO... usuario" />
               </folding>
             </state>
           </provider>
@@ -166,10 +166,10 @@
         <option value="$PROJECT_DIR$/BD/Base_Datos.sql" />
         <option value="$PROJECT_DIR$/View/ProyectoDirigido/insertarProyectoDirigido.php" />
         <option value="$PROJECT_DIR$/View/Structure/NavSimple.php" />
-        <option value="$PROJECT_DIR$/Model/ProyectosDirigidos.php" />
         <option value="$PROJECT_DIR$/View/ProyectoDirigido/listarProyectosDirigidos.php" />
         <option value="$PROJECT_DIR$/Controller/ProyectosDirigidosController.php" />
         <option value="$PROJECT_DIR$/View/ProyectoDirigido/modificarProyectoDirigido.php" />
+        <option value="$PROJECT_DIR$/Model/ProyectosDirigidos.php" />
       </list>
     </option>
   </component>
@@ -180,7 +180,7 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-9" />
     <option name="y" value="-9" />
     <option name="width" value="1386" />
@@ -398,15 +398,15 @@
       <workItem from="1511550327454" duration="6152000" />
       <workItem from="1516544854835" duration="2928000" />
       <workItem from="1520680698015" duration="14545000" />
-      <workItem from="1520870958069" duration="33471000" />
+      <workItem from="1520870958069" duration="37776000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="337619000" />
+    <option name="totallyTimeSpent" value="341924000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14787701" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
@@ -673,28 +673,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Model/ProyectosDirigidos.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="42" column="57" lean-forward="true" selection-start-line="42" selection-start-column="57" selection-end-line="42" selection-end-column="57" />
-          <folding>
-            <marker date="1521055883248" expanded="true" signature="877:1182" ph="INSERT INTO usuario... " />
-            <marker date="1521055883248" expanded="true" signature="1382:1441" ph="SELECT * FRO... proyectoDirigido" />
-            <marker date="1521055883248" expanded="true" signature="1585:1898" ph="UPDATE proyectoDirigido... " />
-            <marker date="1521055883248" expanded="true" signature="2062:2092" ph="SELECT * FRO... proyectoDirigido" />
-            <marker date="1521055883248" expanded="true" signature="2062:2093" ph="SELECT * FRO... proyectoDirigido" />
-            <marker date="1521055883248" expanded="true" signature="2062:2122" ph="SELECT * FRO... proyectoDirigido" />
-            <marker date="1521055883248" expanded="true" signature="2290:2320" ph="SELECT * FRO... proyectoDirigido" />
-            <marker date="1521055883248" expanded="true" signature="2290:2341" ph="SELECT * FRO... proyectoDirigido" />
-            <marker date="1521055883248" expanded="true" signature="2506:2557" ph="SELECT * FRO... proyectoDirigido" />
-            <marker date="1521055883248" expanded="true" signature="2724:2754" ph="SELECT * FRO... proyectoDirigido" />
-            <marker date="1521055883248" expanded="true" signature="2724:2775" ph="SELECT * FRO... proyectoDirigido" />
-            <marker date="1521055883248" expanded="true" signature="3027:3196" ph="UPDATE usuario... " />
-            <marker date="1521055883248" expanded="true" signature="3288:3336" ph="SELECT * FRO... usuario" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/View/ProyectoDirigido/listarProyectosDirigidos.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
@@ -705,25 +683,47 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/View/ProyectoDirigido/insertarProyectoDirigido.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="415">
-          <caret line="55" column="95" lean-forward="true" selection-start-line="55" selection-start-column="95" selection-end-line="55" selection-end-column="95" />
+        <state relative-caret-position="228">
+          <caret line="29" column="80" lean-forward="true" selection-start-line="29" selection-start-column="69" selection-end-line="29" selection-end-column="80" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Controller/ProyectosDirigidosController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="32" column="37" lean-forward="false" selection-start-line="32" selection-start-column="10" selection-end-line="32" selection-end-column="37" />
+        <state relative-caret-position="313">
+          <caret line="50" column="0" lean-forward="true" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/View/ProyectoDirigido/modificarProyectoDirigido.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="59" column="83" lean-forward="true" selection-start-line="59" selection-start-column="83" selection-end-line="59" selection-end-column="83" />
+        <state relative-caret-position="255">
+          <caret line="18" column="22" lean-forward="true" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Model/ProyectosDirigidos.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="44" column="188" lean-forward="false" selection-start-line="44" selection-start-column="188" selection-end-line="44" selection-end-column="188" />
+          <folding>
+            <marker date="1521306856297" expanded="true" signature="877:1182" ph="INSERT INTO usuario... " />
+            <marker date="1521306856297" expanded="true" signature="1382:1441" ph="SELECT * FRO... proyectoDirigido" />
+            <marker date="1521306856297" expanded="true" signature="1585:1898" ph="UPDATE proyectoDirigido... " />
+            <marker date="1521306856297" expanded="true" signature="2061:2091" ph="SELECT * FRO... proyectoDirigido" />
+            <marker date="1521306856297" expanded="true" signature="2061:2092" ph="SELECT * FRO... proyectoDirigido" />
+            <marker date="1521306856297" expanded="true" signature="2061:2121" ph="SELECT * FRO... proyectoDirigido" />
+            <marker date="1521306856297" expanded="true" signature="2289:2319" ph="SELECT * FRO... proyectoDirigido" />
+            <marker date="1521306856297" expanded="true" signature="2289:2340" ph="SELECT * FRO... proyectoDirigido" />
+            <marker date="1521306856297" expanded="true" signature="2505:2556" ph="SELECT * FRO... proyectoDirigido" />
+            <marker date="1521306856297" expanded="true" signature="2723:2753" ph="SELECT * FRO... proyectoDirigido" />
+            <marker date="1521306856297" expanded="true" signature="2723:2774" ph="SELECT * FRO... proyectoDirigido" />
+            <marker date="1521306856297" expanded="true" signature="3026:3195" ph="UPDATE usuario... " />
+            <marker date="1521306856297" expanded="true" signature="3287:3335" ph="SELECT * FRO... usuario" />
+          </folding>
         </state>
       </provider>
     </entry>

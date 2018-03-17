@@ -43,7 +43,6 @@ class ProyectosDirigidos{
     public function ModificarProyectoDirigido($CodigoPD){
         mysql_query("UPDATE proyectoDirigido SET CodigoPD='$this->CodigoPD', TituloPD='$this->TituloPD',AlumnoPD='$this->AlumnoPD',FechaLecturaPD='$this->FechaLecturaPD' ,
                       CalificacionPD='$this->CalificacionPD',URLPD='$this->URLPD',CotutorPD='$this->CotutorPD',TipoPD='$this->TipoPD' where CodigoPD = '$CodigoPD'") or die (mysql_error());
-
     }
 
 

@@ -4,18 +4,18 @@ require_once '../../View/Structure/Nav.php';
 
 ?>
 
+
 <div class="col-md-10 izquierda">
     <h3 class="text-center">Modificar Proyecto Dirigido</h3>
 
     <div class="panel panel-default">
         <div class="col-md-12">
-            <?php foreach ($_SESSION["consultarProyectoDirigido"] as $row)
-            { ?>
-            <form id="formulario" class="form-horizontal" enctype="multipart/form-data" action="../../Controller/ProyectosDirigidosController.php" method="post" role="form">
+            <?php foreach ($_SESSION["consultarProyectoDirigido"] as $row)  { ?>
+            <form  action="../../Controller/ProyectosDirigidosController.php" method="post" role="form">
 
                 <div class="form-group">
                     <label class="control-label" for="CodigoPD">Código Proyecto Dirigido: </label>
-                    <input id="CodigoPD" name="CodigoPD"  class="form-control "value="<?php echo $row['CodigoPD']; ?>"  ">
+                    <input id="CodigoPD" name="CodigoPD"  class="form-control "value="<?php echo $row['CodigoPD']; ?>" disabled >
                 </div>
 
                 <div class="form-group">
@@ -25,12 +25,12 @@ require_once '../../View/Structure/Nav.php';
 
                 <div class="form-group">
                     <label class="control-label" for="AlumnoPD">Alumno:</label>
-                    <input id="AlumnoPD" name="AlumnoPD" class="form-control" value="<?php echo $row['AlumnoPD']; ?>" " >
+                    <input id="AlumnoPD" name="AlumnoPD" class="form-control" value="<?php echo $row['AlumnoPD']; ?>"  >
                 </div>
 
                 <div class="form-group">
                     <label class="control-label" for="FechaLecturaPD">Fecha lectura:</label>
-                    <input id="FechaLecturaPD" name="FechaLecturaPD" class="form-control " value="<?php echo $row['FechaLecturaPD']; ?>"  >
+                    <input id="FechaLecturaPD" type="date" name="FechaLecturaPD" class="form-control " value="<?php echo $row['FechaLecturaPD']; ?>"  >
                 </div>
 
                 <div class="form-group">
