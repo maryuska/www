@@ -103,24 +103,29 @@ require_once '../../View/Structure/Nav.php';
 
                         <table class="text-center ">
                             <tr>
-                                <th class="text-center " width="200px" >Nombre</th>
-                                <th class="text-center "  width="200px">Fecha</th>
-                                <th class="text-center" width="200px">Centro</th>
+                                <th class="text-center " width="250px" >Nombre</th>
+                                <th class="text-center "  width="250px">Fecha</th>
+                                <th class="text-center" width="250px">Centro</th>
+                                <th width="750px"></th>
                             </tr>
                         </table>
 
                         <table class="text-center ">
 
                             <tr>
-                                <td class="text-center" width="200px" name = "NombreTitulo"><?php echo $row2['NombreTitulo']; ?> </td>
-                                <td class="text-center" width="200px" name = "FechaTitulo"><?php echo $row2['FechaTitulo']; ?> </td>
-                                <td class="text-center"  width="200px" name = "CentroTitulo"><?php echo $row2['CentroTitulo']; ?> </td>
+                                <td class="text-center" width="250px" name = "NombreTitulo"><?php echo $row2['NombreTitulo']; ?> </td>
+                                <td class="text-center" width="250px" name = "FechaTitulo"><?php echo $row2['FechaTitulo']; ?> </td>
+                                <td class="text-center"  width="250px" name = "CentroTitulo"><?php echo $row2['CentroTitulo']; ?> </td>
+                                <td width="150px"><a type="submit" class="btn  "  href="modificarTitulo.php"  >Modificar</a></td>
                             </tr>
                         </table>
                     </div>
                 </form>
 
             <?php } ?>
+            <p align="center">
+                <button type="button" class="btn btn-orange " onclick="#">Insertar</button>
+            </p>
 
             </div>
         </div>
@@ -141,28 +146,32 @@ require_once '../../View/Structure/Nav.php';
                 <form  action="../../Controller/UsuariosController.php" method="post" role='form'>
 
 
-                    <div class="text-center">
 
                         <table class="text-center ">
                             <tr>
-                                <th class="text-center " width="200px" >Nombre</th>
-                                <th class="text-center "  width="200px">Inicio</th>
-                                <th class="text-center" width="200px">Fin</th>
+                                <th class="text-center " width="250px" >Nombre</th>
+                                <th class="text-center "  width="250px">Inicio</th>
+                                <th class="text-center" width="250px">Fin</th>
+                                <th width="750px"></th>
                             </tr>
                         </table>
 
                         <table class="text-center ">
 
                             <tr>
-                                <td class="text-center" width="200px" name = "NombreUniversidad"><?php echo $row3['NombreUniversidad']; ?> </td>
-                                <td class="text-center" width="200px" name = "FechaInicio"><?php echo $row3['FechaInicio']; ?> </td>
-                                <td class="text-center"  width="200px" name = "FechaFin"><?php echo $row3['FechaFin']; ?> </td>
+                                <td class="text-center" width="250px" name = "NombreUniversidad"><?php echo $row3['NombreUniversidad']; ?> </td>
+                                <td class="text-center" width="250px" name = "FechaInicio"><?php echo $row3['FechaInicio']; ?> </td>
+                                <td class="text-center"  width="250px" name = "FechaFin"><?php echo $row3['FechaFin']; ?> </td>
+                                <td  width="150px"><a type="submit" class="btn  "  href="modificarUniversidad.php" >Modificar</a></td>
                             </tr>
                         </table>
-                    </div>
+
                 </form>
 
             <?php } ?>
+            <p align="center">
+                <button type="button" class="btn btn-orange " onclick="#">Insertar</button>
+            </p>
 
         </div>
     </div>

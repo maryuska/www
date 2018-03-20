@@ -56,6 +56,35 @@ require_once '../../View/Structure/NavSimple.php';
             </div>
 
                  <div class="form-group">
+                     <label class="col-lg-3 col-md-4 col-sm-4 control-label" for="Telefono">Telefono </label>
+                     <div class="col-lg-7 col-md-6 col-sm-6">
+                         <input id="Telefono" name="Telefono" type="text" placeholder="Telefono" class="form-control input-md">
+
+                     </div>
+                 </div>
+                 <div class="form-group">
+                     <label class="col-lg-3 col-md-4 col-sm-4 control-label" for="Mail">Mail </label>
+                     <div class="col-lg-7 col-md-6 col-sm-6">
+                         <input id="Mail" name="Mail" type="text" placeholder="Mail" class="form-control input-md">
+
+                     </div>
+                 </div>
+                 <div class="form-group">
+                     <label class="col-lg-3 col-md-4 col-sm-4 control-label" for="DNI">DNI </label>
+                     <div class="col-lg-7 col-md-6 col-sm-6">
+                         <input id="DNI" name="DNI" type="text" placeholder="DNI" class="form-control input-md">
+
+                     </div>
+                 </div>
+                 <div class="form-group">
+                     <label class="col-lg-3 col-md-4 col-sm-4 control-label" for="FechaNacimiento">Fecha Nacimiento </label>
+                     <div class="col-lg-7 col-md-6 col-sm-6">
+                         <input id="FechaNacimiento" name="FechaNacimiento" type="date" placeholder="Fecha Nacimiento" class="form-control input-md">
+
+                     </div>
+                 </div>
+
+                 <div class="form-group">
                      <label class="col-lg-3 col-md-4 col-sm-4 control-label" for="TipoContrato">Tipo Contrato</label>
                      <div class="col-lg-7 col-md-6 col-sm-6">
                          <input id="TipoContrato" name="TipoContrato" type="text" placeholder="Tipo Contrato" class="form-control input-md">
@@ -92,14 +121,14 @@ require_once '../../View/Structure/NavSimple.php';
                  <div class="form-group">
                      <label class="col-lg-3 col-md-4 col-sm-4 control-label" for="UniversidadU">Fecha Inicio</label>
                      <div class="col-lg-7 col-md-6 col-sm-6">
-                         <input id="FechaInicio" name="FechaInicio" type="text" placeholder="Fecha Inicio" class="form-control input-md">
+                         <input id="FechaInicio" name="FechaInicio" type="date" placeholder="Fecha Inicio" class="form-control input-md">
 
                      </div>
                  </div>
                  <div class="form-group">
                      <label class="col-lg-3 col-md-4 col-sm-4 control-label" for="UniversidadU">Fecha Fin</label>
                      <div class="col-lg-7 col-md-6 col-sm-6">
-                         <input id="FechaFin" name="FechaFin" type="text" placeholder="Fecha Fin" class="form-control input-md">
+                         <input id="FechaFin" name="FechaFin" type="date" placeholder="Fecha Fin" class="form-control input-md">
 
                      </div>
                  </div>
@@ -116,7 +145,7 @@ require_once '../../View/Structure/NavSimple.php';
             <div class="form-group">
                 <label class="col-lg-3 col-md-4 col-sm-4 control-label" for="Titulo">Fecha Titulo</label>
                      <div class="col-lg-7 col-md-6 col-sm-6">
-                         <input id="FechaTitulo" name="FechaTitulo" type="text" placeholder="Fecha" class="form-control input-md">
+                         <input id="FechaTitulo" name="FechaTitulo" type="date" placeholder="Fecha" class="form-control input-md">
 
                      </div>
              </div>

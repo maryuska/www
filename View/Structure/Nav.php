@@ -183,7 +183,7 @@ function Usuario(){
                 <li class="dropdown" >
                     <a class="dropdown-toggle" href="#" data-toggle="dropdown">User<span class="caret"></span> </a>
                     <ul class=" dropdown-menu dropdown-menu-left pull-right dropdown-login">
-                        <li ><a href="../../Controller/UsuariosController.php?evento=ModificarUsuario&LoginU=<?php echo $_SESSION["loginU"] ?>">Modificar Perfil</a></li>
+                        <li ><a href="modificarUsuario.php">Modificar Perfil</a></li>
                         <li ><a href="../../Controller/UsuariosController.php?evento=logOut" id='logOut'>Logout</a></li>
 
                     </ul>

@@ -7,25 +7,13 @@ require_once '../Model/TituloAcademico.php';
 $evento = $_REQUEST['evento'];
 
 switch ($evento) {
-/*
-  case 'registrarUsuario':
-      if ($_POST["PasswordU"]!==$_POST["PasswordU2"]) {
-      header("location: ../../View/errores.php?PassErr");
-    }
 
-
-       $usuario = new Usuarios ($_POST["Login"], $_POST["PasswordU"], $_POST["NombreU"],$_POST["ApellidosU"],$_POST["UniversidadU"],$_POST["Login"],$_POST["Titulo"], $_POST["TipoContrato"],$_POST["Centro"],$_POST["Departamento"]);
-       $usuario->altaUsuario();
-
-      header("location: ../../View/home.php");
-    break;
-*/
     case 'registrarUsuario':
 
         if ($_POST["PasswordU"]!==$_POST["PasswordU2"]) {
             header("location: ../../View/errores.php?PassErr");
         }
-        $usuario = new Usuarios ($_POST["Login"], $_POST["PasswordU"], $_POST["NombreU"],$_POST["ApellidosU"], $_POST["TipoContrato"],$_POST["Centro"],$_POST["Departamento"]);
+        $usuario = new Usuarios ($_POST["Login"], $_POST["PasswordU"], $_POST["NombreU"],$_POST["ApellidosU"],$_POST["Telefono"], $_POST["Mail"], $_POST["DNI"],$_POST["FechaNacimiento"], $_POST["TipoContrato"],$_POST["Centro"],$_POST["Departamento"]);
 
         //registra el usuario en la bd
 
@@ -58,7 +46,7 @@ switch ($evento) {
     if (isset( $_SESSION["Usuario"])) {
 
 
-        header("location: ../../Controller/UsuariosController.php?evento=ConsultarUsuario&LoginU=$LoginU");
+        header("location: ../../Controller/UsuariosController.php?evento=consultarUsuario&LoginU=$LoginU");
     } else {
 
         header("location: ../../View/home.php");
@@ -68,7 +56,7 @@ switch ($evento) {
       break;
 
 
-    case 'ConsultarUsuario':
+    case 'consultarUsuario':
 
         //conuslta datos del usuario
         $Login=$_REQUEST["LoginU"];
@@ -105,28 +93,33 @@ switch ($evento) {
 
 
 
-    case 'ListarUsuarios':
+    case 'listarUsuarios':
 
-        $lista = new Usuarios("","","","","","","","","");
+        $lista = new Usuarios("","","","","","","","","","","");
         $lista->ListarUsuarios();
         header("location: ../../View/Usuario/listarUsuario.php");
         break;
 
 
-    case 'ModificarUsuario':
+    case 'modificarUsuario':
 
-        $CodigoPro = $_POST['CodigoPro'];
-        $NombrePro = $_POST['NombrePro'];
-        $DireccionPro = $_POST['DireccionPro'];
-        $AlmacenServicio = $_POST['AlmacenServicio'];
-        $FamiliaPro = $_POST['FamiliaPro'];
-        $TelefonoDelegacion = $_POST['TelefonoDelegacion'];
+        $LoginU = $_POST['LoginU'];
+        $NombreU = $_POST['NombreU'];
+        $ApellidosU = $_POST['ApellidosU'];
+        $Telefono = $_POST['Telefono'];
+        $Mail = $_POST['Mail'];
+        $DNI = $_POST['DNI'];
+        $FechaNacimiento = $_POST['FechaNacimiento'];
+        $TipoContrato = $_POST['TipoContrato'];
+        $Centro = $_POST['Centro'];
+        $Departamento = $_POST['Departamento'];
 
+        $usuario = new Usuarios($LoginU, $NombreU, $ApellidosU, $Telefono, $Mail, $DNI,$FechaNacimiento, $TipoContrato,$Centro,$Departamento);
+        $usuario->ModificarUsuario($LoginU);
 
-        $proveedor = new Proveedor($CodigoPro, $NombrePro, $DireccionPro, $AlmacenServicio, $FamiliaPro, $TelefonoDelegacion);
-        $proveedor->modificarProveedor($CodigoPro);
+        //header("location: UsuariosController.php?evento=consultarUsuario&loginU=$LoginU");
 
-        header("location: ProveedorController.php?evento=ListarProveedores");
+        header("location: ../../Controller/UsuariosController.php?evento=consultarUsuario&LoginU=$LoginU");
 
         break;
 
