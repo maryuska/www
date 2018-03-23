@@ -227,6 +227,36 @@ CREATE TABLE IF NOT EXISTS `tad` (
 --       `docente` -> `LoginU`
 --
 
+
+-- --------------------------------------------------------
+
+
+--
+-- Table structure for table `materia`
+--
+DROP TABLE IF EXISTS `materia`;
+CREATE TABLE IF NOT EXISTS `materia` (
+  `CodigoM` varchar(10)COLLATE latin1_spanish_ci NOT NULL default '',
+  `TipoM` enum('Grado','Tercer Ciclo','Curso','Master','Postgrado') NOT NULL default 'Grado',
+  `TipoParticipacionM` enum('Docente','Director') NOT NULL default 'Docente',
+  `DenominacionM` varchar(100) NOT NULL default '',
+  `TitulacionM` varchar(100) NOT NULL default '',
+  `AnhoAcademicoM` varchar(11) NOT NULL default '',
+  `CreditosM` char(3) NOT NULL default '0',
+  `CuatrimestreM` enum('Primero','Segundo','Anual') NOT NULL default 'Primero',
+  `LoginU` varchar(15) NOT NULL default '',
+  PRIMARY KEY  (`CodigoM`)
+)ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+
+
+--
+-- RELACIONES PARA LA TABLA `materia`:
+--   `LoginU`
+--       `docente` -> `LoginU`
+--
+
+
+
 -- --------------------------------------------------------
 
 --
@@ -482,6 +512,12 @@ ALTER TABLE `estancia`
 --
 ALTER TABLE `tad`
   ADD CONSTRAINT `tad_ibfk_1` FOREIGN KEY (`LoginU`) REFERENCES `usuario` (`LoginU`);
+--
+--
+-- Filtros para la tabla `materia`
+--
+ALTER TABLE `materia`
+  ADD CONSTRAINT `materia_ibfk_1` FOREIGN KEY (`LoginU`) REFERENCES `usuario` (`LoginU`);
 --
 -- Filtros para la tabla `universidad`
 --
