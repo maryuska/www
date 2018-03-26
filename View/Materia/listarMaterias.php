@@ -10,10 +10,12 @@ require_once '../../View/Structure/Nav.php';
             <div class="clearfix">
                 <!--Tabs-nav-->
                 <ul class="nav nav-tabs">
-                    <li class="active "><a title="Proyectos mas recientes " href="#tab1" data-toggle="tab">Mas recientes</a></li>
-                    <li ><a title="Proyectos fin de carreira" href="#tab2" data-toggle="tab">PFC</a></li>
-                    <li ><a title="Proyectos fin de grado" href="#tab3" data-toggle="tab">PFG</a></li>
-                    <li ><a title="Proyectos fin de master" href="#tab4" data-toggle="tab">TFM</a></li>
+                    <li class="active "><a title="Materias mas recientes " href="#tab1" data-toggle="tab">Mas recientes</a></li>
+                    <li ><a title="Materias de Grado" href="#tab2" data-toggle="tab">Grado</a></li>
+                    <li ><a title="Materias de Tercer Ciclo" href="#tab3" data-toggle="tab">Tercer Ciclo</a></li>
+                    <li ><a title="Materias de Master" href="#tab4" data-toggle="tab">Master</a></li>
+                    <li ><a title="Materias de Postgrado" href="#tab5" data-toggle="tab">Postgrado</a></li>
+                    <li ><a title="Materias de Cursos" href="#tab6" data-toggle="tab">Cursos</a></li>
 
 
                 </ul>
@@ -21,13 +23,13 @@ require_once '../../View/Structure/Nav.php';
             </div>
 
             <!--Titulo de lo que se esta haciendo -->
-            <p class="lead separator separator-title">Lista Proyectos Dirigidos</p>
+            <p class="lead separator separator-title">Lista de Materias</p>
 
             <div class="tab-content">
-<!--listado de proyectos dirigidos  -->
+<!--listado de materias  -->
                 <div class="tab-pane fade in active" id="tab1">
                     <?php
-                    $lista = $_SESSION["listarProyectosDirigidos"];
+                    $lista = $_SESSION["listarMaterias"];
                     if (isset($lista)) {
                     foreach ($lista as $row){ ?>
 
@@ -35,35 +37,35 @@ require_once '../../View/Structure/Nav.php';
                         <div class="panel panel-default">
                             <!-- titulo proyecto -->
                             <div class="tdTitulo">
-                                <td type="submit"   name = "TituloPD" ><?php echo $row['TituloPD']; ?></td>
+                                <td type="submit"   name = "DenominacionM" ><?php echo $row['DenominacionM']; ?></td>
                             </div>
                             <!-- datos proyecto-->
                             <div class="panel-body">
                                 <tr>
                                     <td valign="top" width="50%">
-                                        <b name = "CodigoPD" >Código Proyecto:</b>
-                                        <?php echo $row['CodigoPD']; ?>
+                                        <b name = "CodigoM" >Código Materia:</b>
+                                        <?php echo $row['CodigoM']; ?>
                                         <br>
-                                        <b  name = "AlumnoPD" >Alumno: </b>
-                                        <?php echo $row['AlumnoPD']; ?>
+                                        <b  name = "TipoParticipacionM" >Tipo participación: </b>
+                                        <?php echo $row['TipoParticipacionM']; ?>
                                         <br>
-                                        <b name = "CalificacionPD">Calificación: </b>
-                                        <?php echo $row['CalificacionPD']; ?>
+                                        <b name = "TitulacionM">Titulación: </b>
+                                        <?php echo $row['TitulacionM']; ?>
                                         <br>
-                                        <b name = "FechaLecturaPD">Fecha lectura: </b>
-                                        <?php echo $row['FechaLecturaPD']; ?>
+                                        <b name = "AnhoAcademicoM">Año académico: </b>
+                                        <?php echo $row['AnhoAcademicoM']; ?>
                                         <br>
-                                        <b name = "CotutorPD">Cotutor: </b>
-                                        <?php echo $row['CotutorPD']; ?>
+                                        <b name = "CreditosM">Creditos: </b>
+                                        <?php echo $row['CreditosM']; ?>
                                         <br>
-                                        <b name = "URLPD">URL: </b>
-                                        <?php echo $row['URLPD']; ?>
+                                        <b name = "CuatrimestreM">Cuatrimestre: </b>
+                                        <?php echo $row['CuatrimestreM']; ?>
                                         <br>
                                     </td>
 
                                 </tr>
                                 <p align="center">
-                                    <button type="button" class="btn btn-orange " onclick="window.location.href='../../Controller/ProyectosDirigidosController.php?evento=consultarProyectoDirigido&CodigoPD=<?php echo $row['CodigoPD']; ?>'">Modificar</button>
+                                    <button type="button" class="btn btn-orange " onclick="window.location.href='../../Controller/MateriasController.php?evento=consultarMateria&CodigoM=<?php echo $row['CodigoM']; ?>'">Modificar</button>
                                 </p>
                             </div>
                         </div>
@@ -72,144 +74,243 @@ require_once '../../View/Structure/Nav.php';
                 </div>
 
 
-<!--listado de TFC-->
+<!--listado de materias de grado-->
                 <div class="tab-pane fade" id="tab2">
                     <?php
-                    $lista = $_SESSION["listarProyectosDirigidosTFC"];
-                    if (isset($lista)) {
-                    foreach ($lista as $row){ ?>
-                    <div class="form-group col-lg-6">
-                        <div class="panel panel-default">
-                            <!-- titulo proyecto -->
-                            <div class="tdTitulo">
-                                <td type="submit"   name = "TituloPD" ><?php echo $row['TituloPD']; ?></td>
-                            </div>
-                            <!-- datos proyecto-->
-                            <div class="panel-body">
-                                <tr>
-                                    <td valign="top" width="50%">
-                                        <b>Código Proyecto: </b>
-                                        <?php echo $row['CodigoPD']; ?>
-                                        <br>
-                                        <b>Alumno: </b>
-                                        <?php echo $row['AlumnoPD']; ?>
-                                        <br>
-                                        <b>Calificación: </b>
-                                        <?php echo $row['CalificacionPD']; ?>
-                                        <br>
-                                        <b>Fecha lectura: </b>
-                                        <?php echo $row['FechaLecturaPD']; ?>
-                                        <br>
-                                        <b>Cotutor: </b>
-                                        <?php echo $row['CotutorPD']; ?>
-                                        <br>
-                                        <b>URL: </b>
-                                        <?php echo $row['URLPD']; ?>
-                                        <br>
-                                    </td>
+                    $lista1 = $_SESSION["listarMateriasGrado"];
+                    if (isset($lista1)) {
+                        foreach ($lista1 as $row1){ ?>
 
-                                </tr>
-                                <p align="center">
-                                    <button type="button" class="btn btn-orange " onclick="window.location.href='../../Controller/ProyectosDirigidosController.php?evento=consultarProyectoDirigido&CodigoPD=<?php echo $row['CodigoPD']; ?>'">Modificar</button>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <?php } } ?>
-                </div>
-<!--listado de TFG -->
-                <div class="tab-pane fade " id="tab3">
-                    <?php
-                    $lista = $_SESSION["listarProyectosDirigidosTFG"];
-                    if (isset($lista)) {
-                        foreach ($lista as $row){ ?>
                             <div class="form-group col-lg-6">
                                 <div class="panel panel-default">
                                     <!-- titulo proyecto -->
                                     <div class="tdTitulo">
-                                        <td type="submit"   name = "TituloPD" ><?php echo $row['TituloPD']; ?></td>
-
+                                        <td type="submit"   name = "DenominacionM" ><?php echo $row1['DenominacionM']; ?></td>
                                     </div>
                                     <!-- datos proyecto-->
                                     <div class="panel-body">
                                         <tr>
                                             <td valign="top" width="50%">
-                                                <b>Código Proyecto: </b>
-                                                <?php echo $row['CodigoPD']; ?>
+                                                <b name = "CodigoM" >Código Materia:</b>
+                                                <?php echo $row1['CodigoM']; ?>
                                                 <br>
-                                                <b>Alumno: </b>
-                                                <?php echo $row['AlumnoPD']; ?>
+                                                <b  name = "TipoParticipacionM" >Tipo participación: </b>
+                                                <?php echo $row1['TipoParticipacionM']; ?>
                                                 <br>
-                                                <b>Calificación: </b>
-                                                <?php echo $row['CalificacionPD']; ?>
+                                                <b name = "TitulacionM">Titulación: </b>
+                                                <?php echo $row1['TitulacionM']; ?>
                                                 <br>
-                                                <b>Fecha lectura: </b>
-                                                <?php echo $row['FechaLecturaPD']; ?>
+                                                <b name = "AnhoAcademicoM">Año académico: </b>
+                                                <?php echo $row1['AnhoAcademicoM']; ?>
                                                 <br>
-                                                <b>Cotutor: </b>
-                                                <?php echo $row['CotutorPD']; ?>
+                                                <b name = "CreditosM">Creditos: </b>
+                                                <?php echo $row1['CreditosM']; ?>
                                                 <br>
-                                                <b>URL: </b>
-                                                <?php echo $row['URLPD']; ?>
+                                                <b name = "CuatrimestreM">Cuatrimestre: </b>
+                                                <?php echo $row1['CuatrimestreM']; ?>
                                                 <br>
                                             </td>
 
                                         </tr>
                                         <p align="center">
-                                            <button type="button" class="btn btn-orange " onclick="window.location.href='../../Controller/ProyectosDirigidosController.php?evento=consultarProyectoDirigido&CodigoPD=<?php echo $row['CodigoPD']; ?>'">Modificar</button>
+                                            <button type="button" class="btn btn-orange " onclick="window.location.href='../../Controller/MateriasController.php?evento=consultarMateria&CodigoM=<?php echo $row1['CodigoM']; ?>'">Modificar</button>
                                         </p>
                                     </div>
                                 </div>
                             </div>
                         <?php } } ?>
                 </div>
-<!-- listado de TFM -->
-                <div class="tab-pane fade" id="tab4">
+
+                <!--listado de materias de tercer ciclo -->
+                <div class="tab-pane fade " id="tab3">
                     <?php
-                    $lista = $_SESSION["listarProyectosDirigidosTFM"];
-                    if (isset($lista)) {
-                        foreach ($lista as $row){ ?>
+                    $lista2 = $_SESSION["listarMateriasTCiclo"];
+                    if (isset($lista2)) {
+                        foreach ($lista2 as $row2){ ?>
+
                             <div class="form-group col-lg-6">
                                 <div class="panel panel-default">
                                     <!-- titulo proyecto -->
                                     <div class="tdTitulo">
-                                        <td type="submit"   name = "TituloPD" ><?php echo $row['TituloPD']; ?></td>
+                                        <td type="submit"   name = "DenominacionM" ><?php echo $row2['DenominacionM']; ?></td>
                                     </div>
                                     <!-- datos proyecto-->
                                     <div class="panel-body">
                                         <tr>
                                             <td valign="top" width="50%">
-                                                <b>Código Proyecto: </b>
-                                                <?php echo $row['CodigoPD']; ?>
+                                                <b name = "CodigoM" >Código Materia:</b>
+                                                <?php echo $row2['CodigoM']; ?>
                                                 <br>
-                                                <b>Alumno: </b>
-                                                <?php echo $row['AlumnoPD']; ?>
+                                                <b  name = "TipoParticipacionM" >Tipo participación: </b>
+                                                <?php echo $row2['TipoParticipacionM']; ?>
                                                 <br>
-                                                <b>Calificación: </b>
-                                                <?php echo $row['CalificacionPD']; ?>
+                                                <b name = "TitulacionM">Titulación: </b>
+                                                <?php echo $row2['TitulacionM']; ?>
                                                 <br>
-                                                <b>Fecha lectura: </b>
-                                                <?php echo $row['FechaLecturaPD']; ?>
+                                                <b name = "AnhoAcademicoM">Año académico: </b>
+                                                <?php echo $row2['AnhoAcademicoM']; ?>
                                                 <br>
-                                                <b>Cotutor: </b>
-                                                <?php echo $row['CotutorPD']; ?>
+                                                <b name = "CreditosM">Creditos: </b>
+                                                <?php echo $row2['CreditosM']; ?>
                                                 <br>
-                                                <b>URL: </b>
-                                                <?php echo $row['URLPD']; ?>
+                                                <b name = "CuatrimestreM">Cuatrimestre: </b>
+                                                <?php echo $row2['CuatrimestreM']; ?>
                                                 <br>
                                             </td>
 
                                         </tr>
                                         <p align="center">
-                                            <button type="button" class="btn btn-orange " onclick="window.location.href='../../Controller/ProyectosDirigidosController.php?evento=consultarProyectoDirigido&CodigoPD=<?php echo $row['CodigoPD']; ?>'">Modificar</button>
+                                            <button type="button" class="btn btn-orange " onclick="window.location.href='../../Controller/MateriasController.php?evento=consultarMateria&CodigoM=<?php echo $row2['CodigoM']; ?>'">Modificar</button>
                                         </p>
                                     </div>
                                 </div>
                             </div>
-                         <?php } } ?>
-                    </div>
+                        <?php } } ?>
+                </div>
 
-        </div>
+                <!-- listado de materias de master -->
+                <div class="tab-pane fade" id="tab4">
+                    <?php
+                    $lista3 = $_SESSION["listarMateriasMaster"];
+                    if (isset($lista3)) {
+                        foreach ($lista3 as $row3){ ?>
+
+                            <div class="form-group col-lg-6">
+                                <div class="panel panel-default">
+                                    <!-- titulo proyecto -->
+                                    <div class="tdTitulo">
+                                        <td type="submit"   name = "DenominacionM" ><?php echo $row3['DenominacionM']; ?></td>
+                                    </div>
+                                    <!-- datos proyecto-->
+                                    <div class="panel-body">
+                                        <tr>
+                                            <td valign="top" width="50%">
+                                                <b name = "CodigoM" >Código Materia:</b>
+                                                <?php echo $row3['CodigoM']; ?>
+                                                <br>
+                                                <b  name = "TipoParticipacionM" >Tipo participación: </b>
+                                                <?php echo $row3['TipoParticipacionM']; ?>
+                                                <br>
+                                                <b name = "TitulacionM">Titulación: </b>
+                                                <?php echo $row3['TitulacionM']; ?>
+                                                <br>
+                                                <b name = "AnhoAcademicoM">Año académico: </b>
+                                                <?php echo $row3['AnhoAcademicoM']; ?>
+                                                <br>
+                                                <b name = "CreditosM">Creditos: </b>
+                                                <?php echo $row3['CreditosM']; ?>
+                                                <br>
+                                                <b name = "CuatrimestreM">Cuatrimestre: </b>
+                                                <?php echo $row3['CuatrimestreM']; ?>
+                                                <br>
+                                            </td>
+
+                                        </tr>
+                                        <p align="center">
+                                            <button type="button" class="btn btn-orange " onclick="window.location.href='../../Controller/MateriasController.php?evento=consultarMateria&CodigoM=<?php echo $row3['CodigoM']; ?>'">Modificar</button>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php } } ?>
+                </div>
+
+                <!-- listado de materias de post grado -->
+                <div class="tab-pane fade" id="tab5">
+                    <?php
+                    $lista = $_SESSION["listarMateriasPost"];
+                    if (isset($lista4)) {
+                        foreach ($lista4 as $row4){ ?>
+
+                            <div class="form-group col-lg-6">
+                                <div class="panel panel-default">
+                                    <!-- titulo proyecto -->
+                                    <div class="tdTitulo">
+                                        <td type="submit"   name = "DenominacionM" ><?php echo $row4['DenominacionM']; ?></td>
+                                    </div>
+                                    <!-- datos proyecto-->
+                                    <div class="panel-body">
+                                        <tr>
+                                            <td valign="top" width="50%">
+                                                <b name = "CodigoM" >Código Materia:</b>
+                                                <?php echo $row4['CodigoM']; ?>
+                                                <br>
+                                                <b  name = "TipoParticipacionM" >Tipo participación: </b>
+                                                <?php echo $row4['TipoParticipacionM']; ?>
+                                                <br>
+                                                <b name = "TitulacionM">Titulación: </b>
+                                                <?php echo $row4['TitulacionM']; ?>
+                                                <br>
+                                                <b name = "AnhoAcademicoM">Año académico: </b>
+                                                <?php echo $row4['AnhoAcademicoM']; ?>
+                                                <br>
+                                                <b name = "CreditosM">Creditos: </b>
+                                                <?php echo $row4['CreditosM']; ?>
+                                                <br>
+                                                <b name = "CuatrimestreM">Cuatrimestre: </b>
+                                                <?php echo $row4['CuatrimestreM']; ?>
+                                                <br>
+                                            </td>
+
+                                        </tr>
+                                        <p align="center">
+                                            <button type="button" class="btn btn-orange " onclick="window.location.href='../../Controller/MateriasController.php?evento=consultarMateria&CodigoM=<?php echo $row4['CodigoM']; ?>'">Modificar</button>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php } } ?>
+                </div>
+
+                <!-- listado de materias de cursos -->
+                <div class="tab-pane fade" id="tab6">
+                    <?php
+                    $lista5 = $_SESSION["listarMateriasCursos"];
+                    if (isset($lista5)) {
+                        foreach ($lista5 as $row5){ ?>
+
+                            <div class="form-group col-lg-6">
+                                <div class="panel panel-default">
+                                    <!-- titulo proyecto -->
+                                    <div class="tdTitulo">
+                                        <td type="submit"   name = "DenominacionM" ><?php echo $row5['DenominacionM']; ?></td>
+                                    </div>
+                                    <!-- datos proyecto-->
+                                    <div class="panel-body">
+                                        <tr>
+                                            <td valign="top" width="50%">
+                                                <b name = "CodigoM" >Código Materia:</b>
+                                                <?php echo $row5['CodigoM']; ?>
+                                                <br>
+                                                <b  name = "TipoParticipacionM" >Tipo participación: </b>
+                                                <?php echo $row5['TipoParticipacionM']; ?>
+                                                <br>
+                                                <b name = "TitulacionM">Titulación: </b>
+                                                <?php echo $row5['TitulacionM']; ?>
+                                                <br>
+                                                <b name = "AnhoAcademicoM">Año académico: </b>
+                                                <?php echo $row5['AnhoAcademicoM']; ?>
+                                                <br>
+                                                <b name = "CreditosM">Creditos: </b>
+                                                <?php echo $row5['CreditosM']; ?>
+                                                <br>
+                                                <b name = "CuatrimestreM">Cuatrimestre: </b>
+                                                <?php echo $row5['CuatrimestreM']; ?>
+                                                <br>
+                                            </td>
+
+                                        </tr>
+                                        <p align="center">
+                                            <button type="button" class="btn btn-orange " onclick="window.location.href='../../Controller/MateriasController.php?evento=consultarMateria&CodigoM=<?php echo $row5['CodigoM']; ?>'">Modificar</button>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php } } ?>
+                </div>
+
+
+            </div>
     </div>
 
 

@@ -244,8 +244,9 @@ CREATE TABLE IF NOT EXISTS `materia` (
   `AnhoAcademicoM` varchar(11) NOT NULL default '',
   `CreditosM` char(3) NOT NULL default '0',
   `CuatrimestreM` enum('Primero','Segundo','Anual') NOT NULL default 'Primero',
-  `LoginU` varchar(15) NOT NULL default '',
-  PRIMARY KEY  (`CodigoM`)
+  `LoginU` varchar(15)COLLATE latin1_spanish_ci NOT NULL default '',
+  PRIMARY KEY  (`CodigoM`),
+   KEY `FK_MATERIA_USUARIO` (`LoginU`)
 )ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
 
@@ -303,27 +304,6 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 INSERT INTO `usuario` VALUES ('admin', 'e0b7feb3cf3e7d177da400774de0af5b', 'Administrador', '','','','','','','','');
 
 
--- --------------------------------------------------------
-
---
--- Table structure for table `docente_articulo`
---
-DROP TABLE IF EXISTS `docente_articulo`;
-CREATE TABLE IF NOT EXISTS `docente_articulo` (
-  `CodigoA` int(11) NOT NULL default '0',
-  `LoginU` varchar(15)COLLATE latin1_spanish_ci NOT NULL default '',
-   PRIMARY KEY (`CodigoA`,`LoginU`),
-  KEY `FK_DOCENTE_ARTICULO_USUARIO` (`LoginU`),
-   KEY `FK_DOCENTE_ARTICULO_ARTICULO` (`CodigoA`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
-
-
---
--- RELACIONES PARA LA TABLA `docente_articulo`:
---   `LoginU`
---       `usuario` -> `LoginU`
---     `CodigoA`
---       `articulo` -> `CodigoA`
 --
 -- --------------------------------------------------------
 
@@ -364,6 +344,27 @@ CREATE TABLE IF NOT EXISTS `titulo_academico` (
 -- RELACIONES PARA LA TABLA `universidad`:
 --   `LoginU`
 --       `usuario` -> `LoginU`
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `docente_articulo`
+--
+DROP TABLE IF EXISTS `docente_articulo`;
+CREATE TABLE IF NOT EXISTS `docente_articulo` (
+  `CodigoA` int(11) NOT NULL default '0',
+  `LoginU` varchar(15)COLLATE latin1_spanish_ci NOT NULL default '',
+   PRIMARY KEY (`CodigoA`,`LoginU`),
+  KEY `FK_DOCENTE_ARTICULO_USUARIO` (`LoginU`),
+   KEY `FK_DOCENTE_ARTICULO_ARTICULO` (`CodigoA`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+
+
+--
+-- RELACIONES PARA LA TABLA `docente_articulo`:
+--   `LoginU`
+--       `usuario` -> `LoginU`
+--     `CodigoA`
+--       `articulo` -> `CodigoA`
 
 -- --------------------------------------------------------
 
@@ -499,42 +500,54 @@ CREATE TABLE IF NOT EXISTS `docente_ponencia` (
 -- Filtros para la tabla `tesis`
 --
 ALTER TABLE `tesis`
-  ADD CONSTRAINT `tesis_ibfk_1` FOREIGN KEY (`LoginU`) REFERENCES `usuario` (`LoginU`);
+  ADD CONSTRAINT `FK_TESIS_USUARIO` FOREIGN KEY (`LoginU`) REFERENCES `usuario` (`LoginU`);
 
 --
 -- Filtros para la tabla `estancia`
 --
 ALTER TABLE `estancia`
-  ADD CONSTRAINT `estancia_ibfk_1` FOREIGN KEY (`LoginU`) REFERENCES `usuario` (`LoginU`);
+  ADD CONSTRAINT `FK_ESTANCIA_USUARIO` FOREIGN KEY (`LoginU`) REFERENCES `usuario` (`LoginU`);
 
 --
 -- Filtros para la tabla `tad`
 --
 ALTER TABLE `tad`
-  ADD CONSTRAINT `tad_ibfk_1` FOREIGN KEY (`LoginU`) REFERENCES `usuario` (`LoginU`);
+  ADD CONSTRAINT `FK_TAD_USUARIO` FOREIGN KEY (`LoginU`) REFERENCES `usuario` (`LoginU`);
 --
 --
+/*
 -- Filtros para la tabla `materia`
 --
 ALTER TABLE `materia`
-  ADD CONSTRAINT `materia_ibfk_1` FOREIGN KEY (`LoginU`) REFERENCES `usuario` (`LoginU`);
+ ADD CONSTRAINT `FK_MATERIA_USUARIO` FOREIGN KEY (`LoginU`) REFERENCES `usuario` (`LoginU`);
 --
 -- Filtros para la tabla `universidad`
 --
 --
+ALTER TABLE `universidad`
+  ADD CONSTRAINT `FK_UNIVERSIDAD_USUARIO` FOREIGN KEY (`LoginU`) REFERENCES `usuario` (`LoginU`);
+--
+-- Filtros para la tabla `titulo_academico`
+--
+--
+ALTER TABLE `titulo_academico`
+ ADD CONSTRAINT `FK_TITULO_ACADEMICO_USUARIO` FOREIGN KEY (`LoginU`) REFERENCES `usuario` (`LoginU`);
+--
+--
 -- Filtros para la tabla `docente_articulo`
 --
+
  ALTER TABLE `docente_articulo`
-  ADD CONSTRAINT `docente_articulo_ibfk_1` FOREIGN KEY (`LoginU`) REFERENCES `usuario` (`LoginU`),
-  ADD CONSTRAINT `docente_articulo_ibfk_2` FOREIGN KEY (`CodigoA`) REFERENCES `articulo` (`CodigoA`);
+  ADD CONSTRAINT `FK_DOCENTE_ARTICULO_ARTICULO` FOREIGN KEY (`CodigoA`) REFERENCES `articulo` (`CodigoA`),
+  ADD CONSTRAINT `FK_DOCENTE_ARTICULO_USUARIO` FOREIGN KEY (`LoginU`) REFERENCES `usuario` (`LoginU`);
 
 
 --
 -- Filtros para la tabla `docente_congreso`
 --
 ALTER TABLE `docente_congreso`
-  ADD CONSTRAINT `docente_congreso_ibfk_1` FOREIGN KEY (`LoginU`) REFERENCES `usuario` (`LoginU`),
-  ADD CONSTRAINT `docente_congreso_ibfk_2` FOREIGN KEY (`CodigoC`) REFERENCES `congreso` (`CodigoC`);
+  ADD CONSTRAINT `FK_DOCENTE_CONGRESO_USUARIO` FOREIGN KEY (`LoginU`) REFERENCES `usuario` (`LoginU`),
+  ADD CONSTRAINT `FK_DOCENTE_CONGRESO_CONGRESO` FOREIGN KEY (`CodigoC`) REFERENCES `congreso` (`CodigoC`);
 
 
 
@@ -542,40 +555,42 @@ ALTER TABLE `docente_congreso`
 -- Filtros para la tabla `docente_libro`
 --
 ALTER TABLE `docente_libro`
-  ADD CONSTRAINT `docente_libro_ibfk_1` FOREIGN KEY (`LoginU`) REFERENCES `usuario` (`LoginU`),
-  ADD CONSTRAINT `docente_libro_ibfk_2` FOREIGN KEY (`CodigoL`) REFERENCES `libro` (`CodigoL`);
+  ADD CONSTRAINT `FK_DOCENTE_LIBRO_USUARIO` FOREIGN KEY (`LoginU`) REFERENCES `usuario` (`LoginU`),
+  ADD CONSTRAINT `FK_DOCENTE_LIBRO_LIBRO` FOREIGN KEY (`CodigoL`) REFERENCES `libro` (`CodigoL`);
 
 
 --
 -- Filtros para la tabla `docente_proyectoDirigido`
 --
 ALTER TABLE `docente_proyectoDirigido`
-  ADD CONSTRAINT `docente_proyectoDirigido_ibfk_1` FOREIGN KEY (`LoginU`) REFERENCES `usuario` (`LoginU`),
-  ADD CONSTRAINT `docente_proyectoDirigido_ibfk_2` FOREIGN KEY (`CodigoPD`) REFERENCES `proyectoDirigido` (`CodigoPD`);
+  ADD CONSTRAINT `FK_DOCENTE_PD_USUARIO` FOREIGN KEY (`LoginU`) REFERENCES `usuario` (`LoginU`),
+  ADD CONSTRAINT `FK_DOCENTE_PD_PD` FOREIGN KEY (`CodigoPD`) REFERENCES `proyectoDirigido` (`CodigoPD`);
 
 
 
 --
 -- Filtros para la tabla `docente_proyecto`
 --
-ALTER TABLE `docente_proyectoDirigido`
-  ADD CONSTRAINT `docente_proyecto_ibfk_1` FOREIGN KEY (`LoginU`) REFERENCES `usuario` (`LoginU`),
-  ADD CONSTRAINT `docente_proyecto_ibfk_2` FOREIGN KEY (`CodigoProy`) REFERENCES `proyecto` (`CodigoProy`);
+ALTER TABLE `docente_proyecto`
+  ADD CONSTRAINT `FK_DOCENTE_PROYECTO_USUARIO` FOREIGN KEY (`LoginU`) REFERENCES `usuario` (`LoginU`),
+  ADD CONSTRAINT `FK_DOCENTE_PROYECTO_PROYECTO` FOREIGN KEY (`CodigoProy`) REFERENCES `proyecto` (`CodigoProy`);
 
 
 --
 -- Filtros para la tabla `docente_technicalreport`
 --
 ALTER TABLE `docente_technicalreport`
-  ADD CONSTRAINT `docente_technicalreport_ibfk_1` FOREIGN KEY (`LoginU`) REFERENCES `usuario` (`LoginU`),
-  ADD CONSTRAINT `docente_technicalreport_ibfk_2` FOREIGN KEY (`CodigoTR`) REFERENCES `technicalreport` (`CodigoTR`);
+  ADD CONSTRAINT `FK_DOCENTE_TR_USUARIO` FOREIGN KEY (`LoginU`) REFERENCES `usuario` (`LoginU`),
+  ADD CONSTRAINT `FK_DOCENTE_TR_TR` FOREIGN KEY (`CodigoTR`) REFERENCES `technicalreport` (`CodigoTR`);
 
 
 --
 -- Filtros para la tabla `docente_ponencia`
 --
 ALTER TABLE `docente_ponencia`
-  ADD CONSTRAINT `docente_ponencia_ibfk_1` FOREIGN KEY (`LoginU`) REFERENCES `usuario` (`LoginU`),
-  ADD CONSTRAINT `docente_ponencia_ibfk_2` FOREIGN KEY (`CodigoP`) REFERENCES `ponencia` (`CodigoP`);
-
-
+  ADD CONSTRAINT `FK_DOCENTE_PONENCIA_USUARIO` FOREIGN KEY (`LoginU`) REFERENCES `usuario` (`LoginU`),
+  ADD CONSTRAINT `FK_DOCENTE_PONENCIA_PONENCIA` FOREIGN KEY (`CodigoP`) REFERENCES `ponencia` (`CodigoP`);
+*/
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

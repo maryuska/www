@@ -1,5 +1,5 @@
 <?php
-// Controlador de Proyectos Dirigidos
+// Controlador de Materias
 
 require_once '../Model/Materia.php';
 $evento = $_REQUEST['evento'];
@@ -60,7 +60,44 @@ switch ($evento) {
             array_push($listaResultado, $row);
         }
 
+
+        //materias grado
+        $listaMateriasGrado = $lista->ListarMateriasGrado();
+        $listaResultadoMG = array();
+        while($row1 = mysql_fetch_array($listaMateriasGrado)){
+            array_push($listaResultadoMG, $row1);
+        }
+        //materias tercer ciclo
+        $listaMateriasTCiclo = $lista->ListarMateriasTCiclo();
+        $listaResultadoMTC = array();
+        while($row2 = mysql_fetch_array($listaMateriasTCiclo)){
+            array_push($listaResultadoMTC, $row2);
+        }
+        //materias master
+        $listaMateriasMaster = $lista->ListarMateriasMaster();
+        $listaResultadoMM = array();
+        while($row3 = mysql_fetch_array($listaMateriasMaster)){
+            array_push($listaResultadoMM, $row3);
+        }
+        //materias post grado
+        $listaMateriasPostG = $lista->ListarMateriasPost();
+        $listaResultadoMPG = array();
+        while($row4 = mysql_fetch_array($listaMateriasPostG)){
+            array_push($listaResultadoMPG, $row4);
+        }
+        //materias cursos
+        $listaMateriasCursos = $lista->ListarMateriasCursos();
+        $listaResultadoMC = array();
+        while($row5 = mysql_fetch_array($listaMateriasCursos)){
+            array_push($listaResultadoMC, $row5);
+        }
         $_SESSION["listarMaterias"] = $listaResultado;
+        $_SESSION["listarMateriasGrado"] = $listaResultadoMG;
+        $_SESSION["listarMateriasTCiclo"] = $listaResultadoMTC;
+        $_SESSION["listarMateriasMaster"] = $listaResultadoMM;
+        $_SESSION["listarMateriasPost"] = $listaResultadoMPG;
+        $_SESSION["listarMateriasCursos"] = $listaResultadoMC;
+
         header("location: ../../View/Materia/listarMaterias.php");
 
     break;

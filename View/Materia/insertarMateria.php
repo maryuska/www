@@ -2,7 +2,7 @@
 require_once '../../View/Structure/Header.php';
 require_once '../../View/Structure/Nav.php';
 $loginU =$_SESSION["loginU"];
-var_dump ($loginU);
+
 ?>
 
 <div class="col-md-10 izquierda">
@@ -61,16 +61,16 @@ var_dump ($loginU);
                     <label class="control-label" for="TipoPD">Cuatrimestre:</label>
                     <p> <select type="CuatrimestreM"  class="form-control"  id="CuatrimestreM" name="CuatrimestreM">
                             <option>--</option>
-                            <option value="PFC" >Primero</option>
-                            <option value="TFG">Segundo</option>
-                            <option value="TFM">Anual</option>
+                            <option >Primero</option>
+                            <option >Segundo</option>
+                            <option>Anual</option>
                         </select></p>
                 </div>
                 <br>
 
                 <div class="form-group">
 
-                    <input id="LoginU" name="LoginU" type="hidden" placeholder="LoginU" value="$LoginU" >
+                    <input id="LoginU" name="LoginU" type="hidden" placeholder="LoginU" value="<?php echo $loginU ?>" >
                 </div>
 
                 <div class="col-lg-6 col-md-6 col-sm-8 col-xs-8 col-md-offset-3">
