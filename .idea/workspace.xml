@@ -20,11 +20,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="Nav.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Nav.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/View/Structure/Nav.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="221" column="75" lean-forward="false" selection-start-line="221" selection-start-column="56" selection-end-line="221" selection-end-column="75" />
+            <state relative-caret-position="-799">
+              <caret line="223" column="71" lean-forward="true" selection-start-line="223" selection-start-column="71" selection-end-line="223" selection-end-column="71" />
               <folding />
             </state>
           </provider>
@@ -33,8 +33,8 @@
       <file leaf-file-name="ProyectosDirigidos.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Model/ProyectosDirigidos.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="313">
-              <caret line="50" column="87" lean-forward="true" selection-start-line="50" selection-start-column="59" selection-end-line="50" selection-end-column="87" />
+            <state relative-caret-position="92">
+              <caret line="43" column="2" lean-forward="false" selection-start-line="43" selection-start-column="2" selection-end-line="45" selection-end-column="4" />
               <folding>
                 <marker date="1521311612543" expanded="true" signature="877:1182" ph="INSERT INTO proyectoDirigido... " />
                 <marker date="1521311612543" expanded="true" signature="1382:1441" ph="SELECT * FRO... proyectoDirigido" />
@@ -53,20 +53,21 @@
       <file leaf-file-name="Materia.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Model/Materia.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="799">
-              <caret line="83" column="40" lean-forward="false" selection-start-line="83" selection-start-column="20" selection-end-line="83" selection-end-column="40" />
+            <state relative-caret-position="714">
+              <caret line="81" column="76" lean-forward="false" selection-start-line="81" selection-start-column="76" selection-end-line="81" selection-end-column="76" />
               <folding>
-                <marker date="1522087362953" expanded="true" signature="994:1377" ph="INSERT INTO proyectoDirigido... " />
-                <marker date="1522087362953" expanded="true" signature="1550:1599" ph="SELECT * FRO... proyectoDirigido" />
-                <marker date="1522087362953" expanded="true" signature="1819:1840" ph="SELECT * FRO... materia" />
-                <marker date="1522087362953" expanded="true" signature="1819:1869" ph="SELECT * FRO... materia" />
-                <marker date="1522087362953" expanded="true" signature="2011:2054" ph="SELECT * FRO... proyectoDirigido" />
-                <marker date="1522087362953" expanded="true" signature="2202:2252" ph="SELECT * FRO... proyectoDirigido" />
-                <marker date="1522087362953" expanded="true" signature="2397:2441" ph="SELECT * FRO... proyectoDirigido" />
-                <marker date="1522087362953" expanded="true" signature="2588:2636" ph="SELECT * FRO... proyectoDirigido" />
-                <marker date="1522087362953" expanded="true" signature="2781:2824" ph="SELECT * FRO... proyectoDirigido" />
-                <marker date="1522087362953" expanded="true" signature="3074:3243" ph="UPDATE usuario... " />
-                <marker date="1522087362953" expanded="true" signature="3335:3383" ph="SELECT * FRO... usuario" />
+                <marker date="1522142128505" expanded="true" signature="965:1348" ph="INSERT INTO proyectoDirigido... " />
+                <marker date="1522142128505" expanded="true" signature="1521:1570" ph="SELECT * FRO... proyectoDirigido" />
+                <marker date="1522142128505" expanded="true" signature="1695:2062" ph="UPDATE proyectoDirigido... " />
+                <marker date="1522142128505" expanded="true" signature="2211:2232" ph="SELECT * FRO... materia" />
+                <marker date="1522142128505" expanded="true" signature="2211:2285" ph="SELECT * FRO... materia" />
+                <marker date="1522142128505" expanded="true" signature="2433:2498" ph="SELECT * FRO... proyectoDirigido" />
+                <marker date="1522142128505" expanded="true" signature="2652:2724" ph="SELECT * FRO... proyectoDirigido" />
+                <marker date="1522142128505" expanded="true" signature="2875:2941" ph="SELECT * FRO... proyectoDirigido" />
+                <marker date="1522142128505" expanded="true" signature="3094:3164" ph="SELECT * FRO... proyectoDirigido" />
+                <marker date="1522142128505" expanded="true" signature="3315:3380" ph="SELECT * FRO... proyectoDirigido" />
+                <marker date="1522142128505" expanded="true" signature="3629:3798" ph="UPDATE usuario... " />
+                <marker date="1522142128505" expanded="true" signature="3890:3938" ph="SELECT * FRO... usuario" />
               </folding>
             </state>
           </provider>
@@ -75,18 +76,48 @@
       <file leaf-file-name="MateriasController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Controller/MateriasController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="680">
-              <caret line="94" column="38" lean-forward="false" selection-start-line="94" selection-start-column="19" selection-end-line="94" selection-end-column="38" />
+            <state relative-caret-position="153">
+              <caret line="54" column="0" lean-forward="true" selection-start-line="54" selection-start-column="0" selection-end-line="55" selection-end-column="38" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="listarMaterias.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ProyectosDirigidosController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Controller/ProyectosDirigidosController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="53" column="0" lean-forward="false" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="insertarMateria.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/View/Materia/insertarMateria.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="29" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="listarMaterias.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/View/Materia/listarMaterias.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="211">
-              <caret line="25" column="62" lean-forward="false" selection-start-line="25" selection-start-column="62" selection-end-line="25" selection-end-column="62" />
+            <state relative-caret-position="51">
+              <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="modificarMateria.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/View/Materia/modificarMateria.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="8" column="43" lean-forward="false" selection-start-line="8" selection-start-column="43" selection-end-line="8" selection-end-column="43" />
               <folding />
             </state>
           </provider>
@@ -127,7 +158,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/proyectos tutelados.html" />
         <option value="$PROJECT_DIR$/Controller/paginaController.php" />
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/View/Structure/Footer.php" />
@@ -163,7 +193,6 @@
         <option value="$PROJECT_DIR$/lib/css/style.css" />
         <option value="$PROJECT_DIR$/View/ProyectoDirigido/insertarProyectoDirigido.php" />
         <option value="$PROJECT_DIR$/View/Structure/NavSimple.php" />
-        <option value="$PROJECT_DIR$/Controller/ProyectosDirigidosController.php" />
         <option value="$PROJECT_DIR$/View/ProyectoDirigido/modificarProyectoDirigido.php" />
         <option value="$PROJECT_DIR$/View/ProyectoDirigido/listarProyectosDirigidos.php" />
         <option value="$PROJECT_DIR$/View/Usuario/registrarse.php" />
@@ -172,12 +201,14 @@
         <option value="$PROJECT_DIR$/View/Usuario/modificarUsuario.php" />
         <option value="$PROJECT_DIR$/Controller/UsuariosController.php" />
         <option value="$PROJECT_DIR$/View/Usuario/consultarUsuario.php" />
-        <option value="$PROJECT_DIR$/View/Structure/Nav.php" />
         <option value="$PROJECT_DIR$/BD/Base_Datos.sql" />
         <option value="$PROJECT_DIR$/View/Materia/insertarMateria.php" />
+        <option value="$PROJECT_DIR$/View/Materia/modificarMateria.php" />
         <option value="$PROJECT_DIR$/Model/Materia.php" />
         <option value="$PROJECT_DIR$/Controller/MateriasController.php" />
         <option value="$PROJECT_DIR$/View/Materia/listarMaterias.php" />
+        <option value="$PROJECT_DIR$/Controller/ProyectosDirigidosController.php" />
+        <option value="$PROJECT_DIR$/View/Structure/Nav.php" />
       </list>
     </option>
   </component>
@@ -246,6 +277,12 @@
               <item name="View" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="ProyectoDirigido" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
+            <path>
+              <item name="www" type="b2602c69:ProjectViewProjectNode" />
+              <item name="www" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="View" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Structure" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -262,15 +299,15 @@
     <property name="settings.editor.selected.configurable" value="settings.github" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\wamp\www\lib" />
+      <recent name="C:\wamp\www\View\Usuario" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\wamp\www\Model" />
       <recent name="C:\wamp\www\Controller" />
       <recent name="C:\wamp\www\View\Structure" />
       <recent name="C:\wamp\www\View" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\wamp\www\lib" />
-      <recent name="C:\wamp\www\View\Usuario" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -388,12 +425,12 @@
       <workItem from="1521732672797" duration="6000" />
       <workItem from="1521737363516" duration="618000" />
       <workItem from="1521819721954" duration="5939000" />
-      <workItem from="1522079306627" duration="7671000" />
+      <workItem from="1522079306627" duration="12074000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="364947000" />
+    <option name="totallyTimeSpent" value="369350000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="1" />
@@ -440,7 +477,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/View/Structure/pruebas.php" />
     <entry file="file://$PROJECT_DIR$/lib/bootstrap/js/npm.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
@@ -594,14 +630,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/View/Structure/Nav.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="221" column="75" lean-forward="false" selection-start-line="221" selection-start-column="56" selection-end-line="221" selection-end-column="75" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/View/ProyectoDirigido/modificarProyectoDirigido.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -625,26 +653,63 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/View/Materia/insertarMateria.php">
+    <entry file="file://$PROJECT_DIR$/View/ProyectoDirigido/listarProyectosDirigidos.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="799">
-          <caret line="65" column="35" lean-forward="false" selection-start-line="65" selection-start-column="35" selection-end-line="65" selection-end-column="35" />
+        <state relative-caret-position="-272">
+          <caret line="122" column="67" lean-forward="false" selection-start-line="122" selection-start-column="40" selection-end-line="122" selection-end-column="67" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Controller/ProyectosDirigidosController.php">
+    <entry file="file://$PROJECT_DIR$/View/Materia/modificarMateria.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="523">
-          <caret line="85" column="70" lean-forward="true" selection-start-line="63" selection-start-column="8" selection-end-line="85" selection-end-column="70" />
+        <state relative-caret-position="136">
+          <caret line="8" column="43" lean-forward="false" selection-start-line="8" selection-start-column="43" selection-end-line="8" selection-end-column="43" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/Materia/listarMaterias.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/Materia/insertarMateria.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Model/Materia.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="714">
+          <caret line="81" column="76" lean-forward="false" selection-start-line="81" selection-start-column="76" selection-end-line="81" selection-end-column="76" />
+          <folding>
+            <marker date="1522142128505" expanded="true" signature="965:1348" ph="INSERT INTO proyectoDirigido... " />
+            <marker date="1522142128505" expanded="true" signature="1521:1570" ph="SELECT * FRO... proyectoDirigido" />
+            <marker date="1522142128505" expanded="true" signature="1695:2062" ph="UPDATE proyectoDirigido... " />
+            <marker date="1522142128505" expanded="true" signature="2211:2232" ph="SELECT * FRO... materia" />
+            <marker date="1522142128505" expanded="true" signature="2211:2285" ph="SELECT * FRO... materia" />
+            <marker date="1522142128505" expanded="true" signature="2433:2498" ph="SELECT * FRO... proyectoDirigido" />
+            <marker date="1522142128505" expanded="true" signature="2652:2724" ph="SELECT * FRO... proyectoDirigido" />
+            <marker date="1522142128505" expanded="true" signature="2875:2941" ph="SELECT * FRO... proyectoDirigido" />
+            <marker date="1522142128505" expanded="true" signature="3094:3164" ph="SELECT * FRO... proyectoDirigido" />
+            <marker date="1522142128505" expanded="true" signature="3315:3380" ph="SELECT * FRO... proyectoDirigido" />
+            <marker date="1522142128505" expanded="true" signature="3629:3798" ph="UPDATE usuario... " />
+            <marker date="1522142128505" expanded="true" signature="3890:3938" ph="SELECT * FRO... usuario" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Model/ProyectosDirigidos.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="313">
-          <caret line="50" column="87" lean-forward="true" selection-start-line="50" selection-start-column="59" selection-end-line="50" selection-end-column="87" />
+        <state relative-caret-position="92">
+          <caret line="43" column="2" lean-forward="false" selection-start-line="43" selection-start-column="2" selection-end-line="45" selection-end-column="4" />
           <folding>
             <marker date="1521311612543" expanded="true" signature="877:1182" ph="INSERT INTO proyectoDirigido... " />
             <marker date="1521311612543" expanded="true" signature="1382:1441" ph="SELECT * FRO... proyectoDirigido" />
@@ -659,46 +724,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/View/ProyectoDirigido/listarProyectosDirigidos.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-272">
-          <caret line="122" column="67" lean-forward="false" selection-start-line="122" selection-start-column="40" selection-end-line="122" selection-end-column="67" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Model/Materia.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="799">
-          <caret line="83" column="40" lean-forward="false" selection-start-line="83" selection-start-column="20" selection-end-line="83" selection-end-column="40" />
-          <folding>
-            <marker date="1522087362953" expanded="true" signature="994:1377" ph="INSERT INTO proyectoDirigido... " />
-            <marker date="1522087362953" expanded="true" signature="1550:1599" ph="SELECT * FRO... proyectoDirigido" />
-            <marker date="1522087362953" expanded="true" signature="1819:1840" ph="SELECT * FRO... materia" />
-            <marker date="1522087362953" expanded="true" signature="1819:1869" ph="SELECT * FRO... materia" />
-            <marker date="1522087362953" expanded="true" signature="2011:2054" ph="SELECT * FRO... proyectoDirigido" />
-            <marker date="1522087362953" expanded="true" signature="2202:2252" ph="SELECT * FRO... proyectoDirigido" />
-            <marker date="1522087362953" expanded="true" signature="2397:2441" ph="SELECT * FRO... proyectoDirigido" />
-            <marker date="1522087362953" expanded="true" signature="2588:2636" ph="SELECT * FRO... proyectoDirigido" />
-            <marker date="1522087362953" expanded="true" signature="2781:2824" ph="SELECT * FRO... proyectoDirigido" />
-            <marker date="1522087362953" expanded="true" signature="3074:3243" ph="UPDATE usuario... " />
-            <marker date="1522087362953" expanded="true" signature="3335:3383" ph="SELECT * FRO... usuario" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Controller/MateriasController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="680">
-          <caret line="94" column="38" lean-forward="false" selection-start-line="94" selection-start-column="19" selection-end-line="94" selection-end-column="38" />
+        <state relative-caret-position="153">
+          <caret line="54" column="0" lean-forward="true" selection-start-line="54" selection-start-column="0" selection-end-line="55" selection-end-column="38" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/View/Materia/listarMaterias.php">
+    <entry file="file://$PROJECT_DIR$/Controller/ProyectosDirigidosController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="25" column="62" lean-forward="false" selection-start-line="25" selection-start-column="62" selection-end-line="25" selection-end-column="62" />
+        <state relative-caret-position="340">
+          <caret line="53" column="0" lean-forward="false" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/Structure/Nav.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-799">
+          <caret line="223" column="71" lean-forward="true" selection-start-line="223" selection-start-column="71" selection-end-line="223" selection-end-column="71" />
           <folding />
         </state>
       </provider>

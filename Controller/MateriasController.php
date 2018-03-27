@@ -52,41 +52,42 @@ switch ($evento) {
 
 
     case 'listarMaterias':
+
+        $LoginU = $_REQUEST['LoginU'];
         $lista = new Materia("","","","","","","","","");
+
         //todas las materias
-        $listaMaterias= $lista->ListarMaterias();
+        $listaMaterias= $lista->ListarMaterias($LoginU);
         $listaResultado = array();
         while($row = mysql_fetch_array($listaMaterias)){
             array_push($listaResultado, $row);
         }
-
-
         //materias grado
-        $listaMateriasGrado = $lista->ListarMateriasGrado();
+        $listaMateriasGrado = $lista->ListarMateriasGrado($LoginU);
         $listaResultadoMG = array();
         while($row1 = mysql_fetch_array($listaMateriasGrado)){
             array_push($listaResultadoMG, $row1);
         }
         //materias tercer ciclo
-        $listaMateriasTCiclo = $lista->ListarMateriasTCiclo();
+        $listaMateriasTCiclo = $lista->ListarMateriasTCiclo($LoginU);
         $listaResultadoMTC = array();
         while($row2 = mysql_fetch_array($listaMateriasTCiclo)){
             array_push($listaResultadoMTC, $row2);
         }
         //materias master
-        $listaMateriasMaster = $lista->ListarMateriasMaster();
+        $listaMateriasMaster = $lista->ListarMateriasMaster($LoginU);
         $listaResultadoMM = array();
         while($row3 = mysql_fetch_array($listaMateriasMaster)){
             array_push($listaResultadoMM, $row3);
         }
         //materias post grado
-        $listaMateriasPostG = $lista->ListarMateriasPost();
+        $listaMateriasPostG = $lista->ListarMateriasPost($LoginU);
         $listaResultadoMPG = array();
         while($row4 = mysql_fetch_array($listaMateriasPostG)){
             array_push($listaResultadoMPG, $row4);
         }
         //materias cursos
-        $listaMateriasCursos = $lista->ListarMateriasCursos();
+        $listaMateriasCursos = $lista->ListarMateriasCursos($LoginU);
         $listaResultadoMC = array();
         while($row5 = mysql_fetch_array($listaMateriasCursos)){
             array_push($listaResultadoMC, $row5);

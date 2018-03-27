@@ -16,8 +16,8 @@ class Materia{
   private $LoginU;
 
 //constructor de materias
-  public function __construct($CodigoM = NULL, $TipoM = NULL, $TipoParticipacionM = NULL, $DenominacionM = NULL, $TitulacionM = NULL,
-                              $AnhoAcademicoM = NULL, $CreditosM = NULL, $CuatrimestreM = NULL , $LoginU = NULL ){
+  public function __construct($CodigoM = NULL, $TipoM = NULL, $TipoParticipacionM = NULL, $DenominacionM = NULL, $TitulacionM = NULL, $AnhoAcademicoM = NULL, $CreditosM = NULL, $CuatrimestreM = NULL , $LoginU = NULL ){
+
     $this->CodigoM = $CodigoM;
     $this->TipoM = $TipoM;
     $this->TipoParticipacionM = $TipoParticipacionM;
@@ -45,45 +45,41 @@ class Materia{
 
 //modificar una materia
     public function ModificarMateria($CodigoM){
-
+        mysql_query("UPDATE materia SET TipoM='$this->TipoM',TipoParticipacionM='$this->TipoParticipacionM',DenominacionM='$this->DenominacionM',
+                      TitulacionM='$this->TitulacionM',TitulacionM='$this->TitulacionM',AnhoAcademicoM='$this->AnhoAcademicoM',CreditosM='$this->CreditosM',CuatrimestreM='$this->CuatrimestreM' 
+                      where CodigoM = '$CodigoM'") or die (mysql_error());
     }
 
 
 //lista de todas las materias del usuario
-    public function ListarMaterias(){
-        $sql= mysql_query("SELECT * FROM materia ORDER BY AnhoAcademicoM DESC");
+    public function ListarMaterias($LoginU){
+        $sql= mysql_query("SELECT * FROM materia WHERE LoginU= '$LoginU' ORDER BY AnhoAcademicoM DESC");
         return $sql;
-
     }
 
 //lista de todas las materias de grado
-    public function ListarMateriasGrado(){
-        $sql= mysql_query("SELECT * FROM materia WHERE TipoM = 'Grado'");
-
+    public function ListarMateriasGrado($LoginU){
+        $sql= mysql_query("SELECT * FROM materia WHERE LoginU= '$LoginU' AND TipoM = 'Grado'");
         return $sql;
     }
 //lista de todas las materias detercer ciclo
-    public function ListarMateriasTCiclo(){
-        $sql= mysql_query("SELECT * FROM materia WHERE TipoM = 'Tercer ciclo'  ");
-
+    public function ListarMateriasTCiclo($LoginU){
+        $sql= mysql_query("SELECT * FROM materia WHERE LoginU= '$LoginU' AND TipoM = 'Tercer ciclo'  ");
         return $sql;
     }
 //lista de todas las materias de master
-    public function ListarMateriasMaster(){
-        $sql= mysql_query("SELECT * FROM materia WHERE TipoM = 'Master'  ");
-
+    public function ListarMateriasMaster($LoginU){
+        $sql= mysql_query("SELECT * FROM materia WHERE LoginU= '$LoginU' AND TipoM = 'Master'  ");
         return $sql;
     }
 //lista de todas las materias de post grado
-    public function ListarMateriasPost(){
-        $sql= mysql_query("SELECT * FROM materia WHERE TipoM = 'Post Grado'  ");
-
+    public function ListarMateriasPost($LoginU){
+        $sql= mysql_query("SELECT * FROM materia WHERE LoginU= '$LoginU' AND TipoM = 'Post Grado'  ");
         return $sql;
     }
 //lista de todas las materias de cursos
-    public function ListarMateriasCursos(){
-        $sql= mysql_query("SELECT * FROM materia WHERE TipoM = 'Curso'  ");
-
+    public function ListarMateriasCursos($LoginU){
+        $sql= mysql_query("SELECT * FROM materia WHERE LoginU= '$LoginU' AND TipoM = 'Curso'  ");
         return $sql;
     }
 

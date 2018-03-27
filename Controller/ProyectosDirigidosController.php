@@ -51,6 +51,7 @@ switch ($evento) {
 
 
     case 'listarProyectosDirigidos':
+
         $lista = new ProyectosDirigidos("","","","","","","","");
         //todos los proyectos dirigidos
         $listaProyectosDirigidos = $lista->ListarProyectosDirigidos();

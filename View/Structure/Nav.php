@@ -1,5 +1,6 @@
 <?php
 session_start();
+$loginU =$_SESSION["loginU"];
 if(isset( $_SESSION["Usuario"])){
     $usuario = $_SESSION["Usuario"];
     //var_dump($_SESSION["Usuario"]);
@@ -218,8 +219,9 @@ function Usuario(){
 
         <div class="">
             <div>
+              <?php  $loginU =$_SESSION["loginU"]; ?>
                 <!--usuario logueado-->
-                <p class="lead text-center"> <?php echo $_SESSION["loginU"]; ?></p>
+                <p class="lead text-center"> <?php echo $loginU; ?></p>
                 <!--menu lateral izquierdo-->
                 <ul class=" list-col  ">
                     <li class="dropdown" >
@@ -234,15 +236,13 @@ function Usuario(){
                     </li>
                 </ul>
 
-
-
-
                 <ul class=" list-col  ">
                     <li class="dropdown" >
                         <a class="options" type='submit' name = 'accion' onclick="location.href = '../../Controller/LibrosController.php?evento=listarLibros'"> Libros</a>
 
                     </li>
                 </ul>
+
                 <ul class=" list-col  ">
                     <li class="dropdown" >
                         <a class="options" type='submit' name = 'accion' onclick="location.href = '../../Controller/PonenciasController.php?evento=listarPonencias'"> Ponencias</a>
@@ -255,18 +255,21 @@ function Usuario(){
 
                     </li>
                 </ul>
+
                 <ul class=" list-col  ">
                     <li class="dropdown" >
                         <a class="options" type='submit' name = 'accion' onclick="location.href = '../../Controller/ProyectosDirigidosController.php?evento=listarProyectosDirigidos'"> Proyectos dirigidos</a>
 
                     </li>
                 </ul>
+
                 <ul class=" list-col  ">
                     <li class="dropdown" >
                         <a class="options" type='submit' name = 'accion' onclick="location.href = '../../Controller/TADController.php?evento=listarTAD'"> TAD</a>
 
                     </li>
                 </ul>
+
                 <ul class=" list-col  ">
                     <li class="dropdown" >
                         <a class="options" type='submit' name = 'accion' onclick="location.href = '../../Controller/TechnicareportController.php?evento=listarTechnicareport'"> Technicareport</a>
@@ -274,10 +277,12 @@ function Usuario(){
                     </li>
                 </ul>
 
+                <ul class=" list-col  ">
+                    <li class="dropdown" >
+                        <a class="options" type='submit' name = 'accion' onclick="location.href = '../../Controller/MateriasController.php?evento=listarMaterias&LoginU=<?php echo $loginU; ?>'"> Materias</a>
 
-
-
-
+                    </li>
+                </ul>
 
             </div>
 
