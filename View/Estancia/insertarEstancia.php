@@ -59,7 +59,7 @@ $loginU =$_SESSION["loginU"];
 
                 <div class="col-lg-6 col-md-6 col-sm-8 col-xs-8 col-md-offset-3">
                     <label class="control-label" for="Registrar"></label>
-                    <button type="submit" id="Registrar" name="evento" value="altaMateria" class="btn btn-orange"> Insertar </button>
+                    <button type="submit" id="Registrar" name="evento" value="altaEstancia" class="btn btn-orange"> Insertar </button>
                 </div>
 
             </form>

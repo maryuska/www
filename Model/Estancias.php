@@ -55,17 +55,17 @@ class Estancias{
     }
 //lista de todas las estancias de invertigacion
     public function ListarEstanciasInvertigacion($LoginU){
-        $sql= mysql_query("SELECT * FROM estancia WHERE LoginU= '$LoginU' AND TipoM = 'Investigacion'");
+        $sql= mysql_query("SELECT * FROM estancia WHERE LoginU= '$LoginU' AND TipoE = 'Investigacion'");
         return $sql;
     }
 //lista de todas las estancias de doctorado
     public function ListarEstanciasDoctorado($LoginU){
-        $sql= mysql_query("SELECT * FROM estancia WHERE LoginU= '$LoginU' AND TipoM = 'Doctorado'");
+        $sql= mysql_query("SELECT * FROM estancia WHERE LoginU= '$LoginU' AND TipoE = 'Doctorado'");
         return $sql;
     }
 //lista de todas las estancias de invitado
     public function ListarEstanciasInvitado($LoginU){
-        $sql= mysql_query("SELECT * FROM estancia WHERE LoginU= '$LoginU' AND TipoM = 'Invitado'");
+        $sql= mysql_query("SELECT * FROM estancia WHERE LoginU= '$LoginU' AND TipoE = 'Invitado'");
         return $sql;
     }
 
