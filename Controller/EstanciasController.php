@@ -1,36 +1,36 @@
 <?php
 // Controlador de Proyectos Dirigidos
 
-require_once '../Model/ProyectosDirigidos.php';
+require_once '../Model/Estancias.php';
 $evento = $_REQUEST['evento'];
 
 switch ($evento) {
 
-    case 'altaProyectoDirigido':
-
-        $proyectoDirigido = new ProyectosDirigidos($_POST["CodigoPD"],$_POST["TituloPD"],$_POST["AlumnoPD"],$_POST["FechaLecturaPD"],$_POST["CalificacionPD"],$_POST["URLPD"],$_POST["CotutorPD"],$_POST["TipoPD"]);
-        $proyectoDirigido->AltaProyectoDirigido();
-        header("location: ProyectosDirigidosController.php?evento=listarProyectosDirigidos");
+    case 'altaEstancia':
+        $loginU=$_POST["LoginU"];
+        $estancia = new Estancias($_POST["CodigoE"],$_POST["CentroE"],$_POST["UniversidadE"],$_POST["PaisE"],$_POST["FechaInicioE"],$_POST["FechaFinE"],$_POST["TipoE"],$_POST["LoginU"]);
+        $estancia->AltaEstancia();
+        header("location:EstanciasController.php?evento=listarEstancias&LoginU=$loginU");
 
     break;
 
 
-    case 'consultarProyectoDirigido':
+    case 'consultarEstancia':
 
-        $proyectoDirigido = new ProyectosDirigidos($_POST["CodigoPD"],$_POST["TituloPD"],$_POST["AlumnoPD"],$_POST["FechaLecturaPD"],$_POST["CalificacionPD"],$_POST["URLPD"],$_POST["CotutorPD"],$_POST["TipoPD"]);
-        $CodigoP = $_REQUEST['CodigoPD'];
-        $consultaPD = $proyectoDirigido->ConsultarProyectoDirigido($CodigoP);
+        $estancia = new Estancias("","","","","","","","");
+        $CodigoE = $_REQUEST['CodigoE'];
+        $consultaE = $estancia->ConsultarEstancia($CodigoE);
         $consulta = array();
-        while($row1 = mysql_fetch_array($consultaPD)){
+        while($row1 = mysql_fetch_array($consultaE)){
             array_push($consulta, $row1);
         }
-        $_SESSION["consultarProyectoDirigido"] = $consulta;
+        $_SESSION["consultarEstancia"] = $consulta;
 
-        header("location: ../../View/ProyectoDirigido/modificarProyectoDirigido.php");
+        header("location: ../../View/Estancia/modificarEstancia.php");
 
         break;
 
-    case 'modificarProyectosDirigidos':
+    case 'modificarEstancia':
 
         $CodigoPD = $_POST['CodigoPD'];
         $TituloPD = $_POST['TituloPD'];

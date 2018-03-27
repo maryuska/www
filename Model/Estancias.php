@@ -3,71 +3,69 @@ session_start();
 
 require_once 'ConnectDB.php';
 
-class ProyectosDirigidos{
+class Estancias{
 
-  private $CodigoPD;
-  private $TituloPD;
-  private $AlumnoPD;
-  private $FechaLecturaPD;
-  private $CalificacionPD;
-  private $URLPD;
-  private $CotutorPD;
-  private $TipoPD;
+  private $CodigoE;
+  private $CentroE;
+  private $UniversidadE;
+  private $PaisE;
+  private $FechaInicioE;
+  private $FechaFinE;
+  private $TipoE;
+  private $LoginU;
 
-//constructor de proyectos dirigidos
-  public function __construct($CodigoPD = NULL, $TituloPD = NULL, $AlumnoPD = NULL, $FechaLecturaPD = NULL, $CalificacionPD = NULL, $URLPD = NULL, $CotutorPD = NULL, $TipoPD = NULL ){
-    $this->CodigoPD = $CodigoPD;
-    $this->TituloPD = $TituloPD;
-    $this->AlumnoPD = $AlumnoPD;
-    $this->FechaLecturaPD = $FechaLecturaPD;
-    $this->CalificacionPD = $CalificacionPD;
-    $this->URLPD = $URLPD;
-    $this->CotutorPD= $CotutorPD;
-    $this->TipoPD= $TipoPD;
+//constructor de estancia
+  public function __construct($CodigoE = NULL, $CentroE = NULL, $UniversidadE = NULL, $PaisE = NULL, $FechaInicioE = NULL, $FechaFinE = NULL, $TipoE = NULL, $LoginU = NULL ){
+    $this->CodigoE = $CodigoE;
+    $this->CentroE = $CentroE;
+    $this->UniversidadE = $UniversidadE;
+    $this->PaisE = $PaisE;
+    $this->FechaInicioE = $FechaInicioE;
+    $this->FechaFinE = $FechaFinE;
+    $this->TipoE= $TipoE;
+    $this->LoginU= $LoginU;
   }
 
-//alta de un nuevo proyecto dirigido
-  public function AltaProyectoDirigido() {
-    $insertarProyectoDirigido  = "INSERT INTO proyectoDirigido(CodigoPD,TituloPD, AlumnoPD, FechaLecturaPD, CalificacionPD,URLPD, CotutorPD,TipoPD)
-                          VALUES ('$this->CodigoPD', '$this->TituloPD', '$this->AlumnoPD', '$this->FechaLecturaPD','$this->CalificacionPD','$this->URLPD', '$this->CotutorPD', '$this->TipoPD')";
-	$resultado = mysql_query($insertarProyectoDirigido) or die(mysql_error());
+//alta de una nueva estancia
+  public function AltaEstancia() {
+    $insertarEstancia  = "INSERT INTO estancia(CodigoE,CentroE, UniversidadE, PaisE, FechaInicioE,FechaFinE, TipoE,LoginU)
+                          VALUES ('$this->CodigoE', '$this->CentroE', '$this->UniversidadE', '$this->PaisE','$this->FechaInicioE','$this->FechaFinE',
+                           '$this->TipoE', '$this->LoginU')";
+	$resultado = mysql_query($insertarEstancia) or die(mysql_error());
 	}
 
-//consultar un proyecto dirigido
-    public function ConsultarProyectoDirigido($CodigoP){
-        $sql= mysql_query("SELECT * FROM proyectoDirigido  WHERE CodigoPD = '$CodigoP'");
+//consultar una estancia
+    public function ConsultarEstancia($CodigoE){
+        $sql= mysql_query("SELECT * FROM estancia  WHERE CodigoE = '$CodigoE'");
         return $sql;
     }
 
-//modificar un proyecto dirigido
-    public function ModificarProyectoDirigido($CodigoPD){
-        mysql_query("UPDATE proyectoDirigido SET TituloPD='$this->TituloPD',AlumnoPD='$this->AlumnoPD',FechaLecturaPD='$this->FechaLecturaPD' ,
-                      CalificacionPD='$this->CalificacionPD',URLPD='$this->URLPD',CotutorPD='$this->CotutorPD',TipoPD='$this->TipoPD' where CodigoPD = '$CodigoPD'") or die (mysql_error());
+//modificar una estancia
+    public function ModificarEstancia($CodigoE){
+        mysql_query("UPDATE estancia SET CentroE='$this->CentroE',UniversidadE='$this->UniversidadE',PaisE='$this->PaisE' ,
+                      FechaInicioE='$this->FechaInicioE',FechaFinE='$this->FechaFinE',TipoE='$this->TipoE',LoginU='$this->LoginU' where CodigoE = '$CodigoE'") or die (mysql_error());
     }
 
 
-//lista de todos los proyectos dirigidos del usuario
-    public function ListarProyectosDirigidos(){
-        $sql= mysql_query("SELECT * FROM proyectoDirigido  ORDER BY FechaLecturaPD DESC");
+//lista de todas las estancias de un usuario
+    public function ListarEstancias($LoginU){
+        $sql= mysql_query("SELECT * FROM estancia WHERE LoginU= '$LoginU' ORDER BY FechaFinE DESC");
         return $sql;
 
     }
-//lista de todos los proyectos fin de carrera del usuario
-    public function ListarProyectosDirigidosPFC(){
-        $sql= mysql_query("SELECT * FROM proyectoDirigido WHERE TipoPD = 'PFC'");
-
+//lista de todas las estancias de invertigacion
+    public function ListarEstanciasInvertigacion($LoginU){
+        $sql= mysql_query("SELECT * FROM estancia WHERE LoginU= '$LoginU' AND TipoM = 'Investigacion'");
         return $sql;
     }
-//lista de todos los trabajos fin de grado del usuario
-    public function ListarProyectosDirigidosTFG(){
-        $sql= mysql_query("SELECT * FROM proyectoDirigido WHERE TipoPD = 'TFG'  ");
-
+//lista de todas las estancias de doctorado
+    public function ListarEstanciasDoctorado($LoginU){
+        $sql= mysql_query("SELECT * FROM estancia WHERE LoginU= '$LoginU' AND TipoM = 'Doctorado'");
         return $sql;
     }
-//lista de todos los trabajos fin de grado del usuario
-    public function ListarProyectosDirigidosTFM(){
-        $sql= mysql_query("SELECT * FROM proyectoDirigido WHERE TipoPD = 'TFM'  ");
-
+//lista de todas las estancias de invitado
+    public function ListarEstanciasInvitado($LoginU){
+        $sql= mysql_query("SELECT * FROM estancia WHERE LoginU= '$LoginU' AND TipoM = 'Invitado'");
         return $sql;
     }
 

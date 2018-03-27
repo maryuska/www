@@ -7,10 +7,10 @@ $evento = $_REQUEST['evento'];
 switch ($evento) {
 
     case 'altaMateria':
-
+        $loginU=$_POST["LoginU"];
         $materia = new Materia($_POST["CodigoM"],$_POST["TipoM"],$_POST["TipoParticipacionM"],$_POST["DenominacionM"],$_POST["TitulacionM"],$_POST["AnhoAcademicoM"],$_POST["CreditosM"],$_POST["CuatrimestreM"],$_POST["LoginU"]);
         $materia->AltaMateria();
-        header("location: MateriasController.php?evento=listarMaterias");
+        header("location: MateriasController.php?evento=listarMaterias&LoginU=$loginU");
 
     break;
 
@@ -46,7 +46,7 @@ switch ($evento) {
         $materia = new Materia( $CodigoM,$TipoM, $TipoParticipacionM ,$DenominacionM ,$TitulacionM ,$AnhoAcademicoM ,$CreditosM,$CuatrimestreM, $LoginU  );
         $materia->ModificarMateria($CodigoM);
 
-        header("location: MateriasController.php?evento=listarMaterias");
+        header("location: MateriasController.php?evento=listarMaterias&LoginU=$loginU");
 
     break;
 
