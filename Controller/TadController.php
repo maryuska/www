@@ -1,16 +1,16 @@
 <?php
-// Controlador de Proyectos Dirigidos
+// Controlador de Tad
 
-require_once '../Model/ProyectosDirigidos.php';
+require_once '../Model/Tad.php';
 $evento = $_REQUEST['evento'];
 
 switch ($evento) {
 
-    case 'altaProyectoDirigido':
+    case 'altaTad':
 
-        $proyectoDirigido = new ProyectosDirigidos($_POST["CodigoPD"],$_POST["TituloPD"],$_POST["AlumnoPD"],$_POST["FechaLecturaPD"],$_POST["CalificacionPD"],$_POST["URLPD"],$_POST["CotutorPD"],$_POST["TipoPD"]);
-        $proyectoDirigido->AltaProyectoDirigido();
-        header("location: ProyectosDirigidosController.php?evento=listarProyectosDirigidos");
+        $tad = new Tad($_POST["CodigoTAD"],$_POST["TituloTAD"],$_POST["AlumnoTAD"],$_POST["FechaLecturaTAD"],$_POST["LoginU"]);
+        $tad->AltaTad();
+        header("location: TadController.php?evento=listarTads");
 
     break;
 

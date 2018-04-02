@@ -6,70 +6,59 @@ require_once '../../View/Structure/Nav.php';
 
 
 <div class="col-md-10 izquierda">
-    <h3 class="text-center">Modificar Proyecto Dirigido</h3>
+    <h3 class="text-center">Modificar Estancia</h3>
 
     <div class="panel panel-default">
         <div class="col-md-12">
-            <?php foreach ($_SESSION["consultarProyectoDirigido"] as $row)  { ?>
-            <form  action="../../Controller/ProyectosDirigidosController.php" method="post" role="form">
+            <?php foreach ($_SESSION["consultarEstancia"] as $row)  { ?>
+            <form  action="../../Controller/EstanciasController.php" method="post" role="form">
 
                 <div class="form-group">
-                    <label class="control-label" for="CodigoPD">Código Proyecto Dirigido: </label>
-                    <input id="CodigoPD" name="CodigoPD"  class="form-control "value="<?php echo $row['CodigoPD']; ?>" disabled >
+                    <label class="control-label" for="CodigoE">Código Estancia: </label>
+                    <input id="CodigoE" name="CodigoE"  class="form-control "value="<?php echo $row['CodigoE']; ?>" disabled >
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label" for="TituloPD">Título Proyecto Dirigido:</label>
-                    <input id="TituloPD" name="TituloPD" class="form-control" value="<?php echo $row['TituloPD']; ?>" >
+                    <label class="control-label" for="CentroE">Centro:</label>
+                    <input id="CentroE" name="CentroE" class="form-control" value="<?php echo $row['CentroE']; ?>" >
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label" for="AlumnoPD">Alumno:</label>
-                    <input id="AlumnoPD" name="AlumnoPD" class="form-control" value="<?php echo $row['AlumnoPD']; ?>"  >
+                    <label class="control-label" for="UniversidadE">Universidad:</label>
+                    <input id="UniversidadE" name="UniversidadE" class="form-control" value="<?php echo $row['UniversidadE']; ?>"  >
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label" for="FechaLecturaPD">Fecha lectura:</label>
-                    <input id="FechaLecturaPD" type="date" name="FechaLecturaPD" class="form-control " value="<?php echo $row['FechaLecturaPD']; ?>"  >
+                    <label class="control-label" for="PaisE">País:</label>
+                    <input id="PaisE" name="PaisE" class="form-control" value="<?php echo $row['PaisE']; ?>"  >
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label" for="CalificacionPD">Calificación:</label>
-                    <p> <select class="form-control"  id="CalificacionPD" name="CalificacionPD">
-                            <option> <?php echo $row['CalificacionPD']; ?> </option>
+                    <label class="control-label" for="FechaInicioE">Fecha Inicio:</label>
+                    <input id="FechaInicioE" type="date" name="FechaInicioE" class="form-control " value="<?php echo $row['FechaInicioE']; ?>"  >
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label" for="FechaFinE">Fecha Fin:</label>
+                    <input id="FechaFinE" type="date" name="FechaFinE" class="form-control " value="<?php echo $row['FechaFinE']; ?>"  >
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label" for="TipoE">Tipo:</label>
+                    <p> <select class="form-control"  id="TipoE" name="TipoE">
+                            <option> <?php echo $row['TipoE']; ?> </option>
                             <option>-----------------------</option>
-                            <option>Aprobado</option>
-                            <option>Notable</option>
-                            <option>Sobresaliente</option>
-                            <option>Matricula</option>
+                            <option>Investigación</option>
+                            <option>Doctorado</option>
+                            <option>Invitación</option>
                         </select></p>
                 </div>
 
-                <div class="form-group">
-                    <label class="control-label" for="URLPD">URL:</label>
-                    <input id="URLPD" name="URLPD" class="form-control " value="<?php echo $row['URLPD']; ?>" >
-                </div>
-
-                <div class="form-group">
-                    <label class="control-label" for="CotutorPD">Cotutor:</label>
-                    <input id="CotutorPD" name="CotutorPD" class="form-control "value="<?php echo $row['CotutorPD']; ?>"  >
-                </div>
-
-                <div class="form-group">
-                    <label class="control-label" for="TipoPD">Tipo:</label>
-                    <p> <select  class="form-control"  id="TipoPD" name="TipoPD"  >
-                            <option> <?php echo $row['TipoPD']; ?> </option>
-                            <option>-----------------------</option>
-                            <option value="PFC" >Proyecto Fin de Carrera</option>
-                            <option value="TFG">Trabajo Fin de Grado</option>
-                            <option value="TFM">Trabajo Fin de Master</option>
-                        </select></p>
-                </div>
                 <br>
 
                 <div class="col-lg-6 col-md-6 col-sm-8 col-xs-8 col-md-offset-3">
                     <label class="control-label" for="Modificar"></label>
-                    <button type="submit" class="btn btn-orange" name="evento" value="modificarProyectosDirigidos"> Guardar cambios</button>
+                    <button type="submit" class="btn btn-orange" name="evento" value="modificarEstancia"> Guardar cambios</button>
                 </div>
 
             </form>

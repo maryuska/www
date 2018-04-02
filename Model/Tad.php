@@ -3,34 +3,28 @@ session_start();
 
 require_once 'ConnectDB.php';
 
-class ProyectosDirigidos{
+class Tad{
 
-  private $CodigoPD;
-  private $TituloPD;
-  private $AlumnoPD;
-  private $FechaLecturaPD;
-  private $CalificacionPD;
-  private $URLPD;
-  private $CotutorPD;
-  private $TipoPD;
+  private $CodigoTAD;
+  private $TituloTAD;
+  private $AlumnoTAD;
+  private $FechaLecturaTAD;
+  private $LoginU;
 
-//constructor de proyectos dirigidos
-  public function __construct($CodigoPD = NULL, $TituloPD = NULL, $AlumnoPD = NULL, $FechaLecturaPD = NULL, $CalificacionPD = NULL, $URLPD = NULL, $CotutorPD = NULL, $TipoPD = NULL ){
-    $this->CodigoPD = $CodigoPD;
-    $this->TituloPD = $TituloPD;
-    $this->AlumnoPD = $AlumnoPD;
-    $this->FechaLecturaPD = $FechaLecturaPD;
-    $this->CalificacionPD = $CalificacionPD;
-    $this->URLPD = $URLPD;
-    $this->CotutorPD= $CotutorPD;
-    $this->TipoPD= $TipoPD;
+//constructor de TAD
+  public function __construct($CodigoTAD = NULL, $TituloTAD = NULL, $AlumnoTAD = NULL, $FechaLecturaTAD = NULL, $LoginU = NULL ){
+    $this->CodigoTAD = $CodigoTAD;
+    $this->TituloTAD = $TituloTAD;
+    $this->AlumnoTAD = $AlumnoTAD;
+    $this->FechaLecturaTAD = $FechaLecturaTAD;
+    $this->LoginU= $LoginU;
   }
 
-//alta de un nuevo proyecto dirigido
-  public function AltaProyectoDirigido() {
-    $insertarProyectoDirigido  = "INSERT INTO proyectoDirigido(CodigoPD,TituloPD, AlumnoPD, FechaLecturaPD, CalificacionPD,URLPD, CotutorPD,TipoPD)
-                          VALUES ('$this->CodigoPD', '$this->TituloPD', '$this->AlumnoPD', '$this->FechaLecturaPD','$this->CalificacionPD','$this->URLPD', '$this->CotutorPD', '$this->TipoPD')";
-	$resultado = mysql_query($insertarProyectoDirigido) or die(mysql_error());
+//alta de un nuevo TAD
+  public function AltaTad() {
+    $insertarTad  = "INSERT INTO tad (CodigoTAD,TituloTAD, AlumnoTAD, FechaLecturaTAD, LoginU)
+                          VALUES ('$this->CodigoTAD', '$this->TituloTAD', '$this->AlumnoTAD', '$this->FechaLecturaTAD','$this->LoginU')";
+	$resultado = mysql_query($insertarTad) or die(mysql_error());
 	}
 
 //consultar un proyecto dirigido
