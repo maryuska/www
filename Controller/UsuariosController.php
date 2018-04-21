@@ -29,6 +29,20 @@ switch ($evento) {
       header("location: ../../View/home.php");
     break;
 
+
+    case 'altaTituloAcademico':
+        $LoginU= $_POST["LoginU"];
+        $tituloAcademico= new TituloAcademico($_POST["LoginU"],$_POST["Titulo"],$_POST["FechaTitulo"],$_POST["CentroTitulo"]);
+        $tituloAcademico->AltaTituloAcademico();
+        header("location: ../../Controller/UsuariosController.php?evento=consultarUsuario&LoginU=$LoginU");
+        break;
+
+    case 'altaUniversidad':
+        $universidad= new Universidad($_POST["LoginU"],$_POST["NombreUniversidad"],$_POST["FechaInicio"],$_POST["FechaFin"]);
+        $universidad->AltaUniversidad();
+        header("location: ../../Controller/UsuariosController.php?evento=consultarUsuario&LoginU=$LoginU");
+        break;
+
     case 'logOut':
 
           session_unset();
@@ -122,35 +136,6 @@ switch ($evento) {
         header("location: ../../Controller/UsuariosController.php?evento=consultarUsuario&LoginU=$LoginU");
 
         break;
-
-
-    //sin verificar
-    //
-
-/*
-  case 'modificarDocente':
-      $Login=$_SESSION["loginU"];
-      $Usuario = new Usuarios($Login,$_POST["PasswordU"],$_POST["NombreU"],$_POST["ApellidosU"],$_POST["UniversidadU"],"Docente");
-      $Titulo=$_POST["Titulo"];
-      $TipoContrato=$_POST["TipoContrato"];
-      $Centro=$_POST["Centro"];
-      $Departamento=$_POST["Departamento"];
-
-      $Usuario->ModificarDocente();
-
-
-      header("location: DocenteController.php?evento=modificarDocente&Login=$Login&Titulo=$Titulo&TipoContrato=$TipoContrato&Centro=$Centro&Departamento=$Departamento");
-
-    break;
-
-  case 'listarDocente':
-      $Usuario = new Usuarios($_SESSION["loginU"],"","","","","Docente");
-      $Usuario->listarDocente();
-
-      header("location: DocenteController.php?evento=listarDocente");
-      break;
-
-*/
 
 
 

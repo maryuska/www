@@ -29,9 +29,9 @@ class TituloAcademico
     }
     //lista todos las titulosAcademicos del usuario
 
-    public function ListarTitulosAcademicos($Login)
+    public function ListarTitulosAcademicos($LoginU)
     {
-        $sql = mysql_query("SELECT * FROM titulo_academico WHERE LoginU = '$Login'") or die(mysql_error());
+        $sql = mysql_query("SELECT * FROM titulo_academico WHERE LoginU = '$LoginU'") or die(mysql_error());
         return $sql;
     }
 

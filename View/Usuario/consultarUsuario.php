@@ -66,11 +66,7 @@ require_once '../../View/Structure/Nav.php';
                 <input id="DepartamentoU"  type="DepartamentoU"  class="form-control "value="<?php echo $row['Departamento']; ?>" disabled>
             </div>
 
-            <!-- Button
 
-            <a href="modificarUsuario.php" class="btn  btn-orange" value="Modificar Datos">Modificar Datos</a>
-
-            -->
             </form>
 
             <?php } ?>
@@ -87,14 +83,14 @@ require_once '../../View/Structure/Nav.php';
 
     <div class="form-group col-lg-6">
         <div class="panel panel-default">
-
+            <div class="tdTitulo">
+                Títulos Académicos
+            </div>
 
             <?php  $rows2 = $_SESSION["ConsultaUT"];
 
             foreach ($rows2 as $row2) { ?>
-                <div class="tdTitulo">
-                     Títulos Académicos
-                </div>
+
 
                 <form  action="../../Controller/UsuariosController.php" method="post" role='form'>
 
@@ -103,9 +99,9 @@ require_once '../../View/Structure/Nav.php';
 
                         <table class="text-center ">
                             <tr>
-                                <th class="text-center " width="250px" >Nombre</th>
-                                <th class="text-center "  width="250px">Fecha</th>
-                                <th class="text-center" width="250px">Centro</th>
+                                <th class="text-center " width="300px" >Nombre</th>
+                                <th class="text-center "  width="300px">Fecha</th>
+                                <th class="text-center" width="300px">Centro</th>
                                 <th width="750px"></th>
                             </tr>
                         </table>
@@ -124,7 +120,7 @@ require_once '../../View/Structure/Nav.php';
 
             <?php } ?>
             <p align="center">
-                <button type="button" class="btn btn-orange " onclick="#">Insertar</button>
+                <button type="button" class="btn btn-orange " onclick="window.location.href='../../View/TituloAcademico/insertarTituloAcademico.php';">Insertar</button>
             </p>
 
             </div>
@@ -134,18 +130,15 @@ require_once '../../View/Structure/Nav.php';
 
     <div class="form-group col-lg-6">
         <div class="panel panel-default">
-
+            <div class="tdTitulo">
+                Universidades
+            </div>
 
             <?php  $rows3 = $_SESSION["ConsultaUA"];
 
             foreach ($rows3 as $row3) { ?>
-                <div class="tdTitulo">
-                     Universidades
-                </div>
 
                 <form  action="../../Controller/UsuariosController.php" method="post" role='form'>
-
-
 
                         <table class="text-center ">
                             <tr>
@@ -170,7 +163,7 @@ require_once '../../View/Structure/Nav.php';
 
             <?php } ?>
             <p align="center">
-                <button type="button" class="btn btn-orange " onclick="#">Insertar</button>
+                <button type="button" class="btn btn-orange " onclick="window.location.href='../../View/Universidad/insertarUniversidad.php';">Insertar</button>
             </p>
 
         </div>
