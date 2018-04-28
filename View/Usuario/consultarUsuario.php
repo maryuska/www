@@ -33,36 +33,54 @@ require_once '../../View/Structure/Nav.php';
             <!-- Text input-->
             <div class="form-group">
                 <label for="NombreU">Nombre </label>
-
                 <input id="NombreU"  type="NombreU"  class="form-control "value="<?php echo $row['NombreU']; ?>" disabled>
             </div>
 
             <!-- Text input-->
             <div class="form-group">
                 <label for="ApellidosU">Apellidos </label>
-
                 <input id="ApellidosU"  type="ApellidosU"  class="form-control "value="<?php echo $row['ApellidosU']; ?>" disabled>
             </div>
 
+            <!-- Text input-->
+            <div class="form-group">
+                <label  for="Telefono">Telefono</label>
+                <input id="Telefono"  type="Telefono"  class="form-control "value="<?php echo $row['Telefono']; ?>" disabled>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label  for="Mail">Mail</label>
+                <input id="Mail"  type="Mail"  class="form-control "value="<?php echo $row['Mail']; ?>" disabled>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label  for="DNI">DNI</label>
+                <input id="DNI"  type="DNI"  class="form-control "value="<?php echo $row['DNI']; ?>" disabled>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label  for="FechaNacimiento">Fecha Nacimiento</label>
+                <input id="FechaNacimiento"  type="date"  class="form-control "value="<?php echo $row['FechaNacimiento']; ?>" disabled>
+            </div>
 
             <!-- Text input-->
             <div class="form-group">
                 <label  for="TipoContratoU">Tipo Contrato</label>
-
                 <input id="TipoContratoU"  type="TipoContratoU"  class="form-control "value="<?php echo $row['TipoContrato']; ?>" disabled>
             </div>
 
             <!-- Text input-->
             <div class="form-group">
                 <label for="CentroU">Centro</label>
-
                 <input id="CentroU" type="CentroU" class="form-control "value="<?php echo $row['Centro']; ?>" disabled>
             </div>
 
             <!-- Text input-->
             <div class="form-group">
                 <label  for="DepartamentoU">Departamento</label>
-
                 <input id="DepartamentoU"  type="DepartamentoU"  class="form-control "value="<?php echo $row['Departamento']; ?>" disabled>
             </div>
 
@@ -112,7 +130,7 @@ require_once '../../View/Structure/Nav.php';
                                 <td class="text-center" width="250px" name = "NombreTitulo"><?php echo $row2['NombreTitulo']; ?> </td>
                                 <td class="text-center" width="250px" name = "FechaTitulo"><?php echo $row2['FechaTitulo']; ?> </td>
                                 <td class="text-center"  width="250px" name = "CentroTitulo"><?php echo $row2['CentroTitulo']; ?> </td>
-                                <td width="150px"><a type="submit" class="btn  "  href="modificarTitulo.php"  >Modificar</a></td>
+                                <td width="150px"><a type="submit" class="btn  " onclick="window.location.href='../../Controller/UsuariosController.php?evento=consultarTituloAcademico&LoginU=<?php echo $row['LoginU']; ?>&NombreTitulo=<?php echo $row2['NombreTitulo']; ?>'" >Modificar</a></td>
                             </tr>
                         </table>
                     </div>

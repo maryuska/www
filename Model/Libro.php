@@ -6,7 +6,6 @@ require_once 'ConnectDB.php';
 class Libro{
 
     private $CodigoL;
-    private $AutoresL;
     private $TituloL;
     private $ISBN;
     private $PagIniL;
@@ -18,10 +17,9 @@ class Libro{
     private $PaisEdicionL;
 
 //constructor de libro
-    public function __construct($CodigoL = NULL, $AutoresL = NULL, $TituloL = NULL, $ISBN = NULL, $PagIniL = NULL,
+    public function __construct($CodigoL = NULL, $TituloL = NULL, $ISBN = NULL, $PagIniL = NULL,
                                 $PagFinL = NULL, $VolumenL = NULL, $EditorialL = NULL, $FechaPublicacionL = NULL, $EditorL = NULL, $PaisEdicionL = NULL ){
         $this->CodigoL = $CodigoL;
-        $this->AutoresL = $AutoresL;
         $this->TituloL = $TituloL;
         $this->ISBN = $ISBN;
         $this->PagIniL = $PagIniL;
@@ -35,8 +33,8 @@ class Libro{
 
 //alta de un nuevo Libro
     public function AltaLibro() {
-        $insertarLibro  = "INSERT INTO libro(CodigoL,AutoresL, TituloL, ISBN, PagIniL,PagFinL, VolumenL,EditorialL,FechaPublicacionL, EditorL,PaisEdicionL)
-                          VALUES ('$this->CodigoL', '$this->AutoresL', '$this->TituloL', '$this->ISBN','$this->PagIniL','$this->PagFinL',
+        $insertarLibro  = "INSERT INTO libro(CodigoL, TituloL, ISBN, PagIniL,PagFinL, VolumenL,EditorialL,FechaPublicacionL, EditorL,PaisEdicionL)
+                          VALUES ('$this->CodigoL', '$this->TituloL', '$this->ISBN','$this->PagIniL','$this->PagFinL',
                            '$this->VolumenL', '$this->EditorialL','$this->FechaPublicacionL', '$this->EditorL','$this->PaisEdicionL')";
         $resultado = mysql_query($insertarLibro) or die(mysql_error());
     }
@@ -49,7 +47,7 @@ class Libro{
 
 //modificar un Libro
     public function ModificarLibro($CodigoE){
-        mysql_query("UPDATE libro SET AutoresL='$this->AutoresL',TituloL='$this->TituloL',ISBN='$this->ISBN' ,
+        mysql_query("UPDATE libro SET TituloL='$this->TituloL',ISBN='$this->ISBN' ,
                       PagIniL='$this->PagIniL',PagFinL='$this->PagFinL',VolumenL='$this->VolumenL',
                         EditorialL='$this->EditorialL',FechaPublicacionL='$this->FechaPublicacionL',EditorL='$this->EditorL',PaisEdicionL='$this->PaisEdicionL' where CodigoE = '$CodigoE'") or die (mysql_error());
     }

@@ -41,7 +41,7 @@ grant all privileges on `datos_curriculares`.* to 'docente'@'localhost'
 --
 DROP TABLE IF EXISTS `articulo`;
 CREATE TABLE IF NOT EXISTS `articulo` (
-  `CodigoA` int(11) zerofill NOT NULL ,
+  `CodigoA` int(11)  NOT NULL ,
   `AutoresA` varchar(200)  COLLATE latin1_spanish_ci NOT NULL default '',
   `TituloA` varchar(100) COLLATE latin1_spanish_ci NOT NULL default '' ,
   `TituloR` varchar(100) COLLATE latin1_spanish_ci NOT NULL default '',
@@ -62,7 +62,7 @@ CREATE TABLE IF NOT EXISTS `articulo` (
 --
 DROP TABLE IF EXISTS `congreso`;
 CREATE TABLE IF NOT EXISTS `congreso` (
-  `CodigoC` int(11) zerofill NOT NULL ,
+  `CodigoC` int(11)  NOT NULL ,
   `NombreC` varchar(100)COLLATE latin1_spanish_ci NOT NULL default '',
   `AcronimoC` varchar(20)COLLATE latin1_spanish_ci NOT NULL default '',
   `AnhoC` year(4) NOT NULL default '0000',
@@ -77,7 +77,7 @@ CREATE TABLE IF NOT EXISTS `congreso` (
 --
 DROP TABLE IF EXISTS `estancia`;
 CREATE TABLE IF NOT EXISTS `estancia` (
-  `CodigoE` int(11)zerofill NOT NULL ,
+  `CodigoE` int(11) NOT NULL ,
   `CentroE` varchar(100)COLLATE latin1_spanish_ci NOT NULL default '',
   `UniversidadE` varchar(40)COLLATE latin1_spanish_ci NOT NULL default '',
   `PaisE` varchar(20)COLLATE latin1_spanish_ci NOT NULL default '',
@@ -126,7 +126,7 @@ CREATE TABLE IF NOT EXISTS `tesis` (
 --
 DROP TABLE IF EXISTS `libro`;
 CREATE TABLE IF NOT EXISTS `libro` (
-  `CodigoL` int(11)zerofill NOT NULL ,
+  `CodigoL` int(11) NOT NULL ,
   `AutoresL` varchar(200)COLLATE latin1_spanish_ci NOT NULL default '',
   `TituloL` varchar(100)COLLATE latin1_spanish_ci NOT NULL default '',
   `ISBN` varchar(13)COLLATE latin1_spanish_ci NOT NULL default '',
@@ -177,7 +177,7 @@ INSERT INTO `proyectoDirigido` VALUES ('1246783', 'titulo1', 'maria guillermes v
 --
 DROP TABLE IF EXISTS `ponencia`;
 CREATE TABLE IF NOT EXISTS `ponencia` (
-  `CodigoP` int(11)zerofill NOT NULL ,
+  `CodigoP` int(11) NOT NULL ,
   `AutoresP` varchar(200)COLLATE latin1_spanish_ci NOT NULL default '',
   `TituloP` varchar(100)COLLATE latin1_spanish_ci NOT NULL default '',
   `CongresoP` varchar(40)COLLATE latin1_spanish_ci NOT NULL default '',
@@ -195,7 +195,7 @@ CREATE TABLE IF NOT EXISTS `ponencia` (
 --
 DROP TABLE IF EXISTS `proyecto`;
 CREATE TABLE IF NOT EXISTS `proyecto` (
-  `CodigoProy` int(11)zerofill NOT NULL ,
+  `CodigoProy` int(11) NOT NULL ,
   `TituloProy` varchar(100)COLLATE latin1_spanish_ci NOT NULL default '',
   `EntidadFinanciadora` varchar(40)COLLATE latin1_spanish_ci NOT NULL default '',
   `AcronimoProy` varchar(20)COLLATE latin1_spanish_ci NOT NULL default '',
@@ -265,7 +265,7 @@ CREATE TABLE IF NOT EXISTS `materia` (
 --
 DROP TABLE IF EXISTS `technicalreport`;
 CREATE TABLE IF NOT EXISTS `technicalreport` (
-  `CodigoTR` int(11)zerofill NOT NULL ,
+  `CodigoTR` int(11) NOT NULL ,
   `AutoresTR` varchar(200)COLLATE latin1_spanish_ci NOT NULL default '',
   `TituloTR` varchar(100)COLLATE latin1_spanish_ci NOT NULL default '',
   `DepartamentoTR` varchar(100)COLLATE latin1_spanish_ci NOT NULL default '',
@@ -285,23 +285,21 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `PasswordU` varchar(32)COLLATE latin1_spanish_ci NOT NULL default '',
   `NombreU` varchar(15)COLLATE latin1_spanish_ci NOT NULL default '',
   `ApellidosU` varchar(30)COLLATE latin1_spanish_ci NOT NULL default '',
-  `TipoContrato` varchar(40)COLLATE latin1_spanish_ci NOT NULL default '',
-  `Centro` varchar(100)COLLATE latin1_spanish_ci NOT NULL default '',
-  `Departamento` varchar(100)COLLATE latin1_spanish_ci NOT NULL default '',
   `Telefono` varchar(15)COLLATE latin1_spanish_ci NOT NULL default '',
   `Mail` varchar(100)COLLATE latin1_spanish_ci NOT NULL default '',
   `DNI` varchar(10)COLLATE latin1_spanish_ci NOT NULL default '',
   `FechaNacimiento` date default NULL,
+  `TipoContrato` varchar(40)COLLATE latin1_spanish_ci NOT NULL default '',
+  `Centro` varchar(100)COLLATE latin1_spanish_ci NOT NULL default '',
+  `Departamento` varchar(100)COLLATE latin1_spanish_ci NOT NULL default '',
    PRIMARY KEY (`LoginU`)
-
-
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
 --
 -- Dumping data for table `usuario`
 --
 
-INSERT INTO `usuario` VALUES ('admin', 'e0b7feb3cf3e7d177da400774de0af5b', 'Administrador', '','','','','','','','');
+INSERT INTO `usuario` VALUES ('admin', 'admin', 'Administrador', '','','','','','','','');
 
 
 --
@@ -325,6 +323,21 @@ CREATE TABLE IF NOT EXISTS `universidad` (
 -- RELACIONES PARA LA TABLA `universidad`:
 --   `LoginU`
 --       `usuario` -> `LoginU`
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `autor`
+--
+DROP TABLE IF EXISTS `autor`;
+CREATE TABLE IF NOT EXISTS `autor` (
+  `CodigoAutor` int(11) NOT NULL ,
+  `NombreAutor` varchar(40)COLLATE latin1_spanish_ci NOT NULL default '',
+  `LoginU` varchar(15)COLLATE latin1_spanish_ci NOT NULL default '',
+ PRIMARY KEY (`CodigoAutor`),
+  KEY `FK_AUTOR_USUARIO` (`LoginU`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
 --
 -- Table structure for table `titulo_academico`
@@ -492,6 +505,91 @@ CREATE TABLE IF NOT EXISTS `docente_ponencia` (
 --       `ponencia` -> `CodigoP`
 --
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `autor_libro`
+--
+DROP TABLE IF EXISTS `autor_libro`;
+CREATE TABLE IF NOT EXISTS `autor_libro` (
+  `CodigoL` int(11) NOT NULL ,
+  `CodigoAutor` int(11) NOT NULL ,
+   PRIMARY KEY (`CodigoL`,`CodigoAutor`),
+  KEY `FK_AUTOR_LIBRO_LIBRO` (`CodigoL`),
+  KEY `FK_AUTOR_LIBRO_AUTOR` (`CodigoAutor`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+--
+-- RELACIONES PARA LA TABLA `autor_libro`:
+--   `CodigoL`
+--       `libro` -> `CodigoL`
+--     `CodigoAutor`
+--       `autor` -> `CodigoAutor`
+--
+--
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `autor_technicalreport`
+--
+DROP TABLE IF EXISTS `autor_technicalreport`;
+CREATE TABLE IF NOT EXISTS `autor_technicalreport` (
+  `CodigoTR` int(11) NOT NULL ,
+  `CodigoAutor` int(11) NOT NULL ,
+   PRIMARY KEY (`CodigoTR`,`CodigoAutor`),
+  KEY `FK_AUTOR_TR_TR` (`CodigoTR`),
+  KEY `FK_AUTOR_TR_AUTOR` (`CodigoAutor`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+--
+-- RELACIONES PARA LA TABLA `autor_technicalreport`:
+--   `CodigoTR`
+--       `technicalreport` -> `CodigoTR`
+--     `CodigoAutor`
+--       `autor` -> `CodigoAutor`
+--
+--
+--
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `autor_ponencia`
+--
+DROP TABLE IF EXISTS `autor_ponencia`;
+CREATE TABLE IF NOT EXISTS `autor_ponencia` (
+  `CodigoP` int(11) NOT NULL ,
+  `CodigoAutor` int(11) NOT NULL ,
+   PRIMARY KEY (`CodigoP`,`CodigoAutor`),
+  KEY `FK_AUTOR_PONENCIA_PONENCIA` (`CodigoP`),
+  KEY `FK_AUTOR_PONENCIA_AUTOR` (`CodigoAutor`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+--
+-- RELACIONES PARA LA TABLA `autor_ponencia`:
+--   `CodigoP`
+--       `ponencia` -> `CodigoP`
+--     `CodigoAutor`
+--       `autor` -> `CodigoAutor`
+--
+--
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `autor_articulo`
+--
+DROP TABLE IF EXISTS `autor_articulo`;
+CREATE TABLE IF NOT EXISTS `autor_articulo` (
+  `CodigoA` int(11) NOT NULL ,
+  `CodigoAutor` int(11) NOT NULL ,
+   PRIMARY KEY (`CodigoA`,`CodigoAutor`),
+  KEY `FK_AUTOR_ARTICULO_ARTICULO` (`CodigoA`),
+  KEY `FK_AUTOR_ARTICULO_AUTOR` (`CodigoAutor`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+--
+-- RELACIONES PARA LA TABLA `autor_articulo`:
+--   `CodigoA`
+--       `articulo` -> `CodigoA`
+--     `CodigoAutor`
+--       `autor` -> `CodigoAutor`
+--
+--
 --
 -- Restricciones para tablas volcadas
 --
@@ -515,7 +613,7 @@ ALTER TABLE `tad`
   ADD CONSTRAINT `FK_TAD_USUARIO` FOREIGN KEY (`LoginU`) REFERENCES `usuario` (`LoginU`);
 --
 --
-/*
+
 -- Filtros para la tabla `materia`
 --
 ALTER TABLE `materia`
@@ -538,7 +636,7 @@ ALTER TABLE `titulo_academico`
 --
 
  ALTER TABLE `docente_articulo`
-  ADD CONSTRAINT `FK_DOCENTE_ARTICULO_ARTICULO` FOREIGN KEY (`CodigoA`) REFERENCES `articulo` (`CodigoA`),
+ ADD CONSTRAINT `FK_DOCENTE_ARTICULO_ARTICULO` FOREIGN KEY (`CodigoA`) REFERENCES `articulo` (`CodigoA`),
   ADD CONSTRAINT `FK_DOCENTE_ARTICULO_USUARIO` FOREIGN KEY (`LoginU`) REFERENCES `usuario` (`LoginU`);
 
 
@@ -590,7 +688,31 @@ ALTER TABLE `docente_technicalreport`
 ALTER TABLE `docente_ponencia`
   ADD CONSTRAINT `FK_DOCENTE_PONENCIA_USUARIO` FOREIGN KEY (`LoginU`) REFERENCES `usuario` (`LoginU`),
   ADD CONSTRAINT `FK_DOCENTE_PONENCIA_PONENCIA` FOREIGN KEY (`CodigoP`) REFERENCES `ponencia` (`CodigoP`);
-*/
+  --
+-- Filtros para la tabla `autor_libro`
+--
+ALTER TABLE `autor_libro`
+  ADD CONSTRAINT `FK_AUTOR_LIBRO_LIBRO` FOREIGN KEY (`CodigoL`) REFERENCES `libro` (`CodigoL`),
+  ADD CONSTRAINT `FK_AUTOR_LIBRO_AUTOR` FOREIGN KEY (`CodigoAutor`) REFERENCES `autor` (`CodigoAutor`);
+    --
+-- Filtros para la tabla `autor_technicalreport`
+--
+ALTER TABLE `autor_technicalreport`
+  ADD CONSTRAINT `FK_AUTOR_TR_TR` FOREIGN KEY (`CodigoTR`) REFERENCES `technicalreport` (`CodigoTR`),
+  ADD CONSTRAINT `FK_AUTOR_TR_AUTOR` FOREIGN KEY (`CodigoAutor`) REFERENCES `autor` (`CodigoAutor`);
+
+-- Filtros para la tabla `autor_ponencia`
+--
+ALTER TABLE `autor_ponencia`
+  ADD CONSTRAINT `FK_AUTOR_PONENCIA_PONENCIA` FOREIGN KEY (`CodigoP`) REFERENCES `ponencia` (`CodigoP`),
+  ADD CONSTRAINT `FK_AUTOR_PONENCIA_AUTOR` FOREIGN KEY (`CodigoAutor`) REFERENCES `autor` (`CodigoAutor`);
+
+-- Filtros para la tabla `autor_articulo`
+--
+ALTER TABLE `autor_articulo`
+  ADD CONSTRAINT `FK_AUTOR_ARTICULO_ARTICULO` FOREIGN KEY (`CodigoA`) REFERENCES `articulo` (`CodigoA`),
+  ADD CONSTRAINT `FK_AUTOR_ARTICULO_AUTOR` FOREIGN KEY (`CodigoAutor`) REFERENCES `autor` (`CodigoAutor`);
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

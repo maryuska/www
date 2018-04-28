@@ -32,7 +32,7 @@ class Universidad
 
     public function ListarUniversidades($Login)
     {
-        $sql = mysql_query("SELECT * FROM universidad WHERE LoginU = '$Login'") or die(mysql_error());
+        $sql = mysql_query("SELECT * FROM universidad WHERE LoginU = '$Login' ORDER BY FechaFin DESC ") or die(mysql_error());
         $universidades = array();
         while($row = mysql_fetch_array($sql)){array_push($universidades, $row);}
         $_SESSION["ListarUniversidades"] = $universidades;

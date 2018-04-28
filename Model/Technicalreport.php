@@ -6,16 +6,14 @@ require_once 'ConnectDB.php';
 class Technicalreport{
 
     private $CodigoTR;
-    private $AutoresTR;
     private $TituloTR;
     private $DepartamentoTR;
     private $UniversidadTR;
     private $FechaTR;
 
 //constructor de Technicalreport
-    public function __construct($CodigoTR = NULL, $AutoresTR = NULL, $TituloTR = NULL, $DepartamentoTR = NULL, $UniversidadTR = NULL, $FechaTR = NULL ){
+    public function __construct($CodigoTR = NULL,  $TituloTR = NULL, $DepartamentoTR = NULL, $UniversidadTR = NULL, $FechaTR = NULL ){
         $this->CodigoTR = $CodigoTR;
-        $this->AutoresTR = $AutoresTR;
         $this->TituloTR = $TituloTR;
         $this->DepartamentoTR = $DepartamentoTR;
         $this->UniversidadTR = $UniversidadTR;
@@ -24,7 +22,7 @@ class Technicalreport{
 
 //alta de una nueva Technicalreport
     public function AltaTechnicalreport() {
-        $insertarTechnicalreport  = "INSERT INTO technicalreport(CodigoTR,AutoresTR, TituloTR, DepartamentoTR, UniversidadTR,FechaTR)
+        $insertarTechnicalreport  = "INSERT INTO technicalreport(CodigoTR, TituloTR, DepartamentoTR, UniversidadTR,FechaTR)
                           VALUES ('$this->CodigoTR', '$this->AutoresTR', '$this->TituloTR', '$this->DepartamentoTR','$this->UniversidadTR','$this->FechaTR')";
         $resultado = mysql_query($insertarTechnicalreport) or die(mysql_error());
     }
@@ -37,7 +35,7 @@ class Technicalreport{
 
 //modificar una Technicalreport
     public function ModificarTechnicalreport($CodigoTR){
-        mysql_query("UPDATE technicalreport SET AutoresTR='$this->AutoresTR',TituloTR='$this->TituloTR',DepartamentoTR='$this->DepartamentoTR' ,
+        mysql_query("UPDATE technicalreport SET TituloTR='$this->TituloTR',DepartamentoTR='$this->DepartamentoTR' ,
                       UniversidadTR='$this->UniversidadTR',FechaTR='$this->FechaTR' where CodigoE = '$CodigoTR'") or die (mysql_error());
     }
 

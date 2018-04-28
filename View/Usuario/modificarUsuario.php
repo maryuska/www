@@ -19,6 +19,7 @@ require_once '../../View/Structure/Nav.php';
                     <div class="form-group">
                         <label class="control-label" for="LoginU">Login: </label>
                         <input id="LoginU" name="LoginU"  class="form-control "value="<?php echo $row['LoginU']; ?>" disabled >
+                        <input id="LoginU" name="LoginU" class="hidden" value="<?php echo $row['LoginU']; ?>" >
                     </div>
 
                     <div class="form-group">

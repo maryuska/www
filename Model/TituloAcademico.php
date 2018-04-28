@@ -31,15 +31,19 @@ class TituloAcademico
 
     public function ListarTitulosAcademicos($LoginU)
     {
-        $sql = mysql_query("SELECT * FROM titulo_academico WHERE LoginU = '$LoginU'") or die(mysql_error());
+        $sql = mysql_query("SELECT * FROM titulo_academico WHERE LoginU = '$LoginU' ORDER BY FechaTitulo DESC ") or die(mysql_error());
+        return $sql;
+    }
+    public function ConsultaTituloAcademico($LoginU,$NombreTitulo)
+    {
+        $sql = mysql_query("SELECT * FROM titulo_academico WHERE LoginU = '$LoginU' AND NombreTitulo=  '$NombreTitulo'") or die(mysql_error());
         return $sql;
     }
 
-    public function ModificarTituloAcademico($LoginU, $NombreTitulo, $FechaTitulo){
-        $sql = mysql_query("UPDATE titulo SET NombreTitulo='$this->NombreTitulo',FechaTitulo='$this->FechaTitulo',CentroTitulo='$this->CentroTitulo'
+    public function ModificarTituloAcademico($LoginU, $NombreTitulo){
+        $sql = mysql_query("UPDATE titulo_academico SET NombreTitulo='$this->NombreTitulo',FechaTitulo='$this->FechaTitulo',CentroTitulo='$this->CentroTitulo'
 				WHERE LoginU = '$LoginU' AND NombreTitulo = '$NombreTitulo'")
         or die(mysql_error());
 
-        $_SESSION["ModificarTituloAcademico"] = $sql;
     }
 }
