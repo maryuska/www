@@ -44,6 +44,9 @@ require_once '../../View/Structure/Nav.php';
                                         <b name = "CodigoE" >Código Estancia:</b>
                                         <?php echo $row['CodigoE']; ?>
                                         <br>
+                                        <b  name = "CentroE" >Centro: </b>
+                                        <?php echo $row['CentroE']; ?>
+                                        <br>
                                         <b  name = "UniversidadE" >Universidad: </b>
                                         <?php echo $row['UniversidadE']; ?>
                                         <br>
@@ -91,6 +94,8 @@ require_once '../../View/Structure/Nav.php';
                                             <td valign="top" width="50%">
                                                 <b name = "CodigoE" >Código Estancia:</b>
                                                 <?php echo $row1['CodigoE']; ?>
+                                                <br><b  name = "CentroE" >Centro: </b>
+                                                <?php echo $row['CentroE']; ?>
                                                 <br>
                                                 <b  name = "UniversidadE" >Universidad: </b>
                                                 <?php echo $row1['UniversidadE']; ?>
@@ -135,6 +140,9 @@ require_once '../../View/Structure/Nav.php';
                                                 <b name = "CodigoE" >Código Estancia:</b>
                                                 <?php echo $row2['CodigoE']; ?>
                                                 <br>
+                                                <b  name = "CentroE" >Centro: </b>
+                                                <?php echo $row['CentroE']; ?>
+                                                <br>
                                                 <b  name = "UniversidadE" >Universidad: </b>
                                                 <?php echo $row2['UniversidadE']; ?>
                                                 <br>
@@ -177,6 +185,9 @@ require_once '../../View/Structure/Nav.php';
                                             <td valign="top" width="50%">
                                                 <b name = "CodigoE" >Código Estancia:</b>
                                                 <?php echo $row3['CodigoE']; ?>
+                                                <br>
+                                                <b  name = "CentroE" >Centro: </b>
+                                                <?php echo $row['CentroE']; ?>
                                                 <br>
                                                 <b  name = "UniversidadE" >Universidad: </b>
                                                 <?php echo $row3['UniversidadE']; ?>

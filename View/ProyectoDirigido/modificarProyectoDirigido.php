@@ -16,6 +16,7 @@ require_once '../../View/Structure/Nav.php';
                 <div class="form-group">
                     <label class="control-label" for="CodigoPD">Código Proyecto Dirigido: </label>
                     <input id="CodigoPD" name="CodigoPD"  class="form-control "value="<?php echo $row['CodigoPD']; ?>" disabled >
+                    <input id="CodigoPD" name="CodigoPD" type="hidden" class="form-control "value="<?php echo $row['CodigoPD']; ?>" >
                 </div>
 
                 <div class="form-group">

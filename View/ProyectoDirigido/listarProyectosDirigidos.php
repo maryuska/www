@@ -69,6 +69,11 @@ require_once '../../View/Structure/Nav.php';
                         </div>
                     </div>
                     <?php } } ?>
+                    <div class="form-group col-lg-10">
+                    <p align="center">
+                        <button type="button" class="btn btn-orange " onclick="window.location.href='insertarProyectoDirigido.php'">Insertar Nuevo Proyecto</button>
+                    </p>
+                    </div>
                 </div>
 
 
@@ -116,6 +121,11 @@ require_once '../../View/Structure/Nav.php';
                         </div>
                     </div>
                     <?php } } ?>
+                    <div class="form-group col-lg-10">
+                        <p align="center">
+                            <button type="button" class="btn btn-orange " onclick="window.location.href='insertarProyectoDirigido.php'">Insertar Nuevo Proyecto</button>
+                        </p>
+                    </div>
                 </div>
 <!--listado de TFG -->
                 <div class="tab-pane fade " id="tab3">
@@ -162,6 +172,11 @@ require_once '../../View/Structure/Nav.php';
                                 </div>
                             </div>
                         <?php } } ?>
+                    <div class="form-group col-lg-10">
+                        <p align="center">
+                            <button type="button" class="btn btn-orange " onclick="window.location.href='insertarProyectoDirigido.php'">Insertar Nuevo Proyecto</button>
+                        </p>
+                    </div>
                 </div>
 <!-- listado de TFM -->
                 <div class="tab-pane fade" id="tab4">
@@ -207,7 +222,13 @@ require_once '../../View/Structure/Nav.php';
                                 </div>
                             </div>
                          <?php } } ?>
+                    <div class="form-group col-lg-10">
+                        <p align="center">
+                            <button type="button" class="btn btn-orange " onclick="window.location.href='insertarProyectoDirigido.php'">Insertar Nuevo Proyecto</button>
+                        </p>
                     </div>
+                    </div>
+
 
         </div>
     </div>

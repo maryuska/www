@@ -71,6 +71,11 @@ require_once '../../View/Structure/Nav.php';
                         </div>
                     </div>
                     <?php } } ?>
+                    <div class="form-group col-lg-10">
+                        <p align="center">
+                            <button type="button" class="btn btn-orange " onclick="window.location.href='insertarMateria.php'">Insertar Materia</button>
+                        </p>
+                    </div>
                 </div>
 
 
@@ -119,6 +124,11 @@ require_once '../../View/Structure/Nav.php';
                                 </div>
                             </div>
                         <?php } } ?>
+                    <div class="form-group col-lg-10">
+                        <p align="center">
+                            <button type="button" class="btn btn-orange " onclick="window.location.href='insertarMateria.php'">Insertar Materia</button>
+                        </p>
+                    </div>
                 </div>
 
                 <!--listado de materias de tercer ciclo -->
@@ -166,6 +176,11 @@ require_once '../../View/Structure/Nav.php';
                                 </div>
                             </div>
                         <?php } } ?>
+                    <div class="form-group col-lg-10">
+                        <p align="center">
+                            <button type="button" class="btn btn-orange " onclick="window.location.href='insertarMateria.php'">Insertar Materia</button>
+                        </p>
+                    </div>
                 </div>
 
                 <!-- listado de materias de master -->
@@ -213,6 +228,11 @@ require_once '../../View/Structure/Nav.php';
                                 </div>
                             </div>
                         <?php } } ?>
+                    <div class="form-group col-lg-10">
+                        <p align="center">
+                            <button type="button" class="btn btn-orange " onclick="window.location.href='insertarMateria.php'">Insertar Materia</button>
+                        </p>
+                    </div>
                 </div>
 
                 <!-- listado de materias de post grado -->
@@ -260,6 +280,11 @@ require_once '../../View/Structure/Nav.php';
                                 </div>
                             </div>
                         <?php } } ?>
+                    <div class="form-group col-lg-10">
+                        <p align="center">
+                            <button type="button" class="btn btn-orange " onclick="window.location.href='insertarMateria.php'">Insertar Materia</button>
+                        </p>
+                    </div>
                 </div>
 
                 <!-- listado de materias de cursos -->
@@ -307,6 +332,11 @@ require_once '../../View/Structure/Nav.php';
                                 </div>
                             </div>
                         <?php } } ?>
+                    <div class="form-group col-lg-10">
+                        <p align="center">
+                            <button type="button" class="btn btn-orange " onclick="window.location.href='insertarMateria.php'">Insertar Materia</button>
+                        </p>
+                    </div>
                 </div>
 
 

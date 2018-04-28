@@ -37,8 +37,8 @@ $loginU =$_SESSION["loginU"];
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label" for="FechaInicioF">Fecha Fin:</label>
-                    <input id="FechaInicioF" name="FechaInicioF" type="date" placeholder="Fecha fin" class="form-control " >
+                    <label class="control-label" for="FechaFinE">Fecha Fin:</label>
+                    <input id="FechaFinE" name="FechaFinE" type="date" placeholder="Fecha fin" class="form-control " >
                 </div>
 
                 <div class="form-group">

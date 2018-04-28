@@ -165,7 +165,7 @@ switch ($evento) {
         $CentroTitulo = $_POST['CentroTitulo'];
 
         $titulo = new TituloAcademico($LoginU, $NombreTitulo, $FechaTitulo, $CentroTitulo);
-        $titulo->ModificarTituloAcademico($LoginU);
+        $titulo->ModificarTituloAcademico($LoginU,$NombreTitulo);
 
 
         header("location: ../Controller/UsuariosController.php?evento=consultarUsuario&LoginU=$LoginU");

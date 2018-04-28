@@ -173,7 +173,7 @@ require_once '../../View/Structure/Nav.php';
                                 <td class="text-center" width="250px" name = "NombreUniversidad"><?php echo $row3['NombreUniversidad']; ?> </td>
                                 <td class="text-center" width="250px" name = "FechaInicio"><?php echo $row3['FechaInicio']; ?> </td>
                                 <td class="text-center"  width="250px" name = "FechaFin"><?php echo $row3['FechaFin']; ?> </td>
-                                <td  width="150px"><a type="submit" class="btn  "  href="modificarUniversidad.php" >Modificar</a></td>
+                                <td width="150px"><a type="submit" class="btn  " onclick="window.location.href='../../Controller/UsuariosController.php?evento=consultarUniversidad&LoginU=<?php echo $row['LoginU']; ?>&NombreTitulo=<?php echo $row2['NombreTitulo']; ?>'" >Modificar</a></td>
                             </tr>
                         </table>
 

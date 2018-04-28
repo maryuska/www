@@ -16,12 +16,13 @@ require_once '../../View/Structure/Nav.php';
             foreach ($rows as $row) { ?>
 
                     <div class="form-group">
-                        <input id="LoginU" name="LoginU" class="hidden" value="<?php echo $row['LoginU']; ?>" >
+                        <input id="LoginU" name="LoginU" type="hidden" class="form-control" value="<?php echo $row['LoginU']; ?>" >
                     </div>
 
                     <div class="form-group">
                         <label class="control-label" for="NombreTitulo">Nombre Titulo:</label>
-                        <input id="NombreTitulo" name="NombreTitulo" class="form-control" value="<?php echo $row['NombreTitulo']; ?>" >
+                        <input id="NombreTitulo" name="NombreTitulo" class="form-control" value="<?php echo $row['NombreTitulo']; ?>" disabled>
+                        <input id="NombreTitulo" name="NombreTitulo"  type="hidden" class="form-control" value="<?php echo $row['NombreTitulo']; ?>" >
                     </div>
 
                     <div class="form-group">

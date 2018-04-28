@@ -13,9 +13,13 @@ require_once '../../View/Structure/Nav.php';
             <?php foreach ($_SESSION["consultarMateria"] as $row)  { ?>
             <form  action="../../Controller/MateriasController.php" method="post" role="form">
 
+                <input id="LoginU" name="LoginU" type="hidden" class="form-control "value="<?php echo $row['LoginU']; ?>"  >
+
                 <div class="form-group">
                     <label class="control-label" for="CodigoM">Código Materia: </label>
                     <input id="CodigoM" name="CodigoM"  class="form-control "value="<?php echo $row['CodigoM']; ?>" disabled >
+                    <input id="CodigoM" name="CodigoM" type="hidden" class="form-control "value="<?php echo $row['CodigoM']; ?>"  >
+
                 </div>
 
                 <div class="form-group">
