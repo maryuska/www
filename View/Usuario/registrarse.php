@@ -5,12 +5,12 @@ require_once '../../View/Structure/NavSimple.php';
 ?>
 
 <div class=".col-md-6">
-
+    <script type="text/javascript" src="../../lib/js/validaciones.js"></script>
 
 
     <div class="tab-content">
 
-             <form id="formulario" class="form-horizontal" enctype="multipart/form-data" action="../../Controller/UsuariosController.php" method="post" role="form">
+             <form id="formulario" class="form-horizontal" enctype="multipart/form-data" onsubmit="return comprobarUsuario()"  action="../../Controller/UsuariosController.php" method="post" role="form">
 
              <!-- Form Name -->
             <h2>Registrar Docente</h2>

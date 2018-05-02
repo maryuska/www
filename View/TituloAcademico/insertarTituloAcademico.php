@@ -10,8 +10,7 @@ $loginU =$_SESSION["loginU"];
     <h3 class="text-center">Insertar Título Académico</h3>
     <div class="panel panel-default">
         <div class="col-md-12">
-            <form id="formulario" class="form-horizontal" enctype="multipart/form-data" action="../../Controller/UsuariosController.php" method="post" role="form">
-
+            <form id="formulario" class="form-horizontal" enctype="multipart/form-data"  onsubmit="return comprobarTituloAcademico()" action="../../Controller/UsuariosController.php" method="post" role="form">
                 <div class="form-group">
 
                     <label class="col-lg-3 col-md-4 col-sm-4 control-label" for="Titulo">Nombre Titulo</label>

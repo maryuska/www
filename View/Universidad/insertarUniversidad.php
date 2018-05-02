@@ -10,7 +10,7 @@ $loginU =$_SESSION["loginU"];
     <h3 class="text-center">Insertar Universidad</h3>
     <div class="panel panel-default">
         <div class="col-md-12">
-            <form id="formulario" class="form-horizontal" enctype="multipart/form-data" action="../../Controller/UsuariosController.php" method="post" role="form">
+            <form id="formulario" class="form-horizontal" enctype="multipart/form-data" onsubmit="return comprobarUniversidad()"action="../../Controller/UsuariosController.php" method="post" role="form">
 
                 <div class="form-group">
                     <label class="col-lg-3 col-md-4 col-sm-4 control-label" for="UniversidadU">Nombre</label>
@@ -20,14 +20,14 @@ $loginU =$_SESSION["loginU"];
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-lg-3 col-md-4 col-sm-4 control-label" for="UniversidadU">Fecha Inicio</label>
+                    <label class="col-lg-3 col-md-4 col-sm-4 control-label" for="FechaInicio">Fecha Inicio</label>
                     <div class="col-lg-7 col-md-6 col-sm-6">
                         <input id="FechaInicio" name="FechaInicio" type="date" placeholder="Fecha Inicio" class="form-control input-md">
 
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-lg-3 col-md-4 col-sm-4 control-label" for="UniversidadU">Fecha Fin</label>
+                    <label class="col-lg-3 col-md-4 col-sm-4 control-label" for="FechaFin">Fecha Fin</label>
                     <div class="col-lg-7 col-md-6 col-sm-6">
                         <input id="FechaFin" name="FechaFin" type="date" placeholder="Fecha Fin" class="form-control input-md">
 

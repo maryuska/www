@@ -41,7 +41,7 @@ grant all privileges on `datos_curriculares`.* to 'docente'@'localhost'
 --
 DROP TABLE IF EXISTS `articulo`;
 CREATE TABLE IF NOT EXISTS `articulo` (
-  `CodigoA` int(11)  NOT NULL ,
+  `CodigoA` int(11) NOT NULL ,
   `AutoresA` varchar(200)  COLLATE latin1_spanish_ci NOT NULL default '',
   `TituloA` varchar(100) COLLATE latin1_spanish_ci NOT NULL default '' ,
   `TituloR` varchar(100) COLLATE latin1_spanish_ci NOT NULL default '',
