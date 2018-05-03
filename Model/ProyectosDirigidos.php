@@ -30,43 +30,43 @@ class ProyectosDirigidos{
   public function AltaProyectoDirigido() {
     $insertarProyectoDirigido  = "INSERT INTO proyectoDirigido(CodigoPD,TituloPD, AlumnoPD, FechaLecturaPD, CalificacionPD,URLPD, CotutorPD,TipoPD)
                           VALUES ('$this->CodigoPD', '$this->TituloPD', '$this->AlumnoPD', '$this->FechaLecturaPD','$this->CalificacionPD','$this->URLPD', '$this->CotutorPD', '$this->TipoPD')";
-	$resultado = mysql_query($insertarProyectoDirigido) or die(mysql_error());
+	$resultado = mysqli_query($insertarProyectoDirigido) or die(mysqli_error());
 	}
 
 //consultar un proyecto dirigido
     public function ConsultarProyectoDirigido($CodigoP){
-        $sql= mysql_query("SELECT * FROM proyectoDirigido  WHERE CodigoPD = '$CodigoP'");
+        $sql= mysqli_query("SELECT * FROM proyectoDirigido  WHERE CodigoPD = '$CodigoP'");
         return $sql;
     }
 
 //modificar un proyecto dirigido
     public function ModificarProyectoDirigido($CodigoPD){
-        mysql_query("UPDATE proyectoDirigido SET TituloPD='$this->TituloPD',AlumnoPD='$this->AlumnoPD',FechaLecturaPD='$this->FechaLecturaPD' ,
-                      CalificacionPD='$this->CalificacionPD',URLPD='$this->URLPD',CotutorPD='$this->CotutorPD',TipoPD='$this->TipoPD' where CodigoPD = '$CodigoPD'") or die (mysql_error());
+        mysqli_query("UPDATE proyectoDirigido SET TituloPD='$this->TituloPD',AlumnoPD='$this->AlumnoPD',FechaLecturaPD='$this->FechaLecturaPD' ,
+                      CalificacionPD='$this->CalificacionPD',URLPD='$this->URLPD',CotutorPD='$this->CotutorPD',TipoPD='$this->TipoPD' where CodigoPD = '$CodigoPD'") or die (mysqli_error());
     }
 
 
 //lista de todos los proyectos dirigidos del usuario
     public function ListarProyectosDirigidos(){
-        $sql= mysql_query("SELECT * FROM proyectoDirigido  ORDER BY FechaLecturaPD DESC");
+        $sql= mysqli_query("SELECT * FROM proyectoDirigido  ORDER BY FechaLecturaPD DESC");
         return $sql;
 
     }
 //lista de todos los proyectos fin de carrera del usuario
     public function ListarProyectosDirigidosPFC(){
-        $sql= mysql_query("SELECT * FROM proyectoDirigido WHERE TipoPD = 'PFC'");
+        $sql= mysqli_query("SELECT * FROM proyectoDirigido WHERE TipoPD = 'PFC'");
 
         return $sql;
     }
 //lista de todos los trabajos fin de grado del usuario
     public function ListarProyectosDirigidosTFG(){
-        $sql= mysql_query("SELECT * FROM proyectoDirigido WHERE TipoPD = 'TFG'  ");
+        $sql= mysqli_query("SELECT * FROM proyectoDirigido WHERE TipoPD = 'TFG'  ");
 
         return $sql;
     }
 //lista de todos los trabajos fin de grado del usuario
     public function ListarProyectosDirigidosTFM(){
-        $sql= mysql_query("SELECT * FROM proyectoDirigido WHERE TipoPD = 'TFM'  ");
+        $sql= mysqli_query("SELECT * FROM proyectoDirigido WHERE TipoPD = 'TFM'  ");
 
         return $sql;
     }

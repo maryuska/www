@@ -24,24 +24,24 @@ class Technicalreport{
     public function AltaTechnicalreport() {
         $insertarTechnicalreport  = "INSERT INTO technicalreport(CodigoTR, TituloTR, DepartamentoTR, UniversidadTR,FechaTR)
                           VALUES ('$this->CodigoTR', '$this->AutoresTR', '$this->TituloTR', '$this->DepartamentoTR','$this->UniversidadTR','$this->FechaTR')";
-        $resultado = mysql_query($insertarTechnicalreport) or die(mysql_error());
+        $resultado = mysqli_query($insertarTechnicalreport) or die(mysqli_error());
     }
 
 //consultar una Technicalreport
     public function ConsultarTechnicalreport($CodigoTR){
-        $sql= mysql_query("SELECT * FROM technicalreport  WHERE CodigoE = '$CodigoTR'");
+        $sql= mysqli_query("SELECT * FROM technicalreport  WHERE CodigoE = '$CodigoTR'");
         return $sql;
     }
 
 //modificar una Technicalreport
     public function ModificarTechnicalreport($CodigoTR){
-        mysql_query("UPDATE technicalreport SET TituloTR='$this->TituloTR',DepartamentoTR='$this->DepartamentoTR' ,
-                      UniversidadTR='$this->UniversidadTR',FechaTR='$this->FechaTR' where CodigoE = '$CodigoTR'") or die (mysql_error());
+        mysqli_query("UPDATE technicalreport SET TituloTR='$this->TituloTR',DepartamentoTR='$this->DepartamentoTR' ,
+                      UniversidadTR='$this->UniversidadTR',FechaTR='$this->FechaTR' where CodigoE = '$CodigoTR'") or die (mysqli_error());
     }
 
 //lista de todas las Technicalreport de un usuario
     public function ListarTechnicalreport($LoginU){
-        $sql= mysql_query("SELECT * FROM technicalreport WHERE LoginU= '$LoginU' ORDER BY FechaTR DESC");
+        $sql= mysqli_query("SELECT * FROM technicalreport WHERE LoginU= '$LoginU' ORDER BY FechaTR DESC");
         return $sql;
 
     }

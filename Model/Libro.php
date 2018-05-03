@@ -36,25 +36,25 @@ class Libro{
         $insertarLibro  = "INSERT INTO libro(CodigoL, TituloL, ISBN, PagIniL,PagFinL, VolumenL,EditorialL,FechaPublicacionL, EditorL,PaisEdicionL)
                           VALUES ('$this->CodigoL', '$this->TituloL', '$this->ISBN','$this->PagIniL','$this->PagFinL',
                            '$this->VolumenL', '$this->EditorialL','$this->FechaPublicacionL', '$this->EditorL','$this->PaisEdicionL')";
-        $resultado = mysql_query($insertarLibro) or die(mysql_error());
+        $resultado = mysqli_query($insertarLibro) or die(mysqli_error());
     }
 
 //consultar un Libro
     public function ConsultarLibro($CodigoE){
-        $sql= mysql_query("SELECT * FROM libro  WHERE CodigoE = '$CodigoE'");
+        $sql= mysqli_query("SELECT * FROM libro  WHERE CodigoE = '$CodigoE'");
         return $sql;
     }
 
 //modificar un Libro
     public function ModificarLibro($CodigoE){
-        mysql_query("UPDATE libro SET TituloL='$this->TituloL',ISBN='$this->ISBN' ,
+        mysqli_query("UPDATE libro SET TituloL='$this->TituloL',ISBN='$this->ISBN' ,
                       PagIniL='$this->PagIniL',PagFinL='$this->PagFinL',VolumenL='$this->VolumenL',
-                        EditorialL='$this->EditorialL',FechaPublicacionL='$this->FechaPublicacionL',EditorL='$this->EditorL',PaisEdicionL='$this->PaisEdicionL' where CodigoE = '$CodigoE'") or die (mysql_error());
+                        EditorialL='$this->EditorialL',FechaPublicacionL='$this->FechaPublicacionL',EditorL='$this->EditorL',PaisEdicionL='$this->PaisEdicionL' where CodigoE = '$CodigoE'") or die (mysqli_error());
     }
 
 //lista de todos los Libro de un usuario
     public function ListarLibro($LoginU){
-        $sql= mysql_query("SELECT * FROM libro WHERE LoginU= '$LoginU' ORDER BY FechaPublicacionL DESC");
+        $sql= mysqli_query("SELECT * FROM libro WHERE LoginU= '$LoginU' ORDER BY FechaPublicacionL DESC");
         return $sql;
 
     }

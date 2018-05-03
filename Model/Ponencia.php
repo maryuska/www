@@ -29,25 +29,25 @@ class Ponencia{
         $insertarPonencia  = "INSERT INTO ponencia(CodigoP, TituloP, CongresoP, FechaIniCP,FechaFinCP, TipoE,LoginU)
                           VALUES ('$this->CodigoP', '$this->TituloP', '$this->CongresoP','$this->FechaIniCP','$this->FechaFinCP',
                            '$this->LugarCP', '$this->PaisCP')";
-        $resultado = mysql_query($insertarPonencia) or die(mysql_error());
+        $resultado = mysqli_query($insertarPonencia) or die(mysqli_error());
     }
 
 //consultar una ponencia
     public function ConsultarPonencia($CodigoP){
-        $sql= mysql_query("SELECT * FROM ponencia  WHERE CodigoP = '$CodigoP'");
+        $sql= mysqli_query("SELECT * FROM ponencia  WHERE CodigoP = '$CodigoP'");
         return $sql;
     }
 
 //modificar una ponencia
     public function ModificarPonencia($CodigoP){
-        mysql_query("UPDATE ponencia SET TituloP='$this->TituloP',CongresoP='$this->CongresoP' ,
-                      FechaIniCP='$this->FechaIniCP',FechaFinCP='$this->FechaFinCP',LugarCP='$this->LugarCP',PaisCP='$this->PaisCP' where CodigoP = '$CodigoP'") or die (mysql_error());
+        mysqli_query("UPDATE ponencia SET TituloP='$this->TituloP',CongresoP='$this->CongresoP' ,
+                      FechaIniCP='$this->FechaIniCP',FechaFinCP='$this->FechaFinCP',LugarCP='$this->LugarCP',PaisCP='$this->PaisCP' where CodigoP = '$CodigoP'") or die (mysqli_error());
     }
 
 
 //lista de todas las ponencias de un usuario
     public function ListarPonencias($LoginU){
-        $sql= mysql_query("SELECT * FROM ponencia WHERE LoginU= '$LoginU' ORDER BY FechaFinCP DESC");
+        $sql= mysqli_query("SELECT * FROM ponencia WHERE LoginU= '$LoginU' ORDER BY FechaFinCP DESC");
         return $sql;
 
     }

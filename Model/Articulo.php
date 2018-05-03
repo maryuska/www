@@ -34,25 +34,25 @@ class Articulo{
         $insertarArticulo  = "INSERT INTO articulo (CodigoA, TituloA, TituloR, ISSN,VolumenR, PagIniA,PagFinA,FechaPublicacionR,EstadoA)
                           VALUES ('$this->CodigoA',  '$this->TituloA', '$this->TituloR','$this->ISSN','$this->VolumenR',
                            '$this->PagIniA', '$this->PagFinA','$this->FechaPublicacionR', '$this->EstadoA')";
-        $resultado = mysql_query($insertarArticulo) or die(mysql_error());
+        $resultado = mysqli_query($insertarArticulo) or die(mysqli_error());
     }
 
 //consultar un articulo
     public function ConsultarArticulo($CodigoA){
-        $sql= mysql_query("SELECT * FROM articulo  WHERE CodigoA = '$CodigoA'");
+        $sql= mysqli_query("SELECT * FROM articulo  WHERE CodigoA = '$CodigoA'");
         return $sql;
     }
 
 //modificar un articulo
     public function ModificarArticulo($CodigoA){
-        mysql_query("UPDATE articulo SET TituloA='$this->TituloA',TituloR='$this->TituloR' ,
+        mysqli_query("UPDATE articulo SET TituloA='$this->TituloA',TituloR='$this->TituloR' ,
                       ISSN='$this->ISSN',VolumenR='$this->VolumenR',PagIniA='$this->PagIniA',PagFinA='$this->PagFinA',
-                      FechaPublicacionR='$this->FechaPublicacionR',EstadoA='$this->EstadoA' where CodigoA = '$CodigoA'") or die (mysql_error());
+                      FechaPublicacionR='$this->FechaPublicacionR',EstadoA='$this->EstadoA' where CodigoA = '$CodigoA'") or die (mysqli_error());
     }
 
 //lista de todas los articulos
     public function ListarArticulos($LoginU){
-        $sql= mysql_query("SELECT * FROM articulo WHERE LoginU= '$LoginU'");
+        $sql= mysqli_query("SELECT * FROM articulo WHERE LoginU= '$LoginU'");
         return $sql;
 
     }

@@ -29,24 +29,24 @@ class Proyecto{
         $insertarProyecto  = "INSERT INTO proyecto(CodigoProy,TituloProy, EntidadFinanciadora, AcronimoProy, AnhoInicioProy,AnhoFinProy, TipoE)
                           VALUES ('$this->CodigoProy', '$this->TituloProy', '$this->EntidadFinanciadora', '$this->AcronimoProy','$this->AnhoInicioProy','$this->AnhoFinProy',
                            '$this->Importe'')";
-        $resultado = mysql_query($insertarProyecto) or die(mysql_error());
+        $resultado = mysqli_query($insertarProyecto) or die(mysqli_error());
     }
 
 //consultar un proyecto
     public function ConsultarProyecto($CodigoProy){
-        $sql= mysql_query("SELECT * FROM proyecto  WHERE CodigoE = '$CodigoProy'");
+        $sql= mysqli_query("SELECT * FROM proyecto  WHERE CodigoE = '$CodigoProy'");
         return $sql;
     }
 
 //modificar un proyecto
     public function ModificarProyecto($CodigoProy){
-        mysql_query("UPDATE proyecto SET TituloProy='$this->TituloProy',EntidadFinanciadora='$this->EntidadFinanciadora',AcronimoProy='$this->AcronimoProy' ,
-                      AnhoInicioProy='$this->AnhoInicioProy',AnhoFinProy='$this->AnhoFinProy',Importe='$this->Importe' where CodigoProy = '$CodigoProy'") or die (mysql_error());
+        mysqli_query("UPDATE proyecto SET TituloProy='$this->TituloProy',EntidadFinanciadora='$this->EntidadFinanciadora',AcronimoProy='$this->AcronimoProy' ,
+                      AnhoInicioProy='$this->AnhoInicioProy',AnhoFinProy='$this->AnhoFinProy',Importe='$this->Importe' where CodigoProy = '$CodigoProy'") or die (mysqli_error());
     }
 
 //lista de todos los proyectos de un usuario
     public function ListarProyectos($LoginU){
-        $sql= mysql_query("SELECT * FROM estancia WHERE LoginU= '$LoginU' ORDER BY AnhoInicioProy DESC");
+        $sql= mysqli_query("SELECT * FROM estancia WHERE LoginU= '$LoginU' ORDER BY AnhoInicioProy DESC");
         return $sql;
     }
 

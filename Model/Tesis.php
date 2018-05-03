@@ -29,24 +29,24 @@ class Tesis{
         $insertarTesis  = "INSERT INTO tesis(CodigoTesis,AutorTesis, TutorTesis, FechaInscripcion, FechaLectura,URLTesis, LoginU)
                           VALUES ('$this->CodigoTesis', '$this->AutorTesis', '$this->TutorTesis', '$this->FechaInscripcion','$this->FechaLectura'
                           ,'$this->URLTesis', '$this->LoginU')";
-        $resultado = mysql_query($insertarTesis) or die(mysql_error());
+        $resultado = mysqli_query($insertarTesis) or die(mysqli_error());
     }
 
 //consultar una tesis
     public function ConsultarTesis($CodigoTesis){
-        $sql= mysql_query("SELECT * FROM tesis  WHERE CodigoE = '$CodigoTesis'");
+        $sql= mysqli_query("SELECT * FROM tesis  WHERE CodigoE = '$CodigoTesis'");
         return $sql;
     }
 
 //modificar una tesis
     public function ModificarTesis($CodigoTesis){
-        mysql_query("UPDATE tesis SET AutorTesis='$this->AutorTesis',TutorTesis='$this->TutorTesis',FechaInscripcion='$this->FechaInscripcion' ,
-                      FechaLectura='$this->FechaLectura',URLTesis='$this->URLTesis' where CodigoTesis = '$CodigoTesis'") or die (mysql_error());
+        mysqli_query("UPDATE tesis SET AutorTesis='$this->AutorTesis',TutorTesis='$this->TutorTesis',FechaInscripcion='$this->FechaInscripcion' ,
+                      FechaLectura='$this->FechaLectura',URLTesis='$this->URLTesis' where CodigoTesis = '$CodigoTesis'") or die (mysqli_error());
     }
 
 //lista de todas las tesis de un usuario
     public function ListarTesis($LoginU){
-        $sql= mysql_query("SELECT * FROM tesis WHERE LoginU= '$LoginU' ORDER BY FechaInscripcion DESC");
+        $sql= mysqli_query("SELECT * FROM tesis WHERE LoginU= '$LoginU' ORDER BY FechaInscripcion DESC");
         return $sql;
 
     }

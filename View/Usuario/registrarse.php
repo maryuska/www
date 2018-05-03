@@ -5,7 +5,6 @@ require_once '../../View/Structure/NavSimple.php';
 ?>
 
 <div class=".col-md-6">
-    <script type="text/javascript" src="../../lib/js/validaciones.js"></script>
 
 
     <div class="tab-content">

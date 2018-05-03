@@ -24,24 +24,24 @@ class Congreso{
     public function AltaCongreso() {
         $insertarCongreso  = "INSERT INTO congreso(CodigoC,NombreC, AcronimoC, AnhoC, LugarC)
                           VALUES ('$this->CodigoC', '$this->NombreC', '$this->AcronimoC', '$this->AnhoC','$this->LugarC')";
-        $resultado = mysql_query($insertarCongreso) or die(mysql_error());
+        $resultado = mysqli_query($insertarCongreso) or die(mysqli_error());
     }
 
 //consultar un congreso
     public function ConsultarEstancia($CodigoC){
-        $sql= mysql_query("SELECT * FROM congreso  WHERE CodigoC = '$CodigoC'");
+        $sql= mysqli_query("SELECT * FROM congreso  WHERE CodigoC = '$CodigoC'");
         return $sql;
     }
 
 //modificar un congreso
     public function ModificarCongreso($CodigoC){
-        mysql_query("UPDATE congreso SET NombreC='$this->NombreC',AcronimoC='$this->AcronimoC',AnhoC='$this->AnhoC' ,
-                      LugarC='$this->LugarC' where CodigoC = '$CodigoC'") or die (mysql_error());
+        mysqli_query("UPDATE congreso SET NombreC='$this->NombreC',AcronimoC='$this->AcronimoC',AnhoC='$this->AnhoC' ,
+                      LugarC='$this->LugarC' where CodigoC = '$CodigoC'") or die (mysqli_error());
     }
 
 //lista de todos los congresos de un usuario
     public function ListarCongresos($LoginU){
-        $sql= mysql_query("SELECT * FROM congreso WHERE LoginU= '$LoginU' ORDER BY AnhoC DESC");
+        $sql= mysqli_query("SELECT * FROM congreso WHERE LoginU= '$LoginU' ORDER BY AnhoC DESC");
         return $sql;
 
     }

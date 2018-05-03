@@ -31,40 +31,40 @@ class Estancias{
     $insertarEstancia  = "INSERT INTO estancia(CodigoE,CentroE, UniversidadE, PaisE, FechaInicioE,FechaFinE, TipoE,LoginU)
                           VALUES ('$this->CodigoE', '$this->CentroE', '$this->UniversidadE', '$this->PaisE','$this->FechaInicioE','$this->FechaFinE',
                            '$this->TipoE', '$this->LoginU')";
-	$resultado = mysql_query($insertarEstancia) or die(mysql_error());
+	$resultado = mysqli_query($insertarEstancia) or die(mysqli_error());
 	}
 
 //consultar una estancia
     public function ConsultarEstancia($CodigoE){
-        $sql= mysql_query("SELECT * FROM estancia  WHERE CodigoE = '$CodigoE'");
+        $sql= mysqli_query("SELECT * FROM estancia  WHERE CodigoE = '$CodigoE'");
         return $sql;
     }
 
 //modificar una estancia
     public function ModificarEstancia($CodigoE){
-        mysql_query("UPDATE estancia SET CentroE='$this->CentroE',UniversidadE='$this->UniversidadE',PaisE='$this->PaisE' ,
-                      FechaInicioE='$this->FechaInicioE',FechaFinE='$this->FechaFinE',TipoE='$this->TipoE' where CodigoE = '$CodigoE'") or die (mysql_error());
+        mysqli_query("UPDATE estancia SET CentroE='$this->CentroE',UniversidadE='$this->UniversidadE',PaisE='$this->PaisE' ,
+                      FechaInicioE='$this->FechaInicioE',FechaFinE='$this->FechaFinE',TipoE='$this->TipoE' where CodigoE = '$CodigoE'") or die (mysqli_error());
     }
 
 //lista de todas las estancias de un usuario
     public function ListarEstancias($LoginU){
-        $sql= mysql_query("SELECT * FROM estancia WHERE LoginU= '$LoginU' ORDER BY FechaFinE DESC");
+        $sql= mysqli_query("SELECT * FROM estancia WHERE LoginU= '$LoginU' ORDER BY FechaFinE DESC");
         return $sql;
 
     }
 //lista de todas las estancias de invertigacion
     public function ListarEstanciasInvertigacion($LoginU){
-        $sql= mysql_query("SELECT * FROM estancia WHERE LoginU= '$LoginU' AND TipoE = 'Investigacion'");
+        $sql= mysqli_query("SELECT * FROM estancia WHERE LoginU= '$LoginU' AND TipoE = 'Investigacion'");
         return $sql;
     }
 //lista de todas las estancias de doctorado
     public function ListarEstanciasDoctorado($LoginU){
-        $sql= mysql_query("SELECT * FROM estancia WHERE LoginU= '$LoginU' AND TipoE = 'Doctorado'");
+        $sql= mysqli_query("SELECT * FROM estancia WHERE LoginU= '$LoginU' AND TipoE = 'Doctorado'");
         return $sql;
     }
 //lista de todas las estancias de invitado
     public function ListarEstanciasInvitado($LoginU){
-        $sql= mysql_query("SELECT * FROM estancia WHERE LoginU= '$LoginU' AND TipoE = 'Invitado'");
+        $sql= mysqli_query("SELECT * FROM estancia WHERE LoginU= '$LoginU' AND TipoE = 'Invitado'");
         return $sql;
     }
 
