@@ -25,26 +25,30 @@ class TituloAcademico
         $insertarTituloAcademico = "INSERT INTO titulo_academico (LoginU, NombreTitulo, FechaTitulo, CentroTitulo)
     VALUES ('$this->LoginU','$this->NombreTitulo','$this->FechaTitulo','$this->CentroTitulo')";
 
-        $resultado = mysqli_query($insertarTituloAcademico) or die(mysqli_error());
+        $resultado = mysql_query($insertarTituloAcademico) or die(mysql_error());
     }
     //lista todos las titulosAcademicos del usuario
 
     public function ListarTitulosAcademicos($LoginU)
     {
-        $sql = mysqli_query("SELECT * FROM titulo_academico WHERE LoginU = '$LoginU' ORDER BY FechaTitulo DESC ") or die(mysqli_error());
+        $sql = mysql_query("SELECT * FROM titulo_academico WHERE LoginU = '$LoginU' ORDER BY FechaTitulo DESC ") or die(mysql_error());
         return $sql;
     }
     public function ConsultaTituloAcademico($LoginU,$NombreTitulo)
     {
-        $sql = mysqli_query("SELECT * FROM titulo_academico WHERE LoginU = '$LoginU' AND NombreTitulo=  '$NombreTitulo'") or die(mysqli_error());
+        $sql = mysql_query("SELECT * FROM titulo_academico WHERE LoginU = '$LoginU' AND NombreTitulo=  '$NombreTitulo'") or die(mysql_error());
         return $sql;
     }
 
     public function ModificarTituloAcademico($LoginU, $NombreTitulo){
-        $sql = mysqli_query("UPDATE titulo_academico SET NombreTitulo='$this->NombreTitulo',FechaTitulo='$this->FechaTitulo',CentroTitulo='$this->CentroTitulo'
+        $sql = mysql_query("UPDATE titulo_academico SET NombreTitulo='$this->NombreTitulo',FechaTitulo='$this->FechaTitulo',CentroTitulo='$this->CentroTitulo'
 				WHERE LoginU = '$LoginU' AND NombreTitulo = '$NombreTitulo'")
-        or die(mysqli_error());
+        or die(mysql_error());
 
+    }
+    //borrar titulos academicos de un usuario
+    public function BorrarTitulosUsuario($Login){
+        mysql_query("DELETE FROM titulo_academico WHERE LoginU= '$Login'")or die(mysql_error());
     }
 
 }

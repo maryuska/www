@@ -266,7 +266,6 @@ CREATE TABLE IF NOT EXISTS `materia` (
 DROP TABLE IF EXISTS `technicalreport`;
 CREATE TABLE IF NOT EXISTS `technicalreport` (
   `CodigoTR` int(11) NOT NULL ,
-  `AutoresTR` varchar(200)COLLATE latin1_spanish_ci NOT NULL default '',
   `TituloTR` varchar(100)COLLATE latin1_spanish_ci NOT NULL default '',
   `DepartamentoTR` varchar(100)COLLATE latin1_spanish_ci NOT NULL default '',
   `UniversidadTR` varchar(40)COLLATE latin1_spanish_ci NOT NULL default '',
@@ -292,6 +291,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `TipoContrato` varchar(40)COLLATE latin1_spanish_ci NOT NULL default '',
   `Centro` varchar(100)COLLATE latin1_spanish_ci NOT NULL default '',
   `Departamento` varchar(100)COLLATE latin1_spanish_ci NOT NULL default '',
+  `TipoUsuario` enum('U','A') NOT NULL default 'U',
    PRIMARY KEY (`LoginU`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
@@ -299,7 +299,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 -- Dumping data for table `usuario`
 --
 
-INSERT INTO `usuario` VALUES ('admin', 'admin', 'Administrador', '','','','','','','','');
+INSERT INTO `usuario` VALUES ('admin', 'admin', 'Administrador', '','','','','','','','','A');
 
 
 --
@@ -359,26 +359,6 @@ CREATE TABLE IF NOT EXISTS `titulo_academico` (
 --       `usuario` -> `LoginU`
 -- --------------------------------------------------------
 
---
--- Table structure for table `docente_articulo`
---
-DROP TABLE IF EXISTS `docente_articulo`;
-CREATE TABLE IF NOT EXISTS `docente_articulo` (
-  `CodigoA` int(11) NOT NULL default '0',
-  `LoginU` varchar(15)COLLATE latin1_spanish_ci NOT NULL default '',
-   PRIMARY KEY (`CodigoA`,`LoginU`),
-  KEY `FK_DOCENTE_ARTICULO_USUARIO` (`LoginU`),
-   KEY `FK_DOCENTE_ARTICULO_ARTICULO` (`CodigoA`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
-
-
---
--- RELACIONES PARA LA TABLA `docente_articulo`:
---   `LoginU`
---       `usuario` -> `LoginU`
---     `CodigoA`
---       `articulo` -> `CodigoA`
-
 -- --------------------------------------------------------
 
 --
@@ -403,24 +383,6 @@ CREATE TABLE IF NOT EXISTS `docente_congreso` (
 
 -- --------------------------------------------------------
 
---
--- Table structure for table `docente_libro`
---
-DROP TABLE IF EXISTS `docente_libro`;
-CREATE TABLE IF NOT EXISTS `docente_libro` (
-  `CodigoL` int(11) NOT NULL default '0',
-  `LoginU` varchar(15)COLLATE latin1_spanish_ci NOT NULL default '',
-  PRIMARY KEY (`LoginU`,`CodigoL`),
-  KEY `FK_DOCENTE_LIBRO_USUARIO` (`LoginU`),
-  KEY `FK_DOCENTE_LIBRO_LIBRO` (`CodigoL`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
---
--- RELACIONES PARA LA TABLA `docente_libro`:
---   `LoginU`
---       `usuario` -> `LoginU`
---     `CodigoL`
---       `libro` -> `CodigoL`
---
 
 -- --------------------------------------------------------
 
@@ -465,45 +427,6 @@ CREATE TABLE IF NOT EXISTS `docente_proyecto` (
 --       `proyecto` -> `CodigoProy`
 --
 -- --------------------------------------------------------
-
---
--- Table structure for table `docente_technicalreport`
---
-DROP TABLE IF EXISTS `docente_technicalreport`;
-CREATE TABLE IF NOT EXISTS `docente_technicalreport` (
-  `CodigoTR` int(11) NOT NULL default '0',
-  `LoginU` varchar(15)COLLATE latin1_spanish_ci NOT NULL default '',
-   PRIMARY KEY (`LoginU`,`CodigoTR`),
-  KEY `FK_DOCENTE_TR_USUARIO` (`LoginU`),
-  KEY `FK_DOCENTE_TR_TR` (`CodigoTR`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
---
--- RELACIONES PARA LA TABLA `docente_technicalreport`:
---   `LoginU`
---       `usuario` -> `LoginU`
---     `CodigoTR`
---       `technicalreport` -> `CodigoTR`
---
--- --------------------------------------------------------
-
---
--- Table structure for table `docente_ponencia`
---
-DROP TABLE IF EXISTS `docente_ponencia`;
-CREATE TABLE IF NOT EXISTS `docente_ponencia` (
-  `CodigoP` int(11) NOT NULL default '0',
-  `LoginU` varchar(15)COLLATE latin1_spanish_ci NOT NULL default '',
-   PRIMARY KEY (`LoginU`,`CodigoP`),
-  KEY `FK_DOCENTE_PONENCIA_USUARIO` (`LoginU`),
-  KEY `FK_DOCENTE_PONENCIA_PONENCIA` (`CodigoP`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
---
--- RELACIONES PARA LA TABLA `docente_ponencia`:
---   `LoginU`
---       `usuario` -> `LoginU`
---     `CodigoP`
---       `ponencia` -> `CodigoP`
---
 
 -- --------------------------------------------------------
 
@@ -632,29 +555,13 @@ ALTER TABLE `titulo_academico`
  ADD CONSTRAINT `FK_TITULO_ACADEMICO_USUARIO` FOREIGN KEY (`LoginU`) REFERENCES `usuario` (`LoginU`);
 --
 --
--- Filtros para la tabla `docente_articulo`
---
 
- ALTER TABLE `docente_articulo`
- ADD CONSTRAINT `FK_DOCENTE_ARTICULO_ARTICULO` FOREIGN KEY (`CodigoA`) REFERENCES `articulo` (`CodigoA`),
-  ADD CONSTRAINT `FK_DOCENTE_ARTICULO_USUARIO` FOREIGN KEY (`LoginU`) REFERENCES `usuario` (`LoginU`);
-
-
---
 -- Filtros para la tabla `docente_congreso`
 --
 ALTER TABLE `docente_congreso`
   ADD CONSTRAINT `FK_DOCENTE_CONGRESO_USUARIO` FOREIGN KEY (`LoginU`) REFERENCES `usuario` (`LoginU`),
   ADD CONSTRAINT `FK_DOCENTE_CONGRESO_CONGRESO` FOREIGN KEY (`CodigoC`) REFERENCES `congreso` (`CodigoC`);
 
-
-
---
--- Filtros para la tabla `docente_libro`
---
-ALTER TABLE `docente_libro`
-  ADD CONSTRAINT `FK_DOCENTE_LIBRO_USUARIO` FOREIGN KEY (`LoginU`) REFERENCES `usuario` (`LoginU`),
-  ADD CONSTRAINT `FK_DOCENTE_LIBRO_LIBRO` FOREIGN KEY (`CodigoL`) REFERENCES `libro` (`CodigoL`);
 
 
 --
@@ -674,21 +581,7 @@ ALTER TABLE `docente_proyecto`
   ADD CONSTRAINT `FK_DOCENTE_PROYECTO_PROYECTO` FOREIGN KEY (`CodigoProy`) REFERENCES `proyecto` (`CodigoProy`);
 
 
---
--- Filtros para la tabla `docente_technicalreport`
---
-ALTER TABLE `docente_technicalreport`
-  ADD CONSTRAINT `FK_DOCENTE_TR_USUARIO` FOREIGN KEY (`LoginU`) REFERENCES `usuario` (`LoginU`),
-  ADD CONSTRAINT `FK_DOCENTE_TR_TR` FOREIGN KEY (`CodigoTR`) REFERENCES `technicalreport` (`CodigoTR`);
 
-
---
--- Filtros para la tabla `docente_ponencia`
---
-ALTER TABLE `docente_ponencia`
-  ADD CONSTRAINT `FK_DOCENTE_PONENCIA_USUARIO` FOREIGN KEY (`LoginU`) REFERENCES `usuario` (`LoginU`),
-  ADD CONSTRAINT `FK_DOCENTE_PONENCIA_PONENCIA` FOREIGN KEY (`CodigoP`) REFERENCES `ponencia` (`CodigoP`);
-  --
 -- Filtros para la tabla `autor_libro`
 --
 ALTER TABLE `autor_libro`

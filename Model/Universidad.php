@@ -26,17 +26,23 @@ class Universidad
         $insertarUniversidad = "INSERT INTO universidad(LoginU, NombreUniversidad, FechaInicio, FechaFin)
     VALUES ('$this->LoginU','$this->NombreUniversidad','$this->FechaInicio','$this->FechaFin')";
 
-        $resultado = mysqli_query($insertarUniversidad) or die(mysqli_error());
+        $resultado = mysql_query($insertarUniversidad) or die(mysql_error());
     }
     //lista todos las universidades del usuario
 
     public function ListarUniversidades($Login)
     {
-        $sql = mysqli_query("SELECT * FROM universidad WHERE LoginU = '$Login' ORDER BY FechaFin DESC ") or die(mysqli_error());
+        $sql = mysql_query("SELECT * FROM universidad WHERE LoginU = '$Login' ORDER BY FechaFin DESC ") or die(mysql_error());
         $universidades = array();
-        while($row = mysqli_fetch_array($sql)){array_push($universidades, $row);}
+        while($row = mysql_fetch_array($sql)){array_push($universidades, $row);}
         $_SESSION["ListarUniversidades"] = $universidades;
     }
+
+    //borrar universidades de un usuario
+    public function BorrarUniversidadesUsuario($Login){
+        mysql_query("DELETE FROM universidad WHERE LoginU= '$Login'")or die(mysql_error());
+    }
+
 
 
 }

@@ -95,6 +95,9 @@ require_once '../../View/Structure/Nav.php';
 
         </div>
     </div>
+    <p align="center">
+        <button type="button" class="btn btn-orange " onclick="window.location.href='../../Controller/UsuariosController.php?evento=borrarPerfil&LoginU=<?php echo $row['LoginU']; ?>'">Borrar Perfil</button>
+    </p>
 </div>
 
 
@@ -186,6 +189,7 @@ require_once '../../View/Structure/Nav.php';
 
         </div>
     </div>
+
 
 </div>
 

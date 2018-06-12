@@ -111,16 +111,16 @@ function Usuario(){
 
             <!-- dropdown user-->
 
-            <ul class=" nav navbar-nav navbar-right">
-                <li class="dropdown" >
-                    <a class="dropdown-toggle" href="#" data-toggle="dropdown">User<span class="caret"></span> </a>
-                    <ul class=" dropdown-menu dropdown-menu-left pull-right dropdown-login">
-                        <li ><a class="nounderline" href="#">Perfil</a></li>
-                        <li ><a class="nounderline" href="#">Logout</a></li>
+                        <ul class=" nav navbar-nav navbar-right">
+                            <li class="dropdown" >
+                                <a class="dropdown-toggle" href="#" data-toggle="dropdown">User<span class="caret"></span> </a>
+                                <ul class=" dropdown-menu dropdown-menu-left pull-right dropdown-login">
+                                    <li ><a href="consultarUsuario.php">Perfil</a></li>
+                                    <li ><a href="../../Controller/UsuariosController.php?evento=logOut" id='logOut'>Logout</a></li>
 
-                    </ul>
-                </li>
-            </ul>
+                                </ul>
+                            </li>
+                        </ul>
             <!--Logout-->
 
             <!-- Search -->

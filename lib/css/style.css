@@ -6,8 +6,15 @@
     font-size: 17px;
     width: 100px;
     vertical-align: top;
-
-
+   /* color: #777777;
+*/
+}
+.subopciones{
+    font-size: 13px;
+    width: 100px;
+    vertical-align: top;
+    /* color: #777777;
+*/
 }
 
 .separator{
@@ -29,15 +36,6 @@
 }
 
 
-/* Preguntas */
-.project-content{
-    padding-top: 10px;
-}
-.question-info{
-    margin-top: 10px;
-    margin-bottom: 10px;
-    font-size: 17px;
-}
 
 
 
