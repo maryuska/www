@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-require_once 'ConnectDB.php';
 
 class Proyecto{
 
@@ -23,30 +22,43 @@ class Proyecto{
         $this->AnhoFinProy = $AnhoFinProy;
         $this->Importe= $Importe;
     }
+//Función para conectarnos a la Base de datos
+    function ConectarBD()
+    {
+        $this->mysqli = new mysqli("localhost", "docente", "docente", "datos_curriculares");
+
+        if ($this->mysqli->connect_errno) {
+            echo "Fallo al conectar a MySQL: (" . $this->mysqli->connect_errno . ") " . $this->mysqli->connect_error;
+        }
+    }
 
 //alta de un nuevo proyecto
     public function AltaProyecto() {
+        $this->ConectarBD();
         $insertarProyecto  = "INSERT INTO proyecto(CodigoProy,TituloProy, EntidadFinanciadora, AcronimoProy, AnhoInicioProy,AnhoFinProy, TipoE)
                           VALUES ('$this->CodigoProy', '$this->TituloProy', '$this->EntidadFinanciadora', '$this->AcronimoProy','$this->AnhoInicioProy','$this->AnhoFinProy',
                            '$this->Importe'')";
-        $resultado = mysqli_query($insertarProyecto) or die(mysqli_error());
+        $resultado = $this->mysqli->query($insertarProyecto) or die(mysqli_error( $this->mysqli));
     }
 
 //consultar un proyecto
     public function ConsultarProyecto($CodigoProy){
-        $sql= mysqli_query("SELECT * FROM proyecto  WHERE CodigoE = '$CodigoProy'");
+        $this->ConectarBD();
+        $sql= $this->mysqli->query("SELECT * FROM proyecto  WHERE CodigoE = '$CodigoProy'");
         return $sql;
     }
 
 //modificar un proyecto
     public function ModificarProyecto($CodigoProy){
-        mysqli_query("UPDATE proyecto SET TituloProy='$this->TituloProy',EntidadFinanciadora='$this->EntidadFinanciadora',AcronimoProy='$this->AcronimoProy' ,
-                      AnhoInicioProy='$this->AnhoInicioProy',AnhoFinProy='$this->AnhoFinProy',Importe='$this->Importe' where CodigoProy = '$CodigoProy'") or die (mysqli_error());
+        $this->ConectarBD();
+        $this->mysqli->query("UPDATE proyecto SET TituloProy='$this->TituloProy',EntidadFinanciadora='$this->EntidadFinanciadora',AcronimoProy='$this->AcronimoProy' ,
+                      AnhoInicioProy='$this->AnhoInicioProy',AnhoFinProy='$this->AnhoFinProy',Importe='$this->Importe' where CodigoProy = '$CodigoProy'") or die (mysqli_error( $this->mysqli));
     }
 
 //lista de todos los proyectos de un usuario
     public function ListarProyectos($LoginU){
-        $sql= mysqli_query("SELECT * FROM estancia WHERE LoginU= '$LoginU' ORDER BY AnhoInicioProy DESC");
+        $this->ConectarBD();
+        $sql= $this->mysqli->query("SELECT * FROM estancia WHERE LoginU= '$LoginU' ORDER BY AnhoInicioProy DESC");
         return $sql;
     }
 

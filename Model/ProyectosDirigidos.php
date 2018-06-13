@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-require_once 'ConnectDB.php';
 
 class ProyectosDirigidos{
 
@@ -25,48 +24,64 @@ class ProyectosDirigidos{
     $this->CotutorPD= $CotutorPD;
     $this->TipoPD= $TipoPD;
   }
+    //Función para conectarnos a la Base de datos
+    function ConectarBD()
+    {
+        $this->mysqli = new mysqli("localhost", "docente", "docente", "datos_curriculares");
+
+        if ($this->mysqli->connect_errno) {
+            echo "Fallo al conectar a MySQL: (" . $this->mysqli->connect_errno . ") " . $this->mysqli->connect_error;
+        }
+    }
 
 //alta de un nuevo proyecto dirigido
   public function AltaProyectoDirigido() {
+      $this->ConectarBD();
     $insertarProyectoDirigido  = "INSERT INTO proyectoDirigido(CodigoPD,TituloPD, AlumnoPD, FechaLecturaPD, CalificacionPD,URLPD, CotutorPD,TipoPD)
                           VALUES ('$this->CodigoPD', '$this->TituloPD', '$this->AlumnoPD', '$this->FechaLecturaPD','$this->CalificacionPD','$this->URLPD', '$this->CotutorPD', '$this->TipoPD')";
-	$resultado = mysqli_query($insertarProyectoDirigido) or die(mysqli_error());
+	$resultado = $this->mysqli->query($insertarProyectoDirigido) or die(mysqli_error($this->mysqli));
 	}
 
 //consultar un proyecto dirigido
     public function ConsultarProyectoDirigido($CodigoP){
-        $sql= mysqli_query("SELECT * FROM proyectoDirigido  WHERE CodigoPD = '$CodigoP'");
+        $this->ConectarBD();
+        $sql= $this->mysqli->query("SELECT * FROM proyectoDirigido  WHERE CodigoPD = '$CodigoP'");
         return $sql;
     }
 
 //modificar un proyecto dirigido
     public function ModificarProyectoDirigido($CodigoPD){
-        mysqli_query("UPDATE proyectoDirigido SET TituloPD='$this->TituloPD',AlumnoPD='$this->AlumnoPD',FechaLecturaPD='$this->FechaLecturaPD' ,
-                      CalificacionPD='$this->CalificacionPD',URLPD='$this->URLPD',CotutorPD='$this->CotutorPD',TipoPD='$this->TipoPD' where CodigoPD = '$CodigoPD'") or die (mysqli_error());
+        $this->ConectarBD();
+        $this->mysqli->query("UPDATE proyectoDirigido SET TituloPD='$this->TituloPD',AlumnoPD='$this->AlumnoPD',FechaLecturaPD='$this->FechaLecturaPD' ,
+                      CalificacionPD='$this->CalificacionPD',URLPD='$this->URLPD',CotutorPD='$this->CotutorPD',TipoPD='$this->TipoPD' where CodigoPD = '$CodigoPD'") or die (mysqli_error($this->mysqli));
     }
 
 
 //lista de todos los proyectos dirigidos del usuario
     public function ListarProyectosDirigidos(){
-        $sql= mysqli_query("SELECT * FROM proyectoDirigido  ORDER BY FechaLecturaPD DESC");
+        $this->ConectarBD();
+        $sql= $this->mysqli->query("SELECT * FROM proyectoDirigido  ORDER BY FechaLecturaPD DESC");
         return $sql;
 
     }
 //lista de todos los proyectos fin de carrera del usuario
     public function ListarProyectosDirigidosPFC(){
-        $sql= mysqli_query("SELECT * FROM proyectoDirigido WHERE TipoPD = 'PFC'");
+        $this->ConectarBD();
+        $sql= $this->mysqli->query("SELECT * FROM proyectoDirigido WHERE TipoPD = 'PFC'");
 
         return $sql;
     }
 //lista de todos los trabajos fin de grado del usuario
     public function ListarProyectosDirigidosTFG(){
-        $sql= mysqli_query("SELECT * FROM proyectoDirigido WHERE TipoPD = 'TFG'  ");
+        $this->ConectarBD();
+        $sql= $this->mysqli->query("SELECT * FROM proyectoDirigido WHERE TipoPD = 'TFG'  ");
 
         return $sql;
     }
 //lista de todos los trabajos fin de grado del usuario
     public function ListarProyectosDirigidosTFM(){
-        $sql= mysqli_query("SELECT * FROM proyectoDirigido WHERE TipoPD = 'TFM'  ");
+        $this->ConectarBD();
+        $sql= $this->mysqli->query("SELECT * FROM proyectoDirigido WHERE TipoPD = 'TFM'  ");
 
         return $sql;
     }

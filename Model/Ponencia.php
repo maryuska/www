@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-require_once 'ConnectDB.php';
 
 class Ponencia{
 
@@ -23,31 +22,43 @@ class Ponencia{
         $this->LugarCP= $LugarCP;
         $this->PaisCP= $PaisCP;
     }
+//Función para conectarnos a la Base de datos
+    function ConectarBD()
+    {
+        $this->mysqli = new mysqli("localhost", "docente", "docente", "datos_curriculares");
 
+        if ($this->mysqli->connect_errno) {
+            echo "Fallo al conectar a MySQL: (" . $this->mysqli->connect_errno . ") " . $this->mysqli->connect_error;
+        }
+    }
 //alta de una nueva ponencia
     public function AltaPonencia() {
+        $this->ConectarBD();
         $insertarPonencia  = "INSERT INTO ponencia(CodigoP, TituloP, CongresoP, FechaIniCP,FechaFinCP, TipoE,LoginU)
                           VALUES ('$this->CodigoP', '$this->TituloP', '$this->CongresoP','$this->FechaIniCP','$this->FechaFinCP',
                            '$this->LugarCP', '$this->PaisCP')";
-        $resultado = mysqli_query($insertarPonencia) or die(mysqli_error());
+        $resultado =  $this->mysqli->query($insertarPonencia) or die(mysqli_error($this->mysqli));
     }
 
 //consultar una ponencia
     public function ConsultarPonencia($CodigoP){
-        $sql= mysqli_query("SELECT * FROM ponencia  WHERE CodigoP = '$CodigoP'");
+        $this->ConectarBD();
+        $sql=  $this->mysqli->query("SELECT * FROM ponencia  WHERE CodigoP = '$CodigoP'");
         return $sql;
     }
 
 //modificar una ponencia
     public function ModificarPonencia($CodigoP){
-        mysqli_query("UPDATE ponencia SET TituloP='$this->TituloP',CongresoP='$this->CongresoP' ,
-                      FechaIniCP='$this->FechaIniCP',FechaFinCP='$this->FechaFinCP',LugarCP='$this->LugarCP',PaisCP='$this->PaisCP' where CodigoP = '$CodigoP'") or die (mysqli_error());
+        $this->ConectarBD();
+        $this->mysqli->query("UPDATE ponencia SET TituloP='$this->TituloP',CongresoP='$this->CongresoP' ,
+                      FechaIniCP='$this->FechaIniCP',FechaFinCP='$this->FechaFinCP',LugarCP='$this->LugarCP',PaisCP='$this->PaisCP' where CodigoP = '$CodigoP'") or die (mysqli_error($this->mysqli));
     }
 
 
 //lista de todas las ponencias de un usuario
     public function ListarPonencias($LoginU){
-        $sql= mysqli_query("SELECT * FROM ponencia WHERE LoginU= '$LoginU' ORDER BY FechaFinCP DESC");
+        $this->ConectarBD();
+        $sql=  $this->mysqli->query("SELECT * FROM ponencia WHERE LoginU= '$LoginU' ORDER BY FechaFinCP DESC");
         return $sql;
 
     }

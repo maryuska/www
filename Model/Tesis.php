@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-require_once 'ConnectDB.php';
 
 class Tesis{
 
@@ -23,30 +22,43 @@ class Tesis{
         $this->URLTesis = $URLTesis;
         $this->LoginU= $LoginU;
     }
+//Función para conectarnos a la Base de datos
+    function ConectarBD()
+    {
+        $this->mysqli = new mysqli("localhost", "docente", "docente", "datos_curriculares");
+
+        if ($this->mysqli->connect_errno) {
+            echo "Fallo al conectar a MySQL: (" . $this->mysqli->connect_errno . ") " . $this->mysqli->connect_error;
+        }
+    }
 
 //alta de una nueva tesis
     public function AltaTesis() {
+        $this->ConectarBD();
         $insertarTesis  = "INSERT INTO tesis(CodigoTesis,AutorTesis, TutorTesis, FechaInscripcion, FechaLectura,URLTesis, LoginU)
                           VALUES ('$this->CodigoTesis', '$this->AutorTesis', '$this->TutorTesis', '$this->FechaInscripcion','$this->FechaLectura'
                           ,'$this->URLTesis', '$this->LoginU')";
-        $resultado = mysqli_query($insertarTesis) or die(mysqli_error());
+        $resultado =  $this->mysqli->query($insertarTesis) or die(mysqli_error($this->mysqli));
     }
 
 //consultar una tesis
     public function ConsultarTesis($CodigoTesis){
-        $sql= mysqli_query("SELECT * FROM tesis  WHERE CodigoE = '$CodigoTesis'");
+        $this->ConectarBD();
+        $sql=  $this->mysqli->query("SELECT * FROM tesis  WHERE CodigoE = '$CodigoTesis'");
         return $sql;
     }
 
 //modificar una tesis
     public function ModificarTesis($CodigoTesis){
-        mysqli_query("UPDATE tesis SET AutorTesis='$this->AutorTesis',TutorTesis='$this->TutorTesis',FechaInscripcion='$this->FechaInscripcion' ,
-                      FechaLectura='$this->FechaLectura',URLTesis='$this->URLTesis' where CodigoTesis = '$CodigoTesis'") or die (mysqli_error());
+        $this->ConectarBD();
+        $this->mysqli->query("UPDATE tesis SET AutorTesis='$this->AutorTesis',TutorTesis='$this->TutorTesis',FechaInscripcion='$this->FechaInscripcion' ,
+                      FechaLectura='$this->FechaLectura',URLTesis='$this->URLTesis' where CodigoTesis = '$CodigoTesis'") or die (mysqli_error($this->mysqli));
     }
 
 //lista de todas las tesis de un usuario
     public function ListarTesis($LoginU){
-        $sql= mysqli_query("SELECT * FROM tesis WHERE LoginU= '$LoginU' ORDER BY FechaInscripcion DESC");
+        $this->ConectarBD();
+        $sql=  $this->mysqli->query("SELECT * FROM tesis WHERE LoginU= '$LoginU' ORDER BY FechaInscripcion DESC");
         return $sql;
 
     }

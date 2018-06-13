@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-require_once 'ConnectDB.php';
 
 class Libro{
 
@@ -30,31 +29,44 @@ class Libro{
         $this->EditorL= $EditorL;
         $this->PaisEdicionL= $PaisEdicionL;
     }
+//Función para conectarnos a la Base de datos
+    function ConectarBD()
+    {
+        $this->mysqli = new mysqli("localhost", "docente", "docente", "datos_curriculares");
+
+        if ($this->mysqli->connect_errno) {
+            echo "Fallo al conectar a MySQL: (" . $this->mysqli->connect_errno . ") " . $this->mysqli->connect_error;
+        }
+    }
 
 //alta de un nuevo Libro
     public function AltaLibro() {
+        $this->ConectarBD();
         $insertarLibro  = "INSERT INTO libro(CodigoL, TituloL, ISBN, PagIniL,PagFinL, VolumenL,EditorialL,FechaPublicacionL, EditorL,PaisEdicionL)
                           VALUES ('$this->CodigoL', '$this->TituloL', '$this->ISBN','$this->PagIniL','$this->PagFinL',
                            '$this->VolumenL', '$this->EditorialL','$this->FechaPublicacionL', '$this->EditorL','$this->PaisEdicionL')";
-        $resultado = mysqli_query($insertarLibro) or die(mysqli_error());
+        $resultado = $this->mysqli->query($insertarLibro) or die(mysqli_error( $this->mysqli));
     }
 
 //consultar un Libro
     public function ConsultarLibro($CodigoE){
-        $sql= mysqli_query("SELECT * FROM libro  WHERE CodigoE = '$CodigoE'");
+        $this->ConectarBD();
+        $sql= $this->mysqli->query("SELECT * FROM libro  WHERE CodigoE = '$CodigoE'");
         return $sql;
     }
 
 //modificar un Libro
     public function ModificarLibro($CodigoE){
-        mysqli_query("UPDATE libro SET TituloL='$this->TituloL',ISBN='$this->ISBN' ,
+        $this->ConectarBD();
+        $this->mysqli->query("UPDATE libro SET TituloL='$this->TituloL',ISBN='$this->ISBN' ,
                       PagIniL='$this->PagIniL',PagFinL='$this->PagFinL',VolumenL='$this->VolumenL',
-                        EditorialL='$this->EditorialL',FechaPublicacionL='$this->FechaPublicacionL',EditorL='$this->EditorL',PaisEdicionL='$this->PaisEdicionL' where CodigoE = '$CodigoE'") or die (mysqli_error());
+                        EditorialL='$this->EditorialL',FechaPublicacionL='$this->FechaPublicacionL',EditorL='$this->EditorL',PaisEdicionL='$this->PaisEdicionL' where CodigoE = '$CodigoE'") or die (mysqli_error( $this->mysqli));
     }
 
 //lista de todos los Libro de un usuario
     public function ListarLibro($LoginU){
-        $sql= mysqli_query("SELECT * FROM libro WHERE LoginU= '$LoginU' ORDER BY FechaPublicacionL DESC");
+        $this->ConectarBD();
+        $sql= $this->mysqli->query("SELECT * FROM libro WHERE LoginU= '$LoginU' ORDER BY FechaPublicacionL DESC");
         return $sql;
 
     }

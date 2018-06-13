@@ -1,8 +1,6 @@
 <?php
 session_start();
 
-require_once 'ConnectDB.php';
-
 class Articulo{
 
     private $CodigoA;
@@ -28,31 +26,44 @@ class Articulo{
         $this->FechaPublicacionR= $FechaPublicacionR;
         $this->EstadoA= $EstadoA;
     }
+//Función para conectarnos a la Base de datos
+    function ConectarBD()
+    {
+        $this->mysqli = new mysqli("localhost", "docente", "docente", "datos_curriculares");
+
+        if ($this->mysqli->connect_errno) {
+            echo "Fallo al conectar a MySQL: (" . $this->mysqli->connect_errno . ") " . $this->mysqli->connect_error;
+        }
+    }
 
 //alta de un nuevo articulo
     public function AltaArticulo() {
+        $this->ConectarBD();
         $insertarArticulo  = "INSERT INTO articulo (CodigoA, TituloA, TituloR, ISSN,VolumenR, PagIniA,PagFinA,FechaPublicacionR,EstadoA)
                           VALUES ('$this->CodigoA',  '$this->TituloA', '$this->TituloR','$this->ISSN','$this->VolumenR',
                            '$this->PagIniA', '$this->PagFinA','$this->FechaPublicacionR', '$this->EstadoA')";
-        $resultado = mysqli_query($insertarArticulo) or die(mysqli_error());
+        $resultado = $this->mysqli->query($insertarArticulo) or die(mysqli_error($this->mysqli));
     }
 
 //consultar un articulo
     public function ConsultarArticulo($CodigoA){
-        $sql= mysqli_query("SELECT * FROM articulo  WHERE CodigoA = '$CodigoA'");
+        $this->ConectarBD();
+        $sql= $this->mysqli->query("SELECT * FROM articulo  WHERE CodigoA = '$CodigoA'");
         return $sql;
     }
 
 //modificar un articulo
     public function ModificarArticulo($CodigoA){
-        mysqli_query("UPDATE articulo SET TituloA='$this->TituloA',TituloR='$this->TituloR' ,
+        $this->ConectarBD();
+        $this->mysqli->query("UPDATE articulo SET TituloA='$this->TituloA',TituloR='$this->TituloR' ,
                       ISSN='$this->ISSN',VolumenR='$this->VolumenR',PagIniA='$this->PagIniA',PagFinA='$this->PagFinA',
-                      FechaPublicacionR='$this->FechaPublicacionR',EstadoA='$this->EstadoA' where CodigoA = '$CodigoA'") or die (mysqli_error());
+                      FechaPublicacionR='$this->FechaPublicacionR',EstadoA='$this->EstadoA' where CodigoA = '$CodigoA'") or die (mysqli_error($this->mysqli));
     }
 
 //lista de todas los articulos
     public function ListarArticulos($LoginU){
-        $sql= mysqli_query("SELECT * FROM articulo WHERE LoginU= '$LoginU'");
+        $this->ConectarBD();
+        $sql= $this->mysqli->query("SELECT * FROM articulo WHERE LoginU= '$LoginU'");
         return $sql;
 
     }

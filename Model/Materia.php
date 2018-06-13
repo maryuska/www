@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-require_once 'ConnectDB.php';
+
 
 class Materia{
 
@@ -28,58 +28,75 @@ class Materia{
     $this->CuatrimestreM= $CuatrimestreM;
     $this->LoginU= $LoginU;
   }
+//Función para conectarnos a la Base de datos
+    function ConectarBD()
+    {
+        $this->mysqli = new mysqli("localhost", "docente", "docente", "datos_curriculares");
 
+        if ($this->mysqli->connect_errno) {
+            echo "Fallo al conectar a MySQL: (" . $this->mysqli->connect_errno . ") " . $this->mysqli->connect_error;
+        }
+    }
 //alta de una nueva materia
   public function AltaMateria() {
+      $this->ConectarBD();
     $insertarMateria  = "INSERT INTO materia(CodigoM,TipoM, TipoParticipacionM, DenominacionM, TitulacionM,AnhoAcademicoM, CreditosM,CuatrimestreM,LoginU)
                           VALUES ('$this->CodigoM', '$this->TipoM', '$this->TipoParticipacionM', '$this->DenominacionM','$this->TitulacionM',
                           '$this->AnhoAcademicoM', '$this->CreditosM', '$this->CuatrimestreM', '$this->LoginU')";
-	$resultado = mysqli_query($insertarMateria) or die(mysqli_error());
+	$resultado = $this->mysqli->query($insertarMateria) or die(mysqli_error($this->mysqli));
 	}
 
 //consultar una materia
     public function ConsultarMateria($CodigoM){
-        $sql= mysqli_query("SELECT * FROM materia  WHERE CodigoM = '$CodigoM'");
+        $this->ConectarBD();
+        $sql= $this->mysqli->query("SELECT * FROM materia  WHERE CodigoM = '$CodigoM'");
         return $sql;
     }
 
 //modificar una materia
     public function ModificarMateria($CodigoM){
-        mysqli_query("UPDATE materia SET TipoM='$this->TipoM',TipoParticipacionM='$this->TipoParticipacionM',DenominacionM='$this->DenominacionM',
+        $this->ConectarBD();
+        $this->mysqli->query("UPDATE materia SET TipoM='$this->TipoM',TipoParticipacionM='$this->TipoParticipacionM',DenominacionM='$this->DenominacionM',
                       TitulacionM='$this->TitulacionM',TitulacionM='$this->TitulacionM',AnhoAcademicoM='$this->AnhoAcademicoM',CreditosM='$this->CreditosM',CuatrimestreM='$this->CuatrimestreM' 
-                      where CodigoM = '$CodigoM'") or die (mysqli_error());
+                      where CodigoM = '$CodigoM'") or die (mysqli_error($this->mysqli));
     }
 
 
 //lista de todas las materias del usuario
     public function ListarMaterias($LoginU){
-        $sql= mysqli_query("SELECT * FROM materia WHERE LoginU= '$LoginU' ORDER BY AnhoAcademicoM DESC");
+        $this->ConectarBD();
+        $sql= $this->mysqli->query("SELECT * FROM materia WHERE LoginU= '$LoginU' ORDER BY AnhoAcademicoM DESC");
         return $sql;
     }
 
 //lista de todas las materias de grado
     public function ListarMateriasGrado($LoginU){
-        $sql= mysqli_query("SELECT * FROM materia WHERE LoginU= '$LoginU' AND TipoM = 'Grado'");
+        $this->ConectarBD();
+        $sql= $this->mysqli->query("SELECT * FROM materia WHERE LoginU= '$LoginU' AND TipoM = 'Grado'");
         return $sql;
     }
 //lista de todas las materias detercer ciclo
     public function ListarMateriasTCiclo($LoginU){
-        $sql= mysqli_query("SELECT * FROM materia WHERE LoginU= '$LoginU' AND TipoM = 'Tercer ciclo'  ");
+        $this->ConectarBD();
+        $sql= $this->mysqli->query("SELECT * FROM materia WHERE LoginU= '$LoginU' AND TipoM = 'Tercer ciclo'  ");
         return $sql;
     }
 //lista de todas las materias de master
     public function ListarMateriasMaster($LoginU){
-        $sql= mysqli_query("SELECT * FROM materia WHERE LoginU= '$LoginU' AND TipoM = 'Master'  ");
+        $this->ConectarBD();
+        $sql= $this->mysqli->query("SELECT * FROM materia WHERE LoginU= '$LoginU' AND TipoM = 'Master'  ");
         return $sql;
     }
 //lista de todas las materias de post grado
     public function ListarMateriasPost($LoginU){
-        $sql= mysqli_query("SELECT * FROM materia WHERE LoginU= '$LoginU' AND TipoM = 'Post Grado'  ");
+        $this->ConectarBD();
+        $sql= $this->mysqli->query("SELECT * FROM materia WHERE LoginU= '$LoginU' AND TipoM = 'Post Grado'  ");
         return $sql;
     }
 //lista de todas las materias de cursos
     public function ListarMateriasCursos($LoginU){
-        $sql= mysqli_query("SELECT * FROM materia WHERE LoginU= '$LoginU' AND TipoM = 'Curso'  ");
+        $this->ConectarBD();
+        $sql= $this->mysqli->query("SELECT * FROM materia WHERE LoginU= '$LoginU' AND TipoM = 'Curso'  ");
         return $sql;
     }
 

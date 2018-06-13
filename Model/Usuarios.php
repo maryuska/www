@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'ConnectDB.php';
+//require_once 'ConnectDB.php';
 
 class Usuarios{
   private $LoginU;
@@ -31,24 +31,36 @@ class Usuarios{
     $this->Departamento= $Departamento;
     $this->TipoUsuario= $TipoUsuario;
   }
-//regustrar un usuario
+
+//Función para conectarnos a la Base de datos
+    function ConectarBD()
+    {
+        $this->mysqli = new mysqli("localhost", "docente", "docente", "datos_curriculares");
+
+        if ($this->mysqli->connect_errno) {
+            echo "Fallo al conectar a MySQL: (" . $this->mysqli->connect_errno . ") " . $this->mysqli->connect_error;
+        }
+    }
+
+//registrar un usuario
   public function altaUsuario() {
-
-
-    $insertarUsuario  = "INSERT INTO usuario(LoginU,PasswordU, NombreU, ApellidosU, Telefono, Mail, DNI, FechaNacimiento, TipoContrato,Centro, Departamento, TipoUsuario)
+//objetual mysqli
+      $this->ConectarBD();
+       $insertarUsuario  = "INSERT INTO usuario(LoginU,PasswordU, NombreU, ApellidosU, Telefono, Mail, DNI, FechaNacimiento, TipoContrato,Centro, Departamento, TipoUsuario)
                           VALUES ('$this->LoginU', '$this->PasswordU', '$this->NombreU', '$this->ApellidosU',  '$this->Telefono', '$this->Mail', '$this->DNI', '$this->FechaNacimiento','$this->TipoContrato', '$this->Centro', '$this->Departamento','$this->TipoUsuario')";
-		$resultado = mysql_query( $insertarUsuario) or die(mysql_error());
+		$resultado = $this->mysqli->query($insertarUsuario) or die("ERROR: no conecta");
+
   }
 
 //loguear un usuario
 
    public function login(){
 
-
+       $this->ConectarBD();
        $loginUsuario = "SELECT * FROM usuario WHERE LoginU = '$this->LoginU' AND PasswordU = '$this->PasswordU'";
-       $loginUsuario = mysql_query($loginUsuario) or die(mysql_error());
+       $loginUsuario = $this->mysqli->query($loginUsuario) or die(mysqli_error($this->mysqli));
        if (isset($loginUsuario)){
-           $row=mysql_fetch_assoc ($loginUsuario);
+           $row=mysqli_fetch_assoc ($loginUsuario);
            $_SESSION["loginU"] = $row['LoginU'] ;
            $_SESSION["Usuario"] = $row['NombreU'] ;
            $_SESSION["TipoUsuario"] = $row['TipoUsuario'] ;
@@ -56,29 +68,34 @@ class Usuarios{
     }
 //consultar un usuario
     public function consultarUsuario($Login){
-        $sql = mysql_query("SELECT * FROM usuario WHERE LoginU = '$Login'") or die(mysql_error());
+        $this->ConectarBD();
+        $sql = $this->mysqli->query("SELECT * FROM usuario WHERE LoginU = '$Login'") or die( "ERROR: no conecta");
         return $sql;
     }
 //consultar las universidades en las que trabajo un usuario
     public function ConsultarUniversidades($Login){
-        $sql = mysql_query("SELECT * FROM usuario u, universidad uni WHERE u.LoginU = '$Login' AND uni.LoginU= u.LoginU") or die(mysql_error());
+        $this->ConectarBD();
+        $sql = $this->mysqli->query("SELECT * FROM usuario u, universidad uni WHERE u.LoginU = '$Login' AND uni.LoginU= u.LoginU") or die(mysqli_error($this->mysqli));
         return $sql;
     }
 //consultar los titulos de un usuario
     public function ConsultarTitulos($Login){
-        $sql = mysql_query("SELECT t.NombreTitulo, t.FechaTitulo, t.CentroTitulo FROM usuario u, titulo_academico t WHERE u.LoginU = '$Login' AND t.LoginU= u.LoginU") or die(mysql_error());
+        $this->ConectarBD();
+        $sql = $this->mysqli->query("SELECT t.NombreTitulo, t.FechaTitulo, t.CentroTitulo FROM usuario u, titulo_academico t WHERE u.LoginU = '$Login' AND t.LoginU= u.LoginU") or die(mysqli_error($this->mysqli));
         return $sql;
     }
 
 //modificar el perfil de un usuario
     public function ModificarUsuario($LoginU){
-        mysql_query("UPDATE usuario SET   LoginU='$this->LoginU', ApellidosU='$this->ApellidosU',Telefono='$this->Telefono',Mail='$this->Mail' ,
-                      DNI='$this->DNI',FechaNacimiento='$this->FechaNacimiento',TipoContrato='$this->TipoContrato', Centro='$this->Centro', Departamento='$this->Departamento'  where LoginU = '$LoginU'") or die (mysql_error());
+        $this->ConectarBD();
+        $this->mysqli->query("UPDATE usuario SET   LoginU='$this->LoginU', ApellidosU='$this->ApellidosU',Telefono='$this->Telefono',Mail='$this->Mail' ,
+                      DNI='$this->DNI',FechaNacimiento='$this->FechaNacimiento',TipoContrato='$this->TipoContrato', Centro='$this->Centro', Departamento='$this->Departamento'  where LoginU = '$LoginU'") or die (mysqli_error($this->mysqli));
     }
 
  //listar usuarios
     public function ListarUsuarios(){
-      $sql = mysql_query("SELECT * FROM usuario WHERE TipoUsuario='U'") or die (msql_error());
+        $this->ConectarBD();
+      $sql = $this->mysqli->query("SELECT * FROM usuario WHERE TipoUsuario='U'") or die (mysqli_error($this->mysqli));
       return $sql;
     }
 
@@ -87,7 +104,8 @@ class Usuarios{
 
 //eliminis usuario
 public function BorrarUsuario($Login){
-      mysql_query("DELETE FROM usuario WHERE LoginU= '$Login'")or die(mysql_error());
+    $this->ConectarBD();
+    $this->mysqli->query("DELETE FROM usuario WHERE LoginU= '$Login'")or die(mysqli_error($this->mysqli));
 }
 
 

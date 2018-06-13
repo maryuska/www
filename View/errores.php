@@ -16,7 +16,7 @@ if(isset($_GET["PassErr"]) ){
 <?php } ?>
 
 <center>
-<button type="button" name="button" class="btn-success" onclick="location: location.href='home.php'"> Ir a la pagina principal </button>
+<button type="button" name="button" class="btn-success" onclick="location: location.href='index.php'"> Ir a la pagina principal </button>
 </center>
 
 <?php

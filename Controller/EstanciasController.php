@@ -21,7 +21,7 @@ switch ($evento) {
         $CodigoE = $_REQUEST['CodigoE'];
         $consultaE = $estancia->ConsultarEstancia($CodigoE);
         $consulta = array();
-        while($row1 = mysql_fetch_array($consultaE)){
+        while($row1 = mysqli_fetch_array($consultaE)){
             array_push($consulta, $row1);
         }
         $_SESSION["consultarEstancia"] = $consulta;
@@ -56,7 +56,7 @@ switch ($evento) {
         //todas las estancias
         $listaEstancias = $lista->ListarEstancias($LoginU);
         $listaResultado = array();
-        while($row = mysql_fetch_array($listaEstancias)){
+        while($row = mysqli_fetch_array($listaEstancias)){
             array_push($listaResultado, $row);
         }
 
@@ -65,19 +65,19 @@ switch ($evento) {
         //estancias de investigacion
         $listaEstanciasInves = $lista->ListarEstanciasInvertigacion($LoginU);
         $listaResultadoEInves = array();
-        while($row1 = mysql_fetch_array($listaEstanciasInves)){
+        while($row1 = mysqli_fetch_array($listaEstanciasInves)){
             array_push($listaResultadoEInves, $row1);
         }
         //estancias de doctorado
         $listaEstanciasD = $lista->ListarEstanciasDoctorado($LoginU);
         $listaResultadoED = array();
-        while($row2 = mysql_fetch_array($listaEstanciasD)){
+        while($row2 = mysqli_fetch_array($listaEstanciasD)){
             array_push($listaResultadoED, $row2);
         }
         //estancias de invitado
         $listaEstanciasInvi = $lista->ListarEstanciasInvitado($LoginU);
         $listaResultadoEInvi = array();
-        while($row3 = mysql_fetch_array($listaEstanciasInvi)){
+        while($row3 = mysqli_fetch_array($listaEstanciasInvi)){
             array_push($listaResultadoEInvi, $row3);
         }
 

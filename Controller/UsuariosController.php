@@ -10,15 +10,15 @@ switch ($evento) {
     // dar de alta un usuario
     case 'altaUsuario':
         if ($_POST["PasswordU"]!==$_POST["PasswordU2"]) {
-            header("location: ../../View/errores.php?PassErr");
+            header("location: ../../View/errores.php?PassErr=PasswordU");
         }
         //recoge los datos del usuario
         $usuario = new Usuarios ($_POST["Login"], $_POST["PasswordU"], $_POST["NombreU"],$_POST["ApellidosU"],$_POST["Telefono"], $_POST["Mail"], $_POST["DNI"],$_POST["FechaNacimiento"], $_POST["TipoContrato"],$_POST["Centro"],$_POST["Departamento"],"U");
 
        $login=$_REQUEST["Login"];
-        $usuario -> consultarUsuario($login);
+      //  $usuario -> consultarUsuario($login);
         //comprobamos si existe el usuario
-    if($usuario!=null){
+  //  if($usuario!=null){
 
         //recoge los datos universitarios  y de titulodel formulario
         $universidad= new Universidad($_POST["Login"],$_POST["NombreUniversidad"],$_POST["FechaInicio"],$_POST["FechaFin"]);
@@ -26,14 +26,14 @@ switch ($evento) {
 
         //añade datos universitarios y titulo al usuario
         $usuario->altaUsuario();
-        $universidad->AltaUniversidad();
-        $tituloAcademico->AltaTituloAcademico();
+      //  $universidad->AltaUniversidad();
+      //  $tituloAcademico->AltaTituloAcademico();
         header("location: ../../Controller/UsuariosController.php?evento=listarUsuariosAdmin");
-    }else{
+   // }else{
 
-        anadirMensaje("|ERROR| El usuario ya esta dado de alta","Intente otro login");
-        header('location:../../View/Usuario/altaUsuarioAdmin.php');
-    }
+     //   anadirMensaje("|ERROR| El usuario ya esta dado de alta","Intente otro login");
+      //  header('location:../../View/Usuario/altaUsuarioAdmin.php');
+   // }
         break;
 
 // registrar un usuario
@@ -108,7 +108,7 @@ switch ($evento) {
         $consultarUsuario = $Usuario->consultarUsuario($Login);
 
         $consulta = array();
-        while($row = mysql_fetch_array($consultarUsuario)){
+        while($row = mysqli_fetch_array($consultarUsuario)){
             array_push($consulta, $row);
         }
 
@@ -116,7 +116,7 @@ switch ($evento) {
         $consultarTitulo = $Usuario->ConsultarTitulos($Login);
 
         $consultaUT = array();
-        while($row3 = mysql_fetch_array($consultarTitulo)){
+        while($row3 = mysqli_fetch_array($consultarTitulo)){
             array_push($consultaUT, $row3);
         }
         //lista datos universidades del usuario
@@ -124,7 +124,7 @@ switch ($evento) {
         $consultarUniversidad = $Usuario->ConsultarUniversidades($Login);
 
         $consultaUA = array();
-        while($row2 = mysql_fetch_array($consultarUniversidad)){
+        while($row2 = mysqli_fetch_array($consultarUniversidad)){
             array_push($consultaUA, $row2);
         }
 
@@ -143,7 +143,7 @@ switch ($evento) {
         $consultarUsuario = $Usuario->consultarUsuario($Login);
 
         $consulta = array();
-        while($row = mysql_fetch_array($consultarUsuario)){
+        while($row = mysqli_fetch_array($consultarUsuario)){
             array_push($consulta, $row);
         }
 
@@ -151,7 +151,7 @@ switch ($evento) {
         $consultarTitulo = $Usuario->ConsultarTitulos($Login);
 
         $consultaUT = array();
-        while($row3 = mysql_fetch_array($consultarTitulo)){
+        while($row3 = mysqli_fetch_array($consultarTitulo)){
             array_push($consultaUT, $row3);
         }
         //lista datos universidades del usuario
@@ -159,7 +159,7 @@ switch ($evento) {
         $consultarUniversidad = $Usuario->ConsultarUniversidades($Login);
 
         $consultaUA = array();
-        while($row2 = mysql_fetch_array($consultarUniversidad)){
+        while($row2 = mysqli_fetch_array($consultarUniversidad)){
             array_push($consultaUA, $row2);
         }
 
@@ -179,7 +179,7 @@ switch ($evento) {
 
 
         $consultaTitulo = array();
-        while($row2 = mysql_fetch_array($consulta)){
+        while($row2 = mysqli_fetch_array($consulta)){
             array_push($consultaTitulo, $row2);
         }
 
@@ -231,7 +231,7 @@ switch ($evento) {
         //todos los usuarios
         $listaUsuarios = $lista->ListarUsuarios();
         $listaResultado = array();
-        while($row = mysql_fetch_array($listaUsuarios)){
+        while($row = mysqli_fetch_array($listaUsuarios)){
             array_push($listaResultado, $row);
         }
         $_SESSION["listarUsuarios"] = $listaResultado;
@@ -243,7 +243,7 @@ switch ($evento) {
         //todos los usuarios
         $listaUsuarios = $lista->ListarUsuarios();
         $listaResultado = array();
-        while($row = mysql_fetch_array($listaUsuarios)){
+        while($row = mysqli_fetch_array($listaUsuarios)){
             array_push($listaResultado, $row);
         }
         $_SESSION["listarUsuarios"] = $listaResultado;
@@ -260,7 +260,7 @@ switch ($evento) {
         $tituloAcademico->BorrarTitulosUsuario($Login);
         $universidad-> BorrarUniversidadesUsuario($Login);
         $Usuario->BorrarUsuario($Login);
-        header("location: ../../Controller/UsuariosController.php?evento=listarUsuarios");
+        header("location: ../../Controller/UsuariosController.php?evento=listarUsuariosAdmin");
 
         break;
 //borrar perfil
