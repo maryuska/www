@@ -9,6 +9,25 @@ $usuario = $_SESSION["listarUsuarios"];
 <!-- derecha  -->
 <div class="col-md-10">
     <p class="lead separator separator-title">Lista Usuarios</p>
+    <!-- boton buscar-->
+
+    <div class="center-block col-lg-6 col-md-6 col-xs-6 " >
+        <form class="navbar-form text-center " action="../../Controller/UsuariosController.php" method="POST" role="search">
+            <div class=" col-lg-3 col-md-3 col-xs-3 " >
+
+                <input name="textoBusqueda" type="text" class="form-control" placeholder="buscar">
+            </div>
+            <div class="col-lg-6 col-md-6 col-xs-6 " >
+                <button type="submit" name="evento" value="buscarUsuario" class="btn btn-orange center-block">Buscar</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="form-group col-lg-6">
+        <br>
+        <br>
+        <br>
+    </div>
 
     <div class="tab-content">
         <!--listado de proyectos dirigidos  -->
@@ -52,11 +71,7 @@ $usuario = $_SESSION["listarUsuarios"];
                     </div>
                 </div>
             <?php } } ?>
-        <div class="form-group col-lg-10">
-            <p align="center">
-                <button type="button" class="btn btn-orange " onclick="window.location.href='altaUsuarioAdmin.php'">Insertar Nuevo Usuario</button>
-            </p>
-        </div>
+
     </div>
 </div>
 <?php

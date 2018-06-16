@@ -1,7 +1,7 @@
 <?php
 require_once '../../View/Structure/Header.php';
 require_once '../../View/Structure/Nav.php';
-
+$LoginU = $_SESSION["loginU"];
 ?>
         <!-- derecha  -->
         <div class="col-md-10">
@@ -21,7 +21,29 @@ require_once '../../View/Structure/Nav.php';
             </div>
 
             <!--Titulo de lo que se esta haciendo -->
-            <p class="lead separator separator-title">Lista Proyectos Dirigidos</p>
+            <p class="lead separator separator-title">Lista Proyectos Dirigidos</p><br>
+            <!-- boton buscar-->
+
+            <div class="center-block col-lg-6 col-md-6 col-xs-6 " >
+                <form class="navbar-form text-center " action="../../Controller/ProyectosDirigidosController.php" method="POST" role="search">
+                    <div class=" col-lg-3 col-md-3 col-xs-3 " >
+
+                        <input name="textoBusqueda" type="text" class="form-control" placeholder="buscar">
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-xs-6 " >
+                        <button type="submit" name="evento" value="buscarProyectoDirigido" class="btn btn-orange center-block">Buscar</button>
+                    </div>
+                </form>
+            </div>
+            <!-- boton insertar-->
+            <div class="form-group col-lg-6">
+                <p align="center">
+                    <button type="button" class="btn btn-orange " onclick="window.location.href='../ProyectoDirigido/insertarProyectoDirigido.php'">Insertar Proyecto Dirigido</button>
+                </p>
+
+            </div>
+
+
 
             <div class="tab-content">
 <!--listado de proyectos dirigidos  -->
@@ -31,7 +53,7 @@ require_once '../../View/Structure/Nav.php';
                     if (isset($lista)) {
                     foreach ($lista as $row){ ?>
 
-                    <div class="form-group col-lg-6">
+                    <div class="form-group col-lg-4">
                         <div class="panel panel-default">
                             <!-- titulo proyecto -->
                             <div class="tdTitulo">
@@ -62,18 +84,15 @@ require_once '../../View/Structure/Nav.php';
                                     </td>
 
                                 </tr>
-                                <p align="center">
-                                    <button type="button" class="btn btn-orange " onclick="window.location.href='../../Controller/ProyectosDirigidosController.php?evento=consultarProyectoDirigido&CodigoPD=<?php echo $row['CodigoPD']; ?>'">Modificar</button>
+                                <p align="center ">
+                                       <button type="button" class="btn btn-orange " onclick="window.location.href='../../Controller/ProyectosDirigidosController.php?evento=consultarProyectoDirigido&CodigoPD=<?php echo $row['CodigoPD']; ?>'">Modificar</button>
+                                    <button type="button" class="btn btn-orange " onclick="window.location.href='../../Controller/ProyectosDirigidosController.php?evento=confirmarBorrado&CodigoPD=<?php echo $row['CodigoPD']; ?>'">Borrar</button>
                                 </p>
                             </div>
                         </div>
                     </div>
                     <?php } } ?>
-                    <div class="form-group col-lg-10">
-                    <p align="center">
-                        <button type="button" class="btn btn-orange " onclick="window.location.href='insertarProyectoDirigido.php'">Insertar Nuevo Proyecto</button>
-                    </p>
-                    </div>
+
                 </div>
 
 
@@ -83,7 +102,7 @@ require_once '../../View/Structure/Nav.php';
                     $lista = $_SESSION["listarProyectosDirigidosTFC"];
                     if (isset($lista)) {
                     foreach ($lista as $row){ ?>
-                    <div class="form-group col-lg-6">
+                    <div class="form-group col-lg-4">
                         <div class="panel panel-default">
                             <!-- titulo proyecto -->
                             <div class="tdTitulo">
@@ -114,18 +133,15 @@ require_once '../../View/Structure/Nav.php';
                                     </td>
 
                                 </tr>
-                                <p align="center">
+                                <p align="center ">
                                     <button type="button" class="btn btn-orange " onclick="window.location.href='../../Controller/ProyectosDirigidosController.php?evento=consultarProyectoDirigido&CodigoPD=<?php echo $row['CodigoPD']; ?>'">Modificar</button>
+                                    <button type="button" class="btn btn-orange " onclick="window.location.href='../../Controller/ProyectosDirigidosController.php?evento=confirmarBorrado&CodigoPD=<?php echo $row['CodigoPD']; ?>'">Borrar</button>
                                 </p>
                             </div>
                         </div>
                     </div>
                     <?php } } ?>
-                    <div class="form-group col-lg-10">
-                        <p align="center">
-                            <button type="button" class="btn btn-orange " onclick="window.location.href='insertarProyectoDirigido.php'">Insertar Nuevo Proyecto</button>
-                        </p>
-                    </div>
+
                 </div>
 <!--listado de TFG -->
                 <div class="tab-pane fade " id="tab3">
@@ -133,7 +149,7 @@ require_once '../../View/Structure/Nav.php';
                     $lista = $_SESSION["listarProyectosDirigidosTFG"];
                     if (isset($lista)) {
                         foreach ($lista as $row){ ?>
-                            <div class="form-group col-lg-6">
+                            <div class="form-group col-lg-4">
                                 <div class="panel panel-default">
                                     <!-- titulo proyecto -->
                                     <div class="tdTitulo">
@@ -165,18 +181,15 @@ require_once '../../View/Structure/Nav.php';
                                             </td>
 
                                         </tr>
-                                        <p align="center">
+                                        <p align="center ">
                                             <button type="button" class="btn btn-orange " onclick="window.location.href='../../Controller/ProyectosDirigidosController.php?evento=consultarProyectoDirigido&CodigoPD=<?php echo $row['CodigoPD']; ?>'">Modificar</button>
+                                            <button type="button" class="btn btn-orange " onclick="window.location.href='../../Controller/ProyectosDirigidosController.php?evento=confirmarBorrado&CodigoPD=<?php echo $row['CodigoPD']; ?>'">Borrar</button>
                                         </p>
                                     </div>
                                 </div>
                             </div>
                         <?php } } ?>
-                    <div class="form-group col-lg-10">
-                        <p align="center">
-                            <button type="button" class="btn btn-orange " onclick="window.location.href='insertarProyectoDirigido.php'">Insertar Nuevo Proyecto</button>
-                        </p>
-                    </div>
+
                 </div>
 <!-- listado de TFM -->
                 <div class="tab-pane fade" id="tab4">
@@ -184,7 +197,7 @@ require_once '../../View/Structure/Nav.php';
                     $lista = $_SESSION["listarProyectosDirigidosTFM"];
                     if (isset($lista)) {
                         foreach ($lista as $row){ ?>
-                            <div class="form-group col-lg-6">
+                            <div class="form-group col-lg-4">
                                 <div class="panel panel-default">
                                     <!-- titulo proyecto -->
                                     <div class="tdTitulo">
@@ -215,18 +228,15 @@ require_once '../../View/Structure/Nav.php';
                                             </td>
 
                                         </tr>
-                                        <p align="center">
+                                        <p align="center ">
                                             <button type="button" class="btn btn-orange " onclick="window.location.href='../../Controller/ProyectosDirigidosController.php?evento=consultarProyectoDirigido&CodigoPD=<?php echo $row['CodigoPD']; ?>'">Modificar</button>
+                                            <button type="button" class="btn btn-orange " onclick="window.location.href='../../Controller/ProyectosDirigidosController.php?evento=confirmarBorrado&CodigoPD=<?php echo $row['CodigoPD']; ?>'">Borrar</button>
                                         </p>
                                     </div>
                                 </div>
                             </div>
                          <?php } } ?>
-                    <div class="form-group col-lg-10">
-                        <p align="center">
-                            <button type="button" class="btn btn-orange " onclick="window.location.href='insertarProyectoDirigido.php'">Insertar Nuevo Proyecto</button>
-                        </p>
-                    </div>
+
                     </div>
 
 

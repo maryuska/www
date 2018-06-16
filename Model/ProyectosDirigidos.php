@@ -42,10 +42,22 @@ class ProyectosDirigidos{
 	$resultado = $this->mysqli->query($insertarProyectoDirigido) or die(mysqli_error($this->mysqli));
 	}
 
+//alta de un usuario dirige un proyecto dirigido
+  public function Dirige($Login,$CodigoPD){
+      $this->ConectarBD();
+        $dirigir = "INSERT INTO docente_proyectodirigido (CodigoPD,LoginU)
+			VALUES ('$CodigoPD','$Login')";
+        $resultado = $this->mysqli->query($dirigir) or die(mysqli_error($this->mysqli));
+
+    }
+
+
+
+
 //consultar un proyecto dirigido
     public function ConsultarProyectoDirigido($CodigoP){
         $this->ConectarBD();
-        $sql= $this->mysqli->query("SELECT * FROM proyectoDirigido  WHERE CodigoPD = '$CodigoP'");
+        $sql= $this->mysqli->query("SELECT * FROM proyectoDirigido p, docente_proyectodirigido dp WHERE p.CodigoPD=dp.CodigoPD AND p.CodigoPD = '$CodigoP'");
         return $sql;
     }
 
@@ -57,31 +69,32 @@ class ProyectosDirigidos{
     }
 
 
+
 //lista de todos los proyectos dirigidos del usuario
-    public function ListarProyectosDirigidos(){
+    public function ListarProyectosDirigidos($Login){
         $this->ConectarBD();
-        $sql= $this->mysqli->query("SELECT * FROM proyectoDirigido  ORDER BY FechaLecturaPD DESC");
+        $sql= $this->mysqli->query("SELECT * FROM proyectoDirigido p, docente_proyectoDirigido dp WHERE p.CodigoPD = dp.CodigoPD  AND dp.LoginU = '$Login'  ORDER BY FechaLecturaPD DESC");
         return $sql;
 
     }
 //lista de todos los proyectos fin de carrera del usuario
-    public function ListarProyectosDirigidosPFC(){
+    public function ListarProyectosDirigidosPFC($Login){
         $this->ConectarBD();
-        $sql= $this->mysqli->query("SELECT * FROM proyectoDirigido WHERE TipoPD = 'PFC'");
+        $sql= $this->mysqli->query("SELECT * FROM proyectoDirigido p, docente_proyectoDirigido dp WHERE p.CodigoPD = dp.CodigoPD  AND dp.LoginU = '$Login' AND p.TipoPD = 'PFC'");
 
         return $sql;
     }
 //lista de todos los trabajos fin de grado del usuario
-    public function ListarProyectosDirigidosTFG(){
+    public function ListarProyectosDirigidosTFG($Login){
         $this->ConectarBD();
-        $sql= $this->mysqli->query("SELECT * FROM proyectoDirigido WHERE TipoPD = 'TFG'  ");
+        $sql= $this->mysqli->query("SELECT * FROM proyectoDirigido p, docente_proyectoDirigido dp WHERE p.CodigoPD = dp.CodigoPD  AND dp.LoginU = '$Login' AND p.TipoPD = 'TFG'  ");
 
         return $sql;
     }
 //lista de todos los trabajos fin de grado del usuario
-    public function ListarProyectosDirigidosTFM(){
+    public function ListarProyectosDirigidosTFM($Login){
         $this->ConectarBD();
-        $sql= $this->mysqli->query("SELECT * FROM proyectoDirigido WHERE TipoPD = 'TFM'  ");
+        $sql= $this->mysqli->query("SELECT * FROM proyectoDirigido p, docente_proyectoDirigido dp WHERE p.CodigoPD = dp.CodigoPD  AND dp.LoginU = '$Login'  AND p.TipoPD = 'TFM'  ");
 
         return $sql;
     }
@@ -96,41 +109,61 @@ class ProyectosDirigidos{
 
 
 
+//lista de todos los proyectos dirigidos
+    public function ListarProyectosDirigidosAdmin(){
+        $this->ConectarBD();
+        $sql= $this->mysqli->query("SELECT * FROM proyectoDirigido p, docente_proyectoDirigido dp WHERE p.CodigoPd=dp.CodigoPD ORDER BY FechaLecturaPD DESC");
+        return $sql;
 
+    }
+//lista de todos los proyectos fin de carrera
+    public function ListarProyectosDirigidosPFCAdmin(){
+        $this->ConectarBD();
+        $sql= $this->mysqli->query("SELECT * FROM proyectoDirigido p, docente_proyectoDirigido dp WHERE p.CodigoPd=dp.CodigoPD AND TipoPD = 'PFC'");
 
+        return $sql;
+    }
+//lista de todos los trabajos fin de grado
+    public function ListarProyectosDirigidosTFGAdmin(){
+        $this->ConectarBD();
+        $sql= $this->mysqli->query("SELECT * FROM proyectoDirigido p, docente_proyectoDirigido dp WHERE p.CodigoPd=dp.CodigoPD AND TipoPD = 'TFG'  ");
 
+        return $sql;
+    }
+//lista de todos los trabajos fin de grado
+    public function ListarProyectosDirigidosTFMAdmin(){
+        $this->ConectarBD();
+        $sql= $this->mysqli->query("SELECT * FROM proyectoDirigido p, docente_proyectoDirigido dp WHERE p.CodigoPd=dp.CodigoPD AND TipoPD = 'TFM'  ");
 
+        return $sql;
+    }
 
+//eliminar un proyecto dirigido
+    public function BorrarProyectoDirigido($CodigoPD){
+        $this->ConectarBD();
+        $this->mysqli->query("DELETE FROM proyectoDirigido WHERE CodigoPD = '$CodigoPD'")or die(mysqli_error($this->mysqli));
+    }
 
+//eliminar
+    public function BorrarDirige($LoginU,$CodigoPD){
+        $this->ConectarBD();
+        $this->mysqli->query("DELETE FROM docente_proyectodirigido WHERE CodigoPD = '$CodigoPD' AND LoginU='$LoginU'")or die(mysqli_error($this->mysqli));
+    }
 
-
-
-
-
-
-
-
-
-  // sin modificar
-//Consulta los datos de un usuario
-// Devuelve los datos de un usuario
-
-
-  public function modificarUsuario(){
-    $_SESSION["loginU"]=$this->LoginU;
-    $sql= mysql_query("UPDATE usuario SET PasswordU='$this->PasswordU',NombreU='$this->NombreU' ,ApellidosU='$this->ApellidosU',UniversidadU='$this->UniversidadU', WHERE LoginU='$this->LoginU'") or die (mysql_error());
-
-
-  }
-
-  public function listarDocente(){
-    $sql= mysql_query("SELECT * FROM usuario WHERE TipoU='$this->TipoU'");
-
-    $sql2 = array();
-    while($row = mysql_fetch_array($sql)){array_push($sql2, $row);}
-    $_SESSION["listarDocente"] = $sql2;
-
-  }
+//buscar usuario
+    public function BuscarProyectoDirigido($buscar){
+        $this->ConectarBD();
+        $sql = $this->mysqli->query("SELECT * FROM proyectoDirigido WHERE CodigoPD LIKE '%$buscar' || CodigoPD LIKE '%$buscar%' || CodigoPD LIKE '$buscar%' ||
+                                                            TituloPD LIKE '%$buscar'|| TituloPD LIKE '%$buscar%' || TituloPD LIKE '$buscar%' ||
+                                                            AlumnoPD LIKE '%$buscar'|| AlumnoPD LIKE '%$buscar%' || AlumnoPD LIKE '$buscar%' ||
+                                                            FechaLecturaPD LIKE '%$buscar'|| FechaLecturaPD LIKE '%$buscar%' || FechaLecturaPD LIKE '$buscar%' ||
+                                                            CalificacionPD LIKE '%$buscar'|| CalificacionPD LIKE '%$buscar%' || CalificacionPD LIKE '$buscar%' ||
+                                                            URLPD LIKE '%$buscar'|| URLPD LIKE '%$buscar%' || URLPD LIKE '$buscar%' ||
+                                                            CotutorPD LIKE '%$buscar'|| CotutorPD LIKE '%$buscar%' || CotutorPD LIKE '$buscar%' ||
+                                                            TipoPD LIKE '%$buscar'|| TipoPD LIKE '%$buscar%' || TipoPD LIKE '$buscar%' 
+                                                            ") or die(mysqli_error($this->mysqli));
+        return $sql;
+    }
 
 
 }

@@ -172,7 +172,7 @@ function Usuario(){
 
                 <ul class=" list-col  ">
                     <li class="dropdown" >
-                        <a class="options" type='submit' name = 'accion' onclick="location.href = '../../Controller/ProyectosDirigidosController.php?evento=listarProyectosDirigidos'"> Proyectos dirigidos</a>
+                        <a class="options" type='submit' name = 'accion' onclick="location.href = '../../Controller/ProyectosDirigidosController.php?evento=listarProyectosDirigidos&LoginU=<?php echo $loginU; ?>'"> Proyectos dirigidos</a>
 
                     </li>
                 </ul>

@@ -1,7 +1,7 @@
 <?php
 require_once '../../View/Structure/Header.php';
 require_once '../../View/Structure/Nav.php';
-
+$LoginU = $_SESSION["loginU"];
 ?>
 
 
@@ -17,6 +17,7 @@ require_once '../../View/Structure/Nav.php';
                     <label class="control-label" for="CodigoPD">Código Proyecto Dirigido: </label>
                     <input id="CodigoPD" name="CodigoPD"  class="form-control "value="<?php echo $row['CodigoPD']; ?>" disabled >
                     <input id="CodigoPD" name="CodigoPD" type="hidden" class="form-control "value="<?php echo $row['CodigoPD']; ?>" >
+                    <input id="LoginU" name="LoginU" class="hidden" value="<?php echo $LoginU; ?>" >
                 </div>
 
                 <div class="form-group">

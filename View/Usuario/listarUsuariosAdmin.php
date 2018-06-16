@@ -3,7 +3,7 @@
 require_once '../../View/Structure/Header.php';
 require_once '../../View/Structure/Nav.php';
 
-$usuario = $_SESSION["listarUsuarios"];
+
 
 ?>
 <!-- derecha  -->

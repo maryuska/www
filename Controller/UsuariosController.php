@@ -251,7 +251,7 @@ switch ($evento) {
         break;
    //confirmar borrado
     case 'confirmarBorrado':
-        //conuslta datos del usuario
+
         $Login=$_REQUEST["LoginU"];
         $Usuario = new Usuarios("","","","","","","","","");
         $consultarUsuario = $Usuario->consultarUsuario($Login);
@@ -261,14 +261,13 @@ switch ($evento) {
             array_push($consulta, $row);
         }
 
-        //lista datos de titulos del usuario
         $consultarTitulo = $Usuario->ConsultarTitulos($Login);
 
         $consultaUT = array();
         while($row3 = mysqli_fetch_array($consultarTitulo)){
             array_push($consultaUT, $row3);
         }
-        //lista datos universidades del usuario
+
 
         $consultarUniversidad = $Usuario->ConsultarUniversidades($Login);
 

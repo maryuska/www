@@ -147,7 +147,7 @@ CREATE TABLE IF NOT EXISTS `libro` (
 --
 -- Table structure for table `proyectoDirigido`
 --
-DROP TABLE IF EXISTS `proyectoDirigido`;
+DROP TABLE IF EXISTS `proyectodirigido`;
 CREATE TABLE IF NOT EXISTS `proyectoDirigido` (
   `CodigoPD` varchar(10)COLLATE latin1_spanish_ci NOT NULL default '',
   `TituloPD` varchar(100)COLLATE latin1_spanish_ci NOT NULL default '',
@@ -389,7 +389,7 @@ CREATE TABLE IF NOT EXISTS `docente_congreso` (
 --
 -- Table structure for table `docente_proyectoDirigido`
 --
-DROP TABLE IF EXISTS `docente_proyectoDirigido`;
+DROP TABLE IF EXISTS `docente_proyectodirigido`;
 CREATE TABLE IF NOT EXISTS `docente_proyectoDirigido` (
   `CodigoPD` varchar(10)COLLATE latin1_spanish_ci NOT NULL default '',
   `LoginU` varchar(15)COLLATE latin1_spanish_ci NOT NULL default '',
@@ -567,9 +567,9 @@ ALTER TABLE `docente_congreso`
 --
 -- Filtros para la tabla `docente_proyectoDirigido`
 --
-ALTER TABLE `docente_proyectoDirigido`
-  ADD CONSTRAINT `FK_DOCENTE_PD_USUARIO` FOREIGN KEY (`LoginU`) REFERENCES `usuario` (`LoginU`),
-  ADD CONSTRAINT `FK_DOCENTE_PD_PD` FOREIGN KEY (`CodigoPD`) REFERENCES `proyectoDirigido` (`CodigoPD`);
+ALTER TABLE `docente_proyectodirigido`
+  ADD CONSTRAINT `FK_DOCENTE_PD_USUARIO` FOREIGN KEY (`LoginU`) REFERENCES `usuario` (`LoginU`) ,
+  ADD CONSTRAINT `FK_DOCENTE_PD_PD` FOREIGN KEY (`CodigoPD`) REFERENCES `proyectodirigido` (`CodigoPD`);
 
 
 
