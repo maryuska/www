@@ -1,6 +1,6 @@
 <?php
 require_once '../../View/Structure/Header.php';
-require_once '../../View/Structure/NavSimple.php';
+require_once '../../View/Structure/Nav.php';
 
 ?>
 

@@ -1,4 +1,3 @@
-
 <?php
 
 require_once '../../View/Structure/Header.php';
@@ -81,15 +80,22 @@ require_once '../../View/Structure/Nav.php';
                     <label  for="DepartamentoU">Departamento</label>
                     <input id="DepartamentoU"  type="DepartamentoU"  class="form-control "value="<?php echo $row['Departamento']; ?>" disabled>
                 </div>
+
+
                 </form>
 
                 <?php } ?>
 
+
+
+
+
             </div>
         </div>
         <p align="center">
-            <button type="button" class="btn btn-orange " onclick="window.location.href='modificarUsuario.php'">Modificar</button>
-            <button type="button" class="btn btn-orange " onclick="window.location.href='../../Controller/UsuariosController.php?evento=confirmarBorrado&LoginU=<?php echo $row['LoginU']; ?>'">Borrar Perfil</button>
+            <button type="button" class="btn btn-orange " onclick="window.location.href='../../Controller/UsuariosController.php?evento=borrarUsuario&LoginU=<?php echo $row['LoginU']; ?>'">Borrar definitivamente</button>
+            <button type="button" class="btn btn-orange " onclick="window.location.href='../../Controller/UsuariosController.php?evento=consultarDetalleUsuario&LoginU=<?php echo $row['LoginU']; ?>'">Cancelar borrado</button>
+
         </p>
     </div>
 

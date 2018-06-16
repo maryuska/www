@@ -48,7 +48,7 @@ class Usuarios{
       $this->ConectarBD();
        $insertarUsuario  = "INSERT INTO usuario(LoginU,PasswordU, NombreU, ApellidosU, Telefono, Mail, DNI, FechaNacimiento, TipoContrato,Centro, Departamento, TipoUsuario)
                           VALUES ('$this->LoginU', '$this->PasswordU', '$this->NombreU', '$this->ApellidosU',  '$this->Telefono', '$this->Mail', '$this->DNI', '$this->FechaNacimiento','$this->TipoContrato', '$this->Centro', '$this->Departamento','$this->TipoUsuario')";
-		$resultado = $this->mysqli->query($insertarUsuario) or die("ERROR: no conecta");
+		$resultado = $this->mysqli->query($insertarUsuario) or die(mysqli_error($this->mysqli));
 
   }
 
@@ -69,7 +69,7 @@ class Usuarios{
 //consultar un usuario
     public function consultarUsuario($Login){
         $this->ConectarBD();
-        $sql = $this->mysqli->query("SELECT * FROM usuario WHERE LoginU = '$Login'") or die( "ERROR: no conecta");
+        $sql = $this->mysqli->query("SELECT * FROM usuario WHERE LoginU = '$Login'") or die( mysqli_error($this->mysqli));
         return $sql;
     }
 //consultar las universidades en las que trabajo un usuario
@@ -88,8 +88,16 @@ class Usuarios{
 //modificar el perfil de un usuario
     public function ModificarUsuario($LoginU){
         $this->ConectarBD();
-        $this->mysqli->query("UPDATE usuario SET   LoginU='$this->LoginU', ApellidosU='$this->ApellidosU',Telefono='$this->Telefono',Mail='$this->Mail' ,
-                      DNI='$this->DNI',FechaNacimiento='$this->FechaNacimiento',TipoContrato='$this->TipoContrato', Centro='$this->Centro', Departamento='$this->Departamento'  where LoginU = '$LoginU'") or die (mysqli_error($this->mysqli));
+        $this->mysqli->query("UPDATE usuario SET   NombreU='$this->NombreU', 
+                                                   ApellidosU='$this->ApellidosU',
+                                                   Telefono='$this->Telefono',
+                                                   Mail='$this->Mail' ,
+                                                   DNI='$this->DNI',
+                                                   FechaNacimiento='$this->FechaNacimiento',
+                                                   TipoContrato='$this->TipoContrato', 
+                                                   Centro='$this->Centro',
+                                                   Departamento='$this->Departamento' 
+                            where LoginU = '$LoginU'") or die (mysqli_error($this->mysqli));
     }
 
  //listar usuarios
@@ -110,6 +118,21 @@ public function BorrarUsuario($Login){
 
 
 
+//buscar usuario
+public function BuscarUsuario($buscar){
+    $this->ConectarBD();
+    $sql = $this->mysqli->query("SELECT * FROM usuario WHERE LoginU LIKE '%$buscar' || LoginU LIKE '%$buscar%' || LoginU LIKE '$buscar%' ||
+                                                            NombreU LIKE '%$buscar'|| NombreU LIKE '%$buscar%' || NombreU LIKE '$buscar%' ||
+                                                            ApellidosU LIKE '%$buscar'|| ApellidosU LIKE '%$buscar%' || ApellidosU LIKE '$buscar%' ||
+                                                            Telefono LIKE '%$buscar'|| Telefono LIKE '%$buscar%' || Telefono LIKE '$buscar%' ||
+                                                            Mail LIKE '%$buscar'|| Mail LIKE '%$buscar%' || Mail LIKE '$buscar%' ||
+                                                            DNI LIKE '%$buscar'|| DNI LIKE '%$buscar%' || DNI LIKE '$buscar%' ||
+                                                            TipoContrato LIKE '%$buscar'|| TipoContrato LIKE '%$buscar%' || TipoContrato LIKE '$buscar%' ||
+                                                            Centro LIKE '%$buscar'|| Centro LIKE '%$buscar%' || Centro LIKE '$buscar%' ||
+                                                            Departamento LIKE '%$buscar'|| Departamento LIKE '%$buscar%' || Departamento LIKE '$buscar%' 
+                                                            ") or die(mysqli_error($this->mysqli));
+    return $sql;
+}
 
 
 
@@ -120,22 +143,6 @@ public function BorrarUsuario($Login){
 
 
 
-
-
-  // sin modificar
-//Consulta los datos de un usuario
-// Devuelve los datos de un usuario
-
-
-
-  public function listarDocente(){
-    $sql= mysqli_query("SELECT * FROM usuario WHERE TipoU='$this->TipoU'");
-
-    $sql2 = array();
-    while($row = mysqli_fetch_array($sql)){array_push($sql2, $row);}
-    $_SESSION["listarDocente"] = $sql2;
-
-  }
 
 
 }

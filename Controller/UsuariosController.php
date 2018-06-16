@@ -16,9 +16,9 @@ switch ($evento) {
         $usuario = new Usuarios ($_POST["Login"], $_POST["PasswordU"], $_POST["NombreU"],$_POST["ApellidosU"],$_POST["Telefono"], $_POST["Mail"], $_POST["DNI"],$_POST["FechaNacimiento"], $_POST["TipoContrato"],$_POST["Centro"],$_POST["Departamento"],"U");
 
        $login=$_REQUEST["Login"];
-      //  $usuario -> consultarUsuario($login);
+        $usuario -> consultarUsuario($login);
         //comprobamos si existe el usuario
-  //  if($usuario!=null){
+    if($usuario!=null){
 
         //recoge los datos universitarios  y de titulodel formulario
         $universidad= new Universidad($_POST["Login"],$_POST["NombreUniversidad"],$_POST["FechaInicio"],$_POST["FechaFin"]);
@@ -26,14 +26,14 @@ switch ($evento) {
 
         //añade datos universitarios y titulo al usuario
         $usuario->altaUsuario();
-      //  $universidad->AltaUniversidad();
-      //  $tituloAcademico->AltaTituloAcademico();
+       $universidad->AltaUniversidad();
+        $tituloAcademico->AltaTituloAcademico();
         header("location: ../../Controller/UsuariosController.php?evento=listarUsuariosAdmin");
-   // }else{
+    }else{
 
-     //   anadirMensaje("|ERROR| El usuario ya esta dado de alta","Intente otro login");
-      //  header('location:../../View/Usuario/altaUsuarioAdmin.php');
-   // }
+
+        header('location:../../View/errores.php');
+    }
         break;
 
 // registrar un usuario
@@ -202,7 +202,7 @@ switch ($evento) {
         $Centro = $_POST['Centro'];
         $Departamento = $_POST['Departamento'];
 
-        $usuario = new Usuarios($LoginU, $NombreU, $ApellidosU, $Telefono, $Mail, $DNI,$FechaNacimiento, $TipoContrato,$Centro,$Departamento);
+        $usuario = new Usuarios($LoginU,"", $NombreU, $ApellidosU, $Telefono, $Mail, $DNI,$FechaNacimiento, $TipoContrato,$Centro,$Departamento);
         $usuario->ModificarUsuario($LoginU);
 
 
@@ -249,6 +249,40 @@ switch ($evento) {
         $_SESSION["listarUsuarios"] = $listaResultado;
         header("location: ../../View/Usuario/listarUsuarios.php");
         break;
+   //confirmar borrado
+    case 'confirmarBorrado':
+        //conuslta datos del usuario
+        $Login=$_REQUEST["LoginU"];
+        $Usuario = new Usuarios("","","","","","","","","");
+        $consultarUsuario = $Usuario->consultarUsuario($Login);
+
+        $consulta = array();
+        while($row = mysqli_fetch_array($consultarUsuario)){
+            array_push($consulta, $row);
+        }
+
+        //lista datos de titulos del usuario
+        $consultarTitulo = $Usuario->ConsultarTitulos($Login);
+
+        $consultaUT = array();
+        while($row3 = mysqli_fetch_array($consultarTitulo)){
+            array_push($consultaUT, $row3);
+        }
+        //lista datos universidades del usuario
+
+        $consultarUniversidad = $Usuario->ConsultarUniversidades($Login);
+
+        $consultaUA = array();
+        while($row2 = mysqli_fetch_array($consultarUniversidad)){
+            array_push($consultaUA, $row2);
+        }
+
+        $_SESSION["ConsultarU"] = $consulta;
+        $_SESSION["ConsultaUT"] = $consultaUT;
+        $_SESSION["ConsultaUA"] = $consultaUA;
+
+        header("location: ../../View/Usuario/confirmarBorrar.php");
+        break;
 
  //borrar un usuario
     case'borrarUsuario':
@@ -263,6 +297,7 @@ switch ($evento) {
         header("location: ../../Controller/UsuariosController.php?evento=listarUsuariosAdmin");
 
         break;
+
 //borrar perfil
     case'borrarPerfil':
         $Login=$_REQUEST["LoginU"];
@@ -276,6 +311,26 @@ switch ($evento) {
         header("location: ../../Controller/UsuariosController.php?evento=logOut");
 
         break;
+
+  //buscar usuarios
+     case 'buscarUsuario';
+         $buscar= $_POST['textoBusqueda'];
+
+         $Usuario = new Usuarios("","","","","","","","","");
+         $consultarUsuario = $Usuario->BuscarUsuario($buscar);
+
+        if(!empty($consultarUsuario)){
+                 $listaResultado = array();
+                 while($row = mysqli_fetch_array($consultarUsuario)){
+                     array_push($listaResultado, $row);
+                 }
+                 $_SESSION["listarBusqueda"] = $listaResultado;
+
+                 header("location: ../../View/Usuario/BuscarUsuario.php");
+        }else{
+            echo 'ERROR: no se encontro ningun resultado';
+        }
+         break;
   default:
     # code...
     echo "ACCION NO REGISTRADA";

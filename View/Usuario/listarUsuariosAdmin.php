@@ -9,6 +9,28 @@ $usuario = $_SESSION["listarUsuarios"];
 <!-- derecha  -->
 <div class="col-md-10">
 <p class="lead separator separator-title">Lista Usuarios</p>
+    <br>
+    <!-- boton buscar-->
+
+    <div class="center-block col-lg-6 col-md-6 col-xs-6 " >
+        <form class="navbar-form text-center " action="../../Controller/UsuariosController.php" method="POST" role="search">
+            <div class=" col-lg-3 col-md-3 col-xs-3 " >
+
+            <input name="textoBusqueda" type="text" class="form-control" placeholder="buscar">
+            </div>
+            <div class="col-lg-6 col-md-6 col-xs-6 " >
+            <button type="submit" name="evento" value="buscarUsuario" class="btn btn-orange center-block">Buscar</button>
+            </div>
+        </form>
+    </div>
+    <!-- boton insertar-->
+    <div class="form-group col-lg-6">
+        <p align="center">
+            <button type="button" class="btn btn-orange " onclick="window.location.href='../Usuario/altaUsuarioAdmin.php'">Insertar usuario</button>
+        </p>
+
+    </div>
+
 
 <div class="tab-content">
     <!--listado de proyectos dirigidos  -->
@@ -46,19 +68,19 @@ $usuario = $_SESSION["listarUsuarios"];
 
                             </tr>
                             <p align="center">
-                                <button type="button" class="btn btn-orange " onclick="window.location.href='modificarUsuario.php'">Modificar</button>
+                            <div class=" col-lg-2 col-md-2 col-xs-2 " ></div>
+                            <div class=" col-lg-4 col-md-4 col-xs-4 " >
                                 <button type="button" class="btn btn-orange " onclick="window.location.href='../../Controller/UsuariosController.php?evento=consultarDetalleUsuario&LoginU=<?php echo $row['LoginU']; ?>'">Consultar</button>
-                                <button type="button" class="btn btn-orange " onclick="window.location.href='../../Controller/UsuariosController.php?evento=borrarUsuario&LoginU=<?php echo $row['LoginU']; ?>'">Borrar</button>
-                                </p>
+                            </div>
+                            <div class=" col-lg-4 col-md-4 col-xs-4 " >
+                                <button type="button" class="btn btn-orange " onclick="window.location.href='../../Controller/UsuariosController.php?evento=confirmarBorrado&LoginU=<?php echo $row['LoginU']; ?>'">Borrar</button>
+                            </div>
+                            </p>
                         </div>
                     </div>
                 </div>
             <?php } } ?>
-        <div class="form-group col-lg-10">
-            <p align="center">
-                <button type="button" class="btn btn-orange " onclick="window.location.href='altaUsuarioAdmin.php'">Insertar Nuevo Usuario</button>
-            </p>
-        </div>
+
     </div>
 </div>
 <?php
