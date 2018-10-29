@@ -205,6 +205,13 @@ function Usuario(){
                     </li>
                 </ul>
 
+                <ul class=" list-col  ">
+                    <li class="dropdown" >
+                        <a class="options" type='submit' name = 'accion' onclick="location.href = '../../Controller/TesisController.php?evento=listarTesis&LoginU=<?php echo $loginU; ?>'"> Tesis</a>
+
+                    </li>
+                </ul>
+
 
             </div>
 
@@ -340,6 +347,13 @@ function Administrador(){
                     <ul class=" list-col  ">
                         <li class="dropdown" >
                             <a class="options" type='submit' name = 'accion' onclick="location.href = '../../Controller/EstanciasController.php?evento=listarEstancias&LoginU=<?php echo $loginU; ?>'"> Estancias</a>
+
+                        </li>
+                    </ul>
+
+                    <ul class=" list-col  ">
+                        <li class="dropdown" >
+                            <a class="options" type='submit' name = 'accion' onclick="location.href = '../../Controller/TesisController.php?evento=listarTesis&LoginU=<?php echo $loginU; ?>'"> Tesis</a>
 
                         </li>
                     </ul>

@@ -25,6 +25,31 @@ require_once '../../View/Structure/Nav.php';
             <!--Titulo de lo que se esta haciendo -->
             <p class="lead separator separator-title">Lista de Materias</p>
 
+
+
+            <!-- boton buscar-->
+
+            <div class="center-block col-lg-6 col-md-6 col-xs-6 " >
+                <form class="navbar-form text-center " action="../../Controller/MateriasController.php" method="POST" role="search">
+                    <div class=" col-lg-3 col-md-3 col-xs-3 " >
+
+                        <input name="textoBusqueda" type="text" class="form-control" placeholder="buscar">
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-xs-6 " >
+                        <button type="submit" name="evento" value="buscarMateria" class="btn btn-orange center-block">Buscar</button>
+                    </div>
+                </form>
+            </div>
+            <!-- boton insertar-->
+            <div class="form-group col-lg-6">
+                <p align="center">
+                    <button type="button" class="btn btn-orange " onclick="window.location.href='../Materia/insertarMateria.php'">Insertar Materia</button>
+                </p>
+
+            </div>
+
+
+
             <div class="tab-content">
 <!--listado de materias  -->
                 <div class="tab-pane fade in active" id="tab1">

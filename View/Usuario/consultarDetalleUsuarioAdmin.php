@@ -87,7 +87,10 @@ require_once '../../View/Structure/Nav.php';
 
             </div>
         </div>
-
+        <p align="center">
+            <button type="button" class="btn btn-orange " onclick="window.location.href='modificarUsuario.php'">Modificar</button>
+            <button type="button" class="btn btn-orange " onclick="window.location.href='../../Controller/UsuariosController.php?evento=confirmarBorrado&LoginU=<?php echo $row['LoginU']; ?>'">Borrar Perfil</button>
+        </p>
     </div>
 
 
@@ -122,15 +125,17 @@ require_once '../../View/Structure/Nav.php';
                             <tr>
                                 <td class="text-center" width="250px" name = "NombreTitulo"><?php echo $row2['NombreTitulo']; ?> </td>
                                 <td class="text-center" width="250px" name = "FechaTitulo"><?php echo $row2['FechaTitulo']; ?> </td>
-                                <td class="text-center"  width="250px" name = "CentroTitulo"><?php echo $row2['CentroTitulo']; ?> </td>
+                                <td class="text-center"  width="250px" name = "CentroTitulo"><?php echo $row2['CentroTitulo']; ?>
+                                <td width="150px"><a type="submit" class="btn  " onclick="window.location.href='../../Controller/UsuariosController.php?evento=consultarTituloAcademico&LoginU=<?php echo $row['LoginU']; ?>&NombreTitulo=<?php echo $row2['NombreTitulo']; ?>'" >Modificar</a></td>
                             </tr>
                         </table>
                     </div>
                 </form>
 
             <?php } ?>
-
-
+            <p align="center">
+                <button type="button" class="btn btn-orange " onclick="window.location.href='../../View/TituloAcademico/insertarTituloAcademico.php';">Insertar</button>
+            </p>
         </div>
     </div>
 
@@ -162,13 +167,16 @@ require_once '../../View/Structure/Nav.php';
                         <tr>
                             <td class="text-center" width="250px" name = "NombreUniversidad"><?php echo $row3['NombreUniversidad']; ?> </td>
                             <td class="text-center" width="250px" name = "FechaInicio"><?php echo $row3['FechaInicio']; ?> </td>
-                            <td class="text-center"  width="250px" name = "FechaFin"><?php echo $row3['FechaFin']; ?> </td>
+                            <td width="150px"><a type="submit" class="btn  " onclick="window.location.href='../../Controller/UsuariosController.php?evento=consultarUniversidad&LoginU=<?php echo $row['LoginU']; ?>&NombreTitulo=<?php echo $row2['NombreTitulo']; ?>'" >Modificar</a></td>
                         </tr>
                     </table>
 
                 </form>
 
             <?php } ?>
+            <p align="center">
+                <button type="button" class="btn btn-orange " onclick="window.location.href='../../View/Universidad/insertarUniversidad.php';">Insertar</button>
+            </p>
 
 
         </div>

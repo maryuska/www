@@ -62,7 +62,7 @@ require_once '../../View/Structure/Nav.php';
                     <br>
                     <p align="center ">
                         <button type="button" class="btn btn-orange " onclick="window.location.href='../../Controller/ProyectosDirigidosController.php?evento=borrarProyectoDirigido&CodigoPD=<?php echo $row['CodigoPD']; ?>&LoginU=<?php echo $row['LoginU']; ?>'">Borrar definitivamente</button>
-                        <button type="button" class="btn btn-orange " onclick="window.location.href='../../Controller/ProyectosDirigidosController.php?evento=consultarDetalleProyectoDirigido&CodigoPD=<?php echo $row['CodigoPD']; ?>'">Cancelar borrado</button>
+                        <button type="button" class="btn btn-orange " onclick="window.location.href='../../Controller/ProyectosDirigidosController.php?evento=listarProyectosDirigidos'">Cancelar borrado</button>
                     </p>
 
 

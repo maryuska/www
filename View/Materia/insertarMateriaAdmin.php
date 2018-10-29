@@ -1,15 +1,26 @@
 <?php
 require_once '../../View/Structure/Header.php';
 require_once '../../View/Structure/Nav.php';
-$loginU =$_SESSION["loginU"];
-
 ?>
 
 <div class="col-md-10 izquierda">
     <h3 class="text-center">Insertar Materia</h3>
-        <div class="panel panel-default">
-            <div class="col-md-12">
+    <div class="panel panel-default">
+        <div class="col-md-12">
             <form id="formulario" class="form-horizontal" enctype="multipart/form-data" action="../../Controller/MateriasController.php" method="post" role="form">
+
+                <div class="form-group">
+
+                    <label for="LoginU">Login Usuario</label>
+                    <p>  <select type="LoginU"  class="form-control"  id="LoginU" name="LoginU">
+                            <option >-</option>
+                            <?php $rows = $_SESSION["listarUsuarios"]; foreach ($rows as $row){ ?>
+                                <option value="<?php echo $row['LoginU'];?>"><?php echo $row['LoginU']." - ".$row['NombreU'];?></option>
+                            <?php } ?>
+                        </select></p>
+
+
+                </div>
 
                 <div class="form-group">
                     <label class="control-label" for="CodigoM">Código Materia: </label>
@@ -40,7 +51,7 @@ $loginU =$_SESSION["loginU"];
 
                 <div class="form-group">
                     <label class="control-label" for="DenominacionM">Denominación:</label>
-                        <input id="DenominacionM" name="DenominacionM" type="DenominacionM" placeholder="Denominación" class="form-control " >
+                    <input id="DenominacionM" name="DenominacionM" type="DenominacionM" placeholder="Denominación" class="form-control " >
                 </div>
 
                 <div class="form-group">
@@ -76,14 +87,14 @@ $loginU =$_SESSION["loginU"];
 
                 <div class="col-lg-6 col-md-6 col-sm-8 col-xs-8 col-md-offset-3">
                     <label class="control-label" for="Registrar"></label>
-                        <button type="submit" id="Registrar" name="evento" value="altaMateria" class="btn btn-orange"> Insertar </button>
+                    <button type="submit" id="Registrar" name="evento" value="altaMateria" class="btn btn-orange"> Insertar </button>
                 </div>
 
             </form>
-            </div>
         </div>
-
     </div>
+
+</div>
 
 
 

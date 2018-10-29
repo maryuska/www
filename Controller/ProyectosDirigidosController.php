@@ -53,8 +53,12 @@ switch ($evento) {
 
         $proyectoDirigido = new ProyectosDirigidos($CodigoPD, $TituloPD, $AlumnoPD, $FechaLecturaPD, $CalificacionPD, $URLPD, $CotutorPD, $TipoPD );
         $proyectoDirigido->ModificarProyectoDirigido($CodigoPD);
-
-        header("location: ProyectosDirigidosController.php?evento=listarProyectosDirigidos&LoginU=$Login");
+            $tipou=$_SESSION["TipoUsuario"];
+            if($tipou == 'U') {
+                header("location: ProyectosDirigidosController.php?evento=listarProyectosDirigidos&LoginU=$Login");
+            }else{
+                header("location: ProyectosDirigidosController.php?evento=listarProyectosDirigidos");
+            }
 
     break;
 
@@ -174,8 +178,12 @@ switch ($evento) {
         $ProyectoDirigido = new ProyectosDirigidos("","","","","","","","");
         $ProyectoDirigido ->BorrarDirige($LoginU, $CodigoPD);
         $ProyectoDirigido->BorrarProyectoDirigido($CodigoPD);
-        header("location: ../../Controller/ProyectosDirigidosController.php?evento=listarProyectosDirigidos&LoginU=$LoginU");
-
+            $tipou=$_SESSION["TipoUsuario"];
+            if($tipou == 'U') {
+                header("location: ../../Controller/ProyectosDirigidosController.php?evento=listarProyectosDirigidos&LoginU=$LoginU");
+            }else{
+                header("location: ../../Controller/ProyectosDirigidosController.php?evento=listarProyectosDirigidos");
+            }
         break;
 
 

@@ -4,36 +4,38 @@
 require_once '../Model/Usuarios.php';
 require_once '../Model/Universidad.php';
 require_once '../Model/TituloAcademico.php';
+require_once '../Controller/ControllerController.php';
 $evento = $_REQUEST['evento'];
 
 switch ($evento) {
     // dar de alta un usuario
     case 'altaUsuario':
-        if ($_POST["PasswordU"]!==$_POST["PasswordU2"]) {
-            header("location: ../../View/errores.php?PassErr=PasswordU");
-        }
+
+        if ($_POST["PasswordU"]!= $_POST["PasswordU2"]) {
+            anadirMensaje("| SUCCESS | las contraseñas no coninciden","success");
+        }else{
         //recoge los datos del usuario
         $usuario = new Usuarios ($_POST["Login"], $_POST["PasswordU"], $_POST["NombreU"],$_POST["ApellidosU"],$_POST["Telefono"], $_POST["Mail"], $_POST["DNI"],$_POST["FechaNacimiento"], $_POST["TipoContrato"],$_POST["Centro"],$_POST["Departamento"],"U");
 
        $login=$_REQUEST["Login"];
         $usuario -> consultarUsuario($login);
         //comprobamos si existe el usuario
-    if($usuario!=null){
+    if(!isset($usuario)){
+        anadirMensaje("| SUCCESS | El usuario: ".$_POST["Login"]." ya existe","success");
+        header('location:../index.php');
 
+    }else{
         //recoge los datos universitarios  y de titulodel formulario
         $universidad= new Universidad($_POST["Login"],$_POST["NombreUniversidad"],$_POST["FechaInicio"],$_POST["FechaFin"]);
         $tituloAcademico= new TituloAcademico($_POST["Login"],$_POST["Titulo"],$_POST["FechaTitulo"],$_POST["CentroTitulo"]);
 
         //añade datos universitarios y titulo al usuario
         $usuario->altaUsuario();
-       $universidad->AltaUniversidad();
+        $universidad->AltaUniversidad();
         $tituloAcademico->AltaTituloAcademico();
         header("location: ../../Controller/UsuariosController.php?evento=listarUsuariosAdmin");
-    }else{
 
-
-        header('location:../../View/errores.php');
-    }
+    }}
         break;
 
 // registrar un usuario
@@ -53,7 +55,7 @@ switch ($evento) {
         $usuario->altaUsuario();
         $universidad->AltaUniversidad();
         $tituloAcademico->AltaTituloAcademico();
-      header("location: ../../index.php");
+      header("location: ../../View/login.php");
     break;
 
 // dar de alta un nuevo titulo academico
@@ -132,6 +134,8 @@ switch ($evento) {
         $_SESSION["ConsultaUT"] = $consultaUT;
         $_SESSION["ConsultaUA"] = $consultaUA;
 
+
+
 		header("location: ../../View/Usuario/consultarUsuario.php");
     break;
     //consultar detalle del usuario
@@ -167,7 +171,14 @@ switch ($evento) {
         $_SESSION["ConsultaUT"] = $consultaUT;
         $_SESSION["ConsultaUA"] = $consultaUA;
 
-        header("location: ../../View/Usuario/consultarDetalleUsuario.php");
+
+
+        $tipou=$_SESSION["TipoUsuario"];
+        if($tipou == 'U') {
+            header("location: ../../View/Usuario/consultarDetalleUsuario.php");
+        }else{
+            header("location: ../../View/Usuario/consultarDetalleUsuarioAdmin.php");
+        }
         break;
 
 //consultar titulo academico
@@ -204,10 +215,12 @@ switch ($evento) {
 
         $usuario = new Usuarios($LoginU,"", $NombreU, $ApellidosU, $Telefono, $Mail, $DNI,$FechaNacimiento, $TipoContrato,$Centro,$Departamento);
         $usuario->ModificarUsuario($LoginU);
-
-
-        header("location: ../Controller/UsuariosController.php?evento=consultarUsuario&LoginU=$LoginU");
-
+        $tipou=$_SESSION[TipoUsuario];
+        if($tipou == 'U'){
+            header("location: ../Controller/UsuariosController.php?evento=consultarUsuario&LoginU=$LoginU");
+        }else{
+        header("location: ../Controller/UsuariosController.php?evento=consultarDetalleUsuario&LoginU=$LoginU");
+        }
         break;
 
 //modificar titulo academico
@@ -324,8 +337,13 @@ switch ($evento) {
                      array_push($listaResultado, $row);
                  }
                  $_SESSION["listarBusqueda"] = $listaResultado;
+            $tipou=$_SESSION[TipoUsuario];
+            if($tipou == 'U'){
+                header("location: ../../View/Usuario/BuscarUsuario.php");
+            }else{
+                header("location: ../../View/Usuario/BuscarUsuarioAdmin.php");
+            }
 
-                 header("location: ../../View/Usuario/BuscarUsuario.php");
         }else{
             echo 'ERROR: no se encontro ningun resultado';
         }

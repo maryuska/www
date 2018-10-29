@@ -80,21 +80,21 @@ class ProyectosDirigidos{
 //lista de todos los proyectos fin de carrera del usuario
     public function ListarProyectosDirigidosPFC($Login){
         $this->ConectarBD();
-        $sql= $this->mysqli->query("SELECT * FROM proyectoDirigido p, docente_proyectoDirigido dp WHERE p.CodigoPD = dp.CodigoPD  AND dp.LoginU = '$Login' AND p.TipoPD = 'PFC'");
+        $sql= $this->mysqli->query("SELECT * FROM proyectoDirigido p, docente_proyectoDirigido dp WHERE p.CodigoPD = dp.CodigoPD  AND dp.LoginU = '$Login' AND p.TipoPD = 'PFC'ORDER BY FechaLecturaPD DESC");
 
         return $sql;
     }
 //lista de todos los trabajos fin de grado del usuario
     public function ListarProyectosDirigidosTFG($Login){
         $this->ConectarBD();
-        $sql= $this->mysqli->query("SELECT * FROM proyectoDirigido p, docente_proyectoDirigido dp WHERE p.CodigoPD = dp.CodigoPD  AND dp.LoginU = '$Login' AND p.TipoPD = 'TFG'  ");
+        $sql= $this->mysqli->query("SELECT * FROM proyectoDirigido p, docente_proyectoDirigido dp WHERE p.CodigoPD = dp.CodigoPD  AND dp.LoginU = '$Login' AND p.TipoPD = 'TFG' ORDER BY FechaLecturaPD DESC ");
 
         return $sql;
     }
 //lista de todos los trabajos fin de grado del usuario
     public function ListarProyectosDirigidosTFM($Login){
         $this->ConectarBD();
-        $sql= $this->mysqli->query("SELECT * FROM proyectoDirigido p, docente_proyectoDirigido dp WHERE p.CodigoPD = dp.CodigoPD  AND dp.LoginU = '$Login'  AND p.TipoPD = 'TFM'  ");
+        $sql= $this->mysqli->query("SELECT * FROM proyectoDirigido p, docente_proyectoDirigido dp WHERE p.CodigoPD = dp.CodigoPD  AND dp.LoginU = '$Login'  AND p.TipoPD = 'TFM' ORDER BY FechaLecturaPD DESC ");
 
         return $sql;
     }
@@ -119,21 +119,21 @@ class ProyectosDirigidos{
 //lista de todos los proyectos fin de carrera
     public function ListarProyectosDirigidosPFCAdmin(){
         $this->ConectarBD();
-        $sql= $this->mysqli->query("SELECT * FROM proyectoDirigido p, docente_proyectoDirigido dp WHERE p.CodigoPd=dp.CodigoPD AND TipoPD = 'PFC'");
+        $sql= $this->mysqli->query("SELECT * FROM proyectoDirigido p, docente_proyectoDirigido dp WHERE p.CodigoPd=dp.CodigoPD AND TipoPD = 'PFC' ORDER BY FechaLecturaPD DESC");
 
         return $sql;
     }
 //lista de todos los trabajos fin de grado
     public function ListarProyectosDirigidosTFGAdmin(){
         $this->ConectarBD();
-        $sql= $this->mysqli->query("SELECT * FROM proyectoDirigido p, docente_proyectoDirigido dp WHERE p.CodigoPd=dp.CodigoPD AND TipoPD = 'TFG'  ");
+        $sql= $this->mysqli->query("SELECT * FROM proyectoDirigido p, docente_proyectoDirigido dp WHERE p.CodigoPd=dp.CodigoPD AND TipoPD = 'TFG'ORDER BY FechaLecturaPD DESC  ");
 
         return $sql;
     }
 //lista de todos los trabajos fin de grado
     public function ListarProyectosDirigidosTFMAdmin(){
         $this->ConectarBD();
-        $sql= $this->mysqli->query("SELECT * FROM proyectoDirigido p, docente_proyectoDirigido dp WHERE p.CodigoPd=dp.CodigoPD AND TipoPD = 'TFM'  ");
+        $sql= $this->mysqli->query("SELECT * FROM proyectoDirigido p, docente_proyectoDirigido dp WHERE p.CodigoPd=dp.CodigoPD AND TipoPD = 'TFM' ORDER BY FechaLecturaPD DESC ");
 
         return $sql;
     }

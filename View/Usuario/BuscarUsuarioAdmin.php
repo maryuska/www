@@ -46,7 +46,11 @@ $usuario = $_SESSION["listarBusqueda"];
                                 </td>
 
                             </tr>
-
+                            <p align="center">
+                                <button type="button" class="btn btn-orange " onclick="window.location.href='modificarUsuario.php'">Modificar</button>
+                                <button type="button" class="btn btn-orange " onclick="window.location.href='../../Controller/UsuariosController.php?evento=consultarDetalleUsuario&LoginU=<?php echo $row['LoginU']; ?>'">Consultar</button>
+                                <button type="button" class="btn btn-orange " onclick="window.location.href='../../Controller/UsuariosController.php?evento=borrarUsuario&LoginU=<?php echo $row['LoginU']; ?>'">Borrar</button>
+                            </p>
                         </div>
                     </div>
                 </div>

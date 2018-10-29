@@ -50,16 +50,12 @@ require_once '../../View/Structure/Nav.php';
                             </tr>
                             <p align="center ">
                                 <button type="button" class="btn btn-orange " onclick="window.location.href='../../Controller/ProyectosDirigidosController.php?evento=consultarProyectoDirigido&CodigoPD=<?php echo $row['CodigoPD']; ?>'">Modificar</button>
+                                <button type="button" class="btn btn-orange " onclick="window.location.href='../../Controller/ProyectosDirigidosController.php?evento=confirmarBorrado&CodigoPD=<?php echo $row['CodigoPD']; ?>'">Borrar</button>
                             </p>
                         </div>
                     </div>
                 </div>
             <?php } } ?>
-        <div class="form-group col-lg-10">
-            <p align="center">
-                <button type="button" class="btn btn-orange " onclick="window.location.href='insertarProyectoDirigido.php'">Insertar Nuevo Proyecto</button>
-            </p>
-        </div>
 
 
     </div>
