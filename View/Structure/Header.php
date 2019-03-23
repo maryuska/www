@@ -2,24 +2,23 @@
 <html>
 <head>
 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="icon" type="image/png" href="View/Structure/lib/icons/icono-barra.png">
 
-
-     <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="../../lib/icons/icono-barra.png">
     <title>Kurriculum</title>
-    <script type="text/javascript" src="../../lib/js/jquery-1.9.1.js"></script>
-    <script type="text/javascript" src="../../lib/bootstrap/js/bootstrap.js"></script>
-    <script type="text/javascript" src="../../lib/bootstrap/js/npm.js"></script>
-    <script type="text/javascript" src="../../lib/js/validaciones.js"></script>
-    <script type="text/javascript" src="../../lib/js/codigo.js"></script>
-    <!-- Bootstrap CSS -->
-    <link href="../../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../../lib/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
-    <!-- Custom Css-->
-    <link href="../../lib/css/style.css" rel="stylesheet">
+    
+    <!-- Bootstrap -->
+    <link href="View/Structure/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="View/Structure/lib/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+    <script type="text/javascript" src="View/Structure/lib/js/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="View/Structure/lib/bootstrap/js/bootstrap.js"></script>
 
+    <!-- Custom-->
+    <link href="View/Structure/lib/css/style.css" rel="stylesheet">
+    <script type="text/javascript" src="View/Structure/lib/js/confirmaciones.js"></script>
+    <script type="text/javascript" src="View/Structure/lib/js/validaciones.js"></script>
+    <script type="text/javascript" src="View/Structure/lib/js/codigo.js"></script>
 
 </head>
-
 <body>
-</body>

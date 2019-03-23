@@ -1,6 +1,10 @@
 <?php
-session_start();
-//require_once 'ConnectDB.php';
+if(!isset($_SESSION))
+    session_start();
+
+require_once 'Validacion.php';
+require_once 'Universidad.php';
+require_once 'TituloAcademico.php';
 
 class Usuarios{
   private $LoginU;
@@ -16,7 +20,7 @@ class Usuarios{
     private $Departamento;
     private $TipoUsuario;
 
-
+//constructor de usuario
   public function __construct($LoginU = NULL, $PasswordU = NULL, $NombreU = NULL, $ApellidosU = NULL, $Telefono = NULL, $Mail = NULL, $DNI = NULL, $FechaNacimiento = NULL, $TipoContrato = NULL, $Centro = NULL, $Departamento = NULL ,$TipoUsuario = NULL){
     $this->LoginU = $LoginU;
     $this->PasswordU = $PasswordU;
@@ -135,16 +139,94 @@ public function BuscarUsuario($buscar){
 }
 
 
+    /**
+     * Valida si los campos del formulario del perfil son correctos
+     * 
+     * @param array $campos del formulario
+     * @return array $errores, contiene los campos fallidos $errores[] = nombre del campo
+     */
+    public function validarPerfil($campos){
 
+        $errores    = array();
+        $validar    = new Validacion();
 
+        // Nombre
+        if(isset($campos["NombreU"]) && !$validar->validarSoloLetras($campos["NombreU"]))
+            $errores[]  = "NombreU";
 
+        // Apellidos
+        if(isset($campos["ApellidosU"]) && !$validar->validarSoloLetras($campos["ApellidosU"]))
+            $errores[]  = "ApellidosU";
 
+        // Telefono
+        if(isset($campos["Telefono"]) && !$validar->validarTelefono($campos["Telefono"]))
+            $errores[]  = "Telefono";
 
+        // Email
+        if(isset($campos["Mail"]) && !$validar->validarEmail($campos["Mail"]))
+            $errores[]  = "Mail";
 
+        // Dni
+        if(isset($campos["DNI"]) && !$validar->validarDni($campos["DNI"]))
+            $errores[]  = "DNI";
 
+        // Fecha Nacimiento
+        if(isset($campos["FechaNacimiento"]) && ( !$validar->validarFecha($campos["FechaNacimiento"]) || (date("Y-m-d", strtotime($campos["FechaNacimiento"])) >= date("Y-m-d")) ) )
+            $errores[]  = "FechaNacimiento";       
 
+        // Tipo de contrato
+        if(isset($campos["TipoContrato"]) && !$validar->validarLetrasYNumeros($campos["TipoContrato"]))
+            $errores[]  = "TipoContrato";
 
+        // Centro
+        if(isset($campos["Centro"]) && !$validar->validarLetrasYNumeros($campos["Centro"]))
+            $errores[]  = "Centro";
 
+        // Departamento
+        if(isset($campos["Departamento"]) && !$validar->validarLetrasYNumeros($campos["Departamento"]))
+            $errores[]  = "Departamento";
+
+        return $errores;
+    }
+
+    /**
+     * Valida si los campos del formulario registrar usuario son correctos
+     * 
+     * @param array $campos del formulario
+     * @return array $errores, contiene los campos fallidos $errores[] = nombre del campo
+     */
+    public function validarRegistrarUsuario($campos){
+
+        $errores    = array();
+        $validar    = new Validacion();
+
+        // Login obligatorio
+        if(!isset($campos["Login"]) || !$validar->validarLetrasYNumeros($campos["Login"]))
+            $errores[]      = "Login";
+
+        // Password obligatorio
+        if(!isset($campos["PasswordU"]) || !$validar->validarLetrasYNumeros($campos["PasswordU"])){
+            $errores[]      = "PasswordU";
+            $errores[]      = "PasswordU2";
+        }
+        elseif(!isset($campos["PasswordU2"]) || $campos["PasswordU"] != $campos["PasswordU2"])
+            $errores[]      = "PasswordU2";
+
+        // Datos referentes al perfil, combina el array procedente de la función con el actual de errores
+        $errores            = array_merge($errores, $this->validarPerfil($campos));
+
+        // Datos referentes a la universidad, combina el array procedente de la función con el actual de errores
+        $universidad        = new Universidad();
+        $errores            = array_merge($errores, $universidad->validarUniversidad($campos));
+
+        // Datos referentes al titulo académico, combina el array procedente de la función con el actual de errores
+        $tituloAcademico    = new TituloAcademico();
+        $errores            = array_merge($errores, $tituloAcademico->validarTituloAcademico($campos));
+
+        return $errores;
+
+    }
+    
 }
 
 ?>

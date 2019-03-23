@@ -1,6 +1,6 @@
 <?php
-require_once '../../View/Structure/Header.php';
-require_once '../../View/Structure/Nav.php';
+require_once 'View/Structure/Header.php';
+require_once 'View/Structure/Nav.php';
 
 ?>
 
@@ -14,7 +14,7 @@ require_once '../../View/Structure/Nav.php';
 
             foreach ($rows as $row) { ?>
 
-                <form  action="../../Controller/UsuariosController.php" method="post" role="form">
+                <form  action="index.php?controlador=Usuarios" method="post" role="form">
 
                     <div class="form-group">
                         <label class="control-label" for="LoginU">Login: </label>

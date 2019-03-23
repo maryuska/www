@@ -1,65 +1,113 @@
-<?php
 
-require_once '../../View/Structure/Header.php';
-require_once '../../View/Structure/Nav.php';
+<?php
+// Estructura general html, body
+require_once 'View/Structure/Header.php';
+
+// Menu
+require_once 'View/Structure/Nav.php';
 
 $usuario = $_SESSION["listarBusqueda"];
 
 ?>
-<!-- derecha  -->
-<div class="col-md-10">
-    <p class="lead separator separator-title">Lista Usuarios</p>
-    <br>
 
-    <div class="tab-content">
-        <!--listado de proyectos dirigidos  -->
+<div class="container-fluid">
+    <div class="row">
+
         <?php
-        $lista = $_SESSION["listarBusqueda"];
-        if (isset($lista)) {
-            foreach ($lista as $row){ ?>
+        // Menu lateral
+        require_once 'View/Structure/Sidebar.php';
+        ?>
 
-                <div class="form-group col-lg-6">
-                    <div class="panel panel-default">
-                        <!-- login usuario -->
-                        <div class="tdTitulo">
-                            <td type="submit"   name = "LoginU" ><?php echo $row['LoginU']; ?></td>
-                        </div>
-                        <!-- datos usuario-->
-                        <div class="panel-body">
-                            <tr>
-                                <td valign="top" width="50%">
-                                    <b name = "NombreU" >Nombre:</b>
-                                    <?php echo $row['NombreU']; ?>
-                                    <br>
-                                    <b  name = "ApellidosU" >Apellidos: </b>
-                                    <?php echo $row['ApellidosU']; ?>
-                                    <br>
-                                    <b name = "Centro">Centro: </b>
-                                    <?php echo $row['Centro']; ?>
-                                    <br>
-                                    <b name = "Departamento">Departamento: </b>
-                                    <?php echo $row['Departamento']; ?>
-                                    <br>
-                                    <b name = "Mail">Mail: </b>
-                                    <?php echo $row['Mail']; ?>
-                                    <br>
-                                </td>
+        <!-- Contenido -->
+        <div class="col-md-10">
+            <div class="cotainer">
+            
+                <!-- Título -->
+                <p class="lead separator separator-title">
+                    Lista Usuarios
+                </p>
 
-                            </tr>
-                            <p align="center">
-                                <button type="button" class="btn btn-orange " onclick="window.location.href='modificarUsuario.php'">Modificar</button>
-                                <button type="button" class="btn btn-orange " onclick="window.location.href='../../Controller/UsuariosController.php?evento=consultarDetalleUsuario&LoginU=<?php echo $row['LoginU']; ?>'">Consultar</button>
-                                <button type="button" class="btn btn-orange " onclick="window.location.href='../../Controller/UsuariosController.php?evento=borrarUsuario&LoginU=<?php echo $row['LoginU']; ?>'">Borrar</button>
-                            </p>
-                        </div>
-                    </div>
+                <!--listado de proyectos dirigidos  -->
+                <div class="row">
+                    
+                    <?php
+                    $lista = $_SESSION["listarBusqueda"];
+                    if (isset($lista)) {
+                        foreach ($lista as $row){ 
+                    ?>
+
+                            <div class="col-md-6 col-lg-4">
+
+                                <!-- Box -->
+
+                                <div class="panel panel-default">
+
+                                    <!-- Login usuario -->
+                                    <div class="panel-heading tdTitulo">
+                                        <?php echo $row['LoginU']; ?>
+                                    </div>
+
+                                    <!-- Datos usuario -->
+                                    <div class="panel-body">
+                                        
+                                        <p class="margin-bottom5">
+                                            <strong>Nombre:</strong>
+                                            <span><?php echo $row['NombreU']; ?></span>
+                                        </p>
+
+                                        <p class="margin-bottom5">
+                                            <strong>Apellidos:</strong>
+                                            <span><?php echo $row['ApellidosU']; ?></span>
+                                        </p>
+
+                                        <p class="margin-bottom5">
+                                            <strong>Centro:</strong>
+                                            <span><?php echo $row['Centro']; ?></span>
+                                        </p>
+
+                                        <p class="margin-bottom5">
+                                            <strong>Departamento:</strong>
+                                            <span><?php echo $row['Departamento']; ?></span>
+                                        </p>
+
+                                        <p class="margin-bottom5">
+                                            <strong>Mail:</strong>
+                                            <span><?php echo $row['Mail']; ?></span>
+                                        </p>
+
+                                        <p class="margin-bottom5 text-center">
+                                            <a class="btn btn-orange" href="index.php?controlador=Usuarios&evento=paginaModificarUsuario">
+                                                Modificar
+                                            </a>
+                                            <a class="btn btn-orange" href="index.php?controlador=Usuarios&evento=consultarDetalleUsuario&LoginU=<?php echo $row['LoginU']; ?>">
+                                                Consultar
+                                            </a>
+                                            <a class="btn btn-orange" href="index.php?controlador=Usuarios&evento=borrarUsuario&LoginU=<?php echo $row['LoginU']; ?>">
+                                                Borrar
+                                            </a>
+                                        </p>
+
+                                    </div>
+
+                                </div>
+                                            
+                            </div>
+
+                    <?php 
+                        } 
+                    } 
+                    ?>
+
                 </div>
-            <?php } } ?>
+
+            </div>
+        </div>
 
     </div>
 </div>
-<?php
+            
 
-require_once '../../View/Structure/Footer.php';
-
+<?php 
+// Pie y cierre de html, body
+require_once 'View/Structure/Footer.php';
 ?>

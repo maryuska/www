@@ -1,6 +1,6 @@
 <?php
 
-
+require_once 'Validacion.php';
 
 class Universidad
 {
@@ -55,6 +55,32 @@ class Universidad
         $this->mysqli->query("DELETE FROM universidad WHERE LoginU= '$Login'")or die(mysqli_error( $this->mysqli));
     }
 
+    /**
+     * Valida si los campos del formulario de la universidad son correctos
+     * 
+     * @param array $campos del formulario
+     * @return array $errores, contiene los campos fallidos $errores[] = nombre del campo
+     */
+    public function validarUniversidad($campos){
 
+        $errores    = array();
+        $validar    = new Validacion();
+
+        // Nombre universidad
+        if(isset($campos["NombreUniversidad"]) && !$validar->validarLetrasYNumeros($campos["NombreUniversidad"]))
+            $errores[]  = "NombreUniversidad";
+
+        // Fecha inicio
+        if(isset($campos["FechaInicio"]) && !$validar->validarFecha($campos["FechaInicio"]))
+            $errores[]  = "FechaInicio";
+
+        // Fecha fin
+        if(isset($campos["FechaFin"]) && !$validar->validarFecha($campos["FechaFin"]))
+            $errores[]  = "FechaFin";
+        if( isset($campos["FechaInicio"]) && $validar->validarFecha($campos["FechaInicio"]) && date("Y-m-d", strtotime($campos["FechaFin"])) < date("Y-m-d", strtotime($campos["FechaInicio"])) )
+            $errores[]  = "FechaFin";
+
+        return $errores;
+    }
 
 }

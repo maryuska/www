@@ -1,13 +1,43 @@
 <?php
 // Controlador de Usuarios
-
-require_once '../Model/Usuarios.php';
-require_once '../Model/Universidad.php';
-require_once '../Model/TituloAcademico.php';
-require_once '../Controller/ControllerController.php';
+require_once 'Model/Usuarios.php';
+require_once 'Model/Universidad.php';
+require_once 'Model/TituloAcademico.php';
+require_once 'Controller/ControllerController.php';
 $evento = $_REQUEST['evento'];
 
 switch ($evento) {
+
+    // Registrarse
+    case "registrarse":
+        require_once "View/Usuario/registrarse.php";
+    break;
+
+    // Consulta del usuario cuando se pincha el logotipo una vez logueado
+    case "consultarUsuarioActual":
+        require_once "View/Usuario/consultarUsuario.php";
+    break;
+
+    // Insertar universidad
+    case "insertarUniversidad":
+        require_once "View/Universidad/insertarUniversidad.php";
+    break;
+
+    // Insertar titulo académico
+    case "insertarTituloAcademico":
+        require_once "View/TituloAcademico/insertarTituloAcademico.php";
+    break;
+
+    // Página modificar usuario
+    case "paginaModificarUsuario":
+        require_once "View/Usuario/modificarUsuario.php";
+    break;
+
+    // Página alta usuario admin
+    case "paginaAltaUsuarioAdmin":
+        require_once "View/Usuario/altaUsuarioAdmin.php";
+    break;
+
     // dar de alta un usuario
     case 'altaUsuario':
 
@@ -22,7 +52,7 @@ switch ($evento) {
         //comprobamos si existe el usuario
     if(!isset($usuario)){
         anadirMensaje("| SUCCESS | El usuario: ".$_POST["Login"]." ya existe","success");
-        header('location:../index.php');
+        header('location: index.php');
 
     }else{
         //recoge los datos universitarios  y de titulodel formulario
@@ -33,45 +63,77 @@ switch ($evento) {
         $usuario->altaUsuario();
         $universidad->AltaUniversidad();
         $tituloAcademico->AltaTituloAcademico();
-        header("location: ../../Controller/UsuariosController.php?evento=listarUsuariosAdmin");
+        header("location: index.php?controlador=Usuarios&evento=listarUsuariosAdmin");
 
     }}
         break;
 
 // registrar un usuario
     case 'registrarUsuario':
-        if ($_POST["PasswordU"]!==$_POST["PasswordU2"]) {
-            header("location: ../../View/errores.php?PassErr");
-        }
 
-        //registra el usuario en la bd
         $usuario = new Usuarios ($_POST["Login"], $_POST["PasswordU"], $_POST["NombreU"],$_POST["ApellidosU"],$_POST["Telefono"], $_POST["Mail"], $_POST["DNI"],$_POST["FechaNacimiento"], $_POST["TipoContrato"],$_POST["Centro"],$_POST["Departamento"],"U");
 
-        //recoge los datos universitarios  y de titulodel formulario
-        $universidad= new Universidad($_POST["Login"],$_POST["NombreUniversidad"],$_POST["FechaInicio"],$_POST["FechaFin"]);
-        $tituloAcademico= new TituloAcademico($_POST["Login"],$_POST["Titulo"],$_POST["FechaTitulo"],$_POST["CentroTitulo"]);
+        // Validamos si es correcto o no el formulario
+        $errores    = $usuario->validarRegistrarUsuario($_POST);
 
-        //añade datos universitarios y titulo al usuario
-        $usuario->altaUsuario();
-        $universidad->AltaUniversidad();
-        $tituloAcademico->AltaTituloAcademico();
-      header("location: ../../View/login.php");
+        if(!empty($errores)){
+            // Tiene errores de validación volvemos a la página anterior
+            require_once "View/Usuario/registrarse.php";
+        }
+        else{
+
+            // Es correcto continuamos con el registro
+
+            //recoge los datos universitarios  y de titulodel formulario
+            $universidad= new Universidad($_POST["Login"],$_POST["NombreUniversidad"],$_POST["FechaInicio"],$_POST["FechaFin"]);
+            $tituloAcademico= new TituloAcademico($_POST["Login"],$_POST["Titulo"],$_POST["FechaTitulo"],$_POST["CentroTitulo"]);
+
+            //añade datos universitarios y titulo al usuario
+            $usuario->altaUsuario();
+            $universidad->AltaUniversidad();
+            $tituloAcademico->AltaTituloAcademico();
+            require_once "View/login.php";
+
+        }
+
     break;
 
 // dar de alta un nuevo titulo academico
     case 'altaTituloAcademico':
         $LoginU= $_POST["LoginU"];
         $tituloAcademico= new TituloAcademico($_POST["LoginU"],$_POST["Titulo"],$_POST["FechaTitulo"],$_POST["CentroTitulo"]);
-        $tituloAcademico->AltaTituloAcademico();
-        header("location: ../../Controller/UsuariosController.php?evento=consultarUsuario&LoginU=$LoginU");
+        
+        // Validamos si es correcto o no el formulario
+        $errores    = $tituloAcademico->validarTituloAcademico($_POST);
+
+        if(!empty($errores)){
+            // Tiene errores de validación volvemos a la página anterior
+            require_once "View/TituloAcademico/insertarTituloAcademico.php";
+        }
+        else{
+            $tituloAcademico->AltaTituloAcademico();
+            header("location: index.php?controlador=Usuarios&evento=consultarUsuario&LoginU=$LoginU");
+        }
+
         break;
 
 // dar de alta una nueva universidad
     case 'altaUniversidad':
         $LoginU= $_POST["LoginU"];
         $universidad= new Universidad($_POST["LoginU"],$_POST["NombreUniversidad"],$_POST["FechaInicio"],$_POST["FechaFin"]);
-        $universidad->AltaUniversidad();
-        header("location: ../../Controller/UsuariosController.php?evento=consultarUsuario&LoginU=$LoginU");
+
+        // Validamos si es correcto o no el formulario
+        $errores    = $universidad->validarUniversidad($_POST);
+
+        if(!empty($errores)){
+            // Tiene errores de validación volvemos a la página anterior
+            require_once "View/Universidad/insertarUniversidad.php";
+        }
+        else{
+                $universidad->AltaUniversidad();
+                header("location: index.php?controlador=Usuarios&evento=consultarUsuario&LoginU=$LoginU");
+        }
+
         break;
 
 //cerrar session
@@ -80,7 +142,7 @@ switch ($evento) {
           session_unset();
           session_destroy();
 
-          header("location:../../index.php");
+          header("location: index.php");
       break;
 
 //loguear usuario
@@ -93,10 +155,10 @@ switch ($evento) {
     if (isset( $_SESSION["Usuario"])) {
 
 
-        header("location: ../Controller/UsuariosController.php?evento=consultarUsuario&LoginU=$LoginU");
+        header("location: index.php?controlador=Usuarios&evento=consultarUsuario&LoginU=$LoginU");
     } else {
 
-        header("location: ../../index.php");
+        header("location: index.php");
     }
 
       break;
@@ -136,7 +198,7 @@ switch ($evento) {
 
 
 
-		header("location: ../../View/Usuario/consultarUsuario.php");
+		require_once "View/Usuario/consultarUsuario.php";
     break;
     //consultar detalle del usuario
     case 'consultarDetalleUsuario':
@@ -171,13 +233,11 @@ switch ($evento) {
         $_SESSION["ConsultaUT"] = $consultaUT;
         $_SESSION["ConsultaUA"] = $consultaUA;
 
-
-
         $tipou=$_SESSION["TipoUsuario"];
         if($tipou == 'U') {
-            header("location: ../../View/Usuario/consultarDetalleUsuario.php");
+            require_once "View/Usuario/consultarDetalleUsuario.php";
         }else{
-            header("location: ../../View/Usuario/consultarDetalleUsuarioAdmin.php");
+            require_once "View/Usuario/consultarDetalleUsuarioAdmin.php";
         }
         break;
 
@@ -196,7 +256,7 @@ switch ($evento) {
 
         $_SESSION["ConsultarTitulo"] = $consultaTitulo;
 
-        header("location: ../../View/TituloAcademico/modificarTituloAcademico.php");
+        require_once "View/TituloAcademico/modificarTituloAcademico.php";
         break;
 
 //modificar usuario
@@ -214,13 +274,26 @@ switch ($evento) {
         $Departamento = $_POST['Departamento'];
 
         $usuario = new Usuarios($LoginU,"", $NombreU, $ApellidosU, $Telefono, $Mail, $DNI,$FechaNacimiento, $TipoContrato,$Centro,$Departamento);
-        $usuario->ModificarUsuario($LoginU);
-        $tipou=$_SESSION[TipoUsuario];
-        if($tipou == 'U'){
-            header("location: ../Controller/UsuariosController.php?evento=consultarUsuario&LoginU=$LoginU");
-        }else{
-        header("location: ../Controller/UsuariosController.php?evento=consultarDetalleUsuario&LoginU=$LoginU");
+
+        // Validamos si es correcto o no el formulario
+        $errores    = $usuario->validarPerfil($_POST);
+
+        if(!empty($errores)){
+            // Tiene errores de validación volvemos a la página anterior
+            require_once "View/Usuario/modificarUsuario.php";
         }
+        else{
+
+            $usuario->ModificarUsuario($LoginU);
+            $tipou=$_SESSION["TipoUsuario"]; 
+            if($tipou == 'U'){
+                header("Location: index.php?controlador=Usuarios&evento=consultarUsuario&LoginU=$LoginU");
+            }else{
+                header("Location: index.php?controlador=Usuarios&evento=consultarDetalleUsuario&LoginU=$LoginU");
+            }
+
+        }
+
         break;
 
 //modificar titulo academico
@@ -235,7 +308,7 @@ switch ($evento) {
         $titulo->ModificarTituloAcademico($LoginU,$NombreTitulo);
 
 
-        header("location: ../Controller/UsuariosController.php?evento=consultarUsuario&LoginU=$LoginU");
+        header("Location: index.php?controlador=Usuarios&evento=consultarUsuario&LoginU=$LoginU");
 
         break;
 //lista de usuarios para el administrador
@@ -248,7 +321,7 @@ switch ($evento) {
             array_push($listaResultado, $row);
         }
         $_SESSION["listarUsuarios"] = $listaResultado;
-        header("location: ../../View/Usuario/listarUsuariosAdmin.php");
+        require_once "View/Usuario/listarUsuariosAdmin.php";
         break;
 //lista de usuarios para el usuario
     case 'listarUsuarios':
@@ -260,40 +333,7 @@ switch ($evento) {
             array_push($listaResultado, $row);
         }
         $_SESSION["listarUsuarios"] = $listaResultado;
-        header("location: ../../View/Usuario/listarUsuarios.php");
-        break;
-   //confirmar borrado
-    case 'confirmarBorrado':
-
-        $Login=$_REQUEST["LoginU"];
-        $Usuario = new Usuarios("","","","","","","","","");
-        $consultarUsuario = $Usuario->consultarUsuario($Login);
-
-        $consulta = array();
-        while($row = mysqli_fetch_array($consultarUsuario)){
-            array_push($consulta, $row);
-        }
-
-        $consultarTitulo = $Usuario->ConsultarTitulos($Login);
-
-        $consultaUT = array();
-        while($row3 = mysqli_fetch_array($consultarTitulo)){
-            array_push($consultaUT, $row3);
-        }
-
-
-        $consultarUniversidad = $Usuario->ConsultarUniversidades($Login);
-
-        $consultaUA = array();
-        while($row2 = mysqli_fetch_array($consultarUniversidad)){
-            array_push($consultaUA, $row2);
-        }
-
-        $_SESSION["ConsultarU"] = $consulta;
-        $_SESSION["ConsultaUT"] = $consultaUT;
-        $_SESSION["ConsultaUA"] = $consultaUA;
-
-        header("location: ../../View/Usuario/confirmarBorrar.php");
+        require_once "View/Usuario/listarUsuarios.php";
         break;
 
  //borrar un usuario
@@ -306,7 +346,7 @@ switch ($evento) {
         $tituloAcademico->BorrarTitulosUsuario($Login);
         $universidad-> BorrarUniversidadesUsuario($Login);
         $Usuario->BorrarUsuario($Login);
-        header("location: ../../Controller/UsuariosController.php?evento=listarUsuariosAdmin");
+        header("Location: index.php?controlador=Usuarios&evento=listarUsuariosAdmin");
 
         break;
 
@@ -320,12 +360,12 @@ switch ($evento) {
         $tituloAcademico->BorrarTitulosUsuario($Login);
         $universidad-> BorrarUniversidadesUsuario($Login);
         $Usuario->BorrarUsuario($Login);
-        header("location: ../../Controller/UsuariosController.php?evento=logOut");
+        header("Location: index.php?controlador=Usuarios&evento=logOut");
 
         break;
 
   //buscar usuarios
-     case 'buscarUsuario';
+    case 'buscarUsuario':
          $buscar= $_POST['textoBusqueda'];
 
          $Usuario = new Usuarios("","","","","","","","","");
@@ -337,11 +377,11 @@ switch ($evento) {
                      array_push($listaResultado, $row);
                  }
                  $_SESSION["listarBusqueda"] = $listaResultado;
-            $tipou=$_SESSION[TipoUsuario];
+            $tipou=$_SESSION["TipoUsuario"]; 
             if($tipou == 'U'){
-                header("location: ../../View/Usuario/BuscarUsuario.php");
+                require_once "View/Usuario/BuscarUsuario.php";
             }else{
-                header("location: ../../View/Usuario/BuscarUsuarioAdmin.php");
+                require_once "View/Usuario/BuscarUsuarioAdmin.php";
             }
 
         }else{

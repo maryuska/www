@@ -1,5 +1,7 @@
 <?php
 
+require_once 'Validacion.php';
+
 class TituloAcademico
 {
 
@@ -55,6 +57,32 @@ class TituloAcademico
     public function BorrarTitulosUsuario($Login){
         $this->ConectarBD();
         $this->mysqli->query("DELETE FROM titulo_academico WHERE LoginU= '$Login'")or die(mysqli_error($this->mysqli));
+    }
+
+    /**
+     * Valida si los campos del formulario del titulo academico son correctos
+     * 
+     * @param array $campos del formulario
+     * @return array $errores, contiene los campos fallidos $errores[] = nombre del campo
+     */
+    public function validarTituloAcademico($campos){
+
+        $errores    = array();
+        $validar    = new Validacion();
+
+        // Titulo
+        if(isset($campos["Titulo"]) && !$validar->validarLetrasYNumeros($campos["Titulo"]))
+            $errores[]  = "Titulo";
+
+        // Fecha titulo
+        if(isset($campos["FechaTitulo"]) && !$validar->validarFecha($campos["FechaTitulo"]))
+            $errores[]  = "FechaTitulo";
+
+        // Centro titulo
+        if(isset($campos["CentroTitulo"]) && !$validar->validarLetrasYNumeros($campos["CentroTitulo"]))
+            $errores[]  = "CentroTitulo";
+
+        return $errores;
     }
 
 }

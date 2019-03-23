@@ -1,6 +1,6 @@
 <?php
-require_once '../../View/Structure/Header.php';
-require_once '../../View/Structure/Nav.php';
+require_once 'View/Structure/Header.php';
+require_once 'View/Structure/Nav.php';
 
 
 ?>
@@ -11,7 +11,7 @@ require_once '../../View/Structure/Nav.php';
 
     <div class="panel panel-default">
         <div class="col-md-12">
-            <form  action="../../Controller/UsuariosController.php" method="post" role="form">
+            <form  action="index.php?controlador=Usuarios" method="post" role="form">
             <?php $rows = $_SESSION["ConsultarTitulo"];
             foreach ($rows as $row) { ?>
 

@@ -1,0 +1,158 @@
+/* Generales */
+
+body{
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size:12px;
+    line-height:1.42857143;
+    color:#333;
+    background-color:#eee;
+}
+
+h1 {
+    font-size: 30px;
+    font-weight: 700;
+    text-shadow: 0 1px 4px #FF7514;
+}
+
+.hr{
+    background: #FF7514;
+    height: 1px;
+    widows: 100%;
+    display: block;
+}
+
+.centrado {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.btn:not(.btn-modal){
+    margin: 0px 5px;
+    background: #DDDDDD;
+}
+
+.btn:not(.btn-modal):hover{
+    cursor: pointer;
+    background: #EEE;
+}
+
+.btn-transparent{
+    margin: 0px 5px;
+    background: transparent !important;
+}
+
+.btn-orange {
+    text-align: center;
+    border-radius: 4px;
+    box-shadow: 0px 2px 10px #FF7514;
+    color: #FF7514;
+}
+
+.logotipo {
+    max-height: 30px;
+}
+
+.margin-botom20{
+    margin-bottom: 20px;
+}
+
+.margin-bottom5{
+    margin-bottom: 5px;
+}
+
+/* Errores */
+
+input.error { 
+    border-color:red; 
+}
+
+/* Navbar */
+.navbar {
+    margin-bottom: 10px;
+    min-height: 1px;
+}
+
+.navbar-brand {
+    padding:12px 15px;
+}
+
+.nounderline:hover {
+    background-color: #ededed !important;
+}
+
+/* Login */
+
+.boxlogin {
+    margin: 0px 4%;
+    padding: 15px;
+    width: 320px;
+    max-width: 92%;
+    border-radius: 4px;
+    box-shadow: 0px 2px 10px #FF7514;
+}
+
+/* Sidebar */
+
+.dropdown-login {
+    min-width: 100%;
+    float: none;
+}
+
+.navbar-sidebar-collapse {
+    padding:0;
+    background-color:#FFF;
+    border:1px solid #4C4C4C;
+}
+
+.navbar-sidebar {
+    margin: 9px 20px;
+    float: left;
+    background: transparent;
+    border:0;
+}
+
+.icon-bar-orange {
+    background-color: #FF7514 !important;
+}
+
+.sidebar-options {
+    font-size: 16px;
+    display: block;
+}
+
+.sidebar-options > * {
+    display: block;
+    padding: 5px 15px;
+}
+
+.sidebar-options > p {
+    margin: 0;
+    background-color: #4C4C4C;
+    color: #FF7514;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.sidebar-options > a,
+.sidebar-options > a:focus,
+.sidebar-options > a:visited {
+    color: #FF7514;
+}
+
+.sidebar-options > a:hover {
+    cursor: pointer;
+    font-style: italic;
+}
+
+/* Consultar usuario */
+.tdTitulo {
+    min-height: 32px;
+    padding: 5px 15px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ff7514 !important;
+    background-color: #4C4C4C;
+    border: 0px solid #000000;
+}

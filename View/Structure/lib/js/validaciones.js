@@ -1,4 +1,4 @@
-/*usuario/registrarse*/
+//usuario/registrarse
 /* function comprobarUsuario() {
     var Login = document.getElementById("Login").value;
     var PasswordU = document.getElementById("PasswordU").value;
@@ -19,8 +19,8 @@
     var FechaTitulo  = document.getElementById("FechaTitulo").value;
     var CentroTitulo = document.getElementById("CentroTitulo").value;
 
-    if( Login == null /*|| Login.length == 0 || /^\s+$/.test(Login) || Login.match(/[A-Za-z0-9]/) == null*/) {
-      /*  alert("Error: Error de registro del Login");
+    if( Login == null || Login.length == 0 || /^\s+$/.test(Login) || Login.match(/[A-Za-z0-9]/) == null) {
+        alert("Error: Error de registro del Login");
         return false;
 
     }else if(PasswordU != PasswordU2 || PasswordU2 == null || PasswordU == null){
@@ -91,8 +91,8 @@
         }
 }
 
-/*universidad/insertarUniversidad*/
-      /*
+// universidad/insertarUniversidad
+      
 function comprobarUniversidad() {
     var NombreUniversidad = document.getElementById("NombreUniversidad").value;
     var FechaInicio = document.getElementById("FechaInicio").value;
@@ -115,8 +115,8 @@ function comprobarUniversidad() {
     }
 
 }
-/*tituloAcademico/insertarTituloAcademico*/
-      /*
+// tituloAcademico/insertarTituloAcademico
+      
 function comprobarTituloAcademico() {
     var Titulo = document.getElementById("Titulo").value;
     var FechaTitulo = document.getElementById("FechaTitulo").value;
