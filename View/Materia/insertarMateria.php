@@ -1,89 +1,148 @@
 <?php
-require_once '../../View/Structure/Header.php';
-require_once '../../View/Structure/Nav.php';
+// Estructura general html, body
+require_once 'View/Structure/Header.php';
+
+// Menu
+require_once 'View/Structure/Nav.php';
+
 $loginU =$_SESSION["loginU"];
 
 ?>
+<div class="container-fluid">
+    <div class="row">
 
-<div class="col-md-10 izquierda">
-    <h3 class="text-center">Insertar Materia</h3>
-        <div class="panel panel-default">
-            <div class="col-md-12">
-            <form id="formulario" class="form-horizontal" enctype="multipart/form-data" action="../../Controller/MateriasController.php" method="post" role="form">
+        <?php
+        // Menu lateral
+        require_once 'View/Structure/Sidebar.php';
+        ?>
 
-                <div class="form-group">
-                    <label class="control-label" for="CodigoM">Código Materia: </label>
-                    <input id="CodigoM" name="CodigoM" type="CodigoM" placeholder="Código Materia" class="form-control ">
-                    <input id="LoginU" name="LoginU" class="hidden" value="<?php echo $LoginU; ?>" >
-                </div>
+        <!-- Contenido -->
+        <div class="col-md-offset-1 col-md-8 col-lg-offset-2 col-lg-6">
+            <div class="cotainer">
+    <?php
+    // Si existe errores mostramos mensaje de error
+    if(isset($errores) && !empty($errores)){
+        echo "<br>";
+        echo "<br>";
+        echo "<div class='row'>";
+        echo "  <div class='col-md-offset-4 col-md-8 col-lg-offset-3 col-lg-9'>";
+        require_once "View/errores.php";
+        echo "  </div>";
+        echo "</div>";
+    }
+    ?>
 
-                <div class="form-group">
-                    <label class="control-label" for="TipoM">Tipo Materia:</label>
-                    <p> <select type="TipoM"  class="form-control"  id="TipoM" name="TipoM">
-                            <option>--</option>
-                            <option>Grado</option>
-                            <option>Tercer Ciclo</option>
-                            <option>Curso</option>
-                            <option>Master</option>
-                            <option>Post Grado</option>
-                        </select></p>
-                </div>
+    <!-- Formulario -->
 
-                <div class="form-group">
-                    <label class="control-label" for="TipoParticipacionM">Tipo de participación:</label>
-                    <p> <select type="TipoParticipacionM"  class="form-control"  id="TipoParticipacionM" name="TipoParticipacionM">
-                            <option>--</option>
-                            <option>Docente</option>
-                            <option>Director</option>
-                        </select></p>
-                </div>
+    <form id="formulario" class="form-horizontal" enctype="multipart/form-data" onsubmit="return comprobarMateria()"  action="index.php?controlador=Materias" method="post">
 
-                <div class="form-group">
-                    <label class="control-label" for="DenominacionM">Denominación:</label>
-                        <input id="DenominacionM" name="DenominacionM" type="DenominacionM" placeholder="Denominación" class="form-control " >
-                </div>
+        <!-- Materia -->
 
-                <div class="form-group">
-                    <label class="control-label" for="TitulacionM">Titulación:</label>
-                    <input id="TitulacionM" name="TitulacionM" type="TitulacionM" placeholder="Titulación" class="form-control " >
-                </div>
+        <h2 class="col-md-offset-4 col-lg-offset-3 text-center">Registrar Materia</h2>
 
-                <div class="form-group">
-                    <label class="control-label" for="AnhoAcademicoM">Año académico:</label>
-                    <input id="AnhoAcademicoM" name="AnhoAcademicoM" type="AnhoAcademicoM" placeholder="Año académico" class="form-control " >
-                </div>
+        <br>
 
-                <div class="form-group">
-                    <label class="control-label" for="CreditosM">Créditos:</label>
-                    <input id="CreditosM" name="CreditosM" type="CreditosM" placeholder="Créditos" class="form-control " >
-                </div>
-
-                <div class="form-group">
-                    <label class="control-label" for="TipoPD">Cuatrimestre:</label>
-                    <p> <select type="CuatrimestreM"  class="form-control"  id="CuatrimestreM" name="CuatrimestreM">
-                            <option>--</option>
-                            <option >Primero</option>
-                            <option >Segundo</option>
-                            <option>Anual</option>
-                        </select></p>
-                </div>
-                <br>
-
-                <div class="form-group">
-
-                    <input id="LoginU" name="LoginU" type="hidden" placeholder="LoginU" value="<?php echo $loginU ?>" >
-                </div>
-
-                <div class="col-lg-6 col-md-6 col-sm-8 col-xs-8 col-md-offset-3">
-                    <label class="control-label" for="Registrar"></label>
-                        <button type="submit" id="Registrar" name="evento" value="altaMateria" class="btn btn-orange"> Insertar </button>
-                </div>
-
-            </form>
+        <div class="form-group form-group-md">
+            <label class="col-md-4 col-lg-3 control-label" for="CodigoM">Código Materia</label>
+            <div class="col-md-8 col-lg-9">
+                <input id="CodigoM" name="CodigoM" type="text" placeholder="Codigo Materia" class="form-control <?php if(isset($errores) && in_array("CodigoM", $errores)){ echo " error"; } ?>" value="<?=isset($_POST["CodigoM"])?$_POST["CodigoM"]:''?>" >
+                <input id="LoginU" name="LoginU" type="text" class="hidden" value="<?php echo $loginU; ?>"  >
             </div>
         </div>
 
+        <div class="form-group form-group-md">
+            <label class="col-md-4 col-lg-3 control-label" for="TipoM">Tipo Materia</label>
+            <div class="col-md-8 col-lg-9">
+                <p> <select id="TipoM" name="TipoM" type="text" placeholder="Tipo Materia" class="form-control <?php if(isset($errores) && in_array("TipoM", $errores)){ echo " error"; } ?>" value="<?=isset($_POST["TipoM"])?$_POST["TipoM"]:''?>">
+                        <option>--</option>
+                        <option>Grado</option>
+                        <option>Tercer Ciclo</option>
+                        <option>Curso</option>
+                        <option>Master</option>
+                        <option>PostGrado</option>
+                    </select></p>
+            </div>
+        </div>
+
+        <div class="form-group form-group-md">
+            <label class="col-md-4 col-lg-3 control-label" for="TipoParticipacionM">Tipo Participación</label>
+            <div class="col-md-8 col-lg-9">
+                <p> <select id="TipoParticipacionM" name="TipoParticipacionM" type="text" placeholder="Tipo Participacion" class="form-control <?php if(isset($errores) && in_array("TipoParticipacionM", $errores)){ echo " error"; } ?>" value="<?=isset($_POST["TipoParticipacionM"])?$_POST["TipoParticipacionM"]:''?>">
+                        <option>--</option>
+                        <option>Docente</option>
+                        <option>Director</option>
+                    </select></p>
+            </div>
+        </div>
+
+        <div class="form-group form-group-md">
+            <label class="col-md-4 col-lg-3 control-label" for="DenominacionM">Nombre Materia</label>
+            <div class="col-md-8 col-lg-9">
+                <input id="DenominacionM" name="DenominacionM" type="text" placeholder="Nombre Materia" class="form-control <?php if(isset($errores) && in_array("DenominacionM", $errores)){ echo " error"; } ?>" value="<?=isset($_POST["DenominacionM"])?$_POST["DenominacionM"]:''?>" >
+            </div>
+        </div>
+
+        <div class="form-group form-group-md">
+            <label class="col-md-4 col-lg-3 control-label" for="TitulacionM">Titulación</label>
+            <div class="col-md-8 col-lg-9">
+                <input id="TitulacionM" name="TitulacionM" type="text" placeholder="Titulacion" class="form-control <?php if(isset($errores) && in_array("TitulacionM", $errores)){ echo " error"; } ?>" value="<?=isset($_POST["TitulacionM"])?$_POST["TitulacionM"]:''?>" >
+            </div>
+        </div>
+
+        <div class="form-group form-group-md">
+            <label class="col-md-4 col-lg-3 control-label" for="AnhoAcademicoM">Año Académico</label>
+            <div class="col-md-8 col-lg-9">
+                <input id="AnhoAcademicoM" name="AnhoAcademicoM" type="date" placeholder="Año academico" class="form-control <?php if(isset($errores) && in_array("AnhoAcademicoM", $errores)){ echo " error"; } ?>" value="<?=isset($_POST["AnhoAcademicoM"])?$_POST["AnhoAcademicoM"]:''?>" >
+            </div>
+        </div>
+
+        <div class="form-group form-group-md">
+            <label class="col-md-4 col-lg-3 control-label" for="CreditosM">Créditos</label>
+            <div class="col-md-8 col-lg-9">
+                <input id="CreditosM" name="CreditosM" type="text" placeholder="Creditos " class="form-control <?php if(isset($errores) && in_array("CreditosM", $errores)){ echo " error"; } ?>" value="<?=isset($_POST["CreditosM"])?$_POST["CreditosM"]:''?>" >
+            </div>
+        </div>
+
+
+
+        <div class="form-group form-group-md">
+            <label class="col-md-4 col-lg-3 control-label" for="CuatrimestreM">Cuatrimestre</label>
+            <div class="col-md-8 col-lg-9">
+                <p> <select id="CuatrimestreM" name="CuatrimestreM" type="text" placeholder="Cuatrimestre" class="form-control <?php if(isset($errores) && in_array("CuatrimestreM", $errores)){ echo " error"; } ?>" value="<?=isset($_POST["CuatrimestreM"])?$_POST["CuatrimestreM"]:''?>">
+                        <option>--</option>
+                        <option >Primero</option>
+                        <option >Segundo</option>
+                        <option>Anual</option>
+                    </select></p>
+            </div>
+        </div>
+
+
+
+
+        <div class="col-md-offset-4 col-lg-offset-3 text-center">
+            <button type="submit" id="AltaMateria" name="evento" value="altaMateria" class="btn btn-orange">
+                Alta Materia
+            </button>
+        </div>
+
+        <br>
+        <br>
+
+    </form>
+
+</div>
+</div>
+</div>
     </div>
+</div>
+<?php
+// Pie y cierre de html, body
+require_once 'View/Structure/Footer.php';
+?>
+
+
+
 
 
 
