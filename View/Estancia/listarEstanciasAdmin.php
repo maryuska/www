@@ -48,7 +48,7 @@ require_once 'View/Structure/Nav.php';
                             </button>
                         </div>
                         <div class="col-lg-6 col-md-3 col-xs-2 text-right">
-                            <a class="btn btn-orange " href="index.php?controlador=Estancias&evento=paginaInsertarEstancia">
+                            <a class="btn btn-orange " href="index.php?controlador=Estancias&evento=paginaInsertarEstanciaAdmin">
                                 Insertar estancia
                             </a>
                         </div>
@@ -64,7 +64,7 @@ require_once 'View/Structure/Nav.php';
                     <!--listado de estancias ordenadas mas recientes  -->
                     <div class="tab-pane fade in active" id="tab1">
                         <?php
-                        $lista = $_SESSION["listarEstancias"];
+                        $lista = $_SESSION["listarEstanciasAdmin"];
                         $contador   = 1;
                         if (isset($lista)) {
                             foreach ($lista as $row){ ?>
@@ -79,6 +79,9 @@ require_once 'View/Structure/Nav.php';
                                         <div class="panel-body">
                                             <tr>
                                                 <td valign="top" width="50%">
+                                                    <b name = "LoginU">Usuario: </b>
+                                                    <?php echo $row['LoginU']; ?>
+                                                    <br>
                                                     <b name = "CentroE" >Centro:</b>
                                                     <?php echo $row['CentroE']; ?>
                                                     <br>
@@ -129,7 +132,7 @@ require_once 'View/Structure/Nav.php';
                     <!--listado de materias de grado-->
                     <div class="tab-pane fade" id="tab2">
                         <?php
-                        $lista1 = $_SESSION["listarEstanciasInvestigacion"];
+                        $lista1 = $_SESSION["listarEstanciasInvestigacionAdmin"];
                         $contador1   = 1;
                         if (isset($lista1)) {
                             foreach ($lista1 as $row1){ ?>
@@ -144,6 +147,9 @@ require_once 'View/Structure/Nav.php';
                                         <div class="panel-body">
                                             <tr>
                                                 <td valign="top" width="50%">
+                                                    <b name = "LoginU">Usuario: </b>
+                                                    <?php echo $row1['LoginU']; ?>
+                                                    <br>
                                                     <b name = "CentroE" >Centro:</b>
                                                     <?php echo $row1['CentroE']; ?>
                                                     <br>
@@ -168,7 +174,7 @@ require_once 'View/Structure/Nav.php';
                                             <div class="margin-bottom5 text-center">
                                                 <form name="formBorrarEstancia<?php echo $contador1; ?>" id="formBorrarEstancia<?php echo $contador1; ?>" class="text-center" action="index.php" method="get">
                                                     <input type="hidden" name="controlador" value="Estancias">
-                                                    <input type="hidden" name="evento" value="borrarEstancias">
+                                                    <input type="hidden" name="evento" value="borrarEstancia">
                                                     <input type="hidden" name="CodigoE" value="<?php echo $row1['CodigoE']; ?>">
                                                     <button type="button" class="btn btn-transparent btn-orange" onClick="window.location.href='index.php?controlador=Estancias&evento=consultarEstancia&CodigoE=<?php echo $row1['CodigoE']; ?>'">
                                                         Modificar
@@ -193,7 +199,7 @@ require_once 'View/Structure/Nav.php';
                     <!--listado de materias de tercer ciclo -->
                     <div class="tab-pane fade " id="tab3">
                         <?php
-                        $lista2 = $_SESSION["listarEstanciasDoctorado"];
+                        $lista2 = $_SESSION["listarEstanciasDoctoradoAdmin"];
                         $contador2   = 1;
                         if (isset($lista2)) {
                             foreach ($lista2 as $row2){ ?>
@@ -208,6 +214,9 @@ require_once 'View/Structure/Nav.php';
                                         <div class="panel-body">
                                             <tr>
                                                 <td valign="top" width="50%">
+                                                    <b name = "LoginU">Usuario: </b>
+                                                    <?php echo $row2['LoginU']; ?>
+                                                    <br>
                                                     <b name = "CentroE" >Centro:</b>
                                                     <?php echo $row2['CentroE']; ?>
                                                     <br>
@@ -257,7 +266,7 @@ require_once 'View/Structure/Nav.php';
                     <!-- listado de materias de master -->
                     <div class="tab-pane fade" id="tab4">
                         <?php
-                        $lista3 = $_SESSION["listarEstanciasInvitado"];
+                        $lista3 = $_SESSION["listarEstanciasInvitadoAdmin"];
                         $contador3   = 1;
                         if (isset($lista3)) {
                             foreach ($lista3 as $row3){ ?>
@@ -272,6 +281,9 @@ require_once 'View/Structure/Nav.php';
                                         <div class="panel-body">
                                             <tr>
                                                 <td valign="top" width="50%">
+                                                    <b name = "LoginU">Usuario: </b>
+                                                    <?php echo $row3['LoginU']; ?>
+                                                    <br>
                                                     <b name = "CentroE" >Centro:</b>
                                                     <?php echo $row3['CentroE']; ?>
                                                     <br>

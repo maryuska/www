@@ -173,7 +173,7 @@ function sidebarAdministrador($loginU){
         </a>
     </li>
     <li class="sidebar-options">
-        <a class="nounderline" href="index.php?controlador=Estancias&evento=listarEstancias&LoginU=<?php echo $loginU; ?>">
+        <a class="nounderline" href="index.php?controlador=Estancias&evento=listarEstanciasAdmin">
             Estancias
         </a>
     </li>

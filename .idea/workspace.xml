@@ -10,11 +10,111 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="MateriasController.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Controller/MateriasController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="266">
+              <caret line="229" column="14" lean-forward="true" selection-start-line="204" selection-start-column="0" selection-end-line="229" selection-end-column="14" />
+              <folding>
+                <element signature="e#206#307#0#PHP" expanded="false" />
+                <element signature="e#349#460#0#PHP" expanded="false" />
+                <element signature="e#883#1277#0#PHP" expanded="false" />
+                <element signature="e#1283#2072#0#PHP" expanded="false" />
+                <element signature="e#2079#2526#0#PHP" expanded="false" />
+                <element signature="e#3787#5879#0#PHP" expanded="false" />
+                <element signature="e#7997#8793#0#PHP" expanded="false" />
+                <element signature="e#8816#9284#0#PHP" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="listarProyectosDirigidos.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/View/ProyectoDirigido/listarProyectosDirigidos.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ProyectosDirigidos.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Model/ProyectosDirigidos.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <marker date="1529433866000" expanded="true" signature="1228:1533" ph="INSERT INTO proyectoDirigido... " />
+                <marker date="1529433866000" expanded="true" signature="1779:1866" ph="INSERT INTO docente_proyectodirigido... " />
+                <marker date="1529433866000" expanded="true" signature="2124:2242" ph="SELECT * FRO... proyectoDirigido" />
+                <marker date="1529433866000" expanded="true" signature="2424:2709" ph="UPDATE proyectoDirigido... " />
+                <marker date="1529433866000" expanded="true" signature="2931:3079" ph="SELECT * FRO... proyectoDirigido" />
+                <marker date="1529433866000" expanded="true" signature="3291:3458" ph="SELECT * FRO... proyectoDirigido" />
+                <marker date="1529433866000" expanded="true" signature="3667:3835" ph="SELECT * FRO... proyectoDirigido" />
+                <marker date="1529433866000" expanded="true" signature="4045:4214" ph="SELECT * FRO... proyectoDirigido" />
+                <marker date="1529433866000" expanded="true" signature="4417:4536" ph="SELECT * FRO... proyectoDirigido" />
+                <marker date="1529433866000" expanded="true" signature="4735:4873" ph="SELECT * FRO... proyectoDirigido" />
+                <marker date="1529433866000" expanded="true" signature="5069:5206" ph="SELECT * FRO... proyectoDirigido" />
+                <marker date="1529433866000" expanded="true" signature="5404:5542" ph="SELECT * FRO... proyectoDirigido" />
+                <marker date="1529433866000" expanded="true" signature="5722:5779" ph="DELETE FROM proyectoDirigido... " />
+                <marker date="1529433866000" expanded="true" signature="5948:6034" ph="DELETE FROM docente_proyectodirigido... " />
+                <marker date="1529433866000" expanded="true" signature="6216:7366" ph="SELECT * FRO... proyectoDirigido" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ProyectosDirigidosController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Controller/ProyectosDirigidosController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Materia.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Model/Materia.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="276">
+              <caret line="223" column="5" lean-forward="true" selection-start-line="210" selection-start-column="4" selection-end-line="223" selection-end-column="5" />
+              <folding>
+                <element signature="n#ConectarBD#0;n#Materia#0;n#!!top" expanded="false" />
+                <element signature="n#AltaMateria#0;n#Materia#0;n#!!top" expanded="false" />
+                <element signature="n#ConsultarMateria#0;n#Materia#0;n#!!top" expanded="false" />
+                <element signature="n#ModificarMateria#0;n#Materia#0;n#!!top" expanded="false" />
+                <element signature="n#ListarMaterias#0;n#Materia#0;n#!!top" expanded="false" />
+                <element signature="n#ListarMateriasGrado#0;n#Materia#0;n#!!top" expanded="false" />
+                <element signature="n#ListarMateriasTCiclo#0;n#Materia#0;n#!!top" expanded="false" />
+                <element signature="n#ListarMateriasMaster#0;n#Materia#0;n#!!top" expanded="false" />
+                <element signature="n#ListarMateriasPost#0;n#Materia#0;n#!!top" expanded="false" />
+                <element signature="n#ListarMateriasCursos#0;n#Materia#0;n#!!top" expanded="false" />
+                <element signature="n#ListarMateriasAdmin#0;n#Materia#0;n#!!top" expanded="false" />
+                <element signature="n#ListarMateriasGradoAdmin#0;n#Materia#0;n#!!top" expanded="false" />
+                <element signature="n#ListarMateriasTCicloAdmin#0;n#Materia#0;n#!!top" expanded="false" />
+                <element signature="n#ListarMateriasMasterAdmin#0;n#Materia#0;n#!!top" expanded="false" />
+                <element signature="n#ListarMateriasPostAdmin#0;n#Materia#0;n#!!top" expanded="false" />
+                <element signature="n#ListarMateriasCursosAdmin#0;n#Materia#0;n#!!top" expanded="false" />
+                <element signature="n#BorrarMateria#0;n#Materia#0;n#!!top" expanded="false" />
+                <element signature="n#validarMateria#0;n#Materia#0;n#!!top" expanded="false" />
+                <element signature="n#BuscarMateria#0;n#Materia#0;n#!!top" expanded="false" />
+                <marker date="1553701530622" expanded="true" signature="10364:10533" ph="UPDATE usuario... " />
+                <marker date="1553701530622" expanded="true" signature="10627:10675" ph="SELECT * FRO... usuario" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
       <find>formBorrarPerfil</find>
+      <find>echa</find>
+      <find>AnhoAcademicoM</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -25,13 +125,8 @@
       <list>
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/View/Usuario/listarUsuarios.php" />
-        <option value="$PROJECT_DIR$/Controller/UsuariosController.php" />
         <option value="$PROJECT_DIR$/Model/Usuarios.php" />
         <option value="$PROJECT_DIR$/View/Materia/buscarMateria.php" />
-        <option value="$PROJECT_DIR$/View/Structure/Sidebar.php" />
-        <option value="$PROJECT_DIR$/Model/Materia.php" />
-        <option value="$PROJECT_DIR$/View/Materia/modificarMateria.php" />
-        <option value="$PROJECT_DIR$/View/Materia/insertarMateria.php" />
         <option value="$PROJECT_DIR$/View/Materia/insertarMateriaAdmin.php" />
         <option value="$PROJECT_DIR$/View/Materia/buscarMateriaAdmin.php" />
         <option value="$PROJECT_DIR$/Controller/MateriasController.php" />
@@ -39,6 +134,21 @@
         <option value="$PROJECT_DIR$/View/Structure/lib/js/confirmaciones.js" />
         <option value="$PROJECT_DIR$/View/Materia/listarMateriasAdmin.php" />
         <option value="$PROJECT_DIR$/View/Materia/listarMaterias.php" />
+        <option value="$PROJECT_DIR$/Controller/ArticulosController.php" />
+        <option value="$PROJECT_DIR$/View/Materia/insertarMateria.php" />
+        <option value="$PROJECT_DIR$/View/Structure/Sidebar.php" />
+        <option value="$PROJECT_DIR$/Model/Materia.php" />
+        <option value="$PROJECT_DIR$/View/Materia/modificarMateria.php" />
+        <option value="$PROJECT_DIR$/View/Estancia/insertarEstancia.php" />
+        <option value="$PROJECT_DIR$/View/Estancia/insertarEstanciaAdmin.php" />
+        <option value="$PROJECT_DIR$/Controller/UsuariosController.php" />
+        <option value="$PROJECT_DIR$/View/Estancia/modificarEstancia.php" />
+        <option value="$PROJECT_DIR$/View/Estancia/buscarEstancias.php" />
+        <option value="$PROJECT_DIR$/View/Estancia/buscarEstanciasAdmin.php" />
+        <option value="$PROJECT_DIR$/Model/Estancias.php" />
+        <option value="$PROJECT_DIR$/View/Estancia/listarEstanciasAdmin.php" />
+        <option value="$PROJECT_DIR$/View/Estancia/listarEstancias.php" />
+        <option value="$PROJECT_DIR$/Controller/EstanciasController.php" />
       </list>
     </option>
   </component>
@@ -97,6 +207,12 @@
               <item name="www" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="View" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
+            <path>
+              <item name="www" type="b2602c69:ProjectViewProjectNode" />
+              <item name="www" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="View" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="ProyectoDirigido" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -136,21 +252,23 @@
       <option name="presentableId" value="Default" />
       <updated>1552898443489</updated>
       <workItem from="1552898452454" duration="14638000" />
-      <workItem from="1553327569612" duration="11403000" />
+      <workItem from="1553327569612" duration="29584000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26041000" />
+    <option name="totallyTimeSpent" value="44222000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18081991" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18081991" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32861635" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -162,7 +280,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -174,79 +291,11 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="19" />
+      <option name="time" value="26" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Controller/MateriasController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#206#307#0#PHP" expanded="false" />
-            <element signature="e#349#460#0#PHP" expanded="false" />
-            <element signature="e#466#878#0#PHP" expanded="false" />
-            <element signature="e#883#1277#0#PHP" expanded="false" />
-            <element signature="e#1283#2072#0#PHP" expanded="false" />
-            <element signature="e#2079#2526#0#PHP" expanded="false" />
-            <element signature="e#2532#3751#0#PHP" expanded="false" />
-            <element signature="e#3787#5879#0#PHP" expanded="false" />
-            <element signature="e#5919#7974#0#PHP" expanded="false" />
-            <element signature="e#7997#8793#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Controller/UsuariosController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6528">
-          <caret line="384" column="13" lean-forward="true" selection-start-line="379" selection-start-column="11" selection-end-line="384" selection-end-column="13" />
-          <folding>
-            <element signature="e#1004#1103#0#PHP" expanded="false" />
-            <element signature="e#1139#2511#0#PHP" expanded="false" />
-            <element signature="e#2541#3780#0#PHP" expanded="false" />
-            <element signature="e#3827#4539#0#PHP" expanded="false" />
-            <element signature="e#4582#5265#0#PHP" expanded="false" />
-            <element signature="e#5288#5414#0#PHP" expanded="false" />
-            <element signature="e#5436#5838#0#PHP" expanded="false" />
-            <element signature="e#7000#8296#0#PHP" expanded="false" />
-            <element signature="e#8331#8873#0#PHP" expanded="false" />
-            <element signature="e#8899#10186#0#PHP" expanded="false" />
-            <element signature="e#10221#10708#0#PHP" expanded="false" />
-            <element signature="e#10755#11211#0#PHP" expanded="false" />
-            <element signature="e#11252#11698#0#PHP" expanded="false" />
-            <element signature="e#11725#12214#0#PHP" expanded="false" />
-            <element signature="e#12236#12711#0#PHP" expanded="false" />
-            <element signature="e#12737#13562#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/View/Materia/buscarMateria.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="5" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="115" selection-end-column="2" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/View/Materia/buscarMateriaAdmin.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1717">
-          <caret line="101" column="139" lean-forward="false" selection-start-line="101" selection-start-column="114" selection-end-line="101" selection-end-column="139" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/View/Materia/listarMateriasAdmin.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="867">
-          <caret line="51" column="37" lean-forward="true" selection-start-line="51" selection-start-column="37" selection-end-line="51" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/View/Materia/insertarMateriaAdmin.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -284,13 +333,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/View/Usuario/registrarse.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2353">
-          <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/View/Usuario/altaUsuarioAdmin.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -320,26 +362,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/View/Usuario/modificarUsuario.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="469">
-          <caret line="126" column="2" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="126" selection-end-column="2" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/View/Usuario/listarUsuarios.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="680">
           <caret line="40" column="27" lean-forward="true" selection-start-line="40" selection-start-column="27" selection-end-line="40" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/View/Materia/buscarMateria.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="80" column="27" lean-forward="false" selection-start-line="80" selection-start-column="27" selection-end-line="80" selection-end-column="27" />
           <folding />
         </state>
       </provider>
@@ -370,72 +396,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/View/Structure/Sidebar.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="170" column="94" lean-forward="false" selection-start-line="170" selection-start-column="94" selection-end-line="170" selection-end-column="94" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/BD/Base_Datos.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3876">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/View/Materia/insertarMateria.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="61" column="36" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="148" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/View/Structure/lib/js/validaciones.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Model/Materia.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="157" column="0" lean-forward="true" selection-start-line="157" selection-start-column="0" selection-end-line="157" selection-end-column="0" />
-          <folding>
-            <element signature="n#ConectarBD#0;n#Materia#0;n#!!top" expanded="false" />
-            <element signature="n#AltaMateria#0;n#Materia#0;n#!!top" expanded="false" />
-            <element signature="n#ConsultarMateria#0;n#Materia#0;n#!!top" expanded="false" />
-            <element signature="n#ModificarMateria#0;n#Materia#0;n#!!top" expanded="false" />
-            <element signature="n#ListarMaterias#0;n#Materia#0;n#!!top" expanded="false" />
-            <element signature="n#ListarMateriasGrado#0;n#Materia#0;n#!!top" expanded="false" />
-            <element signature="n#ListarMateriasTCiclo#0;n#Materia#0;n#!!top" expanded="false" />
-            <element signature="n#ListarMateriasMaster#0;n#Materia#0;n#!!top" expanded="false" />
-            <element signature="n#ListarMateriasPost#0;n#Materia#0;n#!!top" expanded="false" />
-            <element signature="n#ListarMateriasCursos#0;n#Materia#0;n#!!top" expanded="false" />
-            <element signature="n#ListarMateriasAdmin#0;n#Materia#0;n#!!top" expanded="false" />
-            <element signature="n#ListarMateriasGradoAdmin#0;n#Materia#0;n#!!top" expanded="false" />
-            <element signature="n#ListarMateriasTCicloAdmin#0;n#Materia#0;n#!!top" expanded="false" />
-            <element signature="n#ListarMateriasMasterAdmin#0;n#Materia#0;n#!!top" expanded="false" />
-            <element signature="n#ListarMateriasPostAdmin#0;n#Materia#0;n#!!top" expanded="false" />
-            <element signature="n#ListarMateriasCursosAdmin#0;n#Materia#0;n#!!top" expanded="false" />
-            <element signature="n#validarMateria#0;n#Materia#0;n#!!top" expanded="false" />
-            <element signature="n#BuscarMateria#0;n#Materia#0;n#!!top" expanded="false" />
-            <marker date="1553332821875" expanded="true" signature="6685:6730" ph="DELETE FROM usuario... " />
-            <marker date="1553332821875" expanded="true" signature="10358:10527" ph="UPDATE usuario... " />
-            <marker date="1553332821875" expanded="true" signature="10621:10669" ph="SELECT * FRO... usuario" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/View/Materia/insertarMateriaAdmin.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-646">
-          <caret line="46" column="254" lean-forward="false" selection-start-line="46" selection-start-column="254" selection-end-line="46" selection-end-column="254" />
           <folding />
         </state>
       </provider>
@@ -456,52 +420,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Controller/UsuariosController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="338" column="20" lean-forward="true" selection-start-line="338" selection-start-column="20" selection-end-line="338" selection-end-column="20" />
-          <folding>
-            <element signature="e#1004#1103#0#PHP" expanded="false" />
-            <element signature="e#1139#2511#0#PHP" expanded="false" />
-            <element signature="e#2541#3780#0#PHP" expanded="false" />
-            <element signature="e#3827#4539#0#PHP" expanded="false" />
-            <element signature="e#4582#5265#0#PHP" expanded="false" />
-            <element signature="e#5288#5414#0#PHP" expanded="false" />
-            <element signature="e#5436#5838#0#PHP" expanded="false" />
-            <element signature="e#5863#6959#0#PHP" expanded="false" />
-            <element signature="e#7000#8296#0#PHP" expanded="false" />
-            <element signature="e#8331#8873#0#PHP" expanded="false" />
-            <element signature="e#8899#10186#0#PHP" expanded="false" />
-            <element signature="e#10221#10708#0#PHP" expanded="false" />
-            <element signature="e#10755#11211#0#PHP" expanded="false" />
-            <element signature="e#11252#11698#0#PHP" expanded="false" />
-            <element signature="e#12236#12711#0#PHP" expanded="false" />
-            <element signature="e#12737#13562#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Model/Usuarios.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="138" column="1" lean-forward="true" selection-start-line="138" selection-start-column="1" selection-end-line="138" selection-end-column="1" />
-          <folding>
-            <element signature="n#ConectarBD#0;n#Usuarios#0;n#!!top" expanded="false" />
-            <element signature="n#altaUsuario#0;n#Usuarios#0;n#!!top" expanded="false" />
-            <element signature="n#login#0;n#Usuarios#0;n#!!top" expanded="false" />
-            <element signature="n#consultarUsuario#0;n#Usuarios#0;n#!!top" expanded="false" />
-            <element signature="n#ConsultarUniversidades#0;n#Usuarios#0;n#!!top" expanded="false" />
-            <element signature="n#ConsultarTitulos#0;n#Usuarios#0;n#!!top" expanded="false" />
-            <element signature="n#ModificarUsuario#0;n#Usuarios#0;n#!!top" expanded="false" />
-            <element signature="n#ListarUsuarios#0;n#Usuarios#0;n#!!top" expanded="false" />
-            <element signature="n#BuscarUsuario#0;n#Usuarios#0;n#!!top" expanded="false" />
-            <element signature="n#validarPerfil#0;n#Usuarios#0;n#!!top" expanded="false" />
-            <element signature="n#validarRegistrarUsuario#0;n#Usuarios#0;n#!!top" expanded="false" />
-            <marker date="1552906562258" expanded="true" signature="4897:4939" ph="DELETE FROM usuario... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Model/Validacion.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1608">
@@ -514,49 +432,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/View/Materia/listarMaterias.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="469">
-          <caret line="121" column="38" lean-forward="false" selection-start-line="121" selection-start-column="38" selection-end-line="121" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/View/Materia/modificarMateria.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-724">
-          <caret line="70" column="0" lean-forward="true" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Controller/MateriasController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="232" column="9" lean-forward="false" selection-start-line="232" selection-start-column="9" selection-end-line="232" selection-end-column="9" />
-          <folding>
-            <element signature="e#206#307#0#PHP" expanded="false" />
-            <element signature="e#349#460#0#PHP" expanded="false" />
-            <element signature="e#466#878#0#PHP" expanded="false" />
-            <element signature="e#883#1277#0#PHP" expanded="false" />
-            <element signature="e#1283#2072#0#PHP" expanded="false" />
-            <element signature="e#2079#2526#0#PHP" expanded="false" />
-            <element signature="e#2532#3751#0#PHP" expanded="false" />
-            <element signature="e#3787#5879#0#PHP" expanded="false" />
-            <element signature="e#5919#7974#0#PHP" expanded="false" />
-            <element signature="e#7997#8793#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/View/Materia/buscarMateriaAdmin.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
-          <caret line="98" column="43" lean-forward="false" selection-start-line="98" selection-start-column="43" selection-end-line="98" selection-end-column="43" />
           <folding />
         </state>
       </provider>
@@ -574,7 +449,7 @@
         <state relative-caret-position="347">
           <caret line="24" column="28" lean-forward="false" selection-start-line="24" selection-start-column="28" selection-end-line="24" selection-end-column="28" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="n#!!doc" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -584,6 +459,357 @@
         <state relative-caret-position="221">
           <caret line="103" column="36" lean-forward="true" selection-start-line="103" selection-start-column="36" selection-end-line="103" selection-end-column="36" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Controller/ArticulosController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Model/Articulo.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="690">
+          <caret line="64" column="28" lean-forward="true" selection-start-line="64" selection-start-column="28" selection-end-line="64" selection-end-column="28" />
+          <folding>
+            <marker date="1528911320000" expanded="true" signature="1310:1645" ph="INSERT INTO articulo... " />
+            <marker date="1528911320000" expanded="true" signature="1891:1941" ph="SELECT * FRO... articulo" />
+            <marker date="1528911320000" expanded="true" signature="2105:2414" ph="UPDATE articulo... " />
+            <marker date="1528911320000" expanded="true" signature="2604:2650" ph="SELECT * FRO... articulo" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Model/Congreso.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1528911320000" expanded="true" signature="950:1135" ph="INSERT INTO congreso... " />
+            <marker date="1528911320000" expanded="true" signature="1381:1431" ph="SELECT * FRO... congreso" />
+            <marker date="1528911320000" expanded="true" signature="1595:1763" ph="UPDATE congreso... " />
+            <marker date="1528911320000" expanded="true" signature="1967:2033" ph="SELECT * FRO... congreso" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/Materia/consultar Detalle.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/Materia/listarMaterias.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="469">
+          <caret line="121" column="38" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="500" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BD/Base_Datos.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1122">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/Materia/insertarMateria.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="61" column="36" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="148" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/Usuario/registrarse.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/Materia/insertarMateriaAdmin.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="43" column="20" lean-forward="true" selection-start-line="43" selection-start-column="20" selection-end-line="53" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/Structure/Sidebar.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="319">
+          <caret line="175" column="96" lean-forward="false" selection-start-line="175" selection-start-column="96" selection-end-line="175" selection-end-column="96" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/Materia/modificarMateria.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="62" column="77" lean-forward="true" selection-start-line="62" selection-start-column="77" selection-end-line="63" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/Estancia/insertarEstancia.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="76" column="278" lean-forward="false" selection-start-line="76" selection-start-column="278" selection-end-line="76" selection-end-column="278" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Controller/UsuariosController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="651">
+          <caret line="326" column="0" lean-forward="false" selection-start-line="326" selection-start-column="0" selection-end-line="326" selection-end-column="0" />
+          <folding>
+            <element signature="e#1004#1103#0#PHP" expanded="false" />
+            <element signature="e#1139#2511#0#PHP" expanded="false" />
+            <element signature="e#2541#3780#0#PHP" expanded="false" />
+            <element signature="e#3827#4539#0#PHP" expanded="false" />
+            <element signature="e#4582#5265#0#PHP" expanded="false" />
+            <element signature="e#5288#5414#0#PHP" expanded="false" />
+            <element signature="e#5436#5838#0#PHP" expanded="false" />
+            <element signature="e#5863#6959#0#PHP" expanded="false" />
+            <element signature="e#7000#8296#0#PHP" expanded="false" />
+            <element signature="e#8331#8873#0#PHP" expanded="false" />
+            <element signature="e#10221#10708#0#PHP" expanded="false" />
+            <element signature="e#10756#11212#0#PHP" expanded="false" />
+            <element signature="e#11254#11700#0#PHP" expanded="false" />
+            <element signature="e#11727#12216#0#PHP" expanded="false" />
+            <element signature="e#12238#12713#0#PHP" expanded="false" />
+            <element signature="e#12739#13564#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/Estancia/insertarEstanciaAdmin.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="166">
+          <caret line="87" column="278" lean-forward="false" selection-start-line="87" selection-start-column="278" selection-end-line="87" selection-end-column="278" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/Materia/buscarMateria.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="80" column="27" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="115" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/Materia/buscarMateriaAdmin.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="214">
+          <caret line="98" column="43" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="128" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Model/Usuarios.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-959">
+          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="30" />
+          <folding>
+            <element signature="n#ConectarBD#0;n#Usuarios#0;n#!!top" expanded="false" />
+            <element signature="n#altaUsuario#0;n#Usuarios#0;n#!!top" expanded="false" />
+            <element signature="n#login#0;n#Usuarios#0;n#!!top" expanded="false" />
+            <element signature="n#consultarUsuario#0;n#Usuarios#0;n#!!top" expanded="false" />
+            <element signature="n#ConsultarUniversidades#0;n#Usuarios#0;n#!!top" expanded="false" />
+            <element signature="n#ConsultarTitulos#0;n#Usuarios#0;n#!!top" expanded="false" />
+            <element signature="n#ModificarUsuario#0;n#Usuarios#0;n#!!top" expanded="false" />
+            <element signature="n#ListarUsuarios#0;n#Usuarios#0;n#!!top" expanded="false" />
+            <element signature="n#BuscarUsuario#0;n#Usuarios#0;n#!!top" expanded="false" />
+            <element signature="n#validarPerfil#0;n#Usuarios#0;n#!!top" expanded="false" />
+            <element signature="n#validarRegistrarUsuario#0;n#Usuarios#0;n#!!top" expanded="false" />
+            <marker date="1552906562258" expanded="true" signature="4897:4939" ph="DELETE FROM usuario... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/Usuario/modificarUsuario.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="83" column="20" lean-forward="false" selection-start-line="82" selection-start-column="21" selection-end-line="83" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/Estancia/modificarEstancia.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="81" column="0" lean-forward="false" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Model/Materia.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="223" column="5" lean-forward="true" selection-start-line="210" selection-start-column="4" selection-end-line="223" selection-end-column="5" />
+          <folding>
+            <element signature="n#ConectarBD#0;n#Materia#0;n#!!top" expanded="false" />
+            <element signature="n#AltaMateria#0;n#Materia#0;n#!!top" expanded="false" />
+            <element signature="n#ConsultarMateria#0;n#Materia#0;n#!!top" expanded="false" />
+            <element signature="n#ModificarMateria#0;n#Materia#0;n#!!top" expanded="false" />
+            <element signature="n#ListarMaterias#0;n#Materia#0;n#!!top" expanded="false" />
+            <element signature="n#ListarMateriasGrado#0;n#Materia#0;n#!!top" expanded="false" />
+            <element signature="n#ListarMateriasTCiclo#0;n#Materia#0;n#!!top" expanded="false" />
+            <element signature="n#ListarMateriasMaster#0;n#Materia#0;n#!!top" expanded="false" />
+            <element signature="n#ListarMateriasPost#0;n#Materia#0;n#!!top" expanded="false" />
+            <element signature="n#ListarMateriasCursos#0;n#Materia#0;n#!!top" expanded="false" />
+            <element signature="n#ListarMateriasAdmin#0;n#Materia#0;n#!!top" expanded="false" />
+            <element signature="n#ListarMateriasGradoAdmin#0;n#Materia#0;n#!!top" expanded="false" />
+            <element signature="n#ListarMateriasTCicloAdmin#0;n#Materia#0;n#!!top" expanded="false" />
+            <element signature="n#ListarMateriasMasterAdmin#0;n#Materia#0;n#!!top" expanded="false" />
+            <element signature="n#ListarMateriasPostAdmin#0;n#Materia#0;n#!!top" expanded="false" />
+            <element signature="n#ListarMateriasCursosAdmin#0;n#Materia#0;n#!!top" expanded="false" />
+            <element signature="n#BorrarMateria#0;n#Materia#0;n#!!top" expanded="false" />
+            <element signature="n#validarMateria#0;n#Materia#0;n#!!top" expanded="false" />
+            <element signature="n#BuscarMateria#0;n#Materia#0;n#!!top" expanded="false" />
+            <marker date="1553701530622" expanded="true" signature="10364:10533" ph="UPDATE usuario... " />
+            <marker date="1553701530622" expanded="true" signature="10627:10675" ph="SELECT * FRO... usuario" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Model/Estancias.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="792">
+          <caret line="129" column="44" lean-forward="false" selection-start-line="129" selection-start-column="44" selection-end-line="129" selection-end-column="44" />
+          <folding>
+            <element signature="n#ConectarBD#0;n#Estancias#0;n#!!top" expanded="false" />
+            <element signature="n#AltaEstancia#0;n#Estancias#0;n#!!top" expanded="false" />
+            <element signature="n#ConsultarEstancia#0;n#Estancias#0;n#!!top" expanded="false" />
+            <element signature="n#ModificarEstancia#0;n#Estancias#0;n#!!top" expanded="false" />
+            <element signature="n#ListarEstancias#0;n#Estancias#0;n#!!top" expanded="false" />
+            <element signature="n#ListarEstanciasInvertigacion#0;n#Estancias#0;n#!!top" expanded="false" />
+            <element signature="n#ListarEstanciasDoctorado#0;n#Estancias#0;n#!!top" expanded="false" />
+            <element signature="n#ListarEstanciasInvitado#0;n#Estancias#0;n#!!top" expanded="false" />
+            <element signature="n#ListarEstanciasAdmin#0;n#Estancias#0;n#!!top" expanded="false" />
+            <element signature="n#ListarEstanciasInvertigacionAdmin#0;n#Estancias#0;n#!!top" expanded="false" />
+            <element signature="n#ListarEstanciasDoctoradoAdmin#0;n#Estancias#0;n#!!top" expanded="false" />
+            <element signature="n#ListarEstanciasInvitadoAdmin#0;n#Estancias#0;n#!!top" expanded="false" />
+            <element signature="n#BuscarEstancia#0;n#Estancias#0;n#!!top" expanded="false" />
+            <element signature="n#validarEstancia#0;n#Estancias#0;n#!!top" expanded="false" />
+            <marker date="1553711950228" expanded="true" signature="4757:5872" ph="SELECT * FRO... estancia" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/Estancia/buscarEstancias.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1282">
+          <caret line="82" column="0" lean-forward="false" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/Estancia/buscarEstanciasAdmin.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-595">
+          <caret line="34" column="36" lean-forward="true" selection-start-line="34" selection-start-column="36" selection-end-line="34" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/Estancia/listarEstanciasAdmin.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="40" column="89" lean-forward="false" selection-start-line="40" selection-start-column="89" selection-end-line="40" selection-end-column="89" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/Estancia/listarEstancias.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="40" column="89" lean-forward="false" selection-start-line="40" selection-start-column="89" selection-end-line="40" selection-end-column="89" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Controller/EstanciasController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="281">
+          <caret line="188" column="59" lean-forward="false" selection-start-line="188" selection-start-column="59" selection-end-line="188" selection-end-column="59" />
+          <folding>
+            <element signature="e#368#482#0#PHP" expanded="false" />
+            <element signature="e#489#876#0#PHP" expanded="false" />
+            <element signature="e#882#1234#0#PHP" expanded="false" />
+            <element signature="e#1240#1693#0#PHP" expanded="false" />
+            <element signature="e#2838#4354#0#PHP" expanded="false" />
+            <element signature="e#4400#5906#0#PHP" expanded="false" />
+            <element signature="e#5930#6403#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/ProyectoDirigido/listarProyectosDirigidos.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Model/ProyectosDirigidos.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1529433866000" expanded="true" signature="1228:1533" ph="INSERT INTO proyectoDirigido... " />
+            <marker date="1529433866000" expanded="true" signature="1779:1866" ph="INSERT INTO docente_proyectodirigido... " />
+            <marker date="1529433866000" expanded="true" signature="2124:2242" ph="SELECT * FRO... proyectoDirigido" />
+            <marker date="1529433866000" expanded="true" signature="2424:2709" ph="UPDATE proyectoDirigido... " />
+            <marker date="1529433866000" expanded="true" signature="2931:3079" ph="SELECT * FRO... proyectoDirigido" />
+            <marker date="1529433866000" expanded="true" signature="3291:3458" ph="SELECT * FRO... proyectoDirigido" />
+            <marker date="1529433866000" expanded="true" signature="3667:3835" ph="SELECT * FRO... proyectoDirigido" />
+            <marker date="1529433866000" expanded="true" signature="4045:4214" ph="SELECT * FRO... proyectoDirigido" />
+            <marker date="1529433866000" expanded="true" signature="4417:4536" ph="SELECT * FRO... proyectoDirigido" />
+            <marker date="1529433866000" expanded="true" signature="4735:4873" ph="SELECT * FRO... proyectoDirigido" />
+            <marker date="1529433866000" expanded="true" signature="5069:5206" ph="SELECT * FRO... proyectoDirigido" />
+            <marker date="1529433866000" expanded="true" signature="5404:5542" ph="SELECT * FRO... proyectoDirigido" />
+            <marker date="1529433866000" expanded="true" signature="5722:5779" ph="DELETE FROM proyectoDirigido... " />
+            <marker date="1529433866000" expanded="true" signature="5948:6034" ph="DELETE FROM docente_proyectodirigido... " />
+            <marker date="1529433866000" expanded="true" signature="6216:7366" ph="SELECT * FRO... proyectoDirigido" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Controller/ProyectosDirigidosController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Controller/MateriasController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="229" column="14" lean-forward="true" selection-start-line="204" selection-start-column="0" selection-end-line="229" selection-end-column="14" />
+          <folding>
+            <element signature="e#206#307#0#PHP" expanded="false" />
+            <element signature="e#349#460#0#PHP" expanded="false" />
+            <element signature="e#883#1277#0#PHP" expanded="false" />
+            <element signature="e#1283#2072#0#PHP" expanded="false" />
+            <element signature="e#2079#2526#0#PHP" expanded="false" />
+            <element signature="e#3787#5879#0#PHP" expanded="false" />
+            <element signature="e#7997#8793#0#PHP" expanded="false" />
+            <element signature="e#8816#9284#0#PHP" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -311,6 +311,7 @@ switch ($evento) {
         header("Location: index.php?controlador=Usuarios&evento=consultarUsuario&LoginU=$LoginU");
 
         break;
+
 //lista de usuarios para el administrador
     case 'listarUsuariosAdmin':
         $lista = new Usuarios("","","","","","","","","","","","");
@@ -323,6 +324,7 @@ switch ($evento) {
         $_SESSION["listarUsuarios"] = $listaResultado;
         require_once "View/Usuario/listarUsuariosAdmin.php";
         break;
+
 //lista de usuarios para el usuario
     case 'listarUsuarios':
         $lista = new Usuarios("","","","","","","","","","","","");

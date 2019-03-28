@@ -43,10 +43,21 @@ $loginU =$_SESSION["loginU"];
                     <br>
 
                     <div class="form-group form-group-md">
+                        <label class="col-md-4 col-lg-3 control-label" for="LoginU">Login usuario</label>
+                        <div class="col-md-8 col-lg-9">
+                            <p> <select id="LoginU" name="LoginU" type="text" placeholder="Login usuario" class="form-control <?php if(isset($errores) && in_array("LoginU", $errores)){ echo " error"; } ?>" value="<?=isset($_POST["LoginU"])?$_POST["LoginU"]:''?>">
+                                    <option>--</option>
+                                    <?php $rows = $_SESSION["listarUsuarios"]; foreach ($rows as $row){ ?>
+                                        <option value="<?php echo $row['LoginU'];?>"><?php echo $row['LoginU']." - ".$row['NombreU'];?></option>
+                                    <?php } ?>
+                                </select></p>
+                        </div>
+                    </div>
+
+                    <div class="form-group form-group-md">
                         <label class="col-md-4 col-lg-3 control-label" for="CodigoE">Código estancia</label>
                         <div class="col-md-8 col-lg-9">
                             <input id="CodigoE" name="CodigoE" type="text" placeholder="Codigo estancia" class="form-control <?php if(isset($errores) && in_array("CodigoE", $errores)){ echo " error"; } ?>" value="<?=isset($_POST["CodigoE"])?$_POST["CodigoE"]:''?>" >
-                            <input id="LoginU" name="LoginU" type="text" class="hidden" value="<?php echo $loginU; ?>"  >
                         </div>
                     </div>
 
@@ -97,11 +108,8 @@ $loginU =$_SESSION["loginU"];
                         </div>
                     </div>
 
-
-
-
                     <div class="col-md-offset-4 col-lg-offset-3 text-center">
-                        <button type="submit" id="AltaEstancia" name="evento" value="altaEstancia" class="btn btn-orange">
+                        <button type="submit" id="AltaEstancia" name="evento" value="altaEstanciaAdmin" class="btn btn-orange">
                             Alta estancia
                         </button>
                     </div>

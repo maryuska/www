@@ -83,24 +83,28 @@ class Materia{
                 $sql= $this->mysqli->query("SELECT * FROM materia WHERE LoginU= '$LoginU' AND TipoM = 'Grado'");
                 return $sql;
             }
+
         //lista de todas las materias detercer ciclo
             public function ListarMateriasTCiclo($LoginU){
                 $this->ConectarBD();
                 $sql= $this->mysqli->query("SELECT * FROM materia WHERE LoginU= '$LoginU' AND TipoM = 'Tercer ciclo'  ");
                 return $sql;
             }
+
         //lista de todas las materias de master
             public function ListarMateriasMaster($LoginU){
                 $this->ConectarBD();
                 $sql= $this->mysqli->query("SELECT * FROM materia WHERE LoginU= '$LoginU' AND TipoM = 'Master'  ");
                 return $sql;
             }
+
         //lista de todas las materias de post grado
             public function ListarMateriasPost($LoginU){
                 $this->ConectarBD();
                 $sql= $this->mysqli->query("SELECT * FROM materia WHERE LoginU= '$LoginU' AND TipoM = 'Post Grado'  ");
                 return $sql;
             }
+
         //lista de todas las materias de cursos
             public function ListarMateriasCursos($LoginU){
                 $this->ConectarBD();
@@ -122,32 +126,34 @@ class Materia{
                 $sql= $this->mysqli->query("SELECT * FROM materia WHERE TipoM = 'Grado'");
                 return $sql;
             }
+
         //lista de todas las materias detercer ciclo
             public function ListarMateriasTCicloAdmin(){
                 $this->ConectarBD();
                 $sql= $this->mysqli->query("SELECT * FROM materia WHERE TipoM = 'Tercer ciclo'  ");
                 return $sql;
             }
+
         //lista de todas las materias de master
             public function ListarMateriasMasterAdmin(){
                 $this->ConectarBD();
                 $sql= $this->mysqli->query("SELECT * FROM materia WHERE TipoM = 'Master'  ");
                 return $sql;
             }
+
         //lista de todas las materias de post grado
             public function ListarMateriasPostAdmin(){
                 $this->ConectarBD();
                 $sql= $this->mysqli->query("SELECT * FROM materia  WHERE TipoM = 'Post Grado'  ");
                 return $sql;
             }
+
         //lista de todas las materias de cursos
             public function ListarMateriasCursosAdmin(){
                 $this->ConectarBD();
                 $sql= $this->mysqli->query("SELECT * FROM materia  WHERE TipoM = 'Curso'  ");
                 return $sql;
             }
-
-
 
 
 //eliminar materia

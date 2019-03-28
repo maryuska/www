@@ -91,7 +91,7 @@ require_once 'View/Structure/Nav.php';
 
                         <div class="form-group">
                             <label class="control-label" for="AnhoAcademicoM">Año académico:</label>
-                            <input id="AnhoAcademicoM" type="AnhoAcademicoM" name="AnhoAcademicoM" class="form-control " value="<?php echo $row['AnhoAcademicoM']; ?>"  >
+                            <input id="AnhoAcademicoM" type="date" name="AnhoAcademicoM" class="form-control " value="<?php echo $row['AnhoAcademicoM']; ?>"  >
                         </div>
 
                         <div class="form-group">
