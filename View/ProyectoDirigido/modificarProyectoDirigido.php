@@ -1,85 +1,134 @@
+
 <?php
-require_once '../../View/Structure/Header.php';
-require_once '../../View/Structure/Nav.php';
-$LoginU = $_SESSION["loginU"];
+// Estructura general html, body
+require_once 'View/Structure/Header.php';
+
+// Menu
+require_once 'View/Structure/Nav.php';
 ?>
 
 
-<div class="col-md-10 izquierda">
-    <h3 class="text-center">Modificar Proyecto Dirigido</h3>
 
-    <div class="panel panel-default">
-        <div class="col-md-12">
-            <?php foreach ($_SESSION["consultarProyectoDirigido"] as $row)  { ?>
-            <form  action="../../Controller/ProyectosDirigidosController.php" method="post" role="form">
+<div class="container-fluid">
+    <div class="row">
 
-                <div class="form-group">
-                    <label class="control-label" for="CodigoPD">Código Proyecto Dirigido: </label>
-                    <input id="CodigoPD" name="CodigoPD"  class="form-control "value="<?php echo $row['CodigoPD']; ?>" disabled >
-                    <input id="CodigoPD" name="CodigoPD" type="hidden" class="form-control "value="<?php echo $row['CodigoPD']; ?>" >
-                    <input id="LoginU" name="LoginU" class="hidden" value="<?php echo $LoginU; ?>" >
-                </div>
+        <?php
+        // Menu lateral
+        require_once 'View/Structure/Sidebar.php';
+        ?>
 
-                <div class="form-group">
-                    <label class="control-label" for="TituloPD">Título Proyecto Dirigido:</label>
-                    <input id="TituloPD" name="TituloPD" class="form-control" value="<?php echo $row['TituloPD']; ?>" >
-                </div>
+        <!-- Contenido -->
+        <div class="col-md-offset-1 col-md-8 col-lg-offset-3 col-lg-4">
+            <div class="cotainer">
 
-                <div class="form-group">
-                    <label class="control-label" for="AlumnoPD">Alumno:</label>
-                    <input id="AlumnoPD" name="AlumnoPD" class="form-control" value="<?php echo $row['AlumnoPD']; ?>"  >
-                </div>
+                <?php
+                // Usuario en session
+                $rows = $_SESSION["consultarProyectoDirigido"];
 
-                <div class="form-group">
-                    <label class="control-label" for="FechaLecturaPD">Fecha lectura:</label>
-                    <input id="FechaLecturaPD" type="date" name="FechaLecturaPD" class="form-control " value="<?php echo $row['FechaLecturaPD']; ?>"  >
-                </div>
+                // Si existe errores mostramos mensaje de error
+                if(isset($errores) && !empty($errores)){
+                    echo "<br>";
+                    echo "<br>";
+                    echo "<div class='row'>";
+                    echo "  <div class='col-md-offset-4 col-md-8 col-lg-offset-3 col-lg-9'>";
+                    require_once "View/errores.php";
+                    echo "  </div>";
+                    echo "</div>";
+                }
 
-                <div class="form-group">
-                    <label class="control-label" for="CalificacionPD">Calificación:</label>
-                    <p> <select class="form-control"  id="CalificacionPD" name="CalificacionPD">
-                            <option> <?php echo $row['CalificacionPD']; ?> </option>
-                            <option>-----------------------</option>
-                            <option>Aprobado</option>
-                            <option>Notable</option>
-                            <option>Sobresaliente</option>
-                            <option>Matricula</option>
-                        </select></p>
-                </div>
+                foreach ($rows as $row) {
+                    ?>
 
-                <div class="form-group">
-                    <label class="control-label" for="URLPD">URL:</label>
-                    <input id="URLPD" name="URLPD" class="form-control " value="<?php echo $row['URLPD']; ?>" >
-                </div>
+                    <!-- Formulario -->
 
-                <div class="form-group">
-                    <label class="control-label" for="CotutorPD">Cotutor:</label>
-                    <input id="CotutorPD" name="CotutorPD" class="form-control "value="<?php echo $row['CotutorPD']; ?>"  >
-                </div>
+                    <form id="formulario" action="index.php?controlador=ProyectosDirigidos" method="post">
 
-                <div class="form-group">
-                    <label class="control-label" for="TipoPD">Tipo:</label>
-                    <p> <select  class="form-control"  id="TipoPD" name="TipoPD"  >
-                            <option> <?php echo $row['TipoPD']; ?> </option>
-                            <option>-----------------------</option>
-                            <option value="PFC" >Proyecto Fin de Carrera</option>
-                            <option value="TFG">Trabajo Fin de Grado</option>
-                            <option value="TFM">Trabajo Fin de Master</option>
-                        </select></p>
-                </div>
-                <br>
+                        <!-- proyecto dirigido -->
 
-                <div class="col-lg-6 col-md-6 col-sm-8 col-xs-8 col-md-offset-3">
-                    <label class="control-label" for="Modificar"></label>
-                    <button type="submit" class="btn btn-orange" name="evento" value="modificarProyectosDirigidos"> Guardar cambios</button>
-                </div>
+                        <h2 class="text-center">Modificar proyecto dirigido</h2>
 
-            </form>
-            <?php } ?>
+                        <br>
+
+                        <div class="form-group">
+                            <label class="control-label" for="CodigoM">Codigo proyecto: </label>
+                            <input id="CodigoPD" name="CodigoPD"  class="form-control " value="<?php echo $row['CodigoPD']; ?>" disabled >
+                            <input id="CodigoPD" name="CodigoPD" class="hidden" value="<?php echo $row['CodigoPD']; ?>" >
+                            <input id="LoginU" name="LoginU" class="hidden" value="<?php echo $row['LoginU']; ?>" >
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label" for="TituloPD">Titulo:</label>
+                            <input id="TituloPD" name="TituloPD" class="form-control" <?php if(isset($errores) && in_array("TituloPD", $errores)){ echo " error"; } ?>" value="<?=isset($_POST["TituloPD"])?$_POST["TituloPD"]:$row['TituloPD']?>" >
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label" for="AlumnoPD">Alumno:</label>
+                            <input id="AlumnoPD" name="AlumnoPD" class="form-control"<?php if(isset($errores) && in_array("AlumnoPD", $errores)){ echo " error"; } ?>" value="<?=isset($_POST["AlumnoPD"])?$_POST["AlumnoPD"]:$row['AlumnoPD']?>" >
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label" for="FechaLecturaPD">Fecha lectura:</label>
+                            <input id="FechaLecturaPD" type="date" name="FechaLecturaPD" class="form-control "<?php if(isset($errores) && in_array("FechaLecturaPD", $errores)){ echo " error"; } ?>" value="<?=isset($_POST["FechaLecturaPD"])?$_POST["FechaLecturaPD"]:$row['FechaLecturaPD']?>" >
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label" for="CalificacionPD">Calificación:</label>
+                            <p> <select class="form-control"  id="CalificacionPD" name="CalificacionPD">
+                                    <option> <?php echo $row['CalificacionPD']; ?> </option>
+                                    <option>------------------------</option>
+                                    <option>Aprobado</option>
+                                    <option>Notable</option>
+                                    <option>Sobresaliente</option>
+                                    <option>Matricula</option>
+                                </select></p>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label" for="URLPD">URL:</label>
+                            <input id="URLPD" name="URLPD" class="form-control " <?php if(isset($errores) && in_array("URLPD", $errores)){ echo " error"; } ?>" value="<?=isset($_POST["URLPD"])?$_POST["URLPD"]:$row['URLPD']?>" >
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label" for="CotutorPD">Cotutor:</label>
+                            <input id="CotutorPD" name="CotutorPD" class="form-control " <?php if(isset($errores) && in_array("CotutorPD", $errores)){ echo " error"; } ?>" value="<?=isset($_POST["CotutorPD"])?$_POST["CotutorPD"]:$row['CotutorPD']?>" >
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label" for="TipoPD">Tipo de proyeco:</label>
+                            <p> <select class="form-control"  id="TipoPD" name="TipoPD">
+                                    <option> <?php echo $row['TipoPD']; ?> </option>
+                                    <option>------------------------</option>
+                                    <option >PFC</option>
+                                    <option >TFG</option>
+                                    <option>TFM</option>
+                                </select></p>
+                        </div>
+
+                        <br>
+
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-orange" name="evento" value="modificarProyectoDirigido">
+                                Guardar cambios
+                            </button>
+                        </div>
+
+                    </form>
+
+                    <br>
+                    <br>
+
+                    <?php
+                }
+                ?>
+
+            </div>
         </div>
-    </div>
 
+    </div>
 </div>
 
-
+<?php
+// Pie y cierre de html, body
+require_once 'View/Structure/Footer.php';
+?>
 

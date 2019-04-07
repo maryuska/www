@@ -23,31 +23,15 @@ switch ($evento) {
         header("Location: index.php?controlador=Materias&evento=listarMaterias&LoginU=$loginU");
 
     break;
+
     case 'altaMateriaAdmin':
 
-        $materia = new Materia($_POST["CodigoM"],$_POST["TipoM"],$_POST["TipoParticipacionM"],$_POST["DenominacionM"],$_POST["TitulacionM"],$_POST["AnhoAcademicoM"],$_POST["CreditosM"],$_POST["CuatrimestreM"],$_POST["LoginU"]);
+        $materia = new Materia($_POST["CodigoM"],$_POST["TipoM"],$_POST["TipoParticipacionM"],$_POST["DenominacionM"],$_POST["TitulacionM"],$_POST["AnhoAcademicoM"],$_POST["CreditosM"],$_POST["CuatrimestreM"],$_POST["Login"]);
         $materia->AltaMateria();
 
             header("Location: index.php?controlador=Materias&evento=listarMateriasAdmin");
 
         break;
-
-    case 'altaProyectoDirigido':
-        $Login=$_REQUEST["LoginU"];
-        $CodigoPD = $_REQUEST['CodigoPD'];
-        $proyectoDirigido = new ProyectosDirigidos($_POST["CodigoPD"],$_POST["TituloPD"],$_POST["AlumnoPD"],$_POST["FechaLecturaPD"],$_POST["CalificacionPD"],$_POST["URLPD"],$_POST["CotutorPD"],$_POST["TipoPD"]);
-        $p=new ProyectosDirigidos("","","","","","","","");
-        $proyectoDirigido->AltaProyectoDirigido();
-        $p->Dirige($Login,$CodigoPD);
-        $tipou=$_SESSION["TipoUsuario"];
-        if($tipou == 'U') {
-            header("location: ProyectosDirigidosController.php?evento=listarProyectosDirigidos&LoginU=$Login");
-        }else{
-            header("location: ProyectosDirigidosController.php?evento=listarProyectosDirigidos");
-
-        }
-        break;
-
 
     case 'consultarMateria':
 
@@ -223,7 +207,6 @@ switch ($evento) {
                 require_once "View/Materia/BuscarMateriaAdmin.php";
             }
 
-
         }else{
             echo 'ERROR: no se encontro ningun resultado';
         }
@@ -246,8 +229,6 @@ switch ($evento) {
             header("Location: index.php?controlador=Materias&evento=listarMateriasAdmin");
         }
         break;
-
-
 
 
   default:

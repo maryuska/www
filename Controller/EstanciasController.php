@@ -27,7 +27,7 @@ switch ($evento) {
 
     case 'altaEstanciaAdmin':
 
-        $estancia = new Estancias($_POST["CodigoE"],$_POST["CentroE"],$_POST["UniversidadE"],$_POST["PaisE"],$_POST["FechaInicioE"],$_POST["FechaFinE"],$_POST["TipoE"],$_POST["LoginU"]);
+        $estancia = new Estancias($_POST["CodigoE"],$_POST["CentroE"],$_POST["UniversidadE"],$_POST["PaisE"],$_POST["FechaInicioE"],$_POST["FechaFinE"],$_POST["TipoE"],$_POST["Login"]);
         $estancia->AltaEstancia();
         header("Location: index.php?controlador=Estancias&evento=listarEstanciasAdmin");
         break;

@@ -1,11 +1,22 @@
 <?php
 // Controlador de Proyectos Dirigidos
-
-require_once '../Model/ProyectosDirigidos.php';
+require_once 'Controller/ControllerController.php';
+require_once 'Model/ProyectosDirigidos.php';
 $evento = $_REQUEST['evento'];
 
 switch ($evento) {
 
+// Página insertar proyecto dirigido
+    case "paginaInsertarProyectoDirigido":
+        require_once "View/ProyectoDirigido/insertarProyectoDirigido.php";
+        break;
+
+// Página insertar proyecto dirigido admin
+    case "paginaInsertarProyectoDirigidoAdmin":
+        require_once "View/ProyectoDirigido/insertarProyectoDirigidoAdmin.php";
+        break;
+
+//alta proyectos dirigidos
     case 'altaProyectoDirigido':
         $Login=$_REQUEST["LoginU"];
         $CodigoPD = $_REQUEST['CodigoPD'];
@@ -13,17 +24,20 @@ switch ($evento) {
         $p=new ProyectosDirigidos("","","","","","","","");
         $proyectoDirigido->AltaProyectoDirigido();
         $p->Dirige($Login,$CodigoPD);
-        $tipou=$_SESSION["TipoUsuario"];
-        if($tipou == 'U') {
-            header("location: ProyectosDirigidosController.php?evento=listarProyectosDirigidos&LoginU=$Login");
-        }else{
-            header("location: ProyectosDirigidosController.php?evento=listarProyectosDirigidos");
-
-        }
+            header("Location: index.php?controlador=ProyectosDirigidos&evento=listarProyectosDirigidos&LoginU=$loginU");
     break;
 
-
-
+//alta proyecto dirigido admin
+    case 'altaProyectoDirigidoAdmin':
+        $Login = $_REQUEST['Login'];
+        $CodigoPD = $_REQUEST['CodigoPD'];
+        $proyectoDirigido = new ProyectosDirigidos($_POST["CodigoPD"],$_POST["TituloPD"],$_POST["AlumnoPD"],$_POST["FechaLecturaPD"],$_POST["CalificacionPD"],$_POST["URLPD"],$_POST["CotutorPD"],$_POST["TipoPD"]);
+        $p=new ProyectosDirigidos("","","","","","","","");
+        $proyectoDirigido->AltaProyectoDirigido();
+        $p->Dirige($Login,$CodigoPD);
+            header("Location: index.php?controlador=ProyectosDirigidos&evento=listarProyectosDirigidosAdmin");
+        break;
+//consultar proyectos dirigidos
     case 'consultarProyectoDirigido':
 
         $proyectoDirigido = new ProyectosDirigidos($_POST["CodigoPD"],$_POST["TituloPD"],$_POST["AlumnoPD"],$_POST["FechaLecturaPD"],$_POST["CalificacionPD"],$_POST["URLPD"],$_POST["CotutorPD"],$_POST["TipoPD"]);
@@ -39,6 +53,7 @@ switch ($evento) {
 
         break;
 
+//modificar proyectos dirigidos
     case 'modificarProyectosDirigidos':
         $Login=$_REQUEST["LoginU"];
         $CodigoPD = $_POST['CodigoPD'];
@@ -55,17 +70,15 @@ switch ($evento) {
         $proyectoDirigido->ModificarProyectoDirigido($CodigoPD);
             $tipou=$_SESSION["TipoUsuario"];
             if($tipou == 'U') {
-                header("location: ProyectosDirigidosController.php?evento=listarProyectosDirigidos&LoginU=$Login");
+                header("Location: index.php?controlador=ProyectosDirigidos&evento=listarProyectosDirigidos&LoginU=$LoginU");
             }else{
-                header("location: ProyectosDirigidosController.php?evento=listarProyectosDirigidos");
+                header("Location: index.php?controlador=ProyectosDirigidos&evento=listarProyectosDirigidosAdmin");
             }
 
     break;
 
-
+//listar proyectos dirigidos
     case 'listarProyectosDirigidos':
-        $tipou=$_SESSION["TipoUsuario"];
-        if($tipou == 'U') {
             $Login=$_REQUEST["LoginU"];
             $lista = new ProyectosDirigidos("","","","","","","","");
             //todos los proyectos dirigidos
@@ -97,48 +110,46 @@ switch ($evento) {
             $_SESSION["listarProyectosDirigidosTFC"] = $listaResultadoPFC;
             $_SESSION["listarProyectosDirigidosTFG"] = $listaResultadoTFG;
             $_SESSION["listarProyectosDirigidosTFM"] = $listaResultadoTFM;
-            header("location: ../../View/ProyectoDirigido/listarProyectosDirigidos.php");
-
-        }else {
-            $lista = new ProyectosDirigidos("", "", "", "", "", "", "", "");
-            //todos los proyectos dirigidos
-            $listaProyectosDirigidos = $lista->ListarProyectosDirigidosAdmin();
-            $listaResultado = array();
-            while ($row = mysqli_fetch_array($listaProyectosDirigidos)) {
-                array_push($listaResultado, $row);
-            }
-
-
-            //proyecto fin de carrera
-            $listaProyectosDirigidosPFC = $lista->ListarProyectosDirigidosPFCAdmin();
-            $listaResultadoPFC = array();
-            while ($row1 = mysqli_fetch_array($listaProyectosDirigidosPFC)) {
-                array_push($listaResultadoPFC, $row1);
-            }
-            //trabajos fin de grado
-            $listaProyectosDirigidosTFG = $lista->ListarProyectosDirigidosTFGAdmin();
-            $listaResultadoTFG = array();
-            while ($row2 = mysqli_fetch_array($listaProyectosDirigidosTFG)) {
-                array_push($listaResultadoTFG, $row2);
-            }
-            //trabajos fin de master
-            $listaProyectosDirigidosTFM = $lista->ListarProyectosDirigidosTFMAdmin();
-            $listaResultadoTFM = array();
-            while ($row3 = mysqli_fetch_array($listaProyectosDirigidosTFM)) {
-                array_push($listaResultadoTFM, $row3);
-            }
-
-            $_SESSION["listarProyectosDirigidosAdmin"] = $listaResultado;
-            $_SESSION["listarProyectosDirigidosTFCAdmin"] = $listaResultadoPFC;
-            $_SESSION["listarProyectosDirigidosTFGAdmin"] = $listaResultadoTFG;
-            $_SESSION["listarProyectosDirigidosTFMAdmin"] = $listaResultadoTFM;
-            header("location: ../../View/ProyectoDirigido/listarProyectosDirigidosAdmin.php");
-        }
+            require_once("View/ProyectoDirigido/listarProyectosDirigidos.php");
     break;
 
+ // listar proyecto dirigido admin
+    case 'listarProyectosDirigidosAdmin':
+        $lista = new ProyectosDirigidos("", "", "", "", "", "", "", "");
+        //todos los proyectos dirigidos
+        $listaProyectosDirigidos = $lista->ListarProyectosDirigidosAdmin();
+        $listaResultado = array();
+        while ($row = mysqli_fetch_array($listaProyectosDirigidos)) {
+            array_push($listaResultado, $row);
+        }
 
+        //proyecto fin de carrera
+        $listaProyectosDirigidosPFC = $lista->ListarProyectosDirigidosPFCAdmin();
+        $listaResultadoPFC = array();
+        while ($row1 = mysqli_fetch_array($listaProyectosDirigidosPFC)) {
+            array_push($listaResultadoPFC, $row1);
+        }
+        //trabajos fin de grado
+        $listaProyectosDirigidosTFG = $lista->ListarProyectosDirigidosTFGAdmin();
+        $listaResultadoTFG = array();
+        while ($row2 = mysqli_fetch_array($listaProyectosDirigidosTFG)) {
+            array_push($listaResultadoTFG, $row2);
+        }
+        //trabajos fin de master
+        $listaProyectosDirigidosTFM = $lista->ListarProyectosDirigidosTFMAdmin();
+        $listaResultadoTFM = array();
+        while ($row3 = mysqli_fetch_array($listaProyectosDirigidosTFM)) {
+            array_push($listaResultadoTFM, $row3);
+        }
 
-    //consultar detalle del proyecto dirigido
+        $_SESSION["listarProyectosDirigidosAdmin"] = $listaResultado;
+        $_SESSION["listarProyectosDirigidosTFCAdmin"] = $listaResultadoPFC;
+        $_SESSION["listarProyectosDirigidosTFGAdmin"] = $listaResultadoTFG;
+        $_SESSION["listarProyectosDirigidosTFMAdmin"] = $listaResultadoTFM;
+        require_once("View/ProyectoDirigido/listarProyectosDirigidosAdmin.php");
+        break;
+
+//consultar detalle del proyecto dirigido
     case 'consultarDetalleProyectoDirigido':
 
         $proyectoDirigido = new ProyectosDirigidos($_POST["CodigoPD"],$_POST["TituloPD"],$_POST["AlumnoPD"],$_POST["FechaLecturaPD"],$_POST["CalificacionPD"],$_POST["URLPD"],$_POST["CotutorPD"],$_POST["TipoPD"]);
@@ -152,7 +163,6 @@ switch ($evento) {
 
         header("location: ../../View/ProyectoDirigido/consultarDetalle.php");
         break;
-
 
 //confirmar borrado de proyecto dirigido
     case 'confirmarBorrado':
@@ -169,8 +179,6 @@ switch ($evento) {
         header("location: ../../View/ProyectoDirigido/confirmarBorrarPD.php");
         break;
 
-
-
 //borrar un proyecto dirigido
     case'borrarProyectoDirigido':
         $LoginU=$_REQUEST["LoginU"];
@@ -186,9 +194,8 @@ switch ($evento) {
             }
         break;
 
-
 //buscar proyectos dirigidos
-    case 'buscarProyectoDirigido';
+    case 'buscarProyectoDirigido':
         $buscar= $_POST['textoBusqueda'];
 
         $ProyectoDirigido = new ProyectosDirigidos("","","","","","","","");
@@ -199,15 +206,20 @@ switch ($evento) {
             while($row = mysqli_fetch_array($consultarProyecDirigido)){
                 array_push($listaResultado, $row);
             }
-            $_SESSION["listarBusquedaPD"] = $listaResultado;
+            $_SESSION["listarBusqueda"] = $listaResultado;
 
-            header("location: ../../View/ProyectoDirigido/buscarProyectoDirigido.php");
+                $tipou=$_SESSION["TipoUsuario"];
+                if($tipou == 'U'){
+                require_once "View/ProyectoDirigido/buscarProyectoDirigido.php";
+                }else{
+
+
+                require_once "View/ProyectoDirigido/buscarProyectoDirigidoAdmin.php";
+                }
         }else{
             echo 'ERROR: no se encontro ningun resultado';
         }
         break;
-
-
 
 
   default:

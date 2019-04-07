@@ -227,46 +227,6 @@ class Materia{
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // sin modificar
-//Consulta los datos de un usuario
-// Devuelve los datos de un usuario
-
-
-  public function modificarUsuario(){
-    $_SESSION["loginU"]=$this->LoginU;
-    $sql= mysqli_query("UPDATE usuario SET PasswordU='$this->PasswordU',NombreU='$this->NombreU' ,ApellidosU='$this->ApellidosU',UniversidadU='$this->UniversidadU', WHERE LoginU='$this->LoginU'") or die (mysqli_error());
-
-
-  }
-
-  public function listarDocente(){
-    $sql= mysqli_query("SELECT * FROM usuario WHERE TipoU='$this->TipoU'");
-
-    $sql2 = array();
-    while($row = mysqli_fetch_array($sql)){array_push($sql2, $row);}
-    $_SESSION["listarDocente"] = $sql2;
-
-  }
-
-
 }
 
 ?>

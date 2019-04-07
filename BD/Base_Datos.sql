@@ -104,7 +104,6 @@ DROP TABLE IF EXISTS `tesis`;
 CREATE TABLE IF NOT EXISTS `tesis` (
   `CodigoTesis` varchar(10)COLLATE latin1_spanish_ci NOT NULL default '',
   `AutorTesis` varchar(100)COLLATE latin1_spanish_ci NOT NULL default '',
-  `TutorTesis` varchar(100)COLLATE latin1_spanish_ci NOT NULL default '',
   `FechaInscripcion` date NOT NULL default '0000-00-00',
   `FechaLectura` date NOT NULL default '0000-00-00',
   `CalificacionTesis` enum('Aprobado','Notable','Sobresaliente','Matricula') default NULL,

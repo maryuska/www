@@ -93,7 +93,7 @@ function sidebarUsuario($loginU){
         </a>
     </li>
     <li class="sidebar-options">
-        <a class="nounderline" href="index.php?controlador=TAD&evento=listarTAD&LoginU=<?php echo $loginU; ?>">
+        <a class="nounderline" href="index.php?controlador=TAD&evento=listarTad&LoginU=<?php echo $loginU; ?>">
             TAD
         </a>
     </li>
@@ -153,12 +153,12 @@ function sidebarAdministrador($loginU){
         </a>
     </li>
     <li class="sidebar-options">
-        <a class="nounderline" href="index.php?controlador=ProyectosDirigidos&evento=listarProyectosDirigidos">
+        <a class="nounderline" href="index.php?controlador=ProyectosDirigidos&evento=listarProyectosDirigidosAdmin">
             Proyectos dirigidos
         </a>
     </li>
     <li class="sidebar-options">
-        <a class="nounderline" href="index.php?controlador=Tad&evento=listarTAD&LoginU=<?php echo $loginU; ?>">
+        <a class="nounderline" href="index.php?controlador=Tad&evento=listarTadAdmin">
             TAD
         </a>
     </li>

@@ -42,9 +42,9 @@ $loginU =$_SESSION["loginU"];
 
                     <br>
                     <div class="form-group form-group-md">
-                        <label class="col-md-4 col-lg-3 control-label" for="LoginU">Login usuario</label>
+                        <label class="col-md-4 col-lg-3 control-label" for="Login">Login usuario</label>
                         <div class="col-md-8 col-lg-9">
-                            <p> <select id="LoginU" name="LoginU" type="text" placeholder="Login usuario" class="form-control <?php if(isset($errores) && in_array("LoginU", $errores)){ echo " error"; } ?>" value="<?=isset($_POST["LoginU"])?$_POST["LoginU"]:''?>">
+                            <p> <select id="Login" name="Login" type="text" placeholder="Login usuario" class="form-control <?php if(isset($errores) && in_array("Login", $errores)){ echo " error"; } ?>" value="<?=isset($_POST["Login"])?$_POST["Login"]:''?>">
                                     <option>--</option>
                                     <?php $rows = $_SESSION["listarUsuarios"]; foreach ($rows as $row){ ?>
                                         <option value="<?php echo $row['LoginU'];?>"><?php echo $row['LoginU']." - ".$row['NombreU'];?></option>

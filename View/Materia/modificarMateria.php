@@ -81,22 +81,22 @@ require_once 'View/Structure/Nav.php';
 
                         <div class="form-group">
                             <label class="control-label" for="DenominacionM">Denominación:</label>
-                            <input id="DenominacionM" name="DenominacionM" class="form-control" value="<?php echo $row['DenominacionM']; ?>" >
+                            <input id="DenominacionM" name="DenominacionM" class="form-control" <?php if(isset($errores) && in_array("DenominacionM", $errores)){ echo " error"; } ?>" value="<?=isset($_POST["DenominacionM"])?$_POST["DenominacionM"]:$row['DenominacionM']?>" >
                         </div>
 
                         <div class="form-group">
                             <label class="control-label" for="TitulacionM">Titulación:</label>
-                            <input id="TitulacionM" name="TitulacionM" class="form-control" value="<?php echo $row['TitulacionM']; ?>"  >
+                            <input id="TitulacionM" name="TitulacionM" class="form-control" <?php if(isset($errores) && in_array("TitulacionM", $errores)){ echo " error"; } ?>" value="<?=isset($_POST["TitulacionM"])?$_POST["TitulacionM"]:$row['TitulacionM']?>" >
                         </div>
 
                         <div class="form-group">
                             <label class="control-label" for="AnhoAcademicoM">Año académico:</label>
-                            <input id="AnhoAcademicoM" type="date" name="AnhoAcademicoM" class="form-control " value="<?php echo $row['AnhoAcademicoM']; ?>"  >
+                            <input id="AnhoAcademicoM" type="date" name="AnhoAcademicoM" class="form-control "<?php if(isset($errores) && in_array("AnhoAcademicoM", $errores)){ echo " error"; } ?>" value="<?=isset($_POST["AnhoAcademicoM"])?$_POST["AnhoAcademicoM"]:$row['AnhoAcademicoM']?>" >
                         </div>
 
                         <div class="form-group">
                             <label class="control-label" for="CreditosM">Creditos:</label>
-                            <input id="CreditosM" name="CreditosM" class="form-control " value="<?php echo $row['CreditosM']; ?>" >
+                            <input id="CreditosM" name="CreditosM" class="form-control " <?php if(isset($errores) && in_array("CreditosM", $errores)){ echo " error"; } ?>" value="<?=isset($_POST["CreditosM"])?$_POST["CreditosM"]:$row['CreditosM']?>" >
                         </div>
 
                         <div class="form-group">

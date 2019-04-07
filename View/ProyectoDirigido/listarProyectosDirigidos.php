@@ -1,247 +1,337 @@
 <?php
-require_once '../../View/Structure/Header.php';
-require_once '../../View/Structure/Nav.php';
+// Estructura general html, body
+require_once 'View/Structure/Header.php';
+
+// Menu
+require_once 'View/Structure/Nav.php';
 $LoginU = $_SESSION["loginU"];
 ?>
-        <!-- derecha  -->
+
+<div class="container-fluid">
+    <div class="row">
+
+        <?php
+        // Menu lateral
+        require_once 'View/Structure/Sidebar.php';
+        ?>
+
+        <!-- Contenido -->
         <div class="col-md-10">
+            <div class="cotainer">
+                <!--Titulo de lo que se esta haciendo -->
+                <p class="lead separator separator-title">Lista de proyectos dirigidos</p>
 
-            <!--Tabs-nav opciones-->
-            <div class="clearfix">
-                <!--Tabs-nav-->
-                <ul class="nav nav-tabs">
-                    <li class="active "><a title="Proyectos mas recientes " href="#tab1" data-toggle="tab">Mas recientes</a></li>
-                    <li ><a title="Proyectos fin de carreira" href="#tab2" data-toggle="tab">PFC</a></li>
-                    <li ><a title="Proyectos fin de grado" href="#tab3" data-toggle="tab">PFG</a></li>
-                    <li ><a title="Proyectos fin de master" href="#tab4" data-toggle="tab">TFM</a></li>
+                <!--Tabs-nav opciones-->
+                <div class="clearfix">
+                    <!--Tabs-nav-->
+                    <ul class="nav nav-tabs">
+                        <li class="active "><a title="Proyectos dirigidos mas recientes " href="#tab1" data-toggle="tab">Mas recientes</a></li>
+                        <li ><a title="Proyectos fin de carrera" href="#tab2" data-toggle="tab">PFC</a></li>
+                        <li ><a title="Trabajo fin de grado" href="#tab3" data-toggle="tab">TFG</a></li>
+                        <li ><a title="Trabajo fin de Master" href="#tab4" data-toggle="tab">TFM</a></li>
 
-
-                </ul>
-
-            </div>
-
-            <!--Titulo de lo que se esta haciendo -->
-            <p class="lead separator separator-title">Lista Proyectos Dirigidos</p><br>
-            <!-- boton buscar-->
-
-            <div class="center-block col-lg-6 col-md-6 col-xs-6 " >
-                <form class="navbar-form text-center " action="../../Controller/ProyectosDirigidosController.php" method="POST" role="search">
-                    <div class=" col-lg-3 col-md-3 col-xs-3 " >
-
-                        <input name="textoBusqueda" type="text" class="form-control" placeholder="buscar">
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-xs-6 " >
-                        <button type="submit" name="evento" value="buscarProyectoDirigido" class="btn btn-orange center-block">Buscar</button>
-                    </div>
-                </form>
-            </div>
-            <!-- boton insertar-->
-            <div class="form-group col-lg-6">
-                <p align="center">
-                    <button type="button" class="btn btn-orange " onclick="window.location.href='../ProyectoDirigido/insertarProyectoDirigido.php'">Insertar Proyecto Dirigido</button>
-                </p>
-
-            </div>
-
-
-
-            <div class="tab-content">
-<!--listado de proyectos dirigidos  -->
-                <div class="tab-pane fade in active" id="tab1">
-                    <?php
-                    $lista = $_SESSION["listarProyectosDirigidos"];
-                    if (isset($lista)) {
-                    foreach ($lista as $row){ ?>
-
-                    <div class="form-group col-lg-4">
-                        <div class="panel panel-default">
-                            <!-- titulo proyecto -->
-                            <div class="tdTitulo">
-                                <td type="submit"   name = "TituloPD" ><?php echo $row['TituloPD']; ?></td>
-                            </div>
-                            <!-- datos proyecto-->
-                            <div class="panel-body">
-                                <tr>
-                                    <td valign="top" width="50%">
-                                        <b name = "CodigoPD" >Código Proyecto:</b>
-                                        <?php echo $row['CodigoPD']; ?>
-                                        <br>
-                                        <b  name = "AlumnoPD" >Alumno: </b>
-                                        <?php echo $row['AlumnoPD']; ?>
-                                        <br>
-                                        <b name = "CalificacionPD">Calificación: </b>
-                                        <?php echo $row['CalificacionPD']; ?>
-                                        <br>
-                                        <b name = "FechaLecturaPD">Fecha lectura: </b>
-                                        <?php echo $row['FechaLecturaPD']; ?>
-                                        <br>
-                                        <b name = "CotutorPD">Cotutor: </b>
-                                        <?php echo $row['CotutorPD']; ?>
-                                        <br>
-                                        <b name = "URLPD">URL: </b>
-                                        <?php echo $row['URLPD']; ?>
-                                        <br>
-                                    </td>
-
-                                </tr>
-                                <p align="center ">
-                                       <button type="button" class="btn btn-orange " onclick="window.location.href='../../Controller/ProyectosDirigidosController.php?evento=consultarProyectoDirigido&CodigoPD=<?php echo $row['CodigoPD']; ?>'">Modificar</button>
-                                    <button type="button" class="btn btn-orange " onclick="window.location.href='../../Controller/ProyectosDirigidosController.php?evento=confirmarBorrado&CodigoPD=<?php echo $row['CodigoPD']; ?>'">Borrar</button>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <?php } } ?>
+                    </ul>
 
                 </div>
 
-
-<!--listado de TFC-->
-                <div class="tab-pane fade" id="tab2">
-                    <?php
-                    $lista = $_SESSION["listarProyectosDirigidosTFC"];
-                    if (isset($lista)) {
-                    foreach ($lista as $row){ ?>
-                    <div class="form-group col-lg-4">
-                        <div class="panel panel-default">
-                            <!-- titulo proyecto -->
-                            <div class="tdTitulo">
-                                <td type="submit"   name = "TituloPD" ><?php echo $row['TituloPD']; ?></td>
-                            </div>
-                            <!-- datos proyecto-->
-                            <div class="panel-body">
-                                <tr>
-                                    <td valign="top" width="50%">
-                                        <b>Código Proyecto: </b>
-                                        <?php echo $row['CodigoPD']; ?>
-                                        <br>
-                                        <b>Alumno: </b>
-                                        <?php echo $row['AlumnoPD']; ?>
-                                        <br>
-                                        <b>Calificación: </b>
-                                        <?php echo $row['CalificacionPD']; ?>
-                                        <br>
-                                        <b>Fecha lectura: </b>
-                                        <?php echo $row['FechaLecturaPD']; ?>
-                                        <br>
-                                        <b>Cotutor: </b>
-                                        <?php echo $row['CotutorPD']; ?>
-                                        <br>
-                                        <b>URL: </b>
-                                        <?php echo $row['URLPD']; ?>
-                                        <br>
-                                    </td>
-
-                                </tr>
-                                <p align="center ">
-                                    <button type="button" class="btn btn-orange " onclick="window.location.href='../../Controller/ProyectosDirigidosController.php?evento=consultarProyectoDirigido&CodigoPD=<?php echo $row['CodigoPD']; ?>'">Modificar</button>
-                                    <button type="button" class="btn btn-orange " onclick="window.location.href='../../Controller/ProyectosDirigidosController.php?evento=confirmarBorrado&CodigoPD=<?php echo $row['CodigoPD']; ?>'">Borrar</button>
-                                </p>
-                            </div>
+                <!-- Botón buscar -->
+                <br>
+                <br>
+                <div class="row">
+                    <form class="form-horizontal" action="index.php?controlador=ProyectosDirigidos" method="POST" role="search">
+                        <div class="col-lg-3 col-md-6 col-xs-10">
+                            <input name="textoBusqueda" type="text" class="form-control" placeholder="buscar">
                         </div>
-                    </div>
-                    <?php } } ?>
-
+                        <div class="col-lg-3 col-md-3 col-xs-2">
+                            <button type="submit" name="evento" value="buscarProyectoDirigido" class="btn btn-orange">
+                                Buscar
+                            </button>
+                        </div>
+                        <div class="col-lg-6 col-md-3 col-xs-2 text-right">
+                            <a class="btn btn-orange " href="index.php?controlador=ProyectosDirigidos&evento=paginaInsertarProyectoDirigido">
+                                Insertar proyecto
+                            </a>
+                        </div>
+                    </form>
                 </div>
-<!--listado de TFG -->
-                <div class="tab-pane fade " id="tab3">
-                    <?php
-                    $lista = $_SESSION["listarProyectosDirigidosTFG"];
-                    if (isset($lista)) {
-                        foreach ($lista as $row){ ?>
-                            <div class="form-group col-lg-4">
-                                <div class="panel panel-default">
-                                    <!-- titulo proyecto -->
-                                    <div class="tdTitulo">
-                                        <td type="submit"   name = "TituloPD" ><?php echo $row['TituloPD']; ?></td>
 
-                                    </div>
-                                    <!-- datos proyecto-->
-                                    <div class="panel-body">
-                                        <tr>
-                                            <td valign="top" width="50%">
-                                                <b>Código Proyecto: </b>
-                                                <?php echo $row['CodigoPD']; ?>
-                                                <br>
-                                                <b>Alumno: </b>
-                                                <?php echo $row['AlumnoPD']; ?>
-                                                <br>
-                                                <b>Calificación: </b>
-                                                <?php echo $row['CalificacionPD']; ?>
-                                                <br>
-                                                <b>Fecha lectura: </b>
-                                                <?php echo $row['FechaLecturaPD']; ?>
-                                                <br>
-                                                <b>Cotutor: </b>
-                                                <?php echo $row['CotutorPD']; ?>
-                                                <br>
-                                                <b>URL: </b>
-                                                <?php echo $row['URLPD']; ?>
-                                                <br>
-                                            </td>
+                <br>
+                <br>
 
-                                        </tr>
-                                        <p align="center ">
-                                            <button type="button" class="btn btn-orange " onclick="window.location.href='../../Controller/ProyectosDirigidosController.php?evento=consultarProyectoDirigido&CodigoPD=<?php echo $row['CodigoPD']; ?>'">Modificar</button>
-                                            <button type="button" class="btn btn-orange " onclick="window.location.href='../../Controller/ProyectosDirigidosController.php?evento=confirmarBorrado&CodigoPD=<?php echo $row['CodigoPD']; ?>'">Borrar</button>
-                                        </p>
+
+
+
+                <div class="tab-content">
+                    <!--listado de proyectos dirigidos  -->
+                    <div class="tab-pane fade in active" id="tab1">
+                        <?php
+                        $lista = $_SESSION["listarProyectosDirigidos"];
+                        $contador   = 1;
+                        if (isset($lista)) {
+                            foreach ($lista as $row){ ?>
+
+                                <div class="form-group col-lg-6">
+                                    <div class="panel panel-default">
+                                        <!-- titulo proyecto -->
+                                        <div class="tdTitulo">
+                                            <td type="submit"   name = "TituloPD" ><?php echo $row['TituloPD']; ?></td>
+                                        </div>
+                                        <!-- datos proyecto-->
+                                        <div class="panel-body">
+                                            <tr>
+                                                <td valign="top" width="50%">
+                                                    <b name = "CodigoPD" >Código proyecto:</b>
+                                                    <?php echo $row['CodigoPD']; ?>
+                                                    <br>
+                                                    <b name = "AlumnoPD">Alumno: </b>
+                                                    <?php echo $row['AlumnoPD']; ?>
+                                                    <br>
+                                                    <b  name = "FechaLecturaPD" >Fecha lectura: </b>
+                                                    <?php echo $row['FechaLecturaPD']; ?>
+                                                    <br>
+                                                    <b name = "CalificacionPD">Calificacion: </b>
+                                                    <?php echo $row['CalificacionPD']; ?>
+                                                    <br>
+                                                    <b name = "URLPD">URL: </b>
+                                                    <?php echo $row['URLPD']; ?>
+                                                    <br>
+                                                    <b name = "CotutorPD">Cotutor: </b>
+                                                    <?php echo $row['CotutorPD']; ?>
+                                                    <br>
+                                                    <b name = "TipoPD">Tipo proyecto: </b>
+                                                    <?php echo $row['TipoPD']; ?>
+                                                    <br>
+                                                </td>
+
+                                            </tr>
+                                            <div class="margin-bottom5 text-center">
+                                                <form name="formBorrarPD<?php echo $contador; ?>" id="formBorrarPD<?php echo $contador; ?>" class="text-center" action="index.php" method="get">
+                                                    <input type="hidden" name="controlador" value="Proyectos Dirigidos">
+                                                    <input type="hidden" name="evento" value="borrarProyectoDirigido">
+                                                    <input type="hidden" name="CodigoPD" value="<?php echo $row['CodigoPD']; ?>">
+                                                    <button type="button" class="btn btn-transparent btn-orange" onClick="window.location.href='index.php?controlador=ProyectosDirigidos&evento=consultarProyectoDirigido&CodigoPD=<?php echo $row['CodigoPD']; ?>'">
+                                                        Modificar
+                                                    </button>
+                                                    <button type="button" class="btn btn-transparent btn-orange" onClick="abrirConfirmPD('formBorrarPD<?php echo $contador; ?>', '<?php echo $row['TituloPD']." ".$row['CodigoPD']; ?>');">
+                                                        Borrar
+                                                    </button>
+                                                </form>
+                                            </div>
+
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        <?php } } ?>
+                                <?php
+                                $contador++;
+                            }
+                        }
+                        ?>
 
-                </div>
+                    </div>
+
+
+
+                    <!--listado de TFC-->
+                    <div class="tab-pane fade in active" id="tab2">
+                        <?php
+                        $lista1 = $_SESSION["listarProyectosDirigidosTFC"];
+                        $contador1   = 1;
+                        if (isset($lista1)) {
+                            foreach ($lista1 as $row1){ ?>
+
+                                <div class="form-group col-lg-6">
+                                    <div class="panel panel-default">
+                                        <!-- titulo proyecto -->
+                                        <div class="tdTitulo">
+                                            <td type="submit"   name = "TituloPD" ><?php echo $row1['TituloPD']; ?></td>
+                                        </div>
+                                        <!-- datos proyecto-->
+                                        <div class="panel-body">
+                                            <tr>
+                                                <td valign="top" width="50%">
+                                                    <b name = "CodigoPD" >Código proyecto:</b>
+                                                    <?php echo $row1['CodigoPD']; ?>
+                                                    <br>
+                                                    <b name = "AlumnoPD">Alumno: </b>
+                                                    <?php echo $row1['AlumnoPD']; ?>
+                                                    <br>
+                                                    <b  name = "FechaLecturaPD" >Fecha lectura: </b>
+                                                    <?php echo $row1['FechaLecturaPD']; ?>
+                                                    <br>
+                                                    <b name = "CalificacionPD">Calificacion: </b>
+                                                    <?php echo $row1['CalificacionPD']; ?>
+                                                    <br>
+                                                    <b name = "URLPD">URL: </b>
+                                                    <?php echo $row1['URLPD']; ?>
+                                                    <br>
+                                                    <b name = "CotutorPD">Cotutor: </b>
+                                                    <?php echo $row1['CotutorPD']; ?>
+                                                    <br>
+                                                    <b name = "TipoPD">Tipo proyecto: </b>
+                                                    <?php echo $row1['TipoPD']; ?>
+                                                    <br>
+                                                </td>
+
+                                            </tr>
+                                            <div class="margin-bottom5 text-center">
+                                                <form name="formBorrarPD<?php echo $contador1; ?>" id="formBorrarPD<?php echo $contador1; ?>" class="text-center" action="index.php" method="get">
+                                                    <input type="hidden" name="controlador" value="Proyectos Dirigidos">
+                                                    <input type="hidden" name="evento" value="borrarProyectoDirigido">
+                                                    <input type="hidden" name="CodigoPD" value="<?php echo $row1['CodigoPD']; ?>">
+                                                    <button type="button" class="btn btn-transparent btn-orange" onClick="window.location.href='index.php?controlador=ProyectosDirigidos&evento=consultarProyectoDirigido&CodigoPD=<?php echo $row1['CodigoPD']; ?>'">
+                                                        Modificar
+                                                    </button>
+                                                    <button type="button" class="btn btn-transparent btn-orange" onClick="abrirConfirmPD('formBorrarPD<?php echo $contador1; ?>', '<?php echo $row1['TituloPD']." ".$row1['CodigoPD']; ?>');">
+                                                        Borrar
+                                                    </button>
+                                                </form>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <?php
+                                $contador1++;
+                            }
+                        }
+                        ?>
+
+                    </div>
+
+                    <!--listado de TFG -->
+                    <div class="tab-pane fade in active" id="tab3">
+                        <?php
+                        $lista2 = $_SESSION["listarProyectosDirigidosTFG"];
+                        $contador2   = 1;
+                        if (isset($lista2)) {
+                            foreach ($lista2 as $row2){ ?>
+
+                                <div class="form-group col-lg-6">
+                                    <div class="panel panel-default">
+                                        <!-- titulo proyecto -->
+                                        <div class="tdTitulo">
+                                            <td type="submit"   name = "TituloPD" ><?php echo $row2['TituloPD']; ?></td>
+                                        </div>
+                                        <!-- datos proyecto-->
+                                        <div class="panel-body">
+                                            <tr>
+                                                <td valign="top" width="50%">
+                                                    <b name = "CodigoPD" >Código proyecto:</b>
+                                                    <?php echo $row2['CodigoPD']; ?>
+                                                    <br>
+                                                    <b name = "AlumnoPD">Alumno: </b>
+                                                    <?php echo $row2['AlumnoPD']; ?>
+                                                    <br>
+                                                    <b  name = "FechaLecturaPD" >Fecha lectura: </b>
+                                                    <?php echo $row2['FechaLecturaPD']; ?>
+                                                    <br>
+                                                    <b name = "CalificacionPD">Calificacion: </b>
+                                                    <?php echo $row2['CalificacionPD']; ?>
+                                                    <br>
+                                                    <b name = "URLPD">URL: </b>
+                                                    <?php echo $row2['URLPD']; ?>
+                                                    <br>
+                                                    <b name = "CotutorPD">Cotutor: </b>
+                                                    <?php echo $row2['CotutorPD']; ?>
+                                                    <br>
+                                                    <b name = "TipoPD">Tipo proyecto: </b>
+                                                    <?php echo $row2['TipoPD']; ?>
+                                                    <br>
+                                                </td>
+
+                                            </tr>
+                                            <div class="margin-bottom5 text-center">
+                                                <form name="formBorrarPD<?php echo $contador2; ?>" id="formBorrarPD<?php echo $contador2; ?>" class="text-center" action="index.php" method="get">
+                                                    <input type="hidden" name="controlador" value="Proyectos Dirigidos">
+                                                    <input type="hidden" name="evento" value="borrarProyectoDirigido">
+                                                    <input type="hidden" name="CodigoPD" value="<?php echo $row2['CodigoPD']; ?>">
+                                                    <button type="button" class="btn btn-transparent btn-orange" onClick="window.location.href='index.php?controlador=ProyectosDirigidos&evento=consultarProyectoDirigido&CodigoPD=<?php echo $row2['CodigoPD']; ?>'">
+                                                        Modificar
+                                                    </button>
+                                                    <button type="button" class="btn btn-transparent btn-orange" onClick="abrirConfirmPD('formBorrarPD<?php echo $contador2; ?>', '<?php echo $row2['TituloPD']." ".$row2['CodigoPD']; ?>');">
+                                                        Borrar
+                                                    </button>
+                                                </form>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <?php
+                                $contador2++;
+                            }
+                        }
+                        ?>
+
+                    </div>
 <!-- listado de TFM -->
-                <div class="tab-pane fade" id="tab4">
-                    <?php
-                    $lista = $_SESSION["listarProyectosDirigidosTFM"];
-                    if (isset($lista)) {
-                        foreach ($lista as $row){ ?>
-                            <div class="form-group col-lg-4">
-                                <div class="panel panel-default">
-                                    <!-- titulo proyecto -->
-                                    <div class="tdTitulo">
-                                        <td type="submit"   name = "TituloPD" ><?php echo $row['TituloPD']; ?></td>
-                                    </div>
-                                    <!-- datos proyecto-->
-                                    <div class="panel-body">
-                                        <tr>
-                                            <td valign="top" width="50%">
-                                                <b>Código Proyecto: </b>
-                                                <?php echo $row['CodigoPD']; ?>
-                                                <br>
-                                                <b>Alumno: </b>
-                                                <?php echo $row['AlumnoPD']; ?>
-                                                <br>
-                                                <b>Calificación: </b>
-                                                <?php echo $row['CalificacionPD']; ?>
-                                                <br>
-                                                <b>Fecha lectura: </b>
-                                                <?php echo $row['FechaLecturaPD']; ?>
-                                                <br>
-                                                <b>Cotutor: </b>
-                                                <?php echo $row['CotutorPD']; ?>
-                                                <br>
-                                                <b>URL: </b>
-                                                <?php echo $row['URLPD']; ?>
-                                                <br>
-                                            </td>
+                    <div class="tab-pane fade in active" id="tab4">
+                        <?php
+                        $lista3 = $_SESSION["listarProyectosDirigidosTFM"];
+                        $contador3   = 1;
+                        if (isset($lista3)) {
+                            foreach ($lista3 as $row3){ ?>
 
-                                        </tr>
-                                        <p align="center ">
-                                            <button type="button" class="btn btn-orange " onclick="window.location.href='../../Controller/ProyectosDirigidosController.php?evento=consultarProyectoDirigido&CodigoPD=<?php echo $row['CodigoPD']; ?>'">Modificar</button>
-                                            <button type="button" class="btn btn-orange " onclick="window.location.href='../../Controller/ProyectosDirigidosController.php?evento=confirmarBorrado&CodigoPD=<?php echo $row['CodigoPD']; ?>'">Borrar</button>
-                                        </p>
+                                <div class="form-group col-lg-6">
+                                    <div class="panel panel-default">
+                                        <!-- titulo proyecto -->
+                                        <div class="tdTitulo">
+                                            <td type="submit"   name = "TituloPD" ><?php echo $row3['TituloPD']; ?></td>
+                                        </div>
+                                        <!-- datos proyecto-->
+                                        <div class="panel-body">
+                                            <tr>
+                                                <td valign="top" width="50%">
+                                                    <b name = "CodigoPD" >Código proyecto:</b>
+                                                    <?php echo $row3['CodigoPD']; ?>
+                                                    <br>
+                                                    <b name = "AlumnoPD">Alumno: </b>
+                                                    <?php echo $row3['AlumnoPD']; ?>
+                                                    <br>
+                                                    <b  name = "FechaLecturaPD" >Fecha lectura: </b>
+                                                    <?php echo $row3['FechaLecturaPD']; ?>
+                                                    <br>
+                                                    <b name = "CalificacionPD">Calificacion: </b>
+                                                    <?php echo $row3['CalificacionPD']; ?>
+                                                    <br>
+                                                    <b name = "URLPD">URL: </b>
+                                                    <?php echo $row3['URLPD']; ?>
+                                                    <br>
+                                                    <b name = "CotutorPD">Cotutor: </b>
+                                                    <?php echo $row3['CotutorPD']; ?>
+                                                    <br>
+                                                    <b name = "TipoPD">Tipo proyecto: </b>
+                                                    <?php echo $row3['TipoPD']; ?>
+                                                    <br>
+                                                </td>
+
+                                            </tr>
+                                            <div class="margin-bottom5 text-center">
+                                                <form name="formBorrarPD<?php echo $contador3; ?>" id="formBorrarPD<?php echo $contador3; ?>" class="text-center" action="index.php" method="get">
+                                                    <input type="hidden" name="controlador" value="Proyectos Dirigidos">
+                                                    <input type="hidden" name="evento" value="borrarProyectoDirigido">
+                                                    <input type="hidden" name="CodigoPD" value="<?php echo $row3['CodigoPD']; ?>">
+                                                    <button type="button" class="btn btn-transparent btn-orange" onClick="window.location.href='index.php?controlador=ProyectosDirigidos&evento=consultarProyectoDirigido&CodigoPD=<?php echo $row3['CodigoPD']; ?>'">
+                                                        Modificar
+                                                    </button>
+                                                    <button type="button" class="btn btn-transparent btn-orange" onClick="abrirConfirmPD('formBorrarPD<?php echo $contador3; ?>', '<?php echo $row3['TituloPD']." ".$row3['CodigoPD']; ?>');">
+                                                        Borrar
+                                                    </button>
+                                                </form>
+                                            </div>
+
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                         <?php } } ?>
+                                <?php
+                                $contador3++;
+                            }
+                        }
+                        ?>
 
                     </div>
 
 
         </div>
     </div>
-
-
 

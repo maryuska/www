@@ -1,5 +1,8 @@
 <?php
-session_start();
+if(!isset($_SESSION))
+    session_start();
+
+require_once 'Validacion.php';
 
 
 class ProyectosDirigidos{
@@ -24,7 +27,8 @@ class ProyectosDirigidos{
     $this->CotutorPD= $CotutorPD;
     $this->TipoPD= $TipoPD;
   }
-    //Función para conectarnos a la Base de datos
+
+//Función para conectarnos a la Base de datos
     function ConectarBD()
     {
         $this->mysqli = new mysqli("localhost", "docente", "docente", "datos_curriculares");
@@ -48,11 +52,7 @@ class ProyectosDirigidos{
         $dirigir = "INSERT INTO docente_proyectodirigido (CodigoPD,LoginU)
 			VALUES ('$CodigoPD','$Login')";
         $resultado = $this->mysqli->query($dirigir) or die(mysqli_error($this->mysqli));
-
     }
-
-
-
 
 //consultar un proyecto dirigido
     public function ConsultarProyectoDirigido($CodigoP){
@@ -60,15 +60,24 @@ class ProyectosDirigidos{
         $sql= $this->mysqli->query("SELECT * FROM proyectoDirigido p, docente_proyectodirigido dp WHERE p.CodigoPD=dp.CodigoPD AND p.CodigoPD = '$CodigoP'");
         return $sql;
     }
-
+//consultar quien dirige un proyecto
+public function ConsultarDirige($CodigoPD){
+      $this->ConectarBD();
+      $sql=$this->mysqli->query("SELECT * FROM docente_proyectoDirigido WHERE CodigoPD= '$CodigoPD'");
+      return $sql;
+}
 //modificar un proyecto dirigido
     public function ModificarProyectoDirigido($CodigoPD){
         $this->ConectarBD();
-        $this->mysqli->query("UPDATE proyectoDirigido SET TituloPD='$this->TituloPD',AlumnoPD='$this->AlumnoPD',FechaLecturaPD='$this->FechaLecturaPD' ,
-                      CalificacionPD='$this->CalificacionPD',URLPD='$this->URLPD',CotutorPD='$this->CotutorPD',TipoPD='$this->TipoPD' where CodigoPD = '$CodigoPD'") or die (mysqli_error($this->mysqli));
+        $this->mysqli->query("UPDATE proyectoDirigido SET   TituloPD='$this->TituloPD',
+                                                            AlumnoPD='$this->AlumnoPD',
+                                                            FechaLecturaPD='$this->FechaLecturaPD' ,
+                                                            CalificacionPD='$this->CalificacionPD',
+                                                            URLPD='$this->URLPD',
+                                                            CotutorPD='$this->CotutorPD',
+                                                            TipoPD='$this->TipoPD' 
+                                                            where CodigoPD = '$CodigoPD'") or die (mysqli_error($this->mysqli));
     }
-
-
 
 //lista de todos los proyectos dirigidos del usuario
     public function ListarProyectosDirigidos($Login){
@@ -77,6 +86,7 @@ class ProyectosDirigidos{
         return $sql;
 
     }
+
 //lista de todos los proyectos fin de carrera del usuario
     public function ListarProyectosDirigidosPFC($Login){
         $this->ConectarBD();
@@ -84,6 +94,7 @@ class ProyectosDirigidos{
 
         return $sql;
     }
+
 //lista de todos los trabajos fin de grado del usuario
     public function ListarProyectosDirigidosTFG($Login){
         $this->ConectarBD();
@@ -91,23 +102,14 @@ class ProyectosDirigidos{
 
         return $sql;
     }
-//lista de todos los trabajos fin de grado del usuario
+
+//lista de todos los trabajos fin de master del usuario
     public function ListarProyectosDirigidosTFM($Login){
         $this->ConectarBD();
         $sql= $this->mysqli->query("SELECT * FROM proyectoDirigido p, docente_proyectoDirigido dp WHERE p.CodigoPD = dp.CodigoPD  AND dp.LoginU = '$Login'  AND p.TipoPD = 'TFM' ORDER BY FechaLecturaPD DESC ");
 
         return $sql;
     }
-
-
-
-
-
-
-
-
-
-
 
 //lista de todos los proyectos dirigidos
     public function ListarProyectosDirigidosAdmin(){
@@ -116,6 +118,7 @@ class ProyectosDirigidos{
         return $sql;
 
     }
+
 //lista de todos los proyectos fin de carrera
     public function ListarProyectosDirigidosPFCAdmin(){
         $this->ConectarBD();
@@ -123,6 +126,7 @@ class ProyectosDirigidos{
 
         return $sql;
     }
+
 //lista de todos los trabajos fin de grado
     public function ListarProyectosDirigidosTFGAdmin(){
         $this->ConectarBD();
@@ -130,11 +134,11 @@ class ProyectosDirigidos{
 
         return $sql;
     }
+
 //lista de todos los trabajos fin de grado
     public function ListarProyectosDirigidosTFMAdmin(){
         $this->ConectarBD();
         $sql= $this->mysqli->query("SELECT * FROM proyectoDirigido p, docente_proyectoDirigido dp WHERE p.CodigoPd=dp.CodigoPD AND TipoPD = 'TFM' ORDER BY FechaLecturaPD DESC ");
-
         return $sql;
     }
 
@@ -150,7 +154,7 @@ class ProyectosDirigidos{
         $this->mysqli->query("DELETE FROM docente_proyectodirigido WHERE CodigoPD = '$CodigoPD' AND LoginU='$LoginU'")or die(mysqli_error($this->mysqli));
     }
 
-//buscar usuario
+//buscar proyectoDirigido
     public function BuscarProyectoDirigido($buscar){
         $this->ConectarBD();
         $sql = $this->mysqli->query("SELECT * FROM proyectoDirigido WHERE CodigoPD LIKE '%$buscar' || CodigoPD LIKE '%$buscar%' || CodigoPD LIKE '$buscar%' ||
@@ -165,6 +169,47 @@ class ProyectosDirigidos{
         return $sql;
     }
 
+    /**
+     * Valida si los campos del formulario de una materia son correctos
+     *
+     * @param array $campos del formulario
+     * @return array $errores, contiene los campos fallidos $errores[] = nombre del campo
+     */
+    public function validarProyectoDirigido($campos){
+
+        $errores    = array();
+        $validar    = new Validacion();
+
+        // Codigo Proyecto dirigido
+        if(isset($campos["CodigoPD"]) && !$validar->validarLetrasYNumeros($campos["CodigoPD"]))
+            $errores[]  = "CodigoPD";
+
+        // titulo Proyecto dirigido
+        if(isset($campos["TituloPD"]) && !$validar->validarLetrasYNumeros($campos["TituloPD"]))
+            $errores[]  = "TituloPD";
+
+        // alumno proyecto dirigido
+        if(isset($campos["AlumnoPD"]) && !$validar->validarSoloLetras($campos["AlumnoPD"]))
+            $errores[]  = "AlumnoPD";
+
+        // Fecha lectura
+        if(isset($campos["FechaLecturaPD"]) && ( !$validar->validarFecha($campos["FechaLecturaPD"]) || (date("Y-m-d", strtotime($campos["FechaLecturaPD"])) >= date("Y-m-d")) ) )
+            $errores[]  = "FechaLecturaPD";
+
+        // url
+        if(isset($campos["URLPD"]) && !$validar->validarLetrasYNumeros($campos["URLPD"]))
+            $errores[]  = "URLPD";
+
+        //cotutor
+        if(isset($campos["CotutorPD"]) && !$validar->validarSoloLetras($campos["CotutorPD"]))
+            $errores[]  = "CotutorPD";
+
+        //Tipo proyecto
+        if(isset($campos["TipoPD"]) && !$validar->validarSoloLetras($campos["TipoPD"]))
+            $errores[]  = "TipoPD";
+
+        return $errores;
+    }
 
 }
 

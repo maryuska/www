@@ -1,62 +1,119 @@
+
 <?php
-require_once '../../View/Structure/Header.php';
-require_once '../../View/Structure/Nav.php';
+// Estructura general html, body
+require_once 'View/Structure/Header.php';
 
+// Menu
+require_once 'View/Structure/Nav.php';
+
+$usuario = $_SESSION["listarBusqueda"];
+$LoginU = $_SESSION["loginU"];
 ?>
-<!-- derecha  -->
-<div class="col-md-10">
 
-    <!--Titulo de lo que se esta haciendo -->
-    <p class="lead separator separator-title">Lista Proyectos Dirigidos</p>
+<div class="container-fluid">
+    <div class="row">
 
+        <?php
+        // Menu lateral
+        require_once 'View/Structure/Sidebar.php';
+        ?>
 
-    <div class="tab-content">
+        <!-- Contenido -->
+        <div class="col-md-10">
+            <div class="cotainer">
+<!--
+                <div class="col-lg-6 col-md-3 col-xs-2">
+                    <a class="btn btn-orange " href="index.php?controlador=ProyectosDirigidos&evento=listarProyectosDirigidos&LoginU=$LoginU">
+                        Volver atras
+                    </a>
+                </div>
+                -->
 
-            <?php
-            $lista = $_SESSION["listarBusquedaPD"];
-            if (isset($lista)) {
-                foreach ($lista as $row){ ?>
+                <!-- Título -->
+                <p class="lead separator separator-title">
+                    Busqueda de proyectos dirigidos
+                </p>
 
-                    <div class="form-group col-lg-4">
-                        <div class="panel panel-default">
-                            <!-- titulo proyecto -->
-                            <div class="tdTitulo">
-                                <td type="submit"   name = "TituloPD" ><?php echo $row['TituloPD']; ?></td>
-                            </div>
-                            <!-- datos proyecto-->
-                            <div class="panel-body">
-                                <tr>
-                                    <td valign="top" width="50%">
-                                        <b name = "CodigoPD" >Código Proyecto:</b>
+                <!--listado de materias  -->
+                <div class="row">
+
+                    <?php
+                    $lista = $_SESSION["listarBusqueda"];
+                    $contador   = 1;
+                    if (isset($lista)) {
+                        foreach ($lista as $row){
+                            ?>
+
+                            <div class="col-md-6 col-lg-4">
+
+                                <!-- Box -->
+
+                                <div class="panel panel-default">
+
+                                    <!-- Codigo Proyecto dirigido -->
+                                    <div class="panel-heading tdTitulo">
                                         <?php echo $row['CodigoPD']; ?>
-                                        <br>
-                                        <b  name = "AlumnoPD" >Alumno: </b>
-                                        <?php echo $row['AlumnoPD']; ?>
-                                        <br>
-                                        <b name = "CalificacionPD">Calificación: </b>
-                                        <?php echo $row['CalificacionPD']; ?>
-                                        <br>
-                                        <b name = "FechaLecturaPD">Fecha lectura: </b>
-                                        <?php echo $row['FechaLecturaPD']; ?>
-                                        <br>
-                                        <b name = "CotutorPD">Cotutor: </b>
-                                        <?php echo $row['CotutorPD']; ?>
-                                        <br>
-                                        <b name = "URLPD">URL: </b>
-                                        <?php echo $row['URLPD']; ?>
-                                        <br>
-                                    </td>
+                                    </div>
 
-                                </tr>
+                                    <!-- Datos Proyecto dirigido -->
+                                    <div class="panel-body">
+
+                                        <p class="margin-bottom5">
+                                            <strong>Título:</strong>
+                                            <span><?php echo $row['TituloPD']; ?></span>
+                                        </p>
+
+                                        <p class="margin-bottom5">
+                                            <strong>Alumno:</strong>
+                                            <span><?php echo $row['AlumnoPD']; ?></span>
+                                        </p>
+
+                                        <p class="margin-bottom5">
+                                            <strong>Fecha lectura:</strong>
+                                            <span><?php echo $row['FechaLecturaPD']; ?></span>
+                                        </p>
+
+                                        <p class="margin-bottom5">
+                                            <strong>Calificación:</strong>
+                                            <span><?php echo $row['CalificacionPD']; ?></span>
+                                        </p>
+
+                                        <p class="margin-bottom5">
+                                            <strong>URL:</strong>
+                                            <span><?php echo $row['URLPD']; ?></span>
+                                        </p>
+
+                                        <p class="margin-bottom5">
+                                            <strong>Cotutor:</strong>
+                                            <span><?php echo $row['CotutorPD']; ?></span>
+                                        </p>
+                                        <p class="margin-bottom5">
+                                            <strong>Tipo:</strong>
+                                            <span><?php echo $row['TipoPD']; ?></span>
+                                        </p>
+
+                                    </div>
+
+                                </div>
 
                             </div>
-                        </div>
-                    </div>
-                <?php } } ?>
 
+                            <?php
+                        }
+                    }
+                    $contador++;
+                    ?>
+
+                </div>
+
+            </div>
+        </div>
 
     </div>
 </div>
 
 
-
+<?php
+// Pie y cierre de html, body
+require_once 'View/Structure/Footer.php';
+?>
