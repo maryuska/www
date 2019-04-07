@@ -42,14 +42,14 @@ class Tad{
 
 
 
-//consultar una materia
+//consultar una tad
     public function ConsultarTad($CodigoTAD){
         $this->ConectarBD();
         $sql= $this->mysqli->query("SELECT * FROM tad  WHERE CodigoTAD = '$CodigoTAD'");
         return $sql;
     }
 
-//modificar una materia
+//modificar una tad
     public function ModificarTad($CodigoTAD){
         $this->ConectarBD();
         $this->mysqli->query("UPDATE tad SET  TituloTAD='$this->TituloTAD',
@@ -62,13 +62,13 @@ class Tad{
     //lista tad
     public function ListarTad($LoginU){
         $this->ConectarBD();
-        $sql= $this->mysqli->query("SELECT * FROM tad WHERE LoginU= '$LoginU'");
+        $sql= $this->mysqli->query("SELECT * FROM tad WHERE LoginU= '$LoginU' ORDER BY FechaLecturaTAD DESC");
         return $sql;
     }
     //lista tad admin
     public function ListarTadAdmin(){
         $this->ConectarBD();
-        $sql= $this->mysqli->query("SELECT * FROM tad");
+        $sql= $this->mysqli->query("SELECT * FROM tad ORDER BY FechaLecturaTAD DESC");
         return $sql;
     }
 
@@ -78,7 +78,7 @@ class Tad{
 //eliminar tad
     public function BorrarTad($CodigoTAD){
         $this->ConectarBD();
-        $this->mysqli->query("DELETE FROM materia WHERE CodigoM= '$CodigoTAD'")or die(mysqli_error($this->mysqli));
+        $this->mysqli->query("DELETE FROM tad WHERE CodigoTAD= '$CodigoTAD'")or die(mysqli_error($this->mysqli));
     }
 
     /**
