@@ -1,6 +1,8 @@
 <?php
-session_start();
+if(!isset($_SESSION))
+    session_start();
 
+require_once 'Validacion.php';
 
 class Tad{
 
@@ -37,53 +39,84 @@ class Tad{
 	$resultado = $this->mysqli->query($insertarTad) or die(mysqli_error($this->mysqli));
 	}
 
-//consultar un proyecto dirigido
-    public function ConsultarProyectoDirigido($CodigoP){
+
+
+
+//consultar una materia
+    public function ConsultarTad($CodigoTAD){
         $this->ConectarBD();
-        $sql= $this->mysqli->query("SELECT * FROM proyectoDirigido  WHERE CodigoPD = '$CodigoP'");
+        $sql= $this->mysqli->query("SELECT * FROM tad  WHERE CodigoTAD = '$CodigoTAD'");
         return $sql;
     }
 
-//modificar un proyecto dirigido
-    public function ModificarProyectoDirigido($CodigoPD){
+//modificar una materia
+    public function ModificarTad($CodigoTAD){
         $this->ConectarBD();
-        $this->mysqli->query("UPDATE proyectoDirigido SET TituloPD='$this->TituloPD',AlumnoPD='$this->AlumnoPD',FechaLecturaPD='$this->FechaLecturaPD' ,
-                      CalificacionPD='$this->CalificacionPD',URLPD='$this->URLPD',CotutorPD='$this->CotutorPD',TipoPD='$this->TipoPD' where CodigoPD = '$CodigoPD'") or die (mysqli_error($this->mysqli));
+        $this->mysqli->query("UPDATE tad SET  TituloTAD='$this->TituloTAD',
+                                                  AlumnoTAD='$this->AlumnoTAD',
+                                                  FechaLecturaTAD='$this->FechaLecturaTAD'
+                              where CodigoTAD = '$CodigoTAD'") or die (mysqli_error($this->mysqli));
     }
 
 
-//lista de todos los proyectos dirigidos del usuario
-    public function ListarProyectosDirigidos(){
+    //lista tad
+    public function ListarTad($LoginU){
         $this->ConectarBD();
-        $sql= $this->mysqli->query("SELECT * FROM proyectoDirigido  ORDER BY FechaLecturaPD DESC");
-        return $sql;
-
-    }
-//lista de todos los proyectos fin de carrera del usuario
-    public function ListarProyectosDirigidosPFC(){
-        $this->ConectarBD();
-        $sql= $this->mysqli->query("SELECT * FROM proyectoDirigido WHERE TipoPD = 'PFC'");
-
+        $sql= $this->mysqli->query("SELECT * FROM tad WHERE LoginU= '$LoginU'");
         return $sql;
     }
-//lista de todos los trabajos fin de grado del usuario
-    public function ListarProyectosDirigidosTFG(){
+    //lista tad admin
+    public function ListarTadAdmin(){
         $this->ConectarBD();
-        $sql= $this->mysqli->query("SELECT * FROM proyectoDirigido WHERE TipoPD = 'TFG'  ");
-
-        return $sql;
-    }
-//lista de todos los trabajos fin de grado del usuario
-    public function ListarProyectosDirigidosTFM(){
-        $this->ConectarBD();
-        $sql= $this->mysqli->query("SELECT * FROM proyectoDirigido WHERE TipoPD = 'TFM'  ");
-
+        $sql= $this->mysqli->query("SELECT * FROM tad");
         return $sql;
     }
 
 
 
 
+//eliminar tad
+    public function BorrarTad($CodigoTAD){
+        $this->ConectarBD();
+        $this->mysqli->query("DELETE FROM materia WHERE CodigoM= '$CodigoTAD'")or die(mysqli_error($this->mysqli));
+    }
+
+    /**
+     * Valida si los campos del formulario de una materia son correctos
+     *
+     * @param array $campos del formulario
+     * @return array $errores, contiene los campos fallidos $errores[] = nombre del campo
+     */
+    public function validarTad($campos){
+
+        $errores    = array();
+        $validar    = new Validacion();
+
+        if(isset($campos["CodigoTAD"]) && !$validar->validarLetrasYNumeros($campos["CodigoTAD"]))
+            $errores[]  = "CodigoTAD";
+
+        if(isset($campos["TituloTAD"]) && !$validar->validarLetrasYNumeros($campos["TituloTAD"]))
+            $errores[]  = "TituloTAD";
+
+        if(isset($campos["AlumnoTAD"]) && !$validar->validarSoloLetras($campos["AlumnoTAD"]))
+            $errores[]  = "AlumnoTAD";
+
+        if(isset($campos["FechaLecturaTAD"]) && ( !$validar->validarFecha($campos["FechaLecturaTAD"]) || (date("Y-m-d", strtotime($campos["FechaLecturaTAD"])) >= date("Y-m-d")) ) )
+            $errores[]  = "FechaLecturaTAD";
+
+        return $errores;
+    }
+
+    //buscar materia
+    public function BuscarTad($buscar){
+        $this->ConectarBD();
+        $sql = $this->mysqli->query("SELECT * FROM tad WHERE CodigoTAD LIKE '%$buscar' || CodigoTAD LIKE '%$buscar%' || CodigoTAD LIKE '$buscar%' ||
+                                                            TituloTAD LIKE '%$buscar'|| TituloTAD LIKE '%$buscar%' || TituloTAD LIKE '$buscar%' ||
+                                                            AlumnoTAD LIKE '%$buscar'|| AlumnoTAD LIKE '%$buscar%' || AlumnoTAD LIKE '$buscar%' ||
+                                                            FechaLecturaTAD LIKE '%$buscar'|| FechaLecturaTAD LIKE '%$buscar%' || FechaLecturaTAD LIKE '$buscar%'
+                                                            ") or die(mysqli_error($this->mysqli));
+        return $sql;
+    }
 
 
 
@@ -105,27 +138,6 @@ class Tad{
 
 
 
-
-  // sin modificar
-//Consulta los datos de un usuario
-// Devuelve los datos de un usuario
-
-
-  public function modificarUsuario(){
-    $_SESSION["loginU"]=$this->LoginU;
-    $sql= mysqli_query("UPDATE usuario SET PasswordU='$this->PasswordU',NombreU='$this->NombreU' ,ApellidosU='$this->ApellidosU',UniversidadU='$this->UniversidadU', WHERE LoginU='$this->LoginU'") or die (mysqli_error());
-
-
-  }
-
-  public function listarDocente(){
-    $sql= mysqli_query("SELECT * FROM usuario WHERE TipoU='$this->TipoU'");
-
-    $sql2 = array();
-    while($row = mysqli_fetch_array($sql)){array_push($sql2, $row);}
-    $_SESSION["listarDocente"] = $sql2;
-
-  }
 
 
 }
