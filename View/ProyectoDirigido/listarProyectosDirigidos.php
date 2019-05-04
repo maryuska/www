@@ -335,3 +335,25 @@ $LoginU = $_SESSION["loginU"];
         </div>
     </div>
 
+            <!-- Confirmar borrar PD -->
+            <div id="confirmBorrarPD" class="modal fade" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header bg-danger text-danger">
+                            <h4 class="modal-title">Atención</h4>
+                        </div>
+                        <div class="modal-body text-center">
+                            <h5>¿Desea eliminar el Proyecto dirigido <strong class="nombre"></strong>?</h5>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-modal btn-primary" id="borrar">Eliminar</button>
+                            <button type="button" class="btn btn-modal btn-danger" data-dismiss="modal">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- FIN: Confirmar borrar PD -->
+            <?php
+            // Pie y cierre de html, body
+            require_once 'View/Structure/Footer.php';
+            ?>

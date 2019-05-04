@@ -92,7 +92,7 @@ require_once 'View/Structure/Nav.php';
                                         <button type="button" class="btn btn-transparent btn-orange" onClick="window.location.href='index.php?controlador=Tesis&evento=consultarTesis&CodigoTesis=<?php echo $row['CodigoTesis']; ?>'">
                                             Modificar
                                         </button>
-                                        <button type="button" class="btn btn-transparent btn-orange" onClick="abrirConfirmBorrarTesis('formBorrarTesis<?php echo $contador; ?>', '<?php echo $row['AutorTesis']." ".$row['CodigoTesis']; ?>');">
+                                        <button type="button" class="btn btn-transparent btn-orange" onClick="abrirConfirmBorrarTesis('formBorrarTesis<?php echo $contador; ?>', '<?php echo $row['CodigoTesis']." ".$row['AutorTesis']; ?>');">
                                             Borrar
                                         </button>
                                     </form>
@@ -124,7 +124,7 @@ require_once 'View/Structure/Nav.php';
                 <h4 class="modal-title">Atención</h4>
             </div>
             <div class="modal-body text-center">
-                <h5>¿Desea eliminar el Tesis de <strong class="CodigoTesis"></strong>?</h5>
+                <h5>¿Desea eliminar el Tesis de <strong class="nombre"></strong>?</h5>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-modal btn-primary" id="borrar">Eliminar</button>

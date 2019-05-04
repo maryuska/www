@@ -117,6 +117,7 @@ require_once 'View/Structure/Nav.php';
                                                 </form>
                                             </div>
 
+
                                         </div>
                                     </div>
                                 </div>
@@ -346,7 +347,7 @@ require_once 'View/Structure/Nav.php';
                 <h4 class="modal-title">Atención</h4>
             </div>
             <div class="modal-body text-center">
-                <h5>¿Desea eliminar la estancia de <strong class="CodigoE"></strong>?</h5>
+                <h5>¿Desea eliminar la estancia de <strong class="nombre"></strong>?</h5>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-modal btn-primary" id="borrar">Eliminar</button>

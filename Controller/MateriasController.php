@@ -216,11 +216,7 @@ switch ($evento) {
     case 'borrarMateria':
         $CodigoM=$_REQUEST["CodigoM"];
         $Materia = new Materia("","","","","","","","","");
-
-
         $Materia->BorrarMateria($CodigoM);
-
-
         $tipou=$_SESSION["TipoUsuario"];
 
         if($tipou == 'U'){

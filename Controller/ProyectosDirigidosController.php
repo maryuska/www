@@ -49,8 +49,7 @@ switch ($evento) {
         }
         $_SESSION["consultarProyectoDirigido"] = $consulta;
 
-        header("location: ../../View/ProyectoDirigido/modificarProyectoDirigido.php");
-
+        require_once "View/ProyectosDirigidos/modificarProyectoDirigido.php";
         break;
 
 //modificar proyectos dirigidos
@@ -149,36 +148,6 @@ switch ($evento) {
         require_once("View/ProyectoDirigido/listarProyectosDirigidosAdmin.php");
         break;
 
-//consultar detalle del proyecto dirigido
-    case 'consultarDetalleProyectoDirigido':
-
-        $proyectoDirigido = new ProyectosDirigidos($_POST["CodigoPD"],$_POST["TituloPD"],$_POST["AlumnoPD"],$_POST["FechaLecturaPD"],$_POST["CalificacionPD"],$_POST["URLPD"],$_POST["CotutorPD"],$_POST["TipoPD"]);
-        $CodigoP = $_REQUEST['CodigoPD'];
-        $consultaPD = $proyectoDirigido->ConsultarProyectoDirigido($CodigoP);
-        $consulta = array();
-        while($row1 = mysqli_fetch_array($consultaPD)){
-            array_push($consulta, $row1);
-        }
-        $_SESSION["consultarProyectoDirigido"] = $consulta;
-
-        header("location: ../../View/ProyectoDirigido/consultarDetalle.php");
-        break;
-
-//confirmar borrado de proyecto dirigido
-    case 'confirmarBorrado':
-
-        $proyectoDirigido = new ProyectosDirigidos($_POST["CodigoPD"],$_POST["TituloPD"],$_POST["AlumnoPD"],$_POST["FechaLecturaPD"],$_POST["CalificacionPD"],$_POST["URLPD"],$_POST["CotutorPD"],$_POST["TipoPD"]);
-        $CodigoP = $_REQUEST['CodigoPD'];
-        $consultaPD = $proyectoDirigido->ConsultarProyectoDirigido($CodigoP);
-        $consulta = array();
-        while($row1 = mysqli_fetch_array($consultaPD)){
-            array_push($consulta, $row1);
-        }
-        $_SESSION["consultarProyectoDirigido"] = $consulta;
-
-        header("location: ../../View/ProyectoDirigido/confirmarBorrarPD.php");
-        break;
-
 //borrar un proyecto dirigido
     case'borrarProyectoDirigido':
         $LoginU=$_REQUEST["LoginU"];
@@ -187,11 +156,11 @@ switch ($evento) {
         $ProyectoDirigido ->BorrarDirige($LoginU, $CodigoPD);
         $ProyectoDirigido->BorrarProyectoDirigido($CodigoPD);
             $tipou=$_SESSION["TipoUsuario"];
-            if($tipou == 'U') {
-                header("location: ../../Controller/ProyectosDirigidosController.php?evento=listarProyectosDirigidos&LoginU=$LoginU");
-            }else{
-                header("location: ../../Controller/ProyectosDirigidosController.php?evento=listarProyectosDirigidos");
-            }
+        if($tipou == 'U'){
+            header("Location: index.php?controlador=ProyectosDirigidos&evento=listarProyectosDirigidos&LoginU=$loginU");
+        }else{
+            header("Location: index.php?controlador=ProyectosDirigidos&evento=listarProyectosDirigidosAdmin");
+        }
         break;
 
 //buscar proyectos dirigidos

@@ -126,7 +126,7 @@ class Estancias{
         return $sql;
     }
 
-//buscar materia
+//buscar estancia
     public function BuscarEstancia($buscar){
         $this->ConectarBD();
         $sql = $this->mysqli->query("SELECT * FROM estancia WHERE CodigoE LIKE '%$buscar' || CodigoE LIKE '%$buscar%' || CodigoE LIKE '$buscar%' ||
@@ -141,6 +141,11 @@ class Estancias{
         return $sql;
     }
 
+//eliminar estancia
+    public function BorrarEstancia($CodigoE){
+        $this->ConectarBD();
+        $this->mysqli->query("DELETE FROM estancia WHERE CodigoE= '$CodigoE'")or die(mysqli_error($this->mysqli));
+    }
 
     /**
      * Valida si los campos del formulario de una materia son correctos

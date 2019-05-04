@@ -58,32 +58,32 @@ if(isset($tipo) && ($tipo == 'A' || $tipo == 'U')){
 function sidebarUsuario($loginU){
 ?>
     <li class="sidebar-options">
-        <a class="nounderline" href="index.php?controlador=Usuarios&evento=listarUsuarios">
+        <a class="nounderline" href="index.php?controlador=Usuarios&evento=listarUsuarios&LoginU=<?php echo $loginU; ?>">
             Usuarios
         </a>
     </li>
     <li class="sidebar-options">
-        <a class="nounderline" href="index.php?controlador=Articulos&evento=listarArticulos">
+        <a class="nounderline" href="index.php?controlador=Articulos&evento=listarArticulos&LoginU=<?php echo $loginU; ?>">
             Artículos
         </a>
     </li>
     <li class="sidebar-options">
-        <a class="nounderline" href="index.php?controlador=Congresos&evento=listarCongresos">
+        <a class="nounderline" href="index.php?controlador=Congresos&evento=listarCongresos&LoginU=<?php echo $loginU; ?>">
             Congresos
         </a>
     </li>
     <li class="sidebar-options">
-        <a class="nounderline" href="index.php?controlador=Libros&evento=listarLibros">
+        <a class="nounderline" href="index.php?controlador=Libros&evento=listarLibros&LoginU=<?php echo $loginU; ?>">
             Libros
         </a>
     </li>
     <li class="sidebar-options">
-        <a class="nounderline" href="index.php?controlador=Ponencias&evento=listarPonencias">
+        <a class="nounderline" href="index.php?controlador=Ponencias&evento=listarPonencias&LoginU=<?php echo $loginU; ?>">
             Ponencias
         </a>
     </li>
     <li class="sidebar-options">
-        <a class="nounderline" href="index.php?controlador=Proyectos&evento=listarProyectos">
+        <a class="nounderline" href="index.php?controlador=Proyectos&evento=listarProyectos&LoginU=<?php echo $loginU; ?>">
             Proyectos
         </a>
     </li>
@@ -133,7 +133,7 @@ function sidebarAdministrador($loginU){
         </a>
     </li>
     <li class="sidebar-options">
-        <a class="nounderline" href="index.php?controlador=Congresos&evento=listarCongresos">
+        <a class="nounderline" href="index.php?controlador=Congresos&evento=listarCongresosAdmin">
             Congresos
         </a>
     </li>
@@ -163,7 +163,7 @@ function sidebarAdministrador($loginU){
         </a>
     </li>
     <li class="sidebar-options">
-        <a class="nounderline" href="index.php?controlador=Technicareport&evento=listarTechnicareport&LoginU=<?php echo $loginU; ?>">
+        <a class="nounderline" href="index.php?controlador=Technicareport&evento=listarTechnicareport">
             Technicareport
         </a>
     </li>

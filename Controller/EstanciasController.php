@@ -11,11 +11,11 @@ switch ($evento) {
     case "paginaInsertarEstancia":
         require_once "View/Estancia/insertarEstancia.php";
         break;
+
     // Página insertar estancia admin
     case "paginaInsertarEstanciaAdmin":
         require_once "View/Estancia/insertarEstanciaAdmin.php";
         break;
-
 
     case 'altaEstancia':
         $loginU=$_POST["LoginU"];
