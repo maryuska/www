@@ -1,76 +1,124 @@
 <?php
-require_once '../../View/Structure/Header.php';
-require_once '../../View/Structure/Nav.php';
+// Estructura general html, body
+require_once 'View/Structure/Header.php';
+
+// Menu
+require_once 'View/Structure/Nav.php';
+
+$loginU =$_SESSION["loginU"];
 
 ?>
+<div class="container-fluid">
+    <div class="row">
 
-<div class="col-md-10 izquierda">
-    <h3 class="text-center">Insertar Congreso</h3>
-    <div class="panel panel-default">
-        <div class="col-md-12">
-            <form id="formulario" class="form-horizontal" enctype="multipart/form-data" action="../../Controller/ArticulosController.php" method="post" role="form">
+        <?php
+        // Menu lateral
+        require_once 'View/Structure/Sidebar.php';
+        ?>
 
-                <div class="form-group">
-                    <label class="control-label" for="CodigoA">Código Artículo: </label>
-                    <input id="CodigoA" name="CodigoA" type="CodigoA" placeholder="Código Artículo" class="form-control ">
-                </div>
+        <!-- Contenido -->
+        <div class="col-md-offset-1 col-md-8 col-lg-offset-2 col-lg-6">
+            <div class="cotainer">
+    <?php
+    // Si existe errores mostramos mensaje de error
+    if(isset($errores) && !empty($errores)){
+        echo "<br>";
+        echo "<br>";
+        echo "<div class='row'>";
+        echo "  <div class='col-md-offset-4 col-md-8 col-lg-offset-3 col-lg-9'>";
+        require_once "View/errores.php";
+        echo "  </div>";
+        echo "</div>";
+    }
+    ?>
 
-                <div class="form-group">
-                    <label class="control-label" for="TituloA">Título Artículo:</label>
-                    <input id="TituloA" name="TituloA" type="TituloA" placeholder="Título Artículo " class="form-control " >
-                </div>
+    <!-- Formulario -->
 
-                <div class="form-group">
-                    <label class="control-label" for="TituloR">Título Revista:</label>
-                    <input id="TituloR" name="TituloR" type="TituloR" placeholder="Título Revista" class="form-control " >
-                </div>
+    <form id="formulario" class="form-horizontal" enctype="multipart/form-data" onsubmit="return comprobarCongreso()"  action="index.php?controlador=Congresos" method="post">
 
-                <div class="form-group">
-                    <label class="control-label" for="ISSN">ISSN:</label>
-                    <input id="ISSN" name="ISSN" type="ISSN" placeholder="ISSN" class="form-control " >
-                </div>
+        <!-- congreso -->
 
-                <div class="form-group">
-                    <label class="control-label" for="VolumenR">Volumen:</label>
-                    <input id="VolumenR" name="VolumenR" type="VolumenR" placeholder="Volumen" class="form-control " >
-                </div>
+        <h2 class="col-md-offset-4 col-lg-offset-3 text-center">Registrar Congreso</h2>
 
-                <div class="form-group">
-                    <label class="control-label" for="PagIniA">Página Inicio:</label>
-                    <input id="PagIniA" name="PagIniA" type="PagIniA" placeholder="Página Inicio" class="form-control " >
-                </div>
+        <br>
 
-                <div class="form-group">
-                    <label class="control-label" for="PagFinA">Página Fin:</label>
-                    <input id="PagFinA" name="PagFinA" type="PagFinA" placeholder="Página Fin " class="form-control " >
-                </div>
-
-                <div class="form-group">
-                    <label class="control-label" for="FechaPublicacionR">Fecha Publicación:</label>
-                    <input id="FechaPublicacionR" name="FechaPublicacionR" type="date" placeholder="Fecha Publicación" class="form-control " >
-                </div>
-
-                <div class="form-group">
-                    <label class="control-label" for="EstadoA">Estado Artículo:</label>
-                    <p> <select type="EstadoA"  class="form-control"  id="EstadoA" name="EstadoA">
-                            <option>--</option>
-                            <option>Enviado</option>
-                            <option>Revisión</option>
-                            <option>Publicado</option>
-                        </select></p>
-                </div>
-                <br>
-
-                <div class="col-lg-6 col-md-6 col-sm-8 col-xs-8 col-md-offset-3">
-                    <label class="control-label" for="Registrar"></label>
-                    <button type="submit" id="Registrar" name="evento" value="altaArticulo" class="btn btn-orange"> Insertar </button>
-                </div>
-
-            </form>
+        <div class="form-group form-group-md">
+            <label class="col-md-4 col-lg-3 control-label" for="CodigoC">Código Congreso</label>
+            <div class="col-md-8 col-lg-9">
+                <input id="CodigoC" name="CodigoC" type="text" placeholder="Codigo congreso" class="form-control <?php if(isset($errores) && in_array("CodigoC", $errores)){ echo " error"; } ?>" value="<?=isset($_POST["CodigoC"])?$_POST["CodigoC"]:''?>" >
+                <input id="LoginU" name="LoginU" type="text" class="hidden" value="<?php echo $loginU; ?>"  >
+            </div>
         </div>
-    </div>
+
+
+
+        <div class="form-group form-group-md">
+            <label class="col-md-4 col-lg-3 control-label" for="NombreC">Nombre congreso</label>
+            <div class="col-md-8 col-lg-9">
+                <input id="NombreC" name="NombreC" type="text" placeholder="Nombre congreso" class="form-control <?php if(isset($errores) && in_array("NombreC", $errores)){ echo " error"; } ?>" value="<?=isset($_POST["NombreC"])?$_POST["NombreC"]:''?>" >
+            </div>
+        </div>
+
+        <div class="form-group form-group-md">
+            <label class="col-md-4 col-lg-3 control-label" for="AcronimoC">Acronimo</label>
+            <div class="col-md-8 col-lg-9">
+                <input id="AcronimoC" name="AcronimoC" type="text" placeholder="Acronimo" class="form-control <?php if(isset($errores) && in_array("AcronimoC", $errores)){ echo " error"; } ?>" value="<?=isset($_POST["AcronimoC"])?$_POST["AcronimoC"]:''?>" >
+            </div>
+        </div>
+
+        <div class="form-group form-group-md">
+            <label class="col-md-4 col-lg-3 control-label" for="AnhoC">Año</label>
+            <div class="col-md-8 col-lg-9">
+                <input id="AnhoC" name="AnhoC" type="date" placeholder="Año " class="form-control <?php if(isset($errores) && in_array("AnhoC", $errores)){ echo " error"; } ?>" value="<?=isset($_POST["AnhoC"])?$_POST["AnhoC"]:''?>" >
+            </div>
+        </div>
+
+        <div class="form-group form-group-md">
+            <label class="col-md-4 col-lg-3 control-label" for="LugarC">Lugar</label>
+            <div class="col-md-8 col-lg-9">
+                <input id="LugarC" name="LugarC" type="text" placeholder="Lugar " class="form-control <?php if(isset($errores) && in_array("LugarC", $errores)){ echo " error"; } ?>" value="<?=isset($_POST["LugarC"])?$_POST["LugarC"]:''?>" >
+            </div>
+        </div>
+
+        <div class="form-group form-group-md">
+            <label class="col-md-4 col-lg-3 control-label" for="TipoParticipacionC">Tipo Participación</label>
+            <div class="col-md-8 col-lg-9">
+                <p> <select id="TipoParticipacionC" name="TipoParticipacionC" type="text" placeholder="Tipo Participacion" class="form-control <?php if(isset($errores) && in_array("TipoParticipacionC", $errores)){ echo " error"; } ?>" value="<?=isset($_POST["TipoParticipacionC"])?$_POST["TipoParticipacionC"]:''?>">
+                        <option>--</option>
+                        <option>MCO</option>
+                        <option>MCC</option>
+                        <option>R</option>
+                        <option>C</option>
+                        <option>PCO</option>
+                        <option>PCC</option>
+                    </select></p>
+            </div>
+        </div>
+
+
+        <div class="col-md-offset-4 col-lg-offset-3 text-center">
+            <button type="submit" id="AltaCongreso" name="evento" value="altaCongreso" class="btn btn-orange">
+                Alta Congreso
+            </button>
+        </div>
+
+        <br>
+        <br>
+
+    </form>
 
 </div>
+</div>
+</div>
+    </div>
+</div>
+<?php
+// Pie y cierre de html, body
+require_once 'View/Structure/Footer.php';
+?>
+
+
+
 
 
 
