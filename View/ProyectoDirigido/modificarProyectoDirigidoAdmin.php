@@ -50,31 +50,52 @@ require_once 'View/Structure/Nav.php';
                         <br>
 
                         <div class="form-group">
+                            <label class="control-label" for="LoginU">Login usuario</label>
+                            <select id="LoginU" name="LoginU" type="text" placeholder="Login usuario" class="form-control <?php if(isset($errores) && in_array("LoginU", $errores)){ echo " error"; } ?>">
+                                <option value="">--</option>
+                                <?php 
+                                $rowsU = $_SESSION["listarUsuarios"]; 
+                                foreach ($rowsU as $rowU){ 
+                                    if(isset($_POST["LoginU"])){
+                                ?>
+                                    <option value="<?php echo $rowU['LoginU'];?>" <?php if(isset($_POST["LoginU"]) && $_POST["LoginU"] == $rowU['LoginU']){ echo "selected"; } ?>><?php echo $rowU['LoginU']." - ".$rowU['NombreU'];?></option>
+                                <?php 
+                                    }
+                                    else{
+                                ?>
+                                    <option value="<?php echo $rowU['LoginU'];?>" <?php if($row["LoginU"] == $rowU['LoginU']){ echo "selected"; } ?>><?php echo $rowU['LoginU']." - ".$rowU['NombreU'];?></option>
+                                <?php
+                                    } 
+                                }
+                                ?>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
                             <label class="control-label" for="CodigoM">Codigo proyecto: </label>
-                            <input id="CodigoPD" name="CodigoPD"  class="form-control " value="<?php echo $row['CodigoPD']; ?>" disabled >
+                            <input id="CodigoPD2" name="CodigoPD2"  class="form-control" value="<?php echo $row['CodigoPD']; ?>" disabled >
                             <input id="CodigoPD" name="CodigoPD" class="hidden" value="<?php echo $row['CodigoPD']; ?>" >
-                            <input id="LoginU" name="LoginU" class="hidden" value="<?php echo $row['LoginU']; ?>" >
                             <input id="LoginU_ant" name="LoginU_ant" type="hidden" value="<?php echo $row['LoginU']; ?>" >
                         </div>
 
                         <div class="form-group">
                             <label class="control-label" for="TituloPD">Titulo:</label>
-                            <input id="TituloPD" name="TituloPD" class="form-control" <?php if(isset($errores) && in_array("TituloPD", $errores)){ echo " error"; } ?>" value="<?=isset($_POST["TituloPD"])?$_POST["TituloPD"]:$row['TituloPD']?>" >
+                            <input id="TituloPD" name="TituloPD" class="form-control <?php if(isset($errores) && in_array("TituloPD", $errores)){ echo " error"; } ?>" value="<?=isset($_POST["TituloPD"])?$_POST["TituloPD"]:$row['TituloPD']?>" >
                         </div>
 
                         <div class="form-group">
                             <label class="control-label" for="AlumnoPD">Alumno:</label>
-                            <input id="AlumnoPD" name="AlumnoPD" class="form-control"<?php if(isset($errores) && in_array("AlumnoPD", $errores)){ echo " error"; } ?>" value="<?=isset($_POST["AlumnoPD"])?$_POST["AlumnoPD"]:$row['AlumnoPD']?>" >
+                            <input id="AlumnoPD" name="AlumnoPD" class="form-control <?php if(isset($errores) && in_array("AlumnoPD", $errores)){ echo " error"; } ?>" value="<?=isset($_POST["AlumnoPD"])?$_POST["AlumnoPD"]:$row['AlumnoPD']?>" >
                         </div>
 
                         <div class="form-group">
                             <label class="control-label" for="FechaLecturaPD">Fecha lectura:</label>
-                            <input id="FechaLecturaPD" type="date" name="FechaLecturaPD" class="form-control "<?php if(isset($errores) && in_array("FechaLecturaPD", $errores)){ echo " error"; } ?>" value="<?=isset($_POST["FechaLecturaPD"])?$_POST["FechaLecturaPD"]:$row['FechaLecturaPD']?>" >
+                            <input id="FechaLecturaPD" type="date" name="FechaLecturaPD" class="form-control <?php if(isset($errores) && in_array("FechaLecturaPD", $errores)){ echo " error"; } ?>" value="<?=isset($_POST["FechaLecturaPD"])?$_POST["FechaLecturaPD"]:$row['FechaLecturaPD']?>" >
                         </div>
 
                         <div class="form-group">
                             <label class="control-label" for="CalificacionPD">Calificación:</label>
-                            <p> <select class="form-control"  id="CalificacionPD" name="CalificacionPD">
+                            <p> <select class="form-control <?php if(isset($errores) && in_array("CalificacionPD", $errores)){ echo " error"; } ?>" id="CalificacionPD" name="CalificacionPD">
 
                                     <option value="">------------------------</option>
 
@@ -102,17 +123,17 @@ require_once 'View/Structure/Nav.php';
 
                         <div class="form-group">
                             <label class="control-label" for="URLPD">URL:</label>
-                            <input id="URLPD" name="URLPD" class="form-control " <?php if(isset($errores) && in_array("URLPD", $errores)){ echo " error"; } ?>" value="<?=isset($_POST["URLPD"])?$_POST["URLPD"]:$row['URLPD']?>" >
+                            <input id="URLPD" name="URLPD" class="form-control <?php if(isset($errores) && in_array("URLPD", $errores)){ echo " error"; } ?>" value="<?=isset($_POST["URLPD"])?$_POST["URLPD"]:$row['URLPD']?>" >
                         </div>
 
                         <div class="form-group">
                             <label class="control-label" for="CotutorPD">Cotutor:</label>
-                            <input id="CotutorPD" name="CotutorPD" class="form-control " <?php if(isset($errores) && in_array("CotutorPD", $errores)){ echo " error"; } ?>" value="<?=isset($_POST["CotutorPD"])?$_POST["CotutorPD"]:$row['CotutorPD']?>" >
+                            <input id="CotutorPD" name="CotutorPD" class="form-control <?php if(isset($errores) && in_array("CotutorPD", $errores)){ echo " error"; } ?>" value="<?=isset($_POST["CotutorPD"])?$_POST["CotutorPD"]:$row['CotutorPD']?>" >
                         </div>
 
                         <div class="form-group">
                             <label class="control-label" for="TipoPD">Tipo de proyeco:</label>
-                            <p> <select class="form-control"  id="TipoPD" name="TipoPD">
+                            <p> <select class="form-control  <?php if(isset($errores) && in_array("TipoPD", $errores)){ echo " error"; } ?>"  id="TipoPD" name="TipoPD">
 
                                     <option value="">------------------------</option>
     
@@ -173,14 +194,16 @@ require_once 'View/Structure/Nav.php';
             <div class="modal-footer">
                 <button type="button" class="btn btn-modal btn-primary" id="modificar">Modificar</button>
                 <button type="button" class="btn btn-modal btn-danger" data-dismiss="modal">Cancelar</button>
-            </div>
+            </div>                    
         </div>
     </div>
 </div>
 <!-- FIN: Confirmar modificar proyecto dirigido -->
+
 <?php
 // Eliminamos los datos cargados en session para la consulta
 unset($_SESSION["consultarProyectoDirigido"]);
+unset($_SESSION["listarUsuarios"]);
 
 // Pie y cierre de html, body
 require_once 'View/Structure/Footer.php';

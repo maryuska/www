@@ -106,8 +106,9 @@ $LoginU = $_SESSION["loginU"];
                                             </tr>
                                             <div class="margin-bottom5 text-center">
                                                 <form name="formBorrarPD<?php echo $contador; ?>" id="formBorrarPD<?php echo $contador; ?>" class="text-center" action="index.php" method="get">
-                                                    <input type="hidden" name="controlador" value="Proyectos Dirigidos">
+                                                    <input type="hidden" name="controlador" value="ProyectosDirigidos">
                                                     <input type="hidden" name="evento" value="borrarProyectoDirigido">
+                                                    <input type="hidden" name="LoginU" value="<?php echo $row['LoginU'] ?>">
                                                     <input type="hidden" name="CodigoPD" value="<?php echo $row['CodigoPD']; ?>">
                                                     <button type="button" class="btn btn-transparent btn-orange" onClick="window.location.href='index.php?controlador=ProyectosDirigidos&evento=consultarProyectoDirigido&CodigoPD=<?php echo $row['CodigoPD']; ?>'">
                                                         Modificar
@@ -132,7 +133,7 @@ $LoginU = $_SESSION["loginU"];
 
 
                     <!--listado de TFC-->
-                    <div class="tab-pane fade in active" id="tab2">
+                    <div class="tab-pane fade in" id="tab2">
                         <?php
                         $lista1 = $_SESSION["listarProyectosDirigidosTFC"];
                         $contador1   = 1;
@@ -175,8 +176,9 @@ $LoginU = $_SESSION["loginU"];
                                             </tr>
                                             <div class="margin-bottom5 text-center">
                                                 <form name="formBorrarPD<?php echo $contador1; ?>" id="formBorrarPD<?php echo $contador1; ?>" class="text-center" action="index.php" method="get">
-                                                    <input type="hidden" name="controlador" value="Proyectos Dirigidos">
+                                                    <input type="hidden" name="controlador" value="ProyectosDirigidos">
                                                     <input type="hidden" name="evento" value="borrarProyectoDirigido">
+                                                    <input type="hidden" name="LoginU" value="<?php echo $row1['LoginU'] ?>">
                                                     <input type="hidden" name="CodigoPD" value="<?php echo $row1['CodigoPD']; ?>">
                                                     <button type="button" class="btn btn-transparent btn-orange" onClick="window.location.href='index.php?controlador=ProyectosDirigidos&evento=consultarProyectoDirigido&CodigoPD=<?php echo $row1['CodigoPD']; ?>'">
                                                         Modificar
@@ -199,7 +201,7 @@ $LoginU = $_SESSION["loginU"];
                     </div>
 
                     <!--listado de TFG -->
-                    <div class="tab-pane fade in active" id="tab3">
+                    <div class="tab-pane fade in" id="tab3">
                         <?php
                         $lista2 = $_SESSION["listarProyectosDirigidosTFG"];
                         $contador2   = 1;
@@ -242,8 +244,9 @@ $LoginU = $_SESSION["loginU"];
                                             </tr>
                                             <div class="margin-bottom5 text-center">
                                                 <form name="formBorrarPD<?php echo $contador2; ?>" id="formBorrarPD<?php echo $contador2; ?>" class="text-center" action="index.php" method="get">
-                                                    <input type="hidden" name="controlador" value="Proyectos Dirigidos">
+                                                    <input type="hidden" name="controlador" value="ProyectosDirigidos">
                                                     <input type="hidden" name="evento" value="borrarProyectoDirigido">
+                                                    <input type="hidden" name="LoginU" value="<?php echo $row2['LoginU'] ?>">
                                                     <input type="hidden" name="CodigoPD" value="<?php echo $row2['CodigoPD']; ?>">
                                                     <button type="button" class="btn btn-transparent btn-orange" onClick="window.location.href='index.php?controlador=ProyectosDirigidos&evento=consultarProyectoDirigido&CodigoPD=<?php echo $row2['CodigoPD']; ?>'">
                                                         Modificar
@@ -265,7 +268,7 @@ $LoginU = $_SESSION["loginU"];
 
                     </div>
 <!-- listado de TFM -->
-                    <div class="tab-pane fade in active" id="tab4">
+                    <div class="tab-pane fade in" id="tab4">
                         <?php
                         $lista3 = $_SESSION["listarProyectosDirigidosTFM"];
                         $contador3   = 1;
@@ -308,9 +311,10 @@ $LoginU = $_SESSION["loginU"];
                                             </tr>
                                             <div class="margin-bottom5 text-center">
                                                 <form name="formBorrarPD<?php echo $contador3; ?>" id="formBorrarPD<?php echo $contador3; ?>" class="text-center" action="index.php" method="get">
-                                                    <input type="hidden" name="controlador" value="Proyectos Dirigidos">
+                                                    <input type="hidden" name="controlador" value="ProyectosDirigidos">
                                                     <input type="hidden" name="evento" value="borrarProyectoDirigido">
                                                     <input type="hidden" name="CodigoPD" value="<?php echo $row3['CodigoPD']; ?>">
+                                                    <input type="hidden" name="LoginU" value="<?php echo $row3['LoginU'] ?>">
                                                     <button type="button" class="btn btn-transparent btn-orange" onClick="window.location.href='index.php?controlador=ProyectosDirigidos&evento=consultarProyectoDirigido&CodigoPD=<?php echo $row3['CodigoPD']; ?>'">
                                                         Modificar
                                                     </button>

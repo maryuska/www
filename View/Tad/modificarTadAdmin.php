@@ -48,13 +48,33 @@ require_once 'View/Structure/Nav.php';
                         <h2 class="text-center">Modificar Tad</h2>
 
                         <br>
+                        <div class="form-group">
+                            <label class="control-label" for="LoginU">Login usuario</label>
+                            <select id="LoginU" name="LoginU" type="text" placeholder="Login usuario" class="form-control <?php if(isset($errores) && in_array("LoginU", $errores)){ echo " error"; } ?>" value="<?=isset($_POST["LoginU"])?$_POST["LoginU"]:''?>">
+                                <option value="">--</option>
+                                <?php
+                                $rowsU = $_SESSION["listarUsuarios"];
+                                foreach ($rowsU as $rowU){
+                                    if(isset($_POST["LoginU"])){
+                                        ?>
+                                        <option value="<?php echo $rowU['LoginU'];?>" <?php if(isset($_POST["LoginU"]) && $_POST["LoginU"] == $rowU['LoginU']){ echo "selected"; } ?>><?php echo $rowU['LoginU']." - ".$rowU['NombreU'];?></option>
+                                        <?php
+                                    }
+                                    else{
+                                        ?>
+                                        <option value="<?php echo $rowU['LoginU'];?>" <?php if($row["LoginU"] == $rowU['LoginU']){ echo "selected"; } ?>><?php echo $rowU['LoginU']." - ".$rowU['NombreU'];?></option>
+                                        <?php
+                                    }
+                                }
+                                ?>
+                            </select>
+                        </div>
 
                         <div class="form-group">
                             <label class="control-label" for="CodigoTAD">Codigo Tad: </label>
                             <input id="CodigoTAD2" name="CodigoTAD2"  class="form-control " value="<?php echo $row['CodigoTAD']; ?>" disabled >
                             <input id="CodigoTAD" name="CodigoTAD" class="hidden" value="<?php echo $row['CodigoTAD']; ?>" >
                             <input id="LoginU_ant" name="LoginU_ant" class="hidden" value="<?php echo $row['LoginU']; ?>" >
-                            <input id="LoginU" name="LoginU" class="hidden" value="<?php echo $row['LoginU']; ?>" >
                         </div>
 
                         <div class="form-group">

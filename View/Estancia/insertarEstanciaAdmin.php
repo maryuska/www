@@ -101,9 +101,9 @@ $loginU =$_SESSION["loginU"];
                         <div class="col-md-8 col-lg-9">
                             <p> <select id="TipoE" name="TipoE" type="text" placeholder="Tipo estancia" class="form-control <?php if(isset($errores) && in_array("TipoE", $errores)){ echo " error"; } ?>" value="<?=isset($_POST["TipoE"])?$_POST["TipoE"]:''?>">
                                     <option>--</option>
-                                    <option >Investigacion</option>
-                                    <option >Doctorado</option>
-                                    <option>Invitado</option>
+                                    <option <?php if(isset($_POST["TipoE"]) && $_POST["TipoE"] == "Investigacion"){ echo "selected"; } ?>>Investigacion</option>
+                                    <option <?php if(isset($_POST["TipoE"]) && $_POST["TipoE"] == "Doctorado"){ echo "selected"; } ?>>Doctorado</option>
+                                    <option <?php if(isset($_POST["TipoE"]) && $_POST["TipoE"] == "Invitado"){ echo "selected"; } ?>>Invitado</option>
                                 </select></p>
                         </div>
                     </div>

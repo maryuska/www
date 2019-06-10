@@ -35,7 +35,7 @@ $loginU =$_SESSION["loginU"];
 
                 <!-- Formulario -->
 
-                <form id="formulario" class="form-horizontal" enctype="multipart/form-data" onsubmit="return comprobarProyectoDirigido()"  action="index.php?controlador=ProyectosDirigidos" method="post">
+                <form id="formulario" class="form-horizontal" enctype="multipart/form-data"  action="index.php?controlador=ProyectosDirigidos" method="post">
 
                     <!-- proyecto dirigido -->
 
@@ -76,11 +76,11 @@ $loginU =$_SESSION["loginU"];
                         <label class="col-md-4 col-lg-3 control-label" for="CalificacionPD">Calificación</label>
                         <div class="col-md-8 col-lg-9">
                             <p> <select id="CalificacionPD" name="CalificacionPD" type="text" placeholder="Cslificacion" class="form-control <?php if(isset($errores) && in_array("CalificacionPD", $errores)){ echo " error"; } ?>" value="<?=isset($_POST["CalificacionPD"])?$_POST["CalificacionPD"]:''?>">
-                                    <option>--</option>
-                                    <option>Aprobado</option>
-                                    <option>Notable</option>
-                                    <option>Sobresaliente</option>
-                                    <option>Matricula</option>
+                                    <option value="">--</option>
+                                    <option value="Aprobado" <?php if(isset($_POST["CalificacionPD"]) && $_POST["CalificacionPD"] == "Aprobado"){ echo "selected"; } ?>>Aprobado</option>
+                                    <option value="Notable" <?php if(isset($_POST["CalificacionPD"]) && $_POST["CalificacionPD"] == "Notable"){ echo "selected"; } ?>>Notable</option>
+                                    <option value="Sobresaliente" <?php if(isset($_POST["CalificacionPD"]) && $_POST["CalificacionPD"] == "Sobresaliente"){ echo "selected"; } ?>>Sobresaliente</option>
+                                    <option value="Matricula" <?php if(isset($_POST["CalificacionPD"]) && $_POST["CalificacionPD"] == "Matricula"){ echo "selected"; } ?>>Matricula</option>
                                 </select></p>
                         </div>
                     </div>
@@ -103,10 +103,10 @@ $loginU =$_SESSION["loginU"];
                         <label class="col-md-4 col-lg-3 control-label" for="TipoPD">Tipo proyecto</label>
                         <div class="col-md-8 col-lg-9">
                             <p> <select id="TipoPD" name="TipoPD" type="text" placeholder="Tipo proyecto" class="form-control <?php if(isset($errores) && in_array("TipoPD", $errores)){ echo " error"; } ?>" value="<?=isset($_POST["TipoPD"])?$_POST["TipoPD"]:''?>">
-                                    <option>--</option>
-                                    <option >PFC</option>
-                                    <option >TFG</option>
-                                    <option>TFM</option>
+                                    <option value="">--</option>
+                                    <option value="PFC" <?php if(isset($_POST["TipoPD"]) && $_POST["TipoPD"] == "PFC"){ echo "selected"; } ?>>PFC</option>
+                                    <option value="TFG" <?php if(isset($_POST["TipoPD"]) && $_POST["TipoPD"] == "TFG"){ echo "selected"; } ?>>TFG</option>
+                                    <option value="TFM" <?php if(isset($_POST["TipoPD"]) && $_POST["TipoPD"] == "TFM"){ echo "selected"; } ?>>TFM</option>
                                 </select></p>
                         </div>
                     </div>

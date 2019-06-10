@@ -105,6 +105,7 @@ require_once 'View/Structure/Nav.php';
                                                     <input type="hidden" name="controlador" value="Estancias">
                                                     <input type="hidden" name="evento" value="borrarEstancia">
                                                     <input type="hidden" name="CodigoE" value="<?php echo $row['CodigoE']; ?>">
+                                                    <input type="hidden" name="LoginU" value="<?php echo $row['LoginU'] ?>">
                                                     <button type="button" class="btn btn-transparent btn-orange" onClick="window.location.href='index.php?controlador=Estancias&evento=consultarEstancia&CodigoE=<?php echo $row['CodigoE']; ?>'">
                                                         Modificar
                                                     </button>
@@ -126,7 +127,7 @@ require_once 'View/Structure/Nav.php';
                     </div>
 
 
-                    <!--listado de materias de grado-->
+                    <!--listado de estancias de investigacion-->
                     <div class="tab-pane fade" id="tab2">
                         <?php
                         $lista1 = $_SESSION["listarEstanciasInvestigacion"];
@@ -170,6 +171,7 @@ require_once 'View/Structure/Nav.php';
                                                     <input type="hidden" name="controlador" value="Estancias">
                                                     <input type="hidden" name="evento" value="borrarEstancias">
                                                     <input type="hidden" name="CodigoE" value="<?php echo $row1['CodigoE']; ?>">
+                                                    <input type="hidden" name="LoginU" value="<?php echo $row1['LoginU'] ?>">
                                                     <button type="button" class="btn btn-transparent btn-orange" onClick="window.location.href='index.php?controlador=Estancias&evento=consultarEstancia&CodigoE=<?php echo $row1['CodigoE']; ?>'">
                                                         Modificar
                                                     </button>
@@ -190,7 +192,7 @@ require_once 'View/Structure/Nav.php';
 
                     </div>
 
-                    <!--listado de materias de tercer ciclo -->
+                    <!--listado de estancias de doctorado-->
                     <div class="tab-pane fade " id="tab3">
                         <?php
                         $lista2 = $_SESSION["listarEstanciasDoctorado"];
@@ -234,6 +236,7 @@ require_once 'View/Structure/Nav.php';
                                                     <input type="hidden" name="controlador" value="Estancias">
                                                     <input type="hidden" name="evento" value="borrarEstancia">
                                                     <input type="hidden" name="CodigoE" value="<?php echo $row2['CodigoE']; ?>">
+                                                    <input type="hidden" name="LoginU" value="<?php echo $row2['LoginU'] ?>">
                                                     <button type="button" class="btn btn-transparent btn-orange" onClick="window.location.href='index.php?controlador=Estancias&evento=consultarEstancia&CodigoE=<?php echo $row2['CodigoE']; ?>'">
                                                         Modificar
                                                     </button>
@@ -254,7 +257,7 @@ require_once 'View/Structure/Nav.php';
 
                     </div>
 
-                    <!-- listado de materias de master -->
+                    <!-- listado de estancias como invitado -->
                     <div class="tab-pane fade" id="tab4">
                         <?php
                         $lista3 = $_SESSION["listarEstanciasInvitado"];
@@ -298,6 +301,7 @@ require_once 'View/Structure/Nav.php';
                                                     <input type="hidden" name="controlador" value="Estancias">
                                                     <input type="hidden" name="evento" value="borrarEstancia">
                                                     <input type="hidden" name="CodigoE" value="<?php echo $row3['CodigoE']; ?>">
+                                                    <input type="hidden" name="LoginU" value="<?php echo $row3['LoginU'] ?>">
                                                     <button type="button" class="btn btn-transparent btn-orange" onClick="window.location.href='index.php?controlador=Estancias&evento=consultarEstancia&CodigoE=<?php echo $row3['CodigoE']; ?>'">
                                                         Modificar
                                                     </button>

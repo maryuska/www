@@ -84,13 +84,13 @@ $loginU =$_SESSION["loginU"];
             <label class="col-md-4 col-lg-3 control-label" for="TipoParticipacionC">Tipo Participación</label>
             <div class="col-md-8 col-lg-9">
                 <p> <select id="TipoParticipacionC" name="TipoParticipacionC" type="text" placeholder="Tipo Participacion" class="form-control <?php if(isset($errores) && in_array("TipoParticipacionC", $errores)){ echo " error"; } ?>" value="<?=isset($_POST["TipoParticipacionC"])?$_POST["TipoParticipacionC"]:''?>">
-                        <option>--</option>
-                        <option>MCO</option>
-                        <option>MCC</option>
-                        <option>R</option>
-                        <option>C</option>
-                        <option>PCO</option>
-                        <option>PCC</option>
+                        <option value="">--</option>
+                        <option <?php if(isset($_POST["TipoParticipacionC"]) && $_POST["TipoParticipacionC"] == "MCO"){ echo "selected"; } ?>>MCO</option>
+                        <option <?php if(isset($_POST["TipoParticipacionC"]) && $_POST["TipoParticipacionC"] == "MCC"){ echo "selected"; } ?>>MCC</option>
+                        <option <?php if(isset($_POST["TipoParticipacionC"]) && $_POST["TipoParticipacionC"] == "R"){ echo "selected"; } ?>>R</option>
+                        <option <?php if(isset($_POST["TipoParticipacionC"]) && $_POST["TipoParticipacionC"] == "C"){ echo "selected"; } ?>>C</option>
+                        <option <?php if(isset($_POST["TipoParticipacionC"]) && $_POST["TipoParticipacionC"] == "PCO"){ echo "selected"; } ?>>PCO</option>
+                        <option <?php if(isset($_POST["TipoParticipacionC"]) && $_POST["TipoParticipacionC"] == "PCC"){ echo "selected"; } ?>>PCC</option>
                     </select></p>
             </div>
         </div>

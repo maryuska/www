@@ -86,10 +86,11 @@ require_once 'View/Structure/Nav.php';
                                                 <input type="hidden" name="controlador" value="Tad">
                                                 <input type="hidden" name="evento" value="borrarTad">
                                                 <input type="hidden" name="CodigoTAD" value="<?php echo $row['CodigoTAD']; ?>">
-                                                <button type="button" class="btn btn-transparent btn-orange" onClick="window.location.href='index.php?controlador=Tad&evento=consultarTad&CodigoTAD=<?php echo $row['CodigoTAD']; ?>'">
+                                                <input type="hidden" name="LoginU" value="<?php echo $row['LoginU']; ?>">
+                                                <button type="button" class="btn btn-transparent btn-orange" onClick="window.location.href='index.php?controlador=Tad&evento=consultarTadAdmin&CodigoTAD=<?php echo $row['CodigoTAD']; ?>'">
                                                     Modificar
                                                 </button>
-                                                <button type="button" class="btn btn-transparent btn-orange" onClick="abrirConfirmBorrarTad('formBorrarTAD<?php echo $contador; ?>', '<?php echo $row['TituloTAD']." ".$row['CodigoTAD']; ?>');">
+                                                <button type="button" class="btn btn-transparent btn-orange" onClick="abrirConfirmBorrarTad('formBorrarTad<?php echo $contador; ?>', '<?php echo $row['CodigoTAD']." ".$row['TituloTAD']; ?>');">
                                                     Borrar
                                                 </button>
                                             </form>
@@ -113,7 +114,11 @@ require_once 'View/Structure/Nav.php';
 
 
 </div>
-<!-- Confirmar borrar tad -->
+
+
+
+
+<!-- Confirmar borrar TAD -->
 <div id="confirmBorrarTad" class="modal fade" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -121,7 +126,7 @@ require_once 'View/Structure/Nav.php';
                 <h4 class="modal-title">Atención</h4>
             </div>
             <div class="modal-body text-center">
-                <h5>¿Desea eliminar el TAD de <strong class="nombre"></strong>?</h5>
+                <h5>¿Desea eliminar el TAD <strong class="nombre"></strong>?</h5>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-modal btn-primary" id="borrar">Eliminar</button>
@@ -130,7 +135,7 @@ require_once 'View/Structure/Nav.php';
         </div>
     </div>
 </div>
-<!-- FIN: Confirmar borrar tad -->
+<!-- FIN: Confirmar borrar TAD-->
 <?php
 // Pie y cierre de html, body
 require_once 'View/Structure/Footer.php';

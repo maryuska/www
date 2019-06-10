@@ -13,7 +13,7 @@ class Tesis{
     private $URLTesis;
     private $LoginU;
 
-//constructor de tesis
+//Constructor de tesis
     public function __construct($CodigoTesis = NULL, $AutorTesis = NULL, $FechaInscripcion = NULL, $FechaLectura = NULL, $CalificacionTesis= NULL, $URLTesis = NULL, $LoginU = NULL ){
         $this->CodigoTesis = $CodigoTesis;
         $this->AutorTesis = $AutorTesis;
@@ -23,6 +23,7 @@ class Tesis{
         $this->URLTesis = $URLTesis;
         $this->LoginU= $LoginU;
     }
+	
 //Función para conectarnos a la Base de datos
     function ConectarBD()
     {
@@ -33,7 +34,7 @@ class Tesis{
         }
     }
 
-//alta de una nueva tesis
+//Alta de una nueva tesis
     public function AltaTesis() {
         $this->ConectarBD();
         $insertarTesis  = "INSERT INTO tesis(CodigoTesis,AutorTesis, FechaInscripcion, FechaLectura,CalificacionTesis ,URLTesis, LoginU)
@@ -47,14 +48,14 @@ class Tesis{
         $resultado =  $this->mysqli->query($insertarTesis) or die(mysqli_error($this->mysqli));
     }
 
-//consultar una tesis
+//Consultar una tesis
     public function ConsultarTesis($CodigoTesis){
         $this->ConectarBD();
         $sql=  $this->mysqli->query("SELECT * FROM tesis  WHERE CodigoTesis = '$CodigoTesis'");
         return $sql;
     }
 
-//modificar una tesis
+//Modificar una tesis
     public function ModificarTesis($CodigoTesis){
         $this->ConectarBD();
         $this->mysqli->query("UPDATE tesis SET AutorTesis='$this->AutorTesis',
@@ -64,7 +65,7 @@ class Tesis{
                                                where CodigoTesis = '$CodigoTesis'") or die (mysqli_error($this->mysqli));
     }
 
-//lista de todas las tesis de un usuario
+//Lista de todas las tesis de un usuario
     public function ListarTesis($LoginU){
         $this->ConectarBD();
         $sql=  $this->mysqli->query("SELECT * FROM tesis WHERE LoginU= '$LoginU' ORDER BY FechaInscripcion DESC");
@@ -72,20 +73,30 @@ class Tesis{
 
     }
 
-    //lista tesis admin
+//Lista tesis admin
     public function ListarTesisAdmin(){
         $this->ConectarBD();
         $sql= $this->mysqli->query("SELECT * FROM tesis ");
         return $sql;
     }
 
-
-
-
-//eliminar tesis
+//Eliminar tesis
     public function BorrarTesis($CodigoTesis){
         $this->ConectarBD();
         $this->mysqli->query("DELETE FROM tesis WHERE CodigoTesis= '$CodigoTesis'")or die(mysqli_error($this->mysqli));
+    }
+	
+//Buscar materia
+    public function BuscarTesis($buscar){
+        $this->ConectarBD();
+        $sql = $this->mysqli->query("SELECT * FROM tesis WHERE CodigoTesis LIKE '%$buscar' || CodigoTesis LIKE '%$buscar%' || CodigoTesis LIKE '$buscar%' ||
+                                                            AutorTesis LIKE '%$buscar'|| AutorTesis LIKE '%$buscar%' || AutorTesis LIKE '$buscar%' ||
+                                                            FechaInscripcion LIKE '%$buscar'|| FechaInscripcion LIKE '%$buscar%' || FechaInscripcion LIKE '$buscar%' ||
+                                                            FechaLectura LIKE '%$buscar'|| FechaLectura LIKE '%$buscar%' || FechaLectura LIKE '$buscar%' ||
+                                                            CalificacionTesis LIKE '%$buscar'|| CalificacionTesis LIKE '%$buscar%' || CalificacionTesis LIKE '$buscar%' ||
+                                                            URLTesis LIKE '%$buscar'|| URLTesis LIKE '%$buscar%' || URLTesis LIKE '$buscar%'
+                                                            ") or die(mysqli_error($this->mysqli));
+        return $sql;
     }
 
     /**
@@ -119,22 +130,7 @@ class Tesis{
 
 
         return $errores;
-    }
-
-    //buscar materia
-    public function BuscarTesis($buscar){
-        $this->ConectarBD();
-        $sql = $this->mysqli->query("SELECT * FROM tesis WHERE CodigoTesis LIKE '%$buscar' || CodigoTesis LIKE '%$buscar%' || CodigoTesis LIKE '$buscar%' ||
-                                                            AutorTesis LIKE '%$buscar'|| AutorTesis LIKE '%$buscar%' || AutorTesis LIKE '$buscar%' ||
-                                                            FechaInscripcion LIKE '%$buscar'|| FechaInscripcion LIKE '%$buscar%' || FechaInscripcion LIKE '$buscar%' ||
-                                                            FechaLectura LIKE '%$buscar'|| FechaLectura LIKE '%$buscar%' || FechaLectura LIKE '$buscar%' ||
-                                                            CalificacionTesis LIKE '%$buscar'|| CalificacionTesis LIKE '%$buscar%' || CalificacionTesis LIKE '$buscar%' ||
-                                                            URLTesis LIKE '%$buscar'|| URLTesis LIKE '%$buscar%' || URLTesis LIKE '$buscar%'
-                                                            ") or die(mysqli_error($this->mysqli));
-        return $sql;
-    }
-
-
+    } 
 
 }
 

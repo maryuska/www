@@ -2,6 +2,7 @@
 // Controlador de Proyectos Dirigidos
 require_once 'Controller/ControllerController.php';
 require_once 'Model/ProyectosDirigidos.php';
+require_once 'Model/Usuarios.php';
 $evento = $_REQUEST['evento'];
 
 switch ($evento) {
@@ -13,34 +14,99 @@ switch ($evento) {
 
 // Página insertar proyecto dirigido admin
     case "paginaInsertarProyectoDirigidoAdmin":
+
+        $Usuario = new Usuarios("","","","","","","","","");
+        $consultarUsuarios = $Usuario->ListarUsuarios();
+
+        $consulta = array();
+        while($row = mysqli_fetch_array($consultarUsuarios)){
+            array_push($consulta, $row);
+        }
+        $_SESSION["listarUsuarios"] = $consulta;
+
         require_once "View/ProyectoDirigido/insertarProyectoDirigidoAdmin.php";
         break;
-
+		
+//modificado alta proyectos dirigidos
 //alta proyectos dirigidos
-    case 'altaProyectoDirigido':
-        $Login=$_REQUEST["LoginU"];
-        $CodigoPD = $_REQUEST['CodigoPD'];
+    case 'altaProyectoDirigido':      
+        
+        //recoge los datos del proyecto dirigido
         $proyectoDirigido = new ProyectosDirigidos($_POST["CodigoPD"],$_POST["TituloPD"],$_POST["AlumnoPD"],$_POST["FechaLecturaPD"],$_POST["CalificacionPD"],$_POST["URLPD"],$_POST["CotutorPD"],$_POST["TipoPD"]);
-        $p=new ProyectosDirigidos("","","","","","","","");
-        $proyectoDirigido->AltaProyectoDirigido();
-        $p->Dirige($Login,$CodigoPD);
-            header("Location: index.php?controlador=ProyectosDirigidos&evento=listarProyectosDirigidos&LoginU=$loginU");
-    break;
+        $CodigoPD = $_REQUEST['CodigoPD'];
+        $login=$_REQUEST["LoginU"];
 
-//alta proyecto dirigido admin
-    case 'altaProyectoDirigidoAdmin':
-        $Login = $_REQUEST['Login'];
-        $CodigoPD = $_REQUEST['CodigoPD'];
-        $proyectoDirigido = new ProyectosDirigidos($_POST["CodigoPD"],$_POST["TituloPD"],$_POST["AlumnoPD"],$_POST["FechaLecturaPD"],$_POST["CalificacionPD"],$_POST["URLPD"],$_POST["CotutorPD"],$_POST["TipoPD"]);
-        $p=new ProyectosDirigidos("","","","","","","","");
-        $proyectoDirigido->AltaProyectoDirigido();
-        $p->Dirige($Login,$CodigoPD);
-            header("Location: index.php?controlador=ProyectosDirigidos&evento=listarProyectosDirigidosAdmin");
+        
+        $errores = $proyectoDirigido->validarProyectoDirigido($_POST);
+
+        if(!empty($errores)){
+            $msgError = "Los campos con el borde rojo son obligatorios.";
+            require_once "View/ProyectoDirigido/insertarProyectoDirigido.php";
+        }
+        else{
+
+            $consultaPD = $proyectoDirigido->ConsultarProyectoDirigido($CodigoPD);
+
+            if($consultaPD->num_rows > 0){    // Existe proyecto dirigido
+                $errores = array("CodigoPD", "TituloPD", "AlumnoPD", "FechaLecturaPD", "CalificacionPD", "URLPD", "CotutorPD", "TipoPD");
+                $msgError = "El proyecto dirigido: " . $_POST["CodigoPD"] . " ya existe, no puede insertar el mismo.";
+                require_once "View/ProyectoDirigido/insertarProyectoDirigido.php";
+            }else{
+                $proyectoDirigido->AltaProyectoDirigido();
+                $proyectoDirigido->Dirige($login, $CodigoPD);
+                header("Location: index.php?controlador=ProyectosDirigidos&evento=listarProyectosDirigidos&LoginU=".$login);
+            }
+
+        }
+
         break;
-//consultar proyectos dirigidos
-    case 'consultarProyectoDirigido':
-
+	
+//alta proyecto dirigido modificado	
+//Alta proyecto dirigido admin
+    case 'altaProyectoDirigidoAdmin':
+         //recoge los datos del proyecto dirigido
         $proyectoDirigido = new ProyectosDirigidos($_POST["CodigoPD"],$_POST["TituloPD"],$_POST["AlumnoPD"],$_POST["FechaLecturaPD"],$_POST["CalificacionPD"],$_POST["URLPD"],$_POST["CotutorPD"],$_POST["TipoPD"]);
+        $CodigoPD = $_REQUEST['CodigoPD'];
+        $login=$_REQUEST["LoginU"];
+
+        $Usuario = new Usuarios("","","","","","","","","");
+        $consultarUsuarios = $Usuario->ListarUsuarios();
+        $consulta = array();
+        while($row = mysqli_fetch_array($consultarUsuarios)){
+            array_push($consulta, $row);
+        }
+        $_SESSION["listarUsuarios"] = $consulta;
+
+        $errores = $proyectoDirigido->validarProyectoDirigido($_POST);
+
+        if(!empty($errores)){
+            $msgError = "Los campos con el borde rojo son obligatorios.";
+            require_once "View/ProyectoDirigido/insertarProyectoDirigidoAdmin.php";
+        }
+        else{
+
+            $consultaPD = $proyectoDirigido->ConsultarProyectoDirigido($CodigoPD);
+
+            if($consultaPD->num_rows > 0){    // Existe proyecto dirigido
+
+                $errores = array("LoginU", "CodigoPD", "TituloPD", "AlumnoPD", "FechaLecturaPD", "CalificacionPD", "URLPD", "CotutorPD", "TipoPD");
+                $msgError = "El proyecto dirigido: " . $_POST["CodigoPD"] . " ya existe, no puede insertar el mismo.";
+                require_once "View/ProyectoDirigido/insertarProyectoDirigidoAdmin.php";
+
+            }else{
+                $proyectoDirigido->AltaProyectoDirigido();
+                $proyectoDirigido->Dirige($login,$CodigoPD);
+                header("Location: index.php?controlador=ProyectosDirigidos&evento=listarProyectosDirigidosAdmin");
+            }
+
+        }
+
+    break;
+		
+//Consultar proyectos dirigidos para modificar
+    case 'consultarProyectoDirigido':
+        $tipou=$_SESSION["TipoUsuario"];
+        $proyectoDirigido = new ProyectosDirigidos("","","","","","","","");
         $CodigoP = $_REQUEST['CodigoPD'];
         $consultaPD = $proyectoDirigido->ConsultarProyectoDirigido($CodigoP);
         $consulta = array();
@@ -49,12 +115,32 @@ switch ($evento) {
         }
         $_SESSION["consultarProyectoDirigido"] = $consulta;
 
-        require_once "View/ProyectosDirigidos/modificarProyectoDirigido.php";
-        break;
+        if($tipou == 'U'){
+            require_once "View/ProyectoDirigido/modificarProyectoDirigido.php";
+        }
+        else{
 
-//modificar proyectos dirigidos
+            $Usuario = new Usuarios("","","","","","","","","");
+            $consultarUsuarios = $Usuario->ListarUsuarios();
+            $consulta = array();
+            while($row = mysqli_fetch_array($consultarUsuarios)){
+                array_push($consulta, $row);
+            }
+            $_SESSION["listarUsuarios"] = $consulta;
+
+            require_once "View/ProyectoDirigido/modificarProyectoDirigidoAdmin.php";
+
+        }
+
+    break;
+
+
+//Modificar proyectos dirigidos
     case 'modificarProyectosDirigidos':
+
+        $tipou=$_SESSION["TipoUsuario"];
         $Login=$_REQUEST["LoginU"];
+        $LoginAnt=$_REQUEST["LoginU_ant"];
         $CodigoPD = $_POST['CodigoPD'];
         $TituloPD = $_POST['TituloPD'];
         $AlumnoPD = $_POST['AlumnoPD'];
@@ -64,19 +150,49 @@ switch ($evento) {
         $CotutorPD = $_POST['CotutorPD'];
         $TipoPD = $_POST['TipoPD'];
 
-
         $proyectoDirigido = new ProyectosDirigidos($CodigoPD, $TituloPD, $AlumnoPD, $FechaLecturaPD, $CalificacionPD, $URLPD, $CotutorPD, $TipoPD );
-        $proyectoDirigido->ModificarProyectoDirigido($CodigoPD);
-            $tipou=$_SESSION["TipoUsuario"];
+        $errores = $proyectoDirigido->validarProyectoDirigido($_POST);
+
+        if(!empty($errores)){
+            $msgError = "Los campos con el borde rojo son obligatorios.";
+            $consultaPD = $proyectoDirigido->ConsultarProyectoDirigido($CodigoPD);
+            $consulta = array();
+            while($row1 = mysqli_fetch_array($consultaPD)){
+                array_push($consulta, $row1);
+            }
+            $_SESSION["consultarProyectoDirigido"] = $consulta;
+
             if($tipou == 'U') {
-                header("Location: index.php?controlador=ProyectosDirigidos&evento=listarProyectosDirigidos&LoginU=$LoginU");
+                require_once "View/ProyectoDirigido/modificarProyectoDirigido.php";
+            }else{
+
+                $Usuario = new Usuarios("","","","","","","","","");
+                $consultarUsuarios = $Usuario->ListarUsuarios();
+                $consulta = array();
+                while($row = mysqli_fetch_array($consultarUsuarios)){
+                    array_push($consulta, $row);
+                }
+                $_SESSION["listarUsuarios"] = $consulta;
+
+                require_once "View/ProyectoDirigido/modificarProyectoDirigidoAdmin.php";
+            }
+        }
+        else{ 
+
+            $proyectoDirigido->ModificarProyectoDirigido($CodigoPD);
+            $proyectoDirigido->BorrarDirige($LoginAnt, $CodigoPD);
+            $proyectoDirigido->Dirige($Login,$CodigoPD);
+
+            if($tipou == 'U'){
+                header("Location: index.php?controlador=ProyectosDirigidos&evento=listarProyectosDirigidos&LoginU=$Login");
             }else{
                 header("Location: index.php?controlador=ProyectosDirigidos&evento=listarProyectosDirigidosAdmin");
             }
+        }
 
     break;
 
-//listar proyectos dirigidos
+//Listar proyectos dirigidos
     case 'listarProyectosDirigidos':
             $Login=$_REQUEST["LoginU"];
             $lista = new ProyectosDirigidos("","","","","","","","");
@@ -112,7 +228,7 @@ switch ($evento) {
             require_once("View/ProyectoDirigido/listarProyectosDirigidos.php");
     break;
 
- // listar proyecto dirigido admin
+ // Listar proyecto dirigido admin
     case 'listarProyectosDirigidosAdmin':
         $lista = new ProyectosDirigidos("", "", "", "", "", "", "", "");
         //todos los proyectos dirigidos
@@ -148,14 +264,14 @@ switch ($evento) {
         require_once("View/ProyectoDirigido/listarProyectosDirigidosAdmin.php");
         break;
 
-//borrar un proyecto dirigido
+//Borrar un proyecto dirigido
     case'borrarProyectoDirigido':
         $LoginU=$_REQUEST["LoginU"];
         $CodigoPD=$_REQUEST["CodigoPD"];
         $ProyectoDirigido = new ProyectosDirigidos("","","","","","","","");
-        $ProyectoDirigido ->BorrarDirige($LoginU, $CodigoPD);
+        $ProyectoDirigido->BorrarDirige($LoginU, $CodigoPD);
         $ProyectoDirigido->BorrarProyectoDirigido($CodigoPD);
-            $tipou=$_SESSION["TipoUsuario"];
+        $tipou=$_SESSION["TipoUsuario"];
         if($tipou == 'U'){
             header("Location: index.php?controlador=ProyectosDirigidos&evento=listarProyectosDirigidos&LoginU=$loginU");
         }else{
@@ -163,7 +279,7 @@ switch ($evento) {
         }
         break;
 
-//buscar proyectos dirigidos
+//Buscar proyectos dirigidos
     case 'buscarProyectoDirigido':
         $buscar= $_POST['textoBusqueda'];
 

@@ -14,7 +14,18 @@ switch ($evento) {
     break;
 
     // Consulta del usuario cuando se pincha el logotipo una vez logueado
-    case "consultarUsuarioActual":
+    case "consultarUsuarioActual": 
+        //conuslta datos del usuario
+        $Login=$_SESSION["loginU"];
+        $Usuario = new Usuarios("","","","","","","","","");
+        $consultarUsuario = $Usuario->consultarUsuario($Login);
+
+        $consulta = array();
+        while($row = mysqli_fetch_array($consultarUsuario)){
+            array_push($consulta, $row);
+        }
+
+        $_SESSION["ConsultarU"] = $consulta;
         require_once "View/Usuario/consultarUsuario.php";
     break;
 
@@ -30,6 +41,17 @@ switch ($evento) {
 
     // Página modificar usuario
     case "paginaModificarUsuario":
+        //conuslta datos del usuario
+        $Login=$_SESSION["loginU"];
+        $Usuario = new Usuarios("","","","","","","","","");
+        $consultarUsuario = $Usuario->consultarUsuario($Login);
+
+        $consulta = array();
+        while($row = mysqli_fetch_array($consultarUsuario)){
+            array_push($consulta, $row);
+        }
+
+        $_SESSION["ConsultarU"] = $consulta;
         require_once "View/Usuario/modificarUsuario.php";
     break;
 
@@ -279,8 +301,19 @@ switch ($evento) {
         $errores    = $usuario->validarPerfil($_POST);
 
         if(!empty($errores)){
-            // Tiene errores de validación volvemos a la página anterior
-            require_once "View/Usuario/modificarUsuario.php";
+            $msgError = "Los campos con el borde rojo son obligatorios.";
+            $consultaU = $usuario->ConsultarUsuario($LoginU);
+            $consulta = array();
+            while($row1 = mysqli_fetch_array($consultaU)){
+                array_push($consulta, $row1);
+            }
+            $_SESSION["consultarUsuario"] = $consulta;
+
+            if($tipou == 'U') {
+                require_once "View/Usuario/modificarUsuario.php";
+            }else{
+                require_once "View/Usuario/modificarUsuarioAdmin.php";
+            }
         }
         else{
 

@@ -112,6 +112,7 @@ require_once 'View/Structure/Nav.php';
                                         <input type="hidden" name="controlador" value="Materias">
                                         <input type="hidden" name="evento" value="borrarMateria">
                                         <input type="hidden" name="CodigoM" value="<?php echo $row['CodigoM']; ?>">
+                                        <input type="hidden" name="LoginU" value="<?php echo $row['LoginU'] ?>">
                                         <button type="button" class="btn btn-transparent btn-orange" onClick="window.location.href='index.php?controlador=Materias&evento=consultarMateria&CodigoM=<?php echo $row['CodigoM']; ?>'">
                                             Modificar
                                         </button>
@@ -180,6 +181,7 @@ require_once 'View/Structure/Nav.php';
                                                 <input type="hidden" name="controlador" value="Materias">
                                                 <input type="hidden" name="evento" value="borrarMateria">
                                                 <input type="hidden" name="CodigoM" value="<?php echo $row1['CodigoM']; ?>">
+                                                <input type="hidden" name="LoginU" value="<?php echo $row1['LoginU'] ?>">
                                                 <button type="button" class="btn btn-transparent btn-orange" onClick="window.location.href='index.php?controlador=Materias&evento=consultarMateria&CodigoM=<?php echo $row1['CodigoM']; ?>'">
                                                     Modificar
                                                 </button>
@@ -247,6 +249,7 @@ require_once 'View/Structure/Nav.php';
                                                 <input type="hidden" name="controlador" value="Materias">
                                                 <input type="hidden" name="evento" value="borrarMateria">
                                                 <input type="hidden" name="CodigoM" value="<?php echo $row2['CodigoM']; ?>">
+                                                <input type="hidden" name="LoginU" value="<?php echo $row2['LoginU'] ?>">
                                                 <button type="button" class="btn btn-transparent btn-orange" onClick="window.location.href='index.php?controlador=Materias&evento=consultarMateria&CodigoM=<?php echo $row2['CodigoM']; ?>'">
                                                     Modificar
                                                 </button>
@@ -314,6 +317,7 @@ require_once 'View/Structure/Nav.php';
                                                 <input type="hidden" name="controlador" value="Materias">
                                                 <input type="hidden" name="evento" value="borrarMateria">
                                                 <input type="hidden" name="CodigoM" value="<?php echo $row3['CodigoM']; ?>">
+                                                <input type="hidden" name="LoginU" value="<?php echo $row3['LoginU'] ?>">
                                                 <button type="button" class="btn btn-transparent btn-orange" onClick="window.location.href='index.php?controlador=Materias&evento=consultarMateria&CodigoM=<?php echo $row3['CodigoM']; ?>'">
                                                     Modificar
                                                 </button>
@@ -382,6 +386,7 @@ require_once 'View/Structure/Nav.php';
                                                 <input type="hidden" name="controlador" value="Materias">
                                                 <input type="hidden" name="evento" value="borrarMateria">
                                                 <input type="hidden" name="CodigoM" value="<?php echo $row4['CodigoM']; ?>">
+                                                <input type="hidden" name="LoginU" value="<?php echo $row4['LoginU'] ?>">
                                                 <button type="button" class="btn btn-transparent btn-orange" onClick="window.location.href='index.php?controlador=Materias&evento=consultarMateria&CodigoM=<?php echo $row4['CodigoM']; ?>'">
                                                     Modificar
                                                 </button>
@@ -447,7 +452,8 @@ require_once 'View/Structure/Nav.php';
                                             <form name="formBorrarMateria<?php echo $contador5; ?>" id="formBorrarMateria<?php echo $contador5; ?>" class="text-center" action="index.php" method="get">
                                                 <input type="hidden" name="controlador" value="Materias">
                                                 <input type="hidden" name="evento" value="borrarMateria">
-                                                <input type="hidden" name="CodigoM" value="<?php echo $row['CodigoM']; ?>">
+                                                <input type="hidden" name="CodigoM" value="<?php echo $row5['CodigoM']; ?>">
+                                                <input type="hidden" name="LoginU" value="<?php echo $row5['LoginU'] ?>">
                                                 <button type="button" class="btn btn-transparent btn-orange" onClick="window.location.href='index.php?controlador=Materias&evento=consultarMateria&CodigoM=<?php echo $row5['CodigoM']; ?>'">
                                                     Modificar
                                                 </button>

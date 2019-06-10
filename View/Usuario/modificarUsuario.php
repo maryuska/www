@@ -39,7 +39,7 @@ require_once 'View/Structure/Nav.php';
 
                 <!-- Formulario -->
 
-                <form id="formulario" action="index.php?controlador=Usuarios" method="post">
+                <form id="formularioModificarUsuario" action="index.php?controlador=Usuarios" method="post">
 
                     <!-- Docente -->
                     
@@ -101,7 +101,8 @@ require_once 'View/Structure/Nav.php';
                     <br>
 
                     <div class="text-center">
-                        <button type="submit" class="btn btn-orange" name="evento" value="modificarUsuario">
+                        <input type="hidden" name="evento" value="modificarUsuario">
+                        <button type="button" class="btn btn-orange" onclick="abrirConfirmModificarPerfil();">
                             Guardar cambios
                         </button>
                     </div>
@@ -121,7 +122,28 @@ require_once 'View/Structure/Nav.php';
     </div>
 </div>
 
-<?php 
+<!-- Confirmar modificar perfil -->
+<div id="confirmModificarUsuario" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-danger text-danger">
+                <h4 class="modal-title">Atención</h4>
+            </div>
+            <div class="modal-body text-center">
+                <h5>¿Está seguro@ que desea modificar los datos del perfil?</h5>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-modal btn-primary" id="modificar">Modificar</button>
+                <button type="button" class="btn btn-modal btn-danger" data-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- FIN: Confirmar modificar perfil -->
+
+<?php
+// Eliminamos los datos cargados en session para la consulta
+unset($_SESSION["consultarPerfil"]);
 // Pie y cierre de html, body
 require_once 'View/Structure/Footer.php';
 ?>

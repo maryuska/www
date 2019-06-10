@@ -3,36 +3,62 @@
 
 require_once 'Controller/ControllerController.php';
 require_once 'Model/Materia.php';
+require_once 'Model/Usuarios.php';
 $evento = $_REQUEST['evento'];
 
 switch ($evento) {
-    // Página insertar materia
+// Página insertar materia
     case "paginaInsertarMateria":
         require_once "View/Materia/insertarMateria.php";
         break;
-    // Página insertar materia admin
+		
+// Página insertar materia admin
     case "paginaInsertarMateriaAdmin":
+
+        $Usuario = new Usuarios("","","","","","","","","");
+        $consultarUsuarios = $Usuario->ListarUsuarios();
+
+        $consulta = array();
+        while($row = mysqli_fetch_array($consultarUsuarios)){
+            array_push($consulta, $row);
+        }
+        $_SESSION["listarUsuarios"] = $consulta;
+
         require_once "View/Materia/insertarMateriaAdmin.php";
         break;
-
+		
+//alta materia modificado
+//Alta materia
     case 'altaMateria':
     $loginU=$_POST["LoginU"];
+	$codigoM = $_REQUEST["CodigoM"];
     $materia = new Materia($_POST["CodigoM"],$_POST["TipoM"],$_POST["TipoParticipacionM"],$_POST["DenominacionM"],$_POST["TitulacionM"],$_POST["AnhoAcademicoM"],$_POST["CreditosM"],$_POST["CuatrimestreM"],$_POST["LoginU"]);
-    $materia->AltaMateria();
-
+    $materia -> consultarMateria($codigoM);
+	if(!isset($materia)){
+			anadirMensaje("| SUCCESS | La materia: ".$_POST["CodigoM"]." ya existe","success");
+			header('location: View/Materia/insertarMateria.php');
+		}else{	
+		$materia->AltaMateria();
         header("Location: index.php?controlador=Materias&evento=listarMaterias&LoginU=$loginU");
-
+		}
     break;
 
+//Alta materia como Admin
     case 'altaMateriaAdmin':
 
-        $materia = new Materia($_POST["CodigoM"],$_POST["TipoM"],$_POST["TipoParticipacionM"],$_POST["DenominacionM"],$_POST["TitulacionM"],$_POST["AnhoAcademicoM"],$_POST["CreditosM"],$_POST["CuatrimestreM"],$_POST["Login"]);
-        $materia->AltaMateria();
-
-            header("Location: index.php?controlador=Materias&evento=listarMateriasAdmin");
-
+        $codigoM = $_REQUEST["CodigoM"];
+		$materia = new Materia($_POST["CodigoM"],$_POST["TipoM"],$_POST["TipoParticipacionM"],$_POST["DenominacionM"],$_POST["TitulacionM"],$_POST["AnhoAcademicoM"],$_POST["CreditosM"],$_POST["CuatrimestreM"],$_POST["LoginU"]);
+		$materia -> consultarMateria($codigoM);
+		if(!isset($materia)){
+			anadirMensaje("| SUCCESS | La materia: ".$_POST["CodigoM"]." ya existe","success");
+			header('location: View/Materia/insertarMateria.php');
+		}else{	
+			$materia->AltaMateria(); 
+			header("Location: index.php?controlador=Materias&evento=listarMateriasAdmin");
+		}
         break;
 
+//Consultar materia para modificar
     case 'consultarMateria':
 
         $materia = new Materia("","","","","","","","","");
@@ -48,7 +74,35 @@ switch ($evento) {
 
         break;
 
+//Consultar materia para modificar como admin
+    case 'consultarMateriaAdmin':
+
+        $Usuario = new Usuarios("","","","","","","","","");
+        $consultarUsuarios = $Usuario->ListarUsuarios();
+
+        $consulta = array();
+        while($row = mysqli_fetch_array($consultarUsuarios)){
+            array_push($consulta, $row);
+        }
+        $_SESSION["listarUsuarios"] = $consulta;
+
+        $materia = new Materia("","","","","","","","","");
+        $CodigoM = $_REQUEST['CodigoM'];
+        $consultaM = $materia->ConsultarMateria($CodigoM);
+        $consulta = array();
+        while($row1 = mysqli_fetch_array($consultaM)){
+            array_push($consulta, $row1);
+        }
+        $_SESSION["consultarMateria"] = $consulta;
+
+        require_once "View/Materia/modificarMateria.php";
+
+        break;
+
+//Modificar Materia
     case 'modificarMateria':
+
+        $tipou=$_SESSION["TipoUsuario"];
 
         $CodigoM = $_POST['CodigoM'];
         $TipoM = $_POST['TipoM'];
@@ -60,28 +114,36 @@ switch ($evento) {
         $CuatrimestreM = $_POST['CuatrimestreM'];
         $LoginU = $_POST['LoginU'];
 
-
         $materia = new Materia( $CodigoM,$TipoM, $TipoParticipacionM ,$DenominacionM ,$TitulacionM ,$AnhoAcademicoM ,$CreditosM,$CuatrimestreM, $LoginU  );
         $errores    = $materia->validarMateria($_POST);
         if(!empty($errores)){
-            // Tiene errores de validación volvemos a la página anterior
-            require_once "View/Materia/modificarMateria.php";
+            $msgError = "Los campos con el borde rojo son obligatorios.";
+            $consultaM = $materia->ConsultarMateria($CodigoM);
+            $consulta = array();
+            while($row1 = mysqli_fetch_array($consultaM)){
+                array_push($consulta, $row1);
+            }
+            $_SESSION["consultarMateria"] = $consulta;
+
+            if($tipou == 'U') {
+                require_once "View/Materia/modificarMateria.php";
+            }else{
+                require_once "View/Materia/modificarMateriaAdmin.php";
+            }
         }
         else{
 
             $materia->ModificarMateria($CodigoM);
-            $tipou=$_SESSION["TipoUsuario"];
+
             if($tipou == 'U'){
-                header("Location: index.php?controlador=Materias&evento=listarMaterias&LoginU=$loginU");
+                header("Location: index.php?controlador=Materias&evento=listarMaterias&LoginU=$LoginU");
             }else{
                 header("Location: index.php?controlador=Materias&evento=listarMateriasAdmin");
             }
         }
-
-
     break;
 
-//listar materias por usuario
+//Listar materias por usuario
     case 'listarMaterias':
 
         $LoginU = $_REQUEST['LoginU'];
@@ -134,7 +196,7 @@ switch ($evento) {
 
     break;
 
-//listar todas las materias admin
+//Listar todas las materias como Admin
     case 'listarMateriasAdmin':
 
         $lista = new Materia("","","","","","","","","");
@@ -186,7 +248,7 @@ switch ($evento) {
 
         break;
 
-//buscar materia
+//Buscar materia
     case 'buscarMateria':
         $buscar= $_POST['textoBusqueda'];
 
@@ -212,9 +274,10 @@ switch ($evento) {
         }
         break;
 
-//borrar materia
+//Borrar materia
     case 'borrarMateria':
         $CodigoM=$_REQUEST["CodigoM"];
+        $loginU = $_REQUEST["LoginU"];
         $Materia = new Materia("","","","","","","","","");
         $Materia->BorrarMateria($CodigoM);
         $tipou=$_SESSION["TipoUsuario"];

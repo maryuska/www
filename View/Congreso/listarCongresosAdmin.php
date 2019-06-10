@@ -103,7 +103,8 @@ require_once 'View/Structure/Nav.php';
                                                     <input type="hidden" name="controlador" value="Congresos">
                                                     <input type="hidden" name="evento" value="borrarCongreso">
                                                     <input type="hidden" name="CodigoC" value="<?php echo $row['CodigoC']; ?>">
-                                                    <button type="button" class="btn btn-transparent btn-orange" onClick="window.location.href='index.php?controlador=Congresos&evento=consultarCongreso&CodigoC=<?php echo $row['CodigoC']; ?>'">
+                                                    <input type="hidden" name="LoginU" value="<?php echo $row['LoginU'] ?>">
+                                                    <button type="button" class="btn btn-transparent btn-orange" onClick="window.location.href='index.php?controlador=Congresos&evento=consultarCongresoAdmin&CodigoC=<?php echo $row['CodigoC']; ?>'">
                                                         Modificar
                                                     </button>
                                                     <button type="button" class="btn btn-transparent btn-orange" onClick="abrirConfirmBorrarCongreso('formBorrarCongreso<?php echo $contador; ?>', '<?php echo $row['CodigoC']." ".$row['NombreC']; ?>');">
@@ -164,6 +165,7 @@ require_once 'View/Structure/Nav.php';
                                                     <input type="hidden" name="controlador" value="Congresos">
                                                     <input type="hidden" name="evento" value="borrarCongreso">
                                                     <input type="hidden" name="CodigoC" value="<?php echo $row['CodigoC']; ?>">
+                                                    <input type="hidden" name="LoginU" value="<?php echo $row['LoginU'] ?>">
                                                     <button type="button" class="btn btn-transparent btn-orange" onClick="window.location.href='index.php?controlador=Congresos&evento=consultarCongreso&CodigoC=<?php echo $row1['CodigoC']; ?>'">
                                                         Modificar
                                                     </button>
@@ -228,6 +230,7 @@ require_once 'View/Structure/Nav.php';
                                                     <input type="hidden" name="controlador" value="Congresos">
                                                     <input type="hidden" name="evento" value="borrarCongreso">
                                                     <input type="hidden" name="CodigoC" value="<?php echo $row2['CodigoC']; ?>">
+                                                    <input type="hidden" name="LoginU" value="<?php echo $row2['LoginU'] ?>">
                                                     <button type="button" class="btn btn-transparent btn-orange" onClick="window.location.href='index.php?controlador=Congresos&evento=consultarCongreso&CodigoC=<?php echo $row2['CodigoC']; ?>'">
                                                         Modificar
                                                     </button>
@@ -292,6 +295,7 @@ require_once 'View/Structure/Nav.php';
                                                     <input type="hidden" name="controlador" value="Congresos">
                                                     <input type="hidden" name="evento" value="borrarCongreso">
                                                     <input type="hidden" name="CodigoC" value="<?php echo $row3['CodigoC']; ?>">
+                                                    <input type="hidden" name="LoginU" value="<?php echo $row3['LoginU'] ?>">
                                                     <button type="button" class="btn btn-transparent btn-orange" onClick="window.location.href='index.php?controlador=Congresos&evento=consultarCongreso&CodigoC=<?php echo $row3['CodigoC']; ?>'">
                                                         Modificar
                                                     </button>
@@ -357,6 +361,7 @@ require_once 'View/Structure/Nav.php';
                                                     <input type="hidden" name="controlador" value="Congresos">
                                                     <input type="hidden" name="evento" value="borrarCongreso">
                                                     <input type="hidden" name="CodigoC" value="<?php echo $row4['CodigoC']; ?>">
+                                                    <input type="hidden" name="LoginU" value="<?php echo $row4['LoginU'] ?>">
                                                     <button type="button" class="btn btn-transparent btn-orange" onClick="window.location.href='index.php?controlador=Congresos&evento=consultarCongreso&CodigoC=<?php echo $row4['CodigoC']; ?>'">
                                                         Modificar
                                                     </button>
@@ -420,6 +425,7 @@ require_once 'View/Structure/Nav.php';
                                                     <input type="hidden" name="controlador" value="Congresos">
                                                     <input type="hidden" name="evento" value="borrarCongreso">
                                                     <input type="hidden" name="CodigoC" value="<?php echo $row5['CodigoC']; ?>">
+                                                    <input type="hidden" name="LoginU" value="<?php echo $row5['LoginU'] ?>">
                                                     <button type="button" class="btn btn-transparent btn-orange" onClick="window.location.href='index.php?controlador=Congresos&evento=consultarCongreso&CodigoC=<?php echo $row5['CodigoC']; ?>'">
                                                         Modificar
                                                     </button>
@@ -485,6 +491,7 @@ require_once 'View/Structure/Nav.php';
                                                     <input type="hidden" name="controlador" value="Congresos">
                                                     <input type="hidden" name="evento" value="borrarCongreso">
                                                     <input type="hidden" name="CodigoC" value="<?php echo $row6['CodigoC']; ?>">
+                                                    <input type="hidden" name="LoginU" value="<?php echo $row6['LoginU'] ?>">
                                                     <button type="button" class="btn btn-transparent btn-orange" onClick="window.location.href='index.php?controlador=Congresos&evento=consultarCongreso&CodigoC=<?php echo $row6['CodigoC']; ?>'">
                                                         Modificar
                                                     </button>
@@ -521,7 +528,7 @@ require_once 'View/Structure/Nav.php';
                 <h4 class="modal-title">Atención</h4>
             </div>
             <div class="modal-body text-center">
-                <h5>¿Desea eliminar el congreso <strong class="Nombre"></strong>?</h5>
+                <h5>¿Desea eliminar el congreso <strong class="nombre"></strong>?</h5>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-modal btn-primary" id="borrar">Eliminar</button>

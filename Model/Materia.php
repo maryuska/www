@@ -17,7 +17,7 @@ class Materia{
   private $CuatrimestreM;
   private $LoginU;
 
-//constructor de materias
+//Constructor de materias
   public function __construct($CodigoM = NULL, $TipoM = NULL, $TipoParticipacionM = NULL, $DenominacionM = NULL, $TitulacionM = NULL, $AnhoAcademicoM = NULL, $CreditosM = NULL, $CuatrimestreM = NULL , $LoginU = NULL ){
 
     $this->CodigoM = $CodigoM;
@@ -30,6 +30,7 @@ class Materia{
     $this->CuatrimestreM= $CuatrimestreM;
     $this->LoginU= $LoginU;
   }
+  
 //Función para conectarnos a la Base de datos
     function ConectarBD()
     {
@@ -39,7 +40,8 @@ class Materia{
             echo "Fallo al conectar a MySQL: (" . $this->mysqli->connect_errno . ") " . $this->mysqli->connect_error;
         }
     }
-//alta de una nueva materia
+	
+//Alta de una nueva materia
   public function AltaMateria() {
       $this->ConectarBD();
     $insertarMateria  = "INSERT INTO materia(CodigoM,TipoM, TipoParticipacionM, DenominacionM, TitulacionM,AnhoAcademicoM, CreditosM,CuatrimestreM,LoginU)
@@ -48,14 +50,14 @@ class Materia{
 	$resultado = $this->mysqli->query($insertarMateria) or die(mysqli_error($this->mysqli));
 	}
 
-//consultar una materia
+//Consultar una materia
     public function ConsultarMateria($CodigoM){
         $this->ConectarBD();
         $sql= $this->mysqli->query("SELECT * FROM materia  WHERE CodigoM = '$CodigoM'");
         return $sql;
     }
 
-//modificar una materia
+//Modificar una materia
     public function ModificarMateria($CodigoM){
         $this->ConectarBD();
         $this->mysqli->query("UPDATE materia SET  TipoM='$this->TipoM',
@@ -69,7 +71,7 @@ class Materia{
                               where CodigoM = '$CodigoM'") or die (mysqli_error($this->mysqli));
     }
 
-//listar materias de un usuario determinado
+//Listar materias de un usuario determinado
         //lista de todas las materias del usuario
             public function ListarMaterias($LoginU){
                 $this->ConectarBD();
@@ -112,7 +114,7 @@ class Materia{
                 return $sql;
             }
 
-//listar materias como administrador
+//Listar materias como administrador
         //lista de todas las materias del usuario
             public function ListarMateriasAdmin(){
                 $this->ConectarBD();
@@ -155,8 +157,7 @@ class Materia{
                 return $sql;
             }
 
-
-//eliminar materia
+//Eliminar materia
     public function BorrarMateria($CodigoM){
         $this->ConectarBD();
         $this->mysqli->query("DELETE FROM materia WHERE CodigoM= '$CodigoM'")or die(mysqli_error($this->mysqli));
@@ -208,7 +209,7 @@ class Materia{
         return $errores;
     }
 
-    //buscar materia
+//Buscar materia
     public function BuscarMateria($buscar){
         $this->ConectarBD();
         $sql = $this->mysqli->query("SELECT * FROM materia WHERE CodigoM LIKE '%$buscar' || CodigoM LIKE '%$buscar%' || CodigoM LIKE '$buscar%' ||
@@ -222,9 +223,6 @@ class Materia{
                                                             ") or die(mysqli_error($this->mysqli));
         return $sql;
     }
-
-
-
 
 
 }

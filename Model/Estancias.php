@@ -1,5 +1,6 @@
 <?php
-session_start();
+if(!isset($_SESSION))
+    session_start();
 require_once 'Validacion.php';
 
 class Estancias{
@@ -13,7 +14,7 @@ class Estancias{
   private $TipoE;
   private $LoginU;
 
-//constructor de estancia
+//Constructor de estancia
   public function __construct($CodigoE = NULL, $CentroE = NULL, $UniversidadE = NULL, $PaisE = NULL, $FechaInicioE = NULL, $FechaFinE = NULL, $TipoE = NULL, $LoginU = NULL ){
     $this->CodigoE = $CodigoE;
     $this->CentroE = $CentroE;
@@ -35,7 +36,7 @@ class Estancias{
         }
     }
 
-//alta de una nueva estancia
+//Alta de una nueva estancia
   public function AltaEstancia() {
       $this->ConectarBD();
     $insertarEstancia  = "INSERT INTO estancia(CodigoE,CentroE, UniversidadE, PaisE, FechaInicioE,FechaFinE, TipoE,LoginU)
@@ -44,14 +45,14 @@ class Estancias{
 	$resultado = $this->mysqli->query($insertarEstancia) or die(mysqli_error($this->mysqli));
 	}
 
-//consultar una estancia
+//Consultar una estancia
     public function ConsultarEstancia($CodigoE){
         $this->ConectarBD();
         $sql= $this->mysqli->query("SELECT * FROM estancia  WHERE CodigoE = '$CodigoE'");
         return $sql;
     }
 
-//modificar una estancia
+//Modificar una estancia
     public function ModificarEstancia($CodigoE){
         $this->ConectarBD();
         $this->mysqli->query("UPDATE estancia SET   CentroE='$this->CentroE',
@@ -64,8 +65,8 @@ class Estancias{
     }
 
 
-//listar estancias de usuario
-//lista de todas las estancias de un usuario
+//Listar estancias de usuario
+//Lista de todas las estancias de un usuario
     public function ListarEstancias($LoginU){
         $this->ConectarBD();
         $sql= $this->mysqli->query("SELECT * FROM estancia WHERE LoginU= '$LoginU' ORDER BY FechaFinE DESC");
@@ -73,31 +74,29 @@ class Estancias{
 
     }
 
-//lista de todas las estancias de invertigacion
+//Lista de todas las estancias de invertigacion
     public function ListarEstanciasInvertigacion($LoginU){
         $this->ConectarBD();
         $sql= $this->mysqli->query("SELECT * FROM estancia WHERE LoginU= '$LoginU' AND TipoE = 'Investigacion'");
         return $sql;
     }
 
-//lista de todas las estancias de doctorado
+//Lista de todas las estancias de doctorado
     public function ListarEstanciasDoctorado($LoginU){
         $this->ConectarBD();
         $sql= $this->mysqli->query("SELECT * FROM estancia WHERE LoginU= '$LoginU' AND TipoE = 'Doctorado'");
         return $sql;
     }
 
-//lista de todas las estancias de invitado
+//Lista de todas las estancias de invitado
     public function ListarEstanciasInvitado($LoginU){
         $this->ConectarBD();
         $sql= $this->mysqli->query("SELECT * FROM estancia WHERE LoginU= '$LoginU' AND TipoE = 'Invitado'");
         return $sql;
     }
 
-
-
 //listar estancias como admin
-//lista de todas las estancias
+//Lista de todas las estancias
     public function ListarEstanciasAdmin(){
         $this->ConectarBD();
         $sql= $this->mysqli->query("SELECT * FROM estancia ORDER BY FechaFinE DESC");
@@ -105,28 +104,28 @@ class Estancias{
 
     }
 
-//lista de todas las estancias de invertigacion como admin
+//Lista de todas las estancias de invertigacion como admin
     public function ListarEstanciasInvertigacionAdmin(){
         $this->ConectarBD();
         $sql= $this->mysqli->query("SELECT * FROM estancia WHERE TipoE = 'Investigacion'");
         return $sql;
     }
 
-//lista de todas las estancias de doctorado como admin
+//Lista de todas las estancias de doctorado como admin
     public function ListarEstanciasDoctoradoAdmin(){
         $this->ConectarBD();
         $sql= $this->mysqli->query("SELECT * FROM estancia WHERE TipoE = 'Doctorado'");
         return $sql;
     }
 
-//lista de todas las estancias de invitado como admin
+//Lista de todas las estancias de invitado como admin
     public function ListarEstanciasInvitadoAdmin(){
         $this->ConectarBD();
         $sql= $this->mysqli->query("SELECT * FROM estancia WHERE TipoE = 'Invitado'");
         return $sql;
     }
 
-//buscar estancia
+//Buscar estancia
     public function BuscarEstancia($buscar){
         $this->ConectarBD();
         $sql = $this->mysqli->query("SELECT * FROM estancia WHERE CodigoE LIKE '%$buscar' || CodigoE LIKE '%$buscar%' || CodigoE LIKE '$buscar%' ||
@@ -141,7 +140,7 @@ class Estancias{
         return $sql;
     }
 
-//eliminar estancia
+//Eliminar estancia
     public function BorrarEstancia($CodigoE){
         $this->ConectarBD();
         $this->mysqli->query("DELETE FROM estancia WHERE CodigoE= '$CodigoE'")or die(mysqli_error($this->mysqli));

@@ -12,7 +12,7 @@ class Tad{
   private $FechaLecturaTAD;
   private $LoginU;
 
-//constructor de TAD
+//Constructor de TAD
   public function __construct($CodigoTAD = NULL, $TituloTAD = NULL, $AlumnoTAD = NULL, $FechaLecturaTAD = NULL, $LoginU = NULL ){
     $this->CodigoTAD = $CodigoTAD;
     $this->TituloTAD = $TituloTAD;
@@ -20,7 +20,8 @@ class Tad{
     $this->FechaLecturaTAD = $FechaLecturaTAD;
     $this->LoginU= $LoginU;
   }
-    //Función para conectarnos a la Base de datos
+  
+//Función para conectarnos a la Base de datos
     function ConectarBD()
     {
         $this->mysqli = new mysqli("localhost", "docente", "docente", "datos_curriculares");
@@ -30,8 +31,7 @@ class Tad{
         }
     }
 
-
-//alta de un nuevo TAD
+//Alta de un nuevo TAD
   public function AltaTad() {
       $this->ConectarBD();
     $insertarTad  = "INSERT INTO tad (CodigoTAD,TituloTAD, AlumnoTAD, FechaLecturaTAD, LoginU)
@@ -39,10 +39,7 @@ class Tad{
 	$resultado = $this->mysqli->query($insertarTad) or die(mysqli_error($this->mysqli));
 	}
 
-
-
-
-//consultar una tad
+//Consultar una tad
     public function ConsultarTad($CodigoTAD){
         $this->ConectarBD();
         $sql= $this->mysqli->query("SELECT * FROM tad  WHERE CodigoTAD = '$CodigoTAD'");
@@ -58,27 +55,35 @@ class Tad{
                               where CodigoTAD = '$CodigoTAD'") or die (mysqli_error($this->mysqli));
     }
 
-
-    //lista tad
+//Listar tad
     public function ListarTad($LoginU){
         $this->ConectarBD();
         $sql= $this->mysqli->query("SELECT * FROM tad WHERE LoginU= '$LoginU' ORDER BY FechaLecturaTAD DESC");
         return $sql;
     }
-    //lista tad admin
+	
+//Listar tad como admin
     public function ListarTadAdmin(){
         $this->ConectarBD();
         $sql= $this->mysqli->query("SELECT * FROM tad ORDER BY FechaLecturaTAD DESC");
         return $sql;
     }
 
-
-
-
-//eliminar tad
+//Eliminar tad
     public function BorrarTad($CodigoTAD){
         $this->ConectarBD();
         $this->mysqli->query("DELETE FROM tad WHERE CodigoTAD= '$CodigoTAD'")or die(mysqli_error($this->mysqli));
+    }
+
+//Buscar tad
+    public function BuscarTad($buscar){
+        $this->ConectarBD();
+        $sql = $this->mysqli->query("SELECT * FROM tad WHERE CodigoTAD LIKE '%$buscar' || CodigoTAD LIKE '%$buscar%' || CodigoTAD LIKE '$buscar%' ||
+                                                            TituloTAD LIKE '%$buscar'|| TituloTAD LIKE '%$buscar%' || TituloTAD LIKE '$buscar%' ||
+                                                            AlumnoTAD LIKE '%$buscar'|| AlumnoTAD LIKE '%$buscar%' || AlumnoTAD LIKE '$buscar%' ||
+                                                            FechaLecturaTAD LIKE '%$buscar'|| FechaLecturaTAD LIKE '%$buscar%' || FechaLecturaTAD LIKE '$buscar%'
+                                                            ") or die(mysqli_error($this->mysqli));
+        return $sql;
     }
 
     /**
@@ -107,38 +112,7 @@ class Tad{
         return $errores;
     }
 
-    //buscar materia
-    public function BuscarTad($buscar){
-        $this->ConectarBD();
-        $sql = $this->mysqli->query("SELECT * FROM tad WHERE CodigoTAD LIKE '%$buscar' || CodigoTAD LIKE '%$buscar%' || CodigoTAD LIKE '$buscar%' ||
-                                                            TituloTAD LIKE '%$buscar'|| TituloTAD LIKE '%$buscar%' || TituloTAD LIKE '$buscar%' ||
-                                                            AlumnoTAD LIKE '%$buscar'|| AlumnoTAD LIKE '%$buscar%' || AlumnoTAD LIKE '$buscar%' ||
-                                                            FechaLecturaTAD LIKE '%$buscar'|| FechaLecturaTAD LIKE '%$buscar%' || FechaLecturaTAD LIKE '$buscar%'
-                                                            ") or die(mysqli_error($this->mysqli));
-        return $sql;
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+   
 
 }
 

@@ -3,6 +3,7 @@
 require_once 'View/Structure/Header.php';
 
 // Menu
+
 require_once 'View/Structure/Nav.php';
 
 $loginU =$_SESSION["loginU"];
@@ -90,21 +91,19 @@ $loginU =$_SESSION["loginU"];
                         <div class="col-md-8 col-lg-9">
                             <p> <select id="TipoE" name="TipoE" type="text" placeholder="Tipo estancia" class="form-control <?php if(isset($errores) && in_array("TipoE", $errores)){ echo " error"; } ?>" value="<?=isset($_POST["TipoE"])?$_POST["TipoE"]:''?>">
                                     <option>--</option>
-                                    <option >Investigacion</option>
-                                    <option >Doctorado</option>
-                                    <option>Invitado</option>
+                                    <option <?php if(isset($_POST["TipoE"]) && $_POST["TipoE"] == "Investigacion"){ echo "selected"; } ?>>Investigacion</option>
+                                    <option <?php if(isset($_POST["TipoE"]) && $_POST["TipoE"] == "Doctorado"){ echo "selected"; } ?>>Doctorado</option>
+                                    <option <?php if(isset($_POST["TipoE"]) && $_POST["TipoE"] == "Invitado"){ echo "selected"; } ?>>Invitado</option>
                                 </select></p>
                         </div>
                     </div>
-
-
-
 
                     <div class="col-md-offset-4 col-lg-offset-3 text-center">
                         <button type="submit" id="AltaEstancia" name="evento" value="altaEstancia" class="btn btn-orange">
                             Alta estancia
                         </button>
                     </div>
+
 
                     <br>
                     <br>

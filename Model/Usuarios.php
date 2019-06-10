@@ -51,7 +51,7 @@ class Usuarios{
 //objetual mysqli
       $this->ConectarBD();
        $insertarUsuario  = "INSERT INTO usuario(LoginU,PasswordU, NombreU, ApellidosU, Telefono, Mail, DNI, FechaNacimiento, TipoContrato,Centro, Departamento, TipoUsuario)
-                          VALUES ('$this->LoginU', '$this->PasswordU', '$this->NombreU', '$this->ApellidosU',  '$this->Telefono', '$this->Mail', '$this->DNI', '$this->FechaNacimiento','$this->TipoContrato', '$this->Centro', '$this->Departamento','$this->TipoUsuario')";
+                          VALUES ('$this->LoginU', MD5('$this->PasswordU'), '$this->NombreU', '$this->ApellidosU',  '$this->Telefono', '$this->Mail', '$this->DNI', '$this->FechaNacimiento','$this->TipoContrato', '$this->Centro', '$this->Departamento','$this->TipoUsuario')";
 		$resultado = $this->mysqli->query($insertarUsuario) or die(mysqli_error($this->mysqli));
 
   }
@@ -61,7 +61,7 @@ class Usuarios{
    public function login(){
 
        $this->ConectarBD();
-       $loginUsuario = "SELECT * FROM usuario WHERE LoginU = '$this->LoginU' AND PasswordU = '$this->PasswordU'";
+       $loginUsuario = "SELECT * FROM usuario WHERE LoginU = '$this->LoginU' AND PasswordU = MD5('$this->PasswordU')";
        $loginUsuario = $this->mysqli->query($loginUsuario) or die(mysqli_error($this->mysqli));
        if (isset($loginUsuario)){
            $row=mysqli_fetch_assoc ($loginUsuario);

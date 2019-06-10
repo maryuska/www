@@ -92,7 +92,7 @@ require_once 'View/Structure/Nav.php';
                                                 <input type="hidden" name="controlador" value="Tesis">
                                                 <input type="hidden" name="evento" value="borrarTesis">
                                                 <input type="hidden" name="CodigoTesis" value="<?php echo $row['CodigoTesis']; ?>">
-                                                <button type="button" class="btn btn-transparent btn-orange" onClick="window.location.href='index.php?controlador=Tesis&evento=consultarTesis&CodigoTesis=<?php echo $row['CodigoTesis']; ?>'">
+                                                <button type="button" class="btn btn-transparent btn-orange" onClick="window.location.href='index.php?controlador=Tesis&evento=consultarTesisAdmin&CodigoTesis=<?php echo $row['CodigoTesis']; ?>'">
                                                     Modificar
                                                 </button>
                                                 <button type="button" class="btn btn-transparent btn-orange" onClick="abrirConfirmBorrarTesis('formBorrarTesis<?php echo $contador; ?>', '<?php echo $row['CodigoTesis']." ".$row['AutorTesis']; ?>');">

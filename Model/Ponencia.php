@@ -12,7 +12,7 @@ class Ponencia{
     private $LugarCP;
     private $PaisCP;
 
-//constructor de ponencia
+//Constructor de ponencia
     public function __construct($CodigoP = NULL, $TituloP = NULL, $CongresoP = NULL, $FechaIniCP = NULL, $FechaFinCP = NULL, $LugarCP = NULL, $PaisCP = NULL ){
         $this->CodigoP = $CodigoP;
         $this->TituloP = $TituloP;
@@ -22,6 +22,7 @@ class Ponencia{
         $this->LugarCP= $LugarCP;
         $this->PaisCP= $PaisCP;
     }
+	
 //Función para conectarnos a la Base de datos
     function ConectarBD()
     {
@@ -31,7 +32,8 @@ class Ponencia{
             echo "Fallo al conectar a MySQL: (" . $this->mysqli->connect_errno . ") " . $this->mysqli->connect_error;
         }
     }
-//alta de una nueva ponencia
+	
+//Alta de una nueva ponencia
     public function AltaPonencia() {
         $this->ConectarBD();
         $insertarPonencia  = "INSERT INTO ponencia(CodigoP, TituloP, CongresoP, FechaIniCP,FechaFinCP, TipoE,LoginU)
@@ -40,22 +42,21 @@ class Ponencia{
         $resultado =  $this->mysqli->query($insertarPonencia) or die(mysqli_error($this->mysqli));
     }
 
-//consultar una ponencia
+//Consultar una ponencia
     public function ConsultarPonencia($CodigoP){
         $this->ConectarBD();
         $sql=  $this->mysqli->query("SELECT * FROM ponencia  WHERE CodigoP = '$CodigoP'");
         return $sql;
     }
 
-//modificar una ponencia
+//Modificar una ponencia
     public function ModificarPonencia($CodigoP){
         $this->ConectarBD();
         $this->mysqli->query("UPDATE ponencia SET TituloP='$this->TituloP',CongresoP='$this->CongresoP' ,
                       FechaIniCP='$this->FechaIniCP',FechaFinCP='$this->FechaFinCP',LugarCP='$this->LugarCP',PaisCP='$this->PaisCP' where CodigoP = '$CodigoP'") or die (mysqli_error($this->mysqli));
     }
 
-
-//lista de todas las ponencias de un usuario
+//Lista de todas las ponencias de un usuario
     public function ListarPonencias($LoginU){
         $this->ConectarBD();
         $sql=  $this->mysqli->query("SELECT * FROM ponencia WHERE LoginU= '$LoginU' ORDER BY FechaFinCP DESC");

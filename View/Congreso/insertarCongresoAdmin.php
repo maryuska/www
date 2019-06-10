@@ -5,8 +5,6 @@ require_once 'View/Structure/Header.php';
 // Menu
 require_once 'View/Structure/Nav.php';
 
-$loginU =$_SESSION["loginU"];
-
 ?>
 <div class="container-fluid">
     <div class="row">
@@ -45,9 +43,9 @@ $loginU =$_SESSION["loginU"];
                         <label class="col-md-4 col-lg-3 control-label" for="LoginU">Login usuario</label>
                         <div class="col-md-8 col-lg-9">
                             <p> <select id="LoginU" name="LoginU" type="text" placeholder="Login usuario" class="form-control <?php if(isset($errores) && in_array("LoginU", $errores)){ echo " error"; } ?>" value="<?=isset($_POST["LoginU"])?$_POST["LoginU"]:''?>">
-                                    <option>--</option>
+                                    <option value="">--</option>
                                     <?php $rows = $_SESSION["listarUsuarios"]; foreach ($rows as $row){ ?>
-                                        <option value="<?php echo $row['LoginU'];?>"><?php echo $row['LoginU']." - ".$row['NombreU'];?></option>
+                                        <option value="<?php echo $row['LoginU'];?>" <?php if(isset($_POST["LoginU"]) && $_POST["LoginU"] == $row['LoginU']){ echo "selected"; } ?>><?php echo $row['LoginU']." - ".$row['NombreU'];?></option>
                                     <?php } ?>
                                 </select></p>
                         </div>
@@ -57,7 +55,6 @@ $loginU =$_SESSION["loginU"];
                         <label class="col-md-4 col-lg-3 control-label" for="CodigoC">Código Congreso</label>
                         <div class="col-md-8 col-lg-9">
                             <input id="CodigoC" name="CodigoC" type="text" placeholder="Codigo congreso" class="form-control <?php if(isset($errores) && in_array("CodigoC", $errores)){ echo " error"; } ?>" value="<?=isset($_POST["CodigoC"])?$_POST["CodigoC"]:''?>" >
-                            <input id="LoginU" name="LoginU" type="text" class="hidden" value="<?php echo $loginU; ?>"  >
                         </div>
                     </div>
 
@@ -95,13 +92,13 @@ $loginU =$_SESSION["loginU"];
                         <label class="col-md-4 col-lg-3 control-label" for="TipoParticipacionC">Tipo Participación</label>
                         <div class="col-md-8 col-lg-9">
                             <p> <select id="TipoParticipacionC" name="TipoParticipacionC" type="text" placeholder="Tipo Participacion" class="form-control <?php if(isset($errores) && in_array("TipoParticipacionC", $errores)){ echo " error"; } ?>" value="<?=isset($_POST["TipoParticipacionC"])?$_POST["TipoParticipacionC"]:''?>">
-                                    <option>--</option>
-                                    <option>MCO</option>
-                                    <option>MCC</option>
-                                    <option>R</option>
-                                    <option>C</option>
-                                    <option>PCO</option>
-                                    <option>PCC</option>
+                                    <option value="">--</option>
+                                    <option <?php if(isset($_POST["TipoParticipacionC"]) && $_POST["TipoParticipacionC"] == "MCO"){ echo "selected"; } ?>>MCO</option>
+                                    <option <?php if(isset($_POST["TipoParticipacionC"]) && $_POST["TipoParticipacionC"] == "MCC"){ echo "selected"; } ?>>MCC</option>
+                                    <option <?php if(isset($_POST["TipoParticipacionC"]) && $_POST["TipoParticipacionC"] == "R"){ echo "selected"; } ?>>R</option>
+                                    <option <?php if(isset($_POST["TipoParticipacionC"]) && $_POST["TipoParticipacionC"] == "C"){ echo "selected"; } ?>>C</option>
+                                    <option <?php if(isset($_POST["TipoParticipacionC"]) && $_POST["TipoParticipacionC"] == "PCO"){ echo "selected"; } ?>>PCO</option>
+                                    <option <?php if(isset($_POST["TipoParticipacionC"]) && $_POST["TipoParticipacionC"] == "PCC"){ echo "selected"; } ?>>PCC</option>
                                 </select></p>
                         </div>
                     </div>
@@ -124,6 +121,10 @@ $loginU =$_SESSION["loginU"];
 </div>
 </div>
 <?php
+
+// Eliminamos el listado de usuarios cargado en session
+unset($_SESSION["listarUsuarios"]);
+
 // Pie y cierre de html, body
 require_once 'View/Structure/Footer.php';
 ?>

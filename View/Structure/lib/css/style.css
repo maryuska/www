@@ -64,7 +64,8 @@ h1 {
 
 /* Errores */
 
-input.error { 
+input.error,
+select.error { 
     border-color:red; 
 }
 
@@ -155,4 +156,13 @@ input.error {
     color: #ff7514 !important;
     background-color: #4C4C4C;
     border: 0px solid #000000;
+}
+
+/* Dispositivos XS */
+@media (max-width: 992px) {
+
+    .crudLabelAutor{
+        display: none;
+    }
+
 }

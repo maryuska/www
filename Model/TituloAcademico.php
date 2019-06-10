@@ -18,9 +18,9 @@ class TituloAcademico
         $this->FechaTitulo = $FechaTitulo;
         $this->CentroTitulo = $CentroTitulo;
     }
-    // Crea un titulo asociado a un usuario en la bd
-    // Devuelve true o false segun se cree exitosamente o no
-    //Función para conectarnos a la Base de datos
+// Crea un titulo asociado a un usuario en la bd
+// Devuelve true o false segun se cree exitosamente o no
+//Función para conectarnos a la Base de datos
     function ConectarBD()
     {
         $this->mysqli = new mysqli("localhost", "docente", "docente", "datos_curriculares");
@@ -29,6 +29,7 @@ class TituloAcademico
             echo "Fallo al conectar a MySQL: (" . $this->mysqli->connect_errno . ") " . $this->mysqli->connect_error;
         }
     }
+//Alta titulo academico
     public function AltaTituloAcademico()
     {
         $this->ConectarBD();
@@ -37,8 +38,8 @@ class TituloAcademico
 
         $resultado = $this->mysqli->query($insertarTituloAcademico) or die(mysqli_error($this->mysqli));
     }
-    //lista todos las titulosAcademicos del usuario
 
+//Lista todos las titulosAcademicos del usuario
     public function ListarTitulosAcademicos($LoginU)
     {
         $this->ConectarBD();
@@ -46,14 +47,15 @@ class TituloAcademico
         return $sql;
     }
 
-
+//Modifica Titulo Academico
     public function ModificarTituloAcademico($LoginU, $NombreTitulo){
         $sql = $this->mysqli->query("UPDATE titulo_academico SET NombreTitulo='$this->NombreTitulo',FechaTitulo='$this->FechaTitulo',CentroTitulo='$this->CentroTitulo'
 				WHERE LoginU = '$LoginU' AND NombreTitulo = '$NombreTitulo'")
         or die(mysqli_error($this->mysqli));
 
     }
-    //borrar titulos academicos de un usuario
+
+//Borrar titulos academicos de un usuario
     public function BorrarTitulosUsuario($Login){
         $this->ConectarBD();
         $this->mysqli->query("DELETE FROM titulo_academico WHERE LoginU= '$Login'")or die(mysqli_error($this->mysqli));

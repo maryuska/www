@@ -298,7 +298,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 -- Dumping data for table `usuario`
 --
 
-INSERT INTO `usuario` VALUES ('admin', 'admin', 'Administrador', '','','','','','','','','A');
+INSERT INTO `usuario` VALUES ('admin', MD5('admin'), 'Administrador', '','','','','','','','','A');
 
 
 --
@@ -331,7 +331,7 @@ CREATE TABLE IF NOT EXISTS `universidad` (
 --
 DROP TABLE IF EXISTS `autor`;
 CREATE TABLE IF NOT EXISTS `autor` (
-  `CodigoAutor` int(11) NOT NULL ,
+  `CodigoAutor` int(11) NOT NULL AUTO_INCREMENT,
   `NombreAutor` varchar(40)COLLATE latin1_spanish_ci NOT NULL default '',
   `LoginU` varchar(15)COLLATE latin1_spanish_ci NOT NULL default '',
  PRIMARY KEY (`CodigoAutor`),
@@ -515,6 +515,27 @@ CREATE TABLE IF NOT EXISTS `autor_articulo` (
 --
 -- Restricciones para tablas volcadas
 --
+
+
+--
+-- Estructura de tabla para la tabla `usuario_articulo`
+--
+
+CREATE TABLE `usuario_articulo` (
+  `CodigoA` int(11) NOT NULL,
+  `LoginU` varchar(15) COLLATE latin1_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+
+--
+-- Indices de la tabla `usuario_articulo`
+--
+ALTER TABLE `usuario_articulo`
+  ADD PRIMARY KEY (`CodigoA`,`LoginU`),
+  ADD KEY `FK_USUARIO_ARTICULO_ARTICULO` (`CodigoA`),
+  ADD KEY `FK_USUARIO_ARTICULO_USUARIO` (`LoginU`);
+
+
+
 
 --
 -- Filtros para la tabla `tesis`

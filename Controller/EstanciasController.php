@@ -1,37 +1,65 @@
 <?php
 // Controlador de Proyectos Dirigidos
 require_once 'Controller/ControllerController.php';
+require_once 'Model/Usuarios.php';
 require_once 'Model/Estancias.php';
 $evento = $_REQUEST['evento'];
 
 switch ($evento) {
 
 
-    // Página insertar estancia
+// Página insertar estancia
     case "paginaInsertarEstancia":
         require_once "View/Estancia/insertarEstancia.php";
         break;
 
-    // Página insertar estancia admin
+// Página insertar estancia admin
     case "paginaInsertarEstanciaAdmin":
+        $Usuario = new Usuarios("","","","","","","","","");
+        $consultarUsuarios = $Usuario->ListarUsuarios();
+
+        $consulta = array();
+        while($row = mysqli_fetch_array($consultarUsuarios)){
+            array_push($consulta, $row);
+        }
+        $_SESSION["listarUsuarios"] = $consulta;
         require_once "View/Estancia/insertarEstanciaAdmin.php";
         break;
 
+//alta estancia modificado
+//Dar alta una estancia
     case 'altaEstancia':
         $loginU=$_POST["LoginU"];
         $estancia = new Estancias($_POST["CodigoE"],$_POST["CentroE"],$_POST["UniversidadE"],$_POST["PaisE"],$_POST["FechaInicioE"],$_POST["FechaFinE"],$_POST["TipoE"],$_POST["LoginU"]);
-        $estancia->AltaEstancia();
-        header("Location: index.php?controlador=Estancias&evento=listarEstancias&LoginU=$loginU");
-
+        $CodigoE = $_REQUEST['CodigoE'];		
+        $estancia -> consultarEstancia($CodigoE);
+		
+        if(!isset($usuario)){
+			anadirMensaje("| SUCCESS | La estancia: ".$_POST["CodigoE"]." ya existe","success");
+			header('location: View/Estancia/insertarEstancia.php');
+		}else{
+			$estancia->AltaEstancia();
+			header("Location: index.php?controlador=Estancias&evento=listarEstancias&LoginU=$loginU");
+		}
+		
     break;
 
+//Dar alta una estancia como Admin
     case 'altaEstanciaAdmin':
+       $estancia = new Estancias($_POST["CodigoE"],$_POST["CentroE"],$_POST["UniversidadE"],$_POST["PaisE"],$_POST["FechaInicioE"],$_POST["FechaFinE"],$_POST["TipoE"],$_POST["LoginU"]);
+        $CodigoE = $_REQUEST['CodigoE'];		
+        $estancia -> consultarEstancia($CodigoE);
+		
+		if(!isset($usuario)){
+			anadirMensaje("| SUCCESS | La estancia: ".$_POST["CodigoE"]." ya existe","success");
+			header('location: View/Estancia/insertarEstancia.php');
+		}else{
+			$estancia->AltaEstancia();
+			header("Location: index.php?controlador=Estancias&evento=listarEstanciasAdmin");
+		}
+        break;		
 
-        $estancia = new Estancias($_POST["CodigoE"],$_POST["CentroE"],$_POST["UniversidadE"],$_POST["PaisE"],$_POST["FechaInicioE"],$_POST["FechaFinE"],$_POST["TipoE"],$_POST["Login"]);
-        $estancia->AltaEstancia();
-        header("Location: index.php?controlador=Estancias&evento=listarEstanciasAdmin");
-        break;
-
+//Consultar una estancia para modificar
     case 'consultarEstancia':
 
         $estancia = new Estancias("","","","","","","","");
@@ -47,7 +75,35 @@ switch ($evento) {
 
         break;
 
+//Consultar una estancia para modificar como admin
+    case 'consultarEstanciaAdmin':
+
+        $Usuario = new Usuarios("","","","","","","","","");
+        $consultarUsuarios = $Usuario->ListarUsuarios();
+
+        $consulta = array();
+        while($row = mysqli_fetch_array($consultarUsuarios)){
+            array_push($consulta, $row);
+        }
+        $_SESSION["listarUsuarios"] = $consulta;
+
+        $estancia = new Estancias("","","","","","","","");
+        $CodigoE = $_REQUEST['CodigoE'];
+        $consultaE = $estancia->ConsultarEstancia($CodigoE);
+        $consulta = array();
+        while($row1 = mysqli_fetch_array($consultaE)){
+            array_push($consulta, $row1);
+        }
+        $_SESSION["consultarEstancia"] = $consulta;
+
+        require_once "View/Estancia/modificarEstanciaAdmin.php";
+
+        break;
+
+//Modificar una estancia
     case 'modificarEstancia':
+
+        $tipou=$_SESSION["TipoUsuario"];
 
         $CodigoE = $_POST['CodigoE'];
         $CentroE = $_POST['CentroE'];
@@ -61,12 +117,23 @@ switch ($evento) {
         $estancia = new Estancias($CodigoE, $CentroE, $UniversidadE, $PaisE, $FechaInicioE, $FechaFinE, $TipoE, $LoginU );
         $errores    = $estancia->validarEstancia($_POST);
         if(!empty($errores)){
-            // Tiene errores de validación volvemos a la página anterior
-            require_once "View/Estancia/modificarEstancia.php";
+            $msgError = "Los campos con el borde rojo son obligatorios.";
+            $consultaE = $estancia->ConsultarEstancia($CodigoE);
+            $consulta = array();
+            while($row1 = mysqli_fetch_array($consultaE)){
+                array_push($consulta, $row1);
+            }
+            $_SESSION["consultarEstancia"] = $consulta;
+
+            if($tipou == 'U') {
+                require_once "View/Estancia/modificarEstancia.php";
+            }else{
+                require_once "View/Estancia/modificarEstanciaAdmin.php";
+            }
         }
         else{
             $estancia->ModificarEstancia($CodigoE);
-            $tipou=$_SESSION["TipoUsuario"];
+            $loginU = $_POST['LoginU'];
             if($tipou == 'U'){
                 header("Location: index.php?controlador=Estancias&evento=listarEstancias&LoginU=$loginU");
             }else{
@@ -76,7 +143,7 @@ switch ($evento) {
 
     break;
 
-//listar estancias de usuario
+//Listar estancias de usuario
     case 'listarEstancias':
         $LoginU = $_REQUEST['LoginU'];
         $lista = new Estancias("","","","","","","","");
@@ -113,7 +180,7 @@ switch ($evento) {
 
     break;
 
-//listar todas las estancias como admin
+//Listar todas las estancias como admin
     case 'listarEstanciasAdmin':
 
         $lista = new Estancias("","","","","","","","");
@@ -152,7 +219,7 @@ switch ($evento) {
 
         break;
 
-//borrar estancia
+//Borrar estancia
     case 'borrarEstancia':
         $CodigoE=$_REQUEST["CodigoE"];
         $Estancia = new Estancias("","","","","","","","");
@@ -168,7 +235,7 @@ switch ($evento) {
         }
         break;
 
-//buscar estancia
+//Buscar estancia
     case 'buscarEstancia':
         $buscar= $_POST['textoBusqueda'];
 
@@ -188,14 +255,10 @@ switch ($evento) {
             }else{
                 require_once "View/Estancia/buscarEstanciasAdmin.php";
             }
-
-
         }else{
             echo 'ERROR: no se encontro ningun resultado';
         }
         break;
-
-
 
     default:
 

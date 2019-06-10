@@ -2,37 +2,91 @@
 // Controlador de congresos
 
 require_once 'Model/Congreso.php';
+require_once 'Model/Usuarios.php';
+require_once 'Controller/ControllerController.php';
+
 $evento = $_REQUEST['evento'];
 
 switch ($evento) {
 
-    // Página insertar congreso
+// Página insertar congreso
     case "paginaInsertarCongreso":
         require_once "View/Congreso/insertarCongreso.php";
         break;
-    // Página insertar congreso admin
+		
+// Página insertar congreso admin
     case "paginaInsertarCongresoAdmin":
+
+        $Usuario = new Usuarios("","","","","","","","","");
+        $consultarUsuarios = $Usuario->ListarUsuarios();
+
+        $consulta = array();
+        while($row = mysqli_fetch_array($consultarUsuarios)){
+            array_push($consulta, $row);
+        }
+        $_SESSION["listarUsuarios"] = $consulta;
+
         require_once "View/Congreso/insertarCongresoAdmin.php";
         break;
+		
+//alta congreso modificada	
+//Alta de un congreso	
     case 'altaCongreso':
+
+        $tipou=$_SESSION["TipoUsuario"];
         $Login=$_REQUEST["LoginU"];
         $CodigoC = $_REQUEST['CodigoC'];
         $TipoParticipacionC= $_REQUEST['TipoParticipacionC'];
         $congreso = new Congreso($_POST["CodigoC"],$_POST["NombreC"],$_POST["AcronimoC"],$_POST["AnhoC"],$_POST["LugarC"]);
-        $p=new Congreso("","","","","");
-        $congreso->AltaCongreso();
-        $p->Participa($Login,$CodigoC,$TipoParticipacionC);
-        $tipou=$_SESSION["TipoUsuario"];
-        if($tipou == 'U') {
-            header("Location: index.php?controlador=Congresos&evento=listarCongresos&LoginU=$Login");
-        }else{
-            header("Location: index.php?controlador=Congresos&evento=listarCongresosAdmin");
+
+        $Usuario = new Usuarios("","","","","","","","","");
+        $consultarUsuarios = $Usuario->ListarUsuarios();
+        $consulta = array();
+        while($row = mysqli_fetch_array($consultarUsuarios)){
+            array_push($consulta, $row);
         }
+        $_SESSION["listarUsuarios"] = $consulta;
+
+        $errores = $congreso->validarCongreso($_POST);
+
+        if(!empty($errores)){
+            $msgError = "Los campos con el borde rojo son obligatorios.";
+            if($tipou == 'U') {
+                require_once "View/Congreso/insertarCongreso.php";
+            }else{
+                require_once "View/Congreso/insertarCongresoAdmin.php";
+            }
+        }
+        else{
+
+            $consultaC = $congreso->ConsultarCongreso($CodigoC);
+
+            if(mysqli_num_rows($consultaC) > 0){    // Existe congreso
+
+                $errores = array("LoginU", "CodigoC", "NombreC", "AcronimoC", "AnhoC", "LugarC", "TipoParticipacionC");
+                $msgError = "Ya existe este congreso no puede insertar el mismo.";
+
+                if($tipou == 'U') {
+                    require_once "View/Congreso/insertarCongreso.php";
+                }else{
+                    require_once "View/Congreso/insertarCongresoAdmin.php";
+                }
+
+            }else{
+                $congreso->AltaCongreso();
+                $congreso->Participa($Login,$CodigoC,$TipoParticipacionC);
+                if($tipou == 'U') {
+                    header("Location: index.php?controlador=Congresos&evento=listarCongresos&LoginU=$Login");
+                }else{
+                    header("Location: index.php?controlador=Congresos&evento=listarCongresosAdmin");
+                }
+            }
+
+        }
+
     break;
 
-
-
-
+//Consultar congreso para modificar
     case 'consultarCongreso':
 
         $congreso = new Congreso("","","","","");
@@ -48,7 +102,35 @@ switch ($evento) {
 
         break;
 
+//Consultar congreso para modificar
+    case 'consultarCongresoAdmin':
+
+        $Usuario = new Usuarios("","","","","","","","","");
+        $consultarUsuarios = $Usuario->ListarUsuarios();
+
+        $consulta = array();
+        while($row = mysqli_fetch_array($consultarUsuarios)){
+            array_push($consulta, $row);
+        }
+        $_SESSION["listarUsuarios"] = $consulta;
+            
+        $congreso = new Congreso("","","","","");
+        $CodigoC = $_REQUEST['CodigoC'];
+        $consultaC = $congreso->ConsultarCongreso($CodigoC);
+        $consulta = array();
+        while($row1 = mysqli_fetch_array($consultaC)){
+            array_push($consulta, $row1);
+        }
+        $_SESSION["consultarCongreso"] = $consulta;
+
+        require_once "View/Congreso/modificarCongresoAdmin.php";
+
+    break;
+
+//Modificar un congreso
     case 'modificarCongreso':
+
+        $tipou=$_SESSION["TipoUsuario"];
 
         $CodigoC = $_POST['CodigoC'];
         $TipoParticipacionC = $_POST['TipoParticipacionC'];
@@ -56,30 +138,42 @@ switch ($evento) {
         $AcronimoC = $_POST['AcronimoC'];
         $AnhoC = $_POST['AnhoC'];
         $LugarC = $_POST['LugarC'];
-        $Login = $_POST['Login'];
-
+        $Login = $_POST['LoginU'];
+        $LoginAnt = $_POST['LoginU_ant'];
 
         $congreso = new Congreso( $CodigoC,$NombreC, $AcronimoC ,$AnhoC ,$LugarC );
-      //  $errores    = $congreso->validarCongreso($_POST);
-      //  if(!empty($errores)){
-            // Tiene errores de validación volvemos a la página anterior
-        //    require_once "View/Congreso/modificarCongreso.php";
-        //   }
-      //  else{
-            
-            $congreso->ModificarCongreso($CodigoC,$TipoParticipacionC);
 
-            $tipou=$_SESSION["TipoUsuario"];
+        $errores = $congreso->validarCongreso($_POST);
+
+        if(!empty($errores)){
+            $msgError = "Los campos con el borde rojo son obligatorios.";
+            $consultaC = $congreso->ConsultarCongreso($CodigoC);
+            $consulta = array();
+            while($row1 = mysqli_fetch_array($consultaC)){
+                array_push($consulta, $row1);
+            }
+            $_SESSION["consultarCongreso"] = $consulta;
+
+            if($tipou == 'U') {
+                require_once "View/Congreso/modificarCongreso.php";
+            }else{
+                require_once "View/Congreso/modificarCongresoAdmin.php";
+            }
+        }
+        else{ 
+            $congreso->ModificarCongreso($CodigoC,$TipoParticipacionC);
+            $congreso->BorrarParticipa($LoginAnt, $CodigoC);
+            $congreso->Participa($Login,$CodigoC,$TipoParticipacionC);
             if($tipou == 'U'){
-                header("Location: index.php?controlador=Congresos&evento=listarCongresos&LoginU=$loginU");
+                header("Location: index.php?controlador=Congresos&evento=listarCongresos&LoginU=$Login");
             }else{
                 header("Location: index.php?controlador=Congresos&evento=listarCongresosAdmin");
             }
-      //  }
+        }
 
         break;
 
-//listar congresos por usuario
+//Listar congresos por usuario
     case 'listarCongresos':
 
         $LoginU = $_REQUEST['LoginU'];
@@ -140,7 +234,7 @@ switch ($evento) {
 
         break;
 
-///listar congresosa nivel administrador
+///Listar congresos a nivel administrador
     case 'listarCongresosAdmin':
 
         $lista = new Congreso("","","","","");
@@ -200,7 +294,7 @@ switch ($evento) {
 
         break;
 
-//buscar congreso
+//Buscar congreso
     case 'buscarCongreso':
         $buscar= $_POST['textoBusqueda'];
 
@@ -226,25 +320,24 @@ switch ($evento) {
         }
         break;
 
-//borrar congreso
+//Borrar congreso
     case 'borrarCongreso':
+
+        $loginU =$_SESSION["loginU"];
         $CodigoC=$_REQUEST["CodigoC"];
         $Login=$_REQUEST["LoginU"];
         $Congreso = new Congreso("","","","","");
-        $participacion->BorrarParticipa($Login,$CodigoC);
+        $Congreso->BorrarParticipa($Login,$CodigoC);
         $Congreso->BorrarCongreso($CodigoC);
 
         $tipou=$_SESSION["TipoUsuario"];
 
         if($tipou == 'U'){
-            header("Location: index.php?controlador=Congreso&evento=listarCongresos&LoginU=$loginU");
+            header("Location: index.php?controlador=Congresos&evento=listarCongresos&LoginU=$loginU");
         }else{
-            header("Location: index.php?controlador=Congreso&evento=listarCongresosAdmin");
+            header("Location: index.php?controlador=Congresos&evento=listarCongresosAdmin");
         }
         break;
-
-
-
 
     default:
 

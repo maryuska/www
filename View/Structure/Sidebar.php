@@ -128,7 +128,7 @@ function sidebarAdministrador($loginU){
         </a>
     </li>
     <li class="sidebar-options">
-        <a class="nounderline" href="index.php?controlador=Articulos&evento=listarArticulos">
+        <a class="nounderline" href="index.php?controlador=Articulos&evento=listarArticulosAdmin">
             Artículos
         </a>
     </li>
@@ -148,7 +148,7 @@ function sidebarAdministrador($loginU){
         </a>
     </li>
     <li class="sidebar-options">
-        <a class="nounderline" href="index.php?controlador=Proyectos&evento=listarProyectos">
+        <a class="nounderline" href="index.php?controlador=Proyectos&evento=listarProyectosAdmin">
             Proyectos
         </a>
     </li>

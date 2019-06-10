@@ -18,7 +18,7 @@ class Universidad
         $this->FechaInicio = $FechaInicio;
         $this->FechaFin = $FechaFin;
     }
-    //Función para conectarnos a la Base de datos
+//Función para conectarnos a la Base de datos
     function ConectarBD()
     {
         $this->mysqli = new mysqli("localhost", "docente", "docente", "datos_curriculares");
@@ -27,8 +27,9 @@ class Universidad
             echo "Fallo al conectar a MySQL: (" . $this->mysqli->connect_errno . ") " . $this->mysqli->connect_error;
         }
     }
-    // Crea una universidad asociada a un usuario en la bd
-    // Devuelve true o false segun se cree exitosamente o no
+	
+// Crea una universidad asociada a un usuario en la bd
+// Devuelve true o false segun se cree exitosamente o no
     public function AltaUniversidad()
     {
         $this->ConectarBD();
@@ -37,8 +38,8 @@ class Universidad
 
         $resultado = $this->mysqli->query($insertarUniversidad) or die(mysqli_error( $this->mysqli));
     }
-    //lista todos las universidades del usuario
-
+	
+//Lista todos las universidades del usuario
     public function ListarUniversidades($Login)
     {
         $this->ConectarBD();
@@ -48,7 +49,7 @@ class Universidad
         $_SESSION["ListarUniversidades"] = $universidades;
     }
 
-    //borrar universidades de un usuario
+//borrar universidades de un usuario
     public function BorrarUniversidadesUsuario($Login)
     {
         $this->ConectarBD();
