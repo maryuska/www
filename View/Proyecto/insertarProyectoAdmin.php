@@ -130,7 +130,11 @@ $loginU =$_SESSION["loginU"];
     </div>
 </div>
 </div>
+
 <?php
+// Eliminamos el listado de usuarios cargado en session
+unset($_SESSION["listarUsuarios"]);
+
 // Pie y cierre de html, body
 require_once 'View/Structure/Footer.php';
 ?>

@@ -27,35 +27,73 @@ switch ($evento) {
         require_once "View/Materia/insertarMateriaAdmin.php";
         break;
 		
-//alta materia modificado
+
 //Alta materia
     case 'altaMateria':
     $loginU=$_POST["LoginU"];
 	$codigoM = $_REQUEST["CodigoM"];
     $materia = new Materia($_POST["CodigoM"],$_POST["TipoM"],$_POST["TipoParticipacionM"],$_POST["DenominacionM"],$_POST["TitulacionM"],$_POST["AnhoAcademicoM"],$_POST["CreditosM"],$_POST["CuatrimestreM"],$_POST["LoginU"]);
     $materia -> consultarMateria($codigoM);
-	if(!isset($materia)){
-			anadirMensaje("| SUCCESS | La materia: ".$_POST["CodigoM"]." ya existe","success");
-			header('location: View/Materia/insertarMateria.php');
-		}else{	
-		$materia->AltaMateria();
-        header("Location: index.php?controlador=Materias&evento=listarMaterias&LoginU=$loginU");
-		}
+
+    $errores = $materia->validarMateria($_POST);
+
+        if(!empty($errores)){
+            $msgError = "Los campos con el borde rojo son obligatorios.";
+            require_once "View/Materia/insertarMateria.php";
+        }
+        else {
+
+            $consultaM = $materia->ConsultarMateria($codigoM);
+
+            if ($consultaM->num_rows > 0) {    // Existe la materia
+                $errores = array("CodigoM", "TipoM", "TipoParticipacionM", "DenominacionM", "TitulacionM", "AnhoAcademicoM", "CreditosM", "CuatrimestreM","LoginU");
+                $msgError = "La materia: ". $_POST["CodigoM"]. " ". $_POST["DenominacionM"]. " ya existe, no puede insertar la misma.";
+                require_once "View/Materia/insertarMateria.php";
+            } else {
+                $materia->AltaMateria();
+
+                header("Location: index.php?controlador=Materias&evento=listarMaterias&LoginU=" . $loginU);
+            }
+        }
+
     break;
 
 //Alta materia como Admin
     case 'altaMateriaAdmin':
 
         $codigoM = $_REQUEST["CodigoM"];
-		$materia = new Materia($_POST["CodigoM"],$_POST["TipoM"],$_POST["TipoParticipacionM"],$_POST["DenominacionM"],$_POST["TitulacionM"],$_POST["AnhoAcademicoM"],$_POST["CreditosM"],$_POST["CuatrimestreM"],$_POST["LoginU"]);
+		$materia = new Materia($_POST["CodigoM"],$_POST["TipoM"],$_POST["TipoParticipacionM"],$_POST["DenominacionM"],$_POST["TitulacionM"],$_POST["AnhoAcademicoM"],$_POST["CreditosM"],$_POST["CuatrimestreM"],$_POST["Login"]);
 		$materia -> consultarMateria($codigoM);
-		if(!isset($materia)){
-			anadirMensaje("| SUCCESS | La materia: ".$_POST["CodigoM"]." ya existe","success");
-			header('location: View/Materia/insertarMateria.php');
-		}else{	
-			$materia->AltaMateria(); 
-			header("Location: index.php?controlador=Materias&evento=listarMateriasAdmin");
-		}
+
+        $Usuario = new Usuarios("","","","","","","","","");
+        $consultarUsuarios = $Usuario->ListarUsuarios();
+        $consulta = array();
+        while($row = mysqli_fetch_array($consultarUsuarios)){
+            array_push($consulta, $row);
+        }
+        $_SESSION["listarUsuarios"] = $consulta;
+
+        $errores = $materia->validarMateria($_POST);
+
+        if(!empty($errores)){
+            $msgError = "Los campos con el borde rojo son obligatorios.";
+            require_once "View/Materia/insertarMateriaAdmin.php";
+        }
+        else {
+
+            $consultaM = $materia->ConsultarMateria($codigoM);
+
+            if ($consultaM->num_rows > 0) {    // Existe la materia
+                $errores = array("CodigoM", "TipoM", "TipoParticipacionM", "DenominacionM", "TitulacionM", "AnhoAcademicoM", "CreditosM", "CuatrimestreM","LoginU");
+                $msgError = "La materia: ". $_POST["CodigoM"]. " ". $_POST["DenominacionM"]. " ya existe, no puede insertar la misma.";
+                require_once "View/Materia/insertarMateriaAdmin.php";
+            } else {
+                $materia->AltaMateria();
+
+                header("Location: index.php?controlador=Materias&evento=listarMateriasAdmin");
+            }
+        }
+
         break;
 
 //Consultar materia para modificar

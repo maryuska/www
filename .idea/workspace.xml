@@ -9,25 +9,116 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DockManager">
+    <window id="1">
+      <content type="file-editors">
+        <state>
+          <leaf>
+            <file leaf-file-name="CongresosController.php" pinned="false" current-in-tab="false">
+              <entry file="file://$PROJECT_DIR$/Controller/CongresosController.php">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="697">
+                    <caret line="82" column="13" lean-forward="true" selection-start-line="49" selection-start-column="8" selection-end-line="82" selection-end-column="13" />
+                    <folding>
+                      <element signature="e#242#346#0#PHP" expanded="false" />
+                      <element signature="e#388#814#0#PHP" expanded="false" />
+                    </folding>
+                  </state>
+                </provider>
+              </entry>
+            </file>
+            <file leaf-file-name="ProyectosDirigidosController.php" pinned="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/Controller/ProyectosDirigidosController.php">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="340">
+                    <caret line="53" column="22" lean-forward="true" selection-start-line="47" selection-start-column="14" selection-end-line="53" selection-end-column="22" />
+                    <folding>
+                      <element signature="e#446#896#0#PHP" expanded="false" />
+                    </folding>
+                  </state>
+                </provider>
+              </entry>
+            </file>
+            <file leaf-file-name="EstanciasController.php" pinned="false" current-in-tab="false">
+              <entry file="file://$PROJECT_DIR$/Controller/EstanciasController.php">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="330">
+                    <caret line="73" column="48" lean-forward="true" selection-start-line="67" selection-start-column="7" selection-end-line="73" selection-end-column="48" />
+                    <folding>
+                      <element signature="e#252#356#0#PHP" expanded="false" />
+                      <element signature="e#396#821#0#PHP" expanded="false" />
+                      <element signature="e#6700#8216#0#PHP" expanded="false" />
+                      <element signature="e#8262#9768#0#PHP" expanded="false" />
+                      <element signature="e#9792#10265#0#PHP" expanded="false" />
+                      <element signature="e#10289#11095#0#PHP" expanded="false" />
+                    </folding>
+                  </state>
+                </provider>
+              </entry>
+            </file>
+          </leaf>
+        </state>
+      </content>
+    </window>
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="confirmaciones.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/View/Structure/lib/js/confirmaciones.js">
+      <file leaf-file-name="ProyectosController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Controller/ProyectosController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="245">
-              <caret line="236" column="11" lean-forward="true" selection-start-line="236" selection-start-column="11" selection-end-line="236" selection-end-column="11" />
+            <state relative-caret-position="306">
+              <caret line="29" column="24" lean-forward="false" selection-start-line="29" selection-start-column="24" selection-end-line="29" selection-end-column="24" />
               <folding>
-                <element signature="n#!!doc" expanded="true" />
+                <element signature="e#384#809#0#PHP" expanded="false" />
+                <element signature="e#841#3017#0#PHP" expanded="false" />
+                <element signature="e#3062#3520#0#PHP" expanded="false" />
+                <element signature="e#3576#4355#0#PHP" expanded="false" />
+                <element signature="e#4385#6161#0#PHP" expanded="false" />
+                <element signature="e#6198#7493#0#PHP" expanded="false" />
+                <element signature="e#7539#8911#0#PHP" expanded="false" />
+                <element signature="e#8935#9736#0#PHP" expanded="false" />
+                <element signature="e#9760#10329#0#PHP" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="insertarProyectoAdmin.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/View/Proyecto/insertarProyectoAdmin.php">
+      <file leaf-file-name="UsuariosController.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Controller/UsuariosController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1911">
-              <caret line="124" column="0" lean-forward="true" selection-start-line="124" selection-start-column="0" selection-end-line="124" selection-end-column="0" />
+            <state relative-caret-position="474">
+              <caret line="80" column="17" lean-forward="true" selection-start-line="80" selection-start-column="17" selection-end-line="80" selection-end-column="17" />
+              <folding>
+                <element signature="e#275#358#0#PHP" expanded="false" />
+                <element signature="e#438#924#0#PHP" expanded="false" />
+                <element signature="e#958#1061#0#PHP" expanded="false" />
+                <element signature="e#1100#1215#0#PHP" expanded="false" />
+                <element signature="e#1253#1738#0#PHP" expanded="false" />
+                <element signature="e#1777#1876#0#PHP" expanded="false" />
+                <element signature="e#5743#6455#0#PHP" expanded="false" />
+                <element signature="e#6498#7181#0#PHP" expanded="false" />
+                <element signature="e#7204#7330#0#PHP" expanded="false" />
+                <element signature="e#7352#7754#0#PHP" expanded="false" />
+                <element signature="e#7779#8875#0#PHP" expanded="false" />
+                <element signature="e#8913#10209#0#PHP" expanded="false" />
+                <element signature="e#10244#10786#0#PHP" expanded="false" />
+                <element signature="e#10812#12510#0#PHP" expanded="false" />
+                <element signature="e#12545#13032#0#PHP" expanded="false" />
+                <element signature="e#13080#13536#0#PHP" expanded="false" />
+                <element signature="e#13578#14024#0#PHP" expanded="false" />
+                <element signature="e#14051#14540#0#PHP" expanded="false" />
+                <element signature="e#14562#15037#0#PHP" expanded="false" />
+                <element signature="e#15063#15888#0#PHP" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="altaUsuarioAdmin.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/View/Usuario/altaUsuarioAdmin.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-561">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -48,8 +139,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/View/ProyectoDirigido/listarProyectosDirigidos.php" />
-        <option value="$PROJECT_DIR$/View/Tesis/listarTesis.php" />
         <option value="$PROJECT_DIR$/Model/ProyectosDirigidos.php" />
         <option value="$PROJECT_DIR$/View/Proyecto/buscarProyecto.php" />
         <option value="$PROJECT_DIR$/View/Proyecto/buscarProyectoAdmin.php" />
@@ -63,8 +152,6 @@
         <option value="$PROJECT_DIR$/Model/Congreso.php" />
         <option value="$PROJECT_DIR$/Controller/ArticulosController.php" />
         <option value="$PROJECT_DIR$/BD/Base_Datos.sql" />
-        <option value="$PROJECT_DIR$/Controller/ProyectosDirigidosController.php" />
-        <option value="$PROJECT_DIR$/View/Estancia/insertarEstanciaAdmin.php" />
         <option value="$PROJECT_DIR$/Model/Estancias.php" />
         <option value="$PROJECT_DIR$/View/Estancia/insertarEstancia.php" />
         <option value="$PROJECT_DIR$/View/Materia/listarMaterias.php" />
@@ -79,26 +166,30 @@
         <option value="$PROJECT_DIR$/View/Estancia/modificarEstanciaAdmin.php" />
         <option value="$PROJECT_DIR$/View/Materia/modificarMateriaAdmin.php" />
         <option value="$PROJECT_DIR$/View/Materia/modificarMateria.php" />
-        <option value="$PROJECT_DIR$/Controller/EstanciasController.php" />
         <option value="$PROJECT_DIR$/View/Proyecto/modificarProyectoAdmin.php" />
         <option value="$PROJECT_DIR$/View/Proyecto/modificarProyecto.php" />
         <option value="$PROJECT_DIR$/Model/Proyecto.php" />
-        <option value="$PROJECT_DIR$/Controller/ProyectosController.php" />
         <option value="$PROJECT_DIR$/View/Tad/modificarTad.php" />
-        <option value="$PROJECT_DIR$/Controller/MateriasController.php" />
-        <option value="$PROJECT_DIR$/Controller/TadController.php" />
         <option value="$PROJECT_DIR$/View/Tad/listarTadAdmin.php" />
         <option value="$PROJECT_DIR$/View/Tad/modificarTadAdmin.php" />
-        <option value="$PROJECT_DIR$/View/Tesis/insertarTesisAdmin.php" />
-        <option value="$PROJECT_DIR$/Controller/TesisController.php" />
         <option value="$PROJECT_DIR$/View/Tesis/modificarTesis.php" />
-        <option value="$PROJECT_DIR$/Controller/UsuariosController.php" />
         <option value="$PROJECT_DIR$/View/Structure/lib/js/confirmaciones.js" />
         <option value="$PROJECT_DIR$/View/Usuario/modificarUsuario.php" />
         <option value="$PROJECT_DIR$/View/Proyecto/insertarProyecto.php" />
-        <option value="$PROJECT_DIR$/View/Proyecto/insertarProyectoAdmin.php" />
         <option value="$PROJECT_DIR$/View/Tesis/modificarTesisAdmin.php" />
         <option value="$PROJECT_DIR$/View/Tesis/listarTesisAdmin.php" />
+        <option value="$PROJECT_DIR$/View/Proyecto/insertarProyectoAdmin.php" />
+        <option value="$PROJECT_DIR$/View/Estancia/insertarEstanciaAdmin.php" />
+        <option value="$PROJECT_DIR$/View/Materia/insertarMateriaAdmin.php" />
+        <option value="$PROJECT_DIR$/View/Tad/insertarTadAdmin.php" />
+        <option value="$PROJECT_DIR$/View/Tesis/insertarTesisAdmin.php" />
+        <option value="$PROJECT_DIR$/Controller/EstanciasController.php" />
+        <option value="$PROJECT_DIR$/Controller/MateriasController.php" />
+        <option value="$PROJECT_DIR$/Controller/ProyectosDirigidosController.php" />
+        <option value="$PROJECT_DIR$/Controller/ProyectosController.php" />
+        <option value="$PROJECT_DIR$/Controller/TesisController.php" />
+        <option value="$PROJECT_DIR$/Controller/TadController.php" />
+        <option value="$PROJECT_DIR$/Controller/UsuariosController.php" />
       </list>
     </option>
   </component>
@@ -153,18 +244,13 @@
             <path>
               <item name="www" type="b2602c69:ProjectViewProjectNode" />
               <item name="www" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Model" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="www" type="b2602c69:ProjectViewProjectNode" />
-              <item name="www" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="View" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="www" type="b2602c69:ProjectViewProjectNode" />
               <item name="www" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="View" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Proyecto" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Usuario" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
           </expand>
           <select />
@@ -216,17 +302,18 @@
       <workItem from="1558531021126" duration="1185000" />
       <workItem from="1559763097594" duration="4332000" />
       <workItem from="1560152434037" duration="13486000" />
-      <workItem from="1560168034318" duration="10665000" />
+      <workItem from="1560168034318" duration="19894000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="156217000" />
+    <option name="totallyTimeSpent" value="165446000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18594436" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18594436" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -254,51 +341,16 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="51" />
+      <option name="time" value="58" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Model/Estancias.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1037">
-          <caret line="2" column="20" lean-forward="false" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
-          <folding>
-            <marker date="1560157670234" expanded="true" signature="1201:1507" ph="INSERT INTO estancia... " />
-            <marker date="1560157670234" expanded="true" signature="1744:1794" ph="SELECT * FRO... estancia" />
-            <marker date="1560157670234" expanded="true" signature="1959:2491" ph="UPDATE estancia... " />
-            <marker date="1560157670234" expanded="true" signature="2726:2796" ph="SELECT * FRO... estancia" />
-            <marker date="1560157670234" expanded="true" signature="3001:3075" ph="SELECT * FRO... estancia" />
-            <marker date="1560157670234" expanded="true" signature="3271:3341" ph="SELECT * FRO... estancia" />
-            <marker date="1560157670234" expanded="true" signature="3535:3604" ph="SELECT * FRO... estancia" />
-            <marker date="1560157670234" expanded="true" signature="3806:3852" ph="SELECT * FRO... estancia" />
-            <marker date="1560157670234" expanded="true" signature="4066:4118" ph="SELECT * FRO... estancia" />
-            <marker date="1560157670234" expanded="true" signature="4323:4371" ph="SELECT * FRO... estancia" />
-            <marker date="1560157670234" expanded="true" signature="4574:4621" ph="SELECT * FRO... estancia" />
-            <marker date="1560157670234" expanded="true" signature="4782:5897" ph="SELECT * FRO... estancia" />
-            <marker date="1560157670234" expanded="true" signature="6152:6198" ph="DELETE FROM estancia... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/View/ProyectoDirigido/insertarProyectoDirigido.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/View/Congreso/listarCongresosAdmin.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1122">
-          <caret line="105" column="124" lean-forward="true" selection-start-line="105" selection-start-column="52" selection-end-line="105" selection-end-column="124" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/View/Materia/listarMaterias.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-398">
           <caret line="455" column="106" lean-forward="false" selection-start-line="455" selection-start-column="106" selection-end-line="455" selection-end-column="106" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -306,6 +358,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="475" column="110" lean-forward="false" selection-start-line="475" selection-start-column="110" selection-end-line="475" selection-end-column="110" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -313,6 +366,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-398">
           <caret line="303" column="110" lean-forward="false" selection-start-line="303" selection-start-column="110" selection-end-line="303" selection-end-column="110" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -320,6 +374,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-398">
           <caret line="316" column="110" lean-forward="false" selection-start-line="316" selection-start-column="110" selection-end-line="316" selection-end-column="110" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -347,17 +402,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/View/ProyectoDirigido/insertarProyectoDirigidoAdmin.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1989">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/View/ProyectoDirigido/listarProyectosDirigidosAdmin.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="138" column="48" lean-forward="true" selection-start-line="138" selection-start-column="32" selection-end-line="138" selection-end-column="48" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -365,14 +414,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="384">
           <caret line="358" column="45" lean-forward="true" selection-start-line="341" selection-start-column="10" selection-end-line="358" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Controller/CongresosController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="51" lean-forward="true" selection-start-line="3" selection-start-column="34" selection-end-line="5" selection-end-column="51" />
           <folding />
         </state>
       </provider>
@@ -388,14 +429,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Controller/ProyectosDirigidosController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="48" lean-forward="true" selection-start-line="17" selection-start-column="6" selection-end-line="24" selection-end-column="48" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -469,27 +502,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Controller/EstanciasController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="333">
-          <caret line="87" column="48" lean-forward="true" selection-start-line="80" selection-start-column="8" selection-end-line="87" selection-end-column="48" />
-          <folding>
-            <element signature="e#5159#6675#0#PHP" expanded="false" />
-            <element signature="e#6721#8227#0#PHP" expanded="false" />
-            <element signature="e#8251#8724#0#PHP" expanded="false" />
-            <element signature="e#8748#9554#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Controller/ProyectosController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="92" column="58" lean-forward="false" selection-start-line="92" selection-start-column="58" selection-end-line="92" selection-end-column="58" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/View/Tad/listarTadAdmin.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="370">
@@ -502,14 +514,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="534">
           <caret line="98" column="28" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="123" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Controller/TadController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="107" column="41" lean-forward="true" selection-start-line="107" selection-start-column="41" selection-end-line="107" selection-end-column="41" />
           <folding />
         </state>
       </provider>
@@ -538,14 +542,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/View/Tesis/insertarTesisAdmin.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="47" column="49" lean-forward="false" selection-start-line="47" selection-start-column="49" selection-end-line="47" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Model/Usuarios.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -564,53 +560,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Controller/TesisController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="135" column="13" lean-forward="true" selection-start-line="123" selection-start-column="12" selection-end-line="135" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Controller/UsuariosController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="284" column="26" lean-forward="false" selection-start-line="284" selection-start-column="10" selection-end-line="284" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Controller/MateriasController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="123" column="45" lean-forward="false" selection-start-line="119" selection-start-column="12" selection-end-line="131" selection-end-column="13" />
-          <folding>
-            <element signature="e#851#1518#0#PHP" expanded="false" />
-            <element signature="e#1550#2188#0#PHP" expanded="false" />
-            <element signature="e#2229#2676#0#PHP" expanded="false" />
-            <element signature="e#5179#7271#0#PHP" expanded="false" />
-            <element signature="e#7316#9371#0#PHP" expanded="false" />
-            <element signature="e#9394#10189#0#PHP" expanded="false" />
-            <element signature="e#10212#10715#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/View/Usuario/modificarUsuario.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="129">
           <caret line="125" column="32" lean-forward="false" selection-start-line="125" selection-start-column="32" selection-end-line="125" selection-end-column="32" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/View/Structure/lib/js/confirmaciones.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="236" column="11" lean-forward="true" selection-start-line="236" selection-start-column="11" selection-end-line="236" selection-end-column="11" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -626,14 +580,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="98" column="26" lean-forward="true" selection-start-line="88" selection-start-column="19" selection-end-line="98" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/View/Tad/insertarTadAdmin.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1122">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -702,11 +648,206 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/View/Tad/insertarTadAdmin.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="333">
+          <caret line="104" column="35" lean-forward="false" selection-start-line="104" selection-start-column="35" selection-end-line="104" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/Tesis/insertarTesisAdmin.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="843">
+          <caret line="127" column="35" lean-forward="false" selection-start-line="127" selection-start-column="35" selection-end-line="127" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/Structure/lib/js/confirmaciones.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="245">
+          <caret line="236" column="11" lean-forward="true" selection-start-line="236" selection-start-column="11" selection-end-line="236" selection-end-column="11" />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/Estancia/insertarEstanciaAdmin.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="313">
+          <caret line="128" column="35" lean-forward="false" selection-start-line="128" selection-start-column="35" selection-end-line="128" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Controller/MateriasController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="41">
+          <caret line="61" column="28" lean-forward="false" selection-start-line="61" selection-start-column="28" selection-end-line="61" selection-end-column="28" />
+          <folding>
+            <element signature="e#379#802#0#PHP" expanded="false" />
+            <element signature="e#2156#3747#0#PHP" expanded="false" />
+            <element signature="e#3788#4235#0#PHP" expanded="false" />
+            <element signature="e#4287#5050#0#PHP" expanded="false" />
+            <element signature="e#5076#6702#0#PHP" expanded="false" />
+            <element signature="e#6738#8830#0#PHP" expanded="false" />
+            <element signature="e#8875#10930#0#PHP" expanded="false" />
+            <element signature="e#10953#11748#0#PHP" expanded="false" />
+            <element signature="e#11771#12274#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/Materia/insertarMateriaAdmin.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2158">
+          <caret line="150" column="35" lean-forward="false" selection-start-line="150" selection-start-column="35" selection-end-line="150" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Controller/EstanciasController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="73" column="48" lean-forward="true" selection-start-line="67" selection-start-column="7" selection-end-line="73" selection-end-column="48" />
+          <folding>
+            <element signature="e#252#356#0#PHP" expanded="false" />
+            <element signature="e#396#821#0#PHP" expanded="false" />
+            <element signature="e#6700#8216#0#PHP" expanded="false" />
+            <element signature="e#8262#9768#0#PHP" expanded="false" />
+            <element signature="e#9792#10265#0#PHP" expanded="false" />
+            <element signature="e#10289#11095#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Controller/CongresosController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="697">
+          <caret line="82" column="13" lean-forward="true" selection-start-line="49" selection-start-column="8" selection-end-line="82" selection-end-column="13" />
+          <folding>
+            <element signature="e#242#346#0#PHP" expanded="false" />
+            <element signature="e#388#814#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/View/Proyecto/insertarProyectoAdmin.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1911">
-          <caret line="124" column="0" lean-forward="true" selection-start-line="124" selection-start-column="0" selection-end-line="124" selection-end-column="0" />
+        <state relative-caret-position="435">
+          <caret line="134" column="0" lean-forward="false" selection-start-line="134" selection-start-column="0" selection-end-line="135" selection-end-column="35" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/ProyectoDirigido/insertarProyectoDirigidoAdmin.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1849">
+          <caret line="141" column="35" lean-forward="true" selection-start-line="140" selection-start-column="0" selection-end-line="141" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Controller/TesisController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="90" column="59" lean-forward="false" selection-start-line="90" selection-start-column="59" selection-end-line="90" selection-end-column="59" />
+          <folding>
+            <element signature="e#231#326#0#PHP" expanded="false" />
+            <element signature="e#363#780#0#PHP" expanded="false" />
+            <element signature="e#3499#3934#0#PHP" expanded="false" />
+            <element signature="e#3990#4746#0#PHP" expanded="false" />
+            <element signature="e#4774#6274#0#PHP" expanded="false" />
+            <element signature="e#6307#6737#0#PHP" expanded="false" />
+            <element signature="e#6779#7183#0#PHP" expanded="false" />
+            <element signature="e#7204#7969#0#PHP" expanded="false" />
+            <element signature="e#7990#8442#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Controller/TadController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="445">
+          <caret line="43" column="54" lean-forward="false" selection-start-line="43" selection-start-column="54" selection-end-line="43" selection-end-column="54" />
+          <folding>
+            <element signature="e#349#759#0#PHP" expanded="false" />
+            <element signature="e#1810#3116#0#PHP" expanded="false" />
+            <element signature="e#3156#3565#0#PHP" expanded="false" />
+            <element signature="e#3609#4336#0#PHP" expanded="false" />
+            <element signature="e#4361#5677#0#PHP" expanded="false" />
+            <element signature="e#5708#6116#0#PHP" expanded="false" />
+            <element signature="e#6156#6538#0#PHP" expanded="false" />
+            <element signature="e#6557#7292#0#PHP" expanded="false" />
+            <element signature="e#7311#7770#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Controller/ProyectosController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="29" column="24" lean-forward="false" selection-start-line="29" selection-start-column="24" selection-end-line="29" selection-end-column="24" />
+          <folding>
+            <element signature="e#384#809#0#PHP" expanded="false" />
+            <element signature="e#841#3017#0#PHP" expanded="false" />
+            <element signature="e#3062#3520#0#PHP" expanded="false" />
+            <element signature="e#3576#4355#0#PHP" expanded="false" />
+            <element signature="e#4385#6161#0#PHP" expanded="false" />
+            <element signature="e#6198#7493#0#PHP" expanded="false" />
+            <element signature="e#7539#8911#0#PHP" expanded="false" />
+            <element signature="e#8935#9736#0#PHP" expanded="false" />
+            <element signature="e#9760#10329#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/Usuario/altaUsuarioAdmin.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-561">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Controller/ProyectosDirigidosController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="53" column="22" lean-forward="true" selection-start-line="47" selection-start-column="14" selection-end-line="53" selection-end-column="22" />
+          <folding>
+            <element signature="e#446#896#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Controller/UsuariosController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="474">
+          <caret line="80" column="17" lean-forward="true" selection-start-line="80" selection-start-column="17" selection-end-line="80" selection-end-column="17" />
+          <folding>
+            <element signature="e#275#358#0#PHP" expanded="false" />
+            <element signature="e#438#924#0#PHP" expanded="false" />
+            <element signature="e#958#1061#0#PHP" expanded="false" />
+            <element signature="e#1100#1215#0#PHP" expanded="false" />
+            <element signature="e#1253#1738#0#PHP" expanded="false" />
+            <element signature="e#1777#1876#0#PHP" expanded="false" />
+            <element signature="e#5743#6455#0#PHP" expanded="false" />
+            <element signature="e#6498#7181#0#PHP" expanded="false" />
+            <element signature="e#7204#7330#0#PHP" expanded="false" />
+            <element signature="e#7352#7754#0#PHP" expanded="false" />
+            <element signature="e#7779#8875#0#PHP" expanded="false" />
+            <element signature="e#8913#10209#0#PHP" expanded="false" />
+            <element signature="e#10244#10786#0#PHP" expanded="false" />
+            <element signature="e#10812#12510#0#PHP" expanded="false" />
+            <element signature="e#12545#13032#0#PHP" expanded="false" />
+            <element signature="e#13080#13536#0#PHP" expanded="false" />
+            <element signature="e#13578#14024#0#PHP" expanded="false" />
+            <element signature="e#14051#14540#0#PHP" expanded="false" />
+            <element signature="e#14562#15037#0#PHP" expanded="false" />
+            <element signature="e#15063#15888#0#PHP" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

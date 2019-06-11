@@ -26,7 +26,6 @@ switch ($evento) {
         require_once "View/Proyecto/insertarProyectoAdmin.php";
         break;
 
-//Alta proyecto modificado
 //Dar de alta un proyecto
     case 'altaProyecto':
     
@@ -34,24 +33,51 @@ switch ($evento) {
 		$CodigoProy = $_REQUEST['CodigoProy'];
         $Login=$_REQUEST["Login"];
         $TipoParticipacionProy = $_REQUEST['TipoParticipacionProy'];
-       // $Proyecto -> consultarProyecto($CodigoProy);
 
+        $Usuario = new Usuarios("","","","","","","","","");
+        $consultarUsuarios = $Usuario->ListarUsuarios();
+        $consulta = array();
+        while($row = mysqli_fetch_array($consultarUsuarios)){
+            array_push($consulta, $row);
+        }
+        $_SESSION["listarUsuarios"] = $consulta;
 
-		//if(!isset($usuario)){
-            //	anadirMensaje("| SUCCESS | El proyecto: ".$_POST["CodigoProy"]." ya existe","success");
-			//header('location: View/Proyecto/insertarProyecto.php');
+        $errores = $Proyecto->validarProyecto($_POST);
 
-		//}else{
-			//$p=new Proyecto("","","","","","","");
-			$Proyecto->AltaProyecto();
-			$Proyecto->Participa($CodigoProy,$Login,$TipoParticipacionProy);
-			$tipou=$_SESSION["TipoUsuario"];
-			if($tipou == 'U') {
-				header("Location: index.php?controlador=Proyectos&evento=listarProyectos&LoginU=$Login");
-			}else{
-				header("Location: index.php?controlador=Proyectos&evento=listarProyectosAdmin");
-			}
-		//}
+        if(!empty($errores)){
+            $msgError = "Los campos con el borde rojo son obligatorios.";
+            if($tipou == 'U') {
+                require_once "View/Proyecto/insertarProyecto.php";
+            }else{
+                require_once "View/Proyecto/insertarProyectoAdmin.php";
+            }
+        }
+        else {
+
+            $consultaP = $Proyecto->ConsultarProyecto($CodigoProy);
+
+            if (mysqli_num_rows($consultaP) > 0) {    // Existe el proyecto
+
+                $errores = array("CodigoProy", "TituloProy", "EntidadFinanciadora", "AcronimoProy", "AnhoInicioProy", "AnhoFinProy", "Importe");
+                $msgError = "El proyecto : " . $_POST["CodigoProy"] . "ya existe, no puede insertar el mismo.";
+
+                if ($tipou == 'U') {
+                    require_once "View/Proyecto/insertarProyecto.php";
+                } else {
+                    require_once "View/Proyecto/insertarProyectoAdmin.php";
+                }
+
+            } else {
+                $Proyecto->AltaProyecto();
+                $Proyecto->Participa($CodigoProy, $Login, $TipoParticipacionProy);
+                if ($tipou == 'U') {
+                    header("Location: index.php?controlador=Proyectos&evento=listarProyectos&LoginU=$Login");
+                } else {
+                    header("Location: index.php?controlador=Proyectos&evento=listarProyectosAdmin");
+                }
+            }
+        }
+
         break;
 
 //Consultar un proyecto para modificar
@@ -69,6 +95,7 @@ switch ($evento) {
         require_once "View/Proyecto/modificarProyecto.php";
 
         break;
+
 //Consultar un proyecto para modificar como admin
     case 'consultarProyectoAdmin':
 

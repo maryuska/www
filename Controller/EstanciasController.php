@@ -15,6 +15,7 @@ switch ($evento) {
 
 // Página insertar estancia admin
     case "paginaInsertarEstanciaAdmin":
+
         $Usuario = new Usuarios("","","","","","","","","");
         $consultarUsuarios = $Usuario->ListarUsuarios();
 
@@ -26,37 +27,71 @@ switch ($evento) {
         require_once "View/Estancia/insertarEstanciaAdmin.php";
         break;
 
-//alta estancia modificado
+
 //Dar alta una estancia
     case 'altaEstancia':
         $loginU=$_POST["LoginU"];
         $estancia = new Estancias($_POST["CodigoE"],$_POST["CentroE"],$_POST["UniversidadE"],$_POST["PaisE"],$_POST["FechaInicioE"],$_POST["FechaFinE"],$_POST["TipoE"],$_POST["LoginU"]);
-        $CodigoE = $_REQUEST['CodigoE'];		
+        $CodigoE = $_REQUEST['CodigoE'];
+
         $estancia -> consultarEstancia($CodigoE);
-		
-        if(!isset($usuario)){
-			anadirMensaje("| SUCCESS | La estancia: ".$_POST["CodigoE"]." ya existe","success");
-			header('location: View/Estancia/insertarEstancia.php');
-		}else{
-			$estancia->AltaEstancia();
-			header("Location: index.php?controlador=Estancias&evento=listarEstancias&LoginU=$loginU");
-		}
+
+        $errores = $estancia->validarEstancia($_POST);
+
+            if(!empty($errores)){
+                $msgError = "Los campos con el borde rojo son obligatorios.";
+                require_once "View/Estancia/insertarEstancia.php";
+            }
+            else {
+
+                $consultaE = $estancia->ConsultarEstancia($CodigoE);
+
+                if ($consultaE->num_rows > 0) {    // Existe estancia
+                    $errores = array("CodigoE", "CentroE", "UniversidadE", "PaisE", "FechaInicioE", "FechaFinE", "TipoE", "LoginU");
+                    $msgError = "La estancia: " . $_POST["CodigoE"] . " ya existe, no puede insertar la misma.";
+                    require_once "View/Estancia/insertarEstancia.php";
+                } else {
+                    $estancia->AltaEstancia();
+                    $login = $_REQUEST["LoginU"];
+                    header("Location: index.php?controlador=Estancias&evento=listarEstancias&LoginU=" . $login);
+                }
+            }
 		
     break;
 
 //Dar alta una estancia como Admin
     case 'altaEstanciaAdmin':
-       $estancia = new Estancias($_POST["CodigoE"],$_POST["CentroE"],$_POST["UniversidadE"],$_POST["PaisE"],$_POST["FechaInicioE"],$_POST["FechaFinE"],$_POST["TipoE"],$_POST["LoginU"]);
+       $estancia = new Estancias($_POST["CodigoE"],$_POST["CentroE"],$_POST["UniversidadE"],$_POST["PaisE"],$_POST["FechaInicioE"],$_POST["FechaFinE"],$_POST["TipoE"],$_POST["Login"]);
         $CodigoE = $_REQUEST['CodigoE'];		
         $estancia -> consultarEstancia($CodigoE);
-		
-		if(!isset($usuario)){
-			anadirMensaje("| SUCCESS | La estancia: ".$_POST["CodigoE"]." ya existe","success");
-			header('location: View/Estancia/insertarEstancia.php');
-		}else{
-			$estancia->AltaEstancia();
-			header("Location: index.php?controlador=Estancias&evento=listarEstanciasAdmin");
-		}
+
+        $Usuario = new Usuarios("","","","","","","","","");
+        $consultarUsuarios = $Usuario->ListarUsuarios();
+        $consulta = array();
+        while($row = mysqli_fetch_array($consultarUsuarios)){
+            array_push($consulta, $row);
+        }
+        $_SESSION["listarUsuarios"] = $consulta;
+
+        $errores = $estancia->validarEstancia($_POST);
+
+        if(!empty($errores)){
+            $msgError = "Los campos con el borde rojo son obligatorios.";
+            require_once "View/Estancia/insertarEstanciaAdmin.php";
+        }
+        else {
+
+            $consultaE = $estancia->ConsultarEstancia($CodigoE);
+
+            if ($consultaE->num_rows > 0) {    // Existe estancia
+                $errores = array("CodigoE", "CentroE", "UniversidadE", "PaisE", "FechaInicioE", "FechaFinE", "TipoE", "LoginU");
+                $msgError = "La estancia: " . $_POST["CodigoE"] . " ya existe, no puede insertar la misma.";
+                require_once "View/Estancia/insertarEstanciaAdmin.php";
+            } else {
+                $estancia->AltaEstancia();
+                header("Location: index.php?controlador=Estancias&evento=listarEstanciasAdmin");
+            }
+        }
         break;		
 
 //Consultar una estancia para modificar

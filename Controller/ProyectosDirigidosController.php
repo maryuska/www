@@ -40,28 +40,28 @@ switch ($evento) {
         $errores = $proyectoDirigido->validarProyectoDirigido($_POST);
 
         if(!empty($errores)){
-            $msgError = "Los campos con el borde rojo son obligatorios.";
-            require_once "View/ProyectoDirigido/insertarProyectoDirigido.php";
-        }
-        else{
-
-            $consultaPD = $proyectoDirigido->ConsultarProyectoDirigido($CodigoPD);
-
-            if($consultaPD->num_rows > 0){    // Existe proyecto dirigido
-                $errores = array("CodigoPD", "TituloPD", "AlumnoPD", "FechaLecturaPD", "CalificacionPD", "URLPD", "CotutorPD", "TipoPD");
-                $msgError = "El proyecto dirigido: " . $_POST["CodigoPD"] . " ya existe, no puede insertar el mismo.";
+                $msgError = "Los campos con el borde rojo son obligatorios.";
                 require_once "View/ProyectoDirigido/insertarProyectoDirigido.php";
-            }else{
-                $proyectoDirigido->AltaProyectoDirigido();
-                $proyectoDirigido->Dirige($login, $CodigoPD);
-                header("Location: index.php?controlador=ProyectosDirigidos&evento=listarProyectosDirigidos&LoginU=".$login);
             }
+            else{
+
+                $consultaPD = $proyectoDirigido->ConsultarProyectoDirigido($CodigoPD);
+
+                if($consultaPD->num_rows > 0){    // Existe proyecto dirigido
+                    $errores = array("CodigoPD", "TituloPD", "AlumnoPD", "FechaLecturaPD", "CalificacionPD", "URLPD", "CotutorPD", "TipoPD");
+                    $msgError = "El proyecto dirigido: " . $_POST["CodigoPD"] . " ya existe, no puede insertar el mismo.";
+                    require_once "View/ProyectoDirigido/insertarProyectoDirigido.php";
+                }else{
+                    $proyectoDirigido->AltaProyectoDirigido();
+                    $proyectoDirigido->Dirige($login, $CodigoPD);
+                    header("Location: index.php?controlador=ProyectosDirigidos&evento=listarProyectosDirigidos&LoginU=".$login);
+                }
 
         }
 
         break;
 	
-//alta proyecto dirigido modificado	
+
 //Alta proyecto dirigido admin
     case 'altaProyectoDirigidoAdmin':
          //recoge los datos del proyecto dirigido

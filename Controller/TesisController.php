@@ -29,41 +29,74 @@ switch ($evento) {
 
         require_once "View/Tesis/insertarTesisAdmin.php";
         break;
-		
-//modificada alta tesis 
+
 //dar de alta una tesis
     case 'altaTesis':
-        $loginU=$_POST["LoginU"];
+        $login=$_POST["LoginU"];
         $tesis = new Tesis($_POST["CodigoTesis"],$_POST["AutorTesis"],$_POST["FechaInscripcion"],$_POST["FechaLectura"],$_POST["CalificacionTesis"],$_POST["URLTesis"],$_POST["LoginU"]);
         $codigoTesis = $_REQUEST["CodigoTesis"];
-		$tesis -> consultarTesis($CodigoTesis);
-		if(!isset($tesis)){
-			anadirMensaje("| SUCCESS | La tesis: ".$_POST["CodigoTesis"]." ya existe","success");
-			header('location: View/Tesis/insertarTesis.php');
-		}else{
-			$tesis->AltaTesis();
-			header("Location: index.php?controlador=Tesis&evento=listarTesis&LoginU=$loginU");
-		}       
+
+        $errores = $tesis->validarTesis($_POST);
+
+        if(!empty($errores)){
+            $msgError = "Los campos con el borde rojo son obligatorios.";
+            require_once "View/Tesis/insertarTesis.php";
+        }
+        else{
+
+            $consultaT = $tesis->ConsultarTesis($codigoTesis);
+
+            if($consultaT->num_rows > 0){    // Existe la tesis
+                $errores = array("CodigoTesis", "AutorTesis", "FechaInscripcion", "FechaLectura", "CalificacionTesis", "URLTesis", "LoginU");
+                $msgError = "La Tesis: " . $_POST["CodigoTesis"] . " ya existe, no puede insertar la misma.";
+                require_once "View/Tesis/insertarTesis.php";
+            }else{
+                $tesis->AltaTesis();
+                header("Location: index.php?controlador=Tesis&evento=listarTesis&LoginU=".$login);
+            }
+
+        }
+
 		
         break;
-//fin modificacion Alta tesis 	
-	
-//modificada alta tesis admin
+
 //dar de alta una tesis como admin
     case 'altaTesisAdmin':
 
         $tesis = new Tesis($_POST["CodigoTesis"],$_POST["AutorTesis"],$_POST["FechaInscripcion"],$_POST["FechaLectura"],$_POST["CalificacionTesis"],$_POST["URLTesis"],$_POST["Login"]);
         $codigoTesis = $_REQUEST["CodigoTesis"];
-		$tesis -> consultarTesis($CodigoTesis);
-		if(!isset($tesis)){
-			anadirMensaje("| SUCCESS | La tesis: ".$_POST["CodigoTesis"]." ya existe","success");
-			header('location: View/Tesis/insertarTesis.php');
-		}else{
-			$tesis->AltaTesis();
-			header("Location: index.php?controlador=Tesis&evento=listarTesisAdmin");
-		}
+
+        $Usuario = new Usuarios("","","","","","","","","");
+        $consultarUsuarios = $Usuario->ListarUsuarios();
+        $consulta = array();
+        while($row = mysqli_fetch_array($consultarUsuarios)){
+            array_push($consulta, $row);
+        }
+        $_SESSION["listarUsuarios"] = $consulta;
+
+        $errores = $tesis->validarTesis($_POST);
+
+        if(!empty($errores)){
+            $msgError = "Los campos con el borde rojo son obligatorios.";
+            require_once "View/Tesis/insertarTesisAdmin.php";
+        }
+        else{
+
+            $consultaT = $tesis->ConsultarTesis($codigoTesis);
+
+            if($consultaT->num_rows > 0){    // Existe la tesis
+
+                $errores = array("CodigoTesis", "AutorTesis", "FechaInscripcion", "FechaLectura", "CalificacionTesis", "URLTesis", "LoginU");
+                $msgError = "La Tesis: " . $_POST["CodigoTesis"] . " ya existe, no puede insertar la misma.";
+                require_once "View/Tesis/insertarTesisAdmin.php";
+            }else{
+                $tesis->AltaTesis();
+                header("Location: index.php?controlador=Tesis&evento=listarTesisAdmin");
+            }
+
+        }
+
         break;
-//fin modificacion Alta tesis admin
 
 //Consulta de una tesis para modificar
    case 'consultarTesis':

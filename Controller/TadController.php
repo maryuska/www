@@ -26,37 +26,71 @@ switch ($evento) {
         $_SESSION["listarUsuarios"] = $consulta;
         require_once "View/Tad/insertarTadAdmin.php";
         break;
-		
-//modificado el alta tad
+
 //Dar de alta un tad
     case 'altaTad':
 		$loginU=$_POST["LoginU"];
         $tad = new Tad($_POST["CodigoTAD"],$_POST["TituloTAD"],$_POST["AlumnoTAD"],$_POST["FechaLecturaTAD"],$_POST["LoginU"]);
 		$codigoTad = $_REQUEST["CodigoTAD"];
-		$tad -> consultarTad($codigoTad);
-		if(!isset($tad)){
-			anadirMensaje("| SUCCESS | La tesis: ".$_POST["CodigoTad"]." ya existe","success");
-			header('location: View/Tad/insertarTad.php');
-		}else{
-			$tad->AltaTad();
-			header("Location: index.php?controlador=Tad&evento=listarTad&LoginU=$loginU");
-		}
+
+        $errores = $tad->validarTad($_POST);
+
+        if(!empty($errores)){
+            $msgError = "Los campos con el borde rojo son obligatorios.";
+            require_once "View/Tad/insertarTad.php";
+        }
+        else{
+
+            $consultaT = $tad->ConsultarTad($codigoTad);
+
+            if($consultaT->num_rows > 0){    // Existe Tad
+                $errores = array("CodigoTAD", "TituloTAD", "AlumnoTAD", "LoginU");
+                $msgError = "El Tad: " . $_POST["CodigoTAD"] . " ya existe, no puede insertar el mismo.";
+                require_once "View/Tad/insertarTad.php";
+            }else{
+                $tad->AltaTad();
+                header("Location: index.php?controlador=Tad&evento=listarTad&LoginU=".$login);
+            }
+
+        }
 
     break;
-//modificado el alta tad admin
+
 //Dar de alta un tad como Admin
     case 'altaTadAdmin':
 		$loginU=$_POST["LoginU"];
         $tad = new Tad($_POST["CodigoTAD"],$_POST["TituloTAD"],$_POST["AlumnoTAD"],$_POST["FechaLecturaTAD"],$_POST["LoginU"]);
 		$codigoTad = $_REQUEST["CodigoTAD"];
-		$tad -> consultarTad($codigoTad);
-		if(!isset($tad)){
-			anadirMensaje("| SUCCESS | La tesis: ".$_POST["CodigoTad"]." ya existe","success");
-			header('location: View/Tad/insertarTad.php');
-		}else{
-			$tad->AltaTad();
-			header("Location: index.php?controlador=Tad&evento=listarTadAdmin");
-		}
+
+        $Usuario = new Usuarios("","","","","","","","","");
+        $consultarUsuarios = $Usuario->ListarUsuarios();
+        $consulta = array();
+        while($row = mysqli_fetch_array($consultarUsuarios)){
+            array_push($consulta, $row);
+        }
+        $_SESSION["listarUsuarios"] = $consulta;
+
+        $errores = $tad->validarTad($_POST);
+
+        if(!empty($errores)){
+            $msgError = "Los campos con el borde rojo son obligatorios.";
+            require_once "View/Tad/insertarTadAdmin.php";
+        }
+        else{
+
+            $consultaT = $tad->ConsultarTad($codigoTad);
+
+            if($consultaT->num_rows > 0){    // Existe Tad
+                $errores = array("CodigoTAD", "TituloTAD", "AlumnoTAD", "LoginU");
+                $msgError = "El Tad: " . $_POST["CodigoTAD"] . " ya existe, no puede insertar el mismo.";
+                require_once "View/Tad/insertarTadAdmin.php";
+            }else{
+                $tad->AltaTad();
+                header("Location: index.php?controlador=Tad&evento=listarTadAdmin");
+            }
+
+        }
+
 
         break;
 

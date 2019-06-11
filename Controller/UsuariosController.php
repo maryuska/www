@@ -64,58 +64,72 @@ switch ($evento) {
     case 'altaUsuario':
 
         if ($_POST["PasswordU"]!= $_POST["PasswordU2"]) {
-            anadirMensaje("| SUCCESS | las contraseñas no coninciden","success");
+            $msgError = "Las contraseñas no coinciden.";
         }else{
         //recoge los datos del usuario
         $usuario = new Usuarios ($_POST["Login"], $_POST["PasswordU"], $_POST["NombreU"],$_POST["ApellidosU"],$_POST["Telefono"], $_POST["Mail"], $_POST["DNI"],$_POST["FechaNacimiento"], $_POST["TipoContrato"],$_POST["Centro"],$_POST["Departamento"],"U");
 
        $login=$_REQUEST["Login"];
-        $usuario -> consultarUsuario($login);
-        //comprobamos si existe el usuario
-    if(!isset($usuario)){
-        anadirMensaje("| SUCCESS | El usuario: ".$_POST["Login"]." ya existe","success");
-        header('location: index.php');
+            // Validamos si es correcto o no el formulario
+            $errores    = $usuario->validarRegistrarUsuario($_POST);
 
-    }else{
-        //recoge los datos universitarios  y de titulodel formulario
-        $universidad= new Universidad($_POST["Login"],$_POST["NombreUniversidad"],$_POST["FechaInicio"],$_POST["FechaFin"]);
-        $tituloAcademico= new TituloAcademico($_POST["Login"],$_POST["Titulo"],$_POST["FechaTitulo"],$_POST["CentroTitulo"]);
+            if(!empty($errores)){
+                $msgError = "Los campos con el borde rojo son obligatorios o incorrectos.";
+                require_once "View/Usuario/registrarse.php";
 
-        //añade datos universitarios y titulo al usuario
-        $usuario->altaUsuario();
-        $universidad->AltaUniversidad();
-        $tituloAcademico->AltaTituloAcademico();
-        header("location: index.php?controlador=Usuarios&evento=listarUsuariosAdmin");
+            }
+            else{
+                $consultaU= $usuario->ConsultarUsuario($login);
 
+                if($consultaU->num_rows > 0){    // Existe usuario
+                    $errores = array("Login", "PasswordU", "NombreU", "ApellidosU", "Mail", "DNI", "FechaNacimiento", "TipoContrato","Centro","Departamento","U");
+                    $msgError = "El login " . $_POST["Login"] . " no esta disponible.";
+                    require_once "View/Usuario/registrarse.php";
+    }else {
+                    //recoge los datos universitarios  y de titulodel formulario
+                    $universidad = new Universidad($_POST["Login"], $_POST["NombreUniversidad"], $_POST["FechaInicio"], $_POST["FechaFin"]);
+                    $tituloAcademico = new TituloAcademico($_POST["Login"], $_POST["Titulo"], $_POST["FechaTitulo"], $_POST["CentroTitulo"]);
+
+                    //añade datos universitarios y titulo al usuario
+                    $usuario->altaUsuario();
+                    $universidad->AltaUniversidad();
+                    $tituloAcademico->AltaTituloAcademico();
+                    header("location: index.php?controlador=Usuarios&evento=listarUsuariosAdmin");
+                }
     }}
         break;
 
 // registrar un usuario
     case 'registrarUsuario':
-
+        $LoginU=$_POST["Login"];
         $usuario = new Usuarios ($_POST["Login"], $_POST["PasswordU"], $_POST["NombreU"],$_POST["ApellidosU"],$_POST["Telefono"], $_POST["Mail"], $_POST["DNI"],$_POST["FechaNacimiento"], $_POST["TipoContrato"],$_POST["Centro"],$_POST["Departamento"],"U");
 
         // Validamos si es correcto o no el formulario
         $errores    = $usuario->validarRegistrarUsuario($_POST);
 
         if(!empty($errores)){
-            // Tiene errores de validación volvemos a la página anterior
+            $msgError = "Los campos con el borde rojo son obligatorios o incorrectos.";
             require_once "View/Usuario/registrarse.php";
+
         }
         else{
+            $consultaU= $usuario->ConsultarUsuario($LoginU);
 
-            // Es correcto continuamos con el registro
+            if($consultaU->num_rows > 0){    // Existe usuario
+                $errores = array("Login", "PasswordU", "NombreU", "ApellidosU", "Mail", "DNI", "FechaNacimiento", "TipoContrato","Centro","Departamento","U");
+                $msgError = "El login " . $_POST["Login"] . " no esta disponible.";
+                require_once "View/Usuario/registrarse.php";
+            }else {
+                //recoge los datos universitarios  y de titulo del formulario
+                $universidad = new Universidad($_POST["Login"], $_POST["NombreUniversidad"], $_POST["FechaInicio"], $_POST["FechaFin"]);
+                $tituloAcademico = new TituloAcademico($_POST["Login"], $_POST["Titulo"], $_POST["FechaTitulo"], $_POST["CentroTitulo"]);
 
-            //recoge los datos universitarios  y de titulodel formulario
-            $universidad= new Universidad($_POST["Login"],$_POST["NombreUniversidad"],$_POST["FechaInicio"],$_POST["FechaFin"]);
-            $tituloAcademico= new TituloAcademico($_POST["Login"],$_POST["Titulo"],$_POST["FechaTitulo"],$_POST["CentroTitulo"]);
-
-            //añade datos universitarios y titulo al usuario
-            $usuario->altaUsuario();
-            $universidad->AltaUniversidad();
-            $tituloAcademico->AltaTituloAcademico();
-            require_once "View/login.php";
-
+                //añade datos universitarios y titulo al usuario
+                $usuario->altaUsuario();
+                $universidad->AltaUniversidad();
+                $tituloAcademico->AltaTituloAcademico();
+                require_once "View/login.php";
+            }
         }
 
     break;
@@ -222,7 +236,8 @@ switch ($evento) {
 
 		require_once "View/Usuario/consultarUsuario.php";
     break;
-    //consultar detalle del usuario
+
+//consultar detalle del usuario
     case 'consultarDetalleUsuario':
 
         //conuslta datos del usuario
