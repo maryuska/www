@@ -117,6 +117,11 @@ function sidebarUsuario($loginU){
             Tesis
         </a>
     </li>
+    <li class="sidebar-options">
+        <a class="nounderline" href="index.php?controlador=Pdf&evento=crearPdf&LoginU=<?php echo $loginU; ?>">
+            Generar PDF
+        </a>
+    </li>
 <?php
 }
 

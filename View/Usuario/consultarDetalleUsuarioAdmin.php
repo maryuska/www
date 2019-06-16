@@ -181,7 +181,7 @@ require_once 'View/Structure/Nav.php';
                             <div class="panel panel-default">
 
                                 <div class="tdTitulo">
-                                    Universidades
+                                    Universidades en las que trabajó
                                 </div>
 
                                 <div class="panel-body">

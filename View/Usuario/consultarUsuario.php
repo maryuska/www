@@ -151,6 +151,7 @@ require_once 'View/Structure/Nav.php';
                                                         Modificar
                                                     </a>
                                                 </td>
+
                                             </tr>
                                             <?php 
                                             }
@@ -179,7 +180,7 @@ require_once 'View/Structure/Nav.php';
                             <div class="panel panel-default">
 
                                 <div class="tdTitulo">
-                                    Universidades
+                                    Universidades en las que tabajó
                                 </div>
 
                                 <div class="panel-body">
@@ -265,6 +266,25 @@ require_once 'View/Structure/Nav.php';
     </div>
 </div>
 <!-- FIN: Confirmar borrar perfil -->
+
+<!-- Confirmar borrar Titulo -->
+<div id="confirmBorrarTitulo" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-danger text-danger">
+                <h4 class="modal-title">Atención</h4>
+            </div>
+            <div class="modal-body text-center">
+                <h5>¿Desea eliminar el título de <strong class="nombre"></strong>?</h5>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-modal btn-primary" id="borrar">Eliminar</button>
+                <button type="button" class="btn btn-modal btn-danger" data-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- FIN: Confirmar borrar titulo -->
 
 <?php 
 // Pie y cierre de html, body

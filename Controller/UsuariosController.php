@@ -324,11 +324,11 @@ switch ($evento) {
             }
             $_SESSION["consultarUsuario"] = $consulta;
 
-            if($tipou == 'U') {
+           // if($tipou == 'U') {
                 require_once "View/Usuario/modificarUsuario.php";
-            }else{
-                require_once "View/Usuario/modificarUsuarioAdmin.php";
-            }
+            //}else{
+            //    require_once "View/Usuario/modificarUsuarioAdmin.php";
+            //}
         }
         else{
 

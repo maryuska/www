@@ -42,15 +42,15 @@ grant all privileges on `datos_curriculares`.* to 'docente'@'localhost'
 DROP TABLE IF EXISTS `articulo`;
 CREATE TABLE IF NOT EXISTS `articulo` (
   `CodigoA` int(11) NOT NULL ,
-  `AutoresA` varchar(200)  COLLATE latin1_spanish_ci NOT NULL default '',
-  `TituloA` varchar(100) COLLATE latin1_spanish_ci NOT NULL default '' ,
-  `TituloR` varchar(100) COLLATE latin1_spanish_ci NOT NULL default '',
-  `ISSN` varchar(13) COLLATE latin1_spanish_ci NOT NULL default '' ,
-  `VolumenR` varchar(4) COLLATE latin1_spanish_ci default NULL default '',
-  `PagIniA` int(4) default NULL ,
-  `PagFinA` int(4) default NULL ,
-  `FechaPublicacionR` date default NULL ,
-  `EstadoA` enum('Enviado','Revision','Publicado') NOT NULL default 'Enviado',
+  `AutoresA` varchar(200)  COLLATE latin1_spanish_ci NOT NULL ,
+  `TituloA` varchar(100) COLLATE latin1_spanish_ci NOT NULL  ,
+  `TituloR` varchar(100) COLLATE latin1_spanish_ci NOT NULL ,
+  `ISSN` varchar(13) COLLATE latin1_spanish_ci NOT NULL  ,
+  `VolumenR` varchar(4) COLLATE latin1_spanish_ci NOT NULL ,
+  `PagIniA` int(4) NOT NULL ,
+  `PagFinA` int(4) NOT NULL ,
+  `FechaPublicacionR` date NOT NULL ,
+  `EstadoA` enum('Enviado','Revision','Publicado') NOT NULL ,
   PRIMARY KEY (`CodigoA`)
 
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
@@ -63,10 +63,10 @@ CREATE TABLE IF NOT EXISTS `articulo` (
 DROP TABLE IF EXISTS `congreso`;
 CREATE TABLE IF NOT EXISTS `congreso` (
   `CodigoC` int(11)  NOT NULL ,
-  `NombreC` varchar(100)COLLATE latin1_spanish_ci NOT NULL default '',
-  `AcronimoC` varchar(20)COLLATE latin1_spanish_ci NOT NULL default '',
-  `AnhoC` year(4) NOT NULL default '0000',
-  `LugarC` varchar(20)COLLATE latin1_spanish_ci NOT NULL default '',
+  `NombreC` varchar(100)COLLATE latin1_spanish_ci NOT NULL ,
+  `AcronimoC` varchar(20)COLLATE latin1_spanish_ci NOT NULL ,
+  `AnhoC` date NOT NULL ,
+  `LugarC` varchar(20)COLLATE latin1_spanish_ci NOT NULL ,
   PRIMARY KEY (`CodigoC`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
@@ -78,13 +78,13 @@ CREATE TABLE IF NOT EXISTS `congreso` (
 DROP TABLE IF EXISTS `estancia`;
 CREATE TABLE IF NOT EXISTS `estancia` (
   `CodigoE` int(11) NOT NULL ,
-  `CentroE` varchar(100)COLLATE latin1_spanish_ci NOT NULL default '',
-  `UniversidadE` varchar(40)COLLATE latin1_spanish_ci NOT NULL default '',
-  `PaisE` varchar(20)COLLATE latin1_spanish_ci NOT NULL default '',
-  `FechaInicioE` date NOT NULL default '0000-00-00',
-  `FechaFinE` date NOT NULL default '0000-00-00',
-  `TipoE` enum('Investigacion','Doctorado','Invitado') NOT NULL default 'Investigacion',
-  `LoginU` varchar(15)COLLATE latin1_spanish_ci NOT NULL default '',
+  `CentroE` varchar(100)COLLATE latin1_spanish_ci NOT NULL ,
+  `UniversidadE` varchar(40)COLLATE latin1_spanish_ci NOT NULL ,
+  `PaisE` varchar(20)COLLATE latin1_spanish_ci NOT NULL ,
+  `FechaInicioE` date NOT NULL ,
+  `FechaFinE` date NOT NULL ,
+  `TipoE` enum('Investigacion','Doctorado','Invitado') NOT NULL ,
+  `LoginU` varchar(15)COLLATE latin1_spanish_ci NOT NULL ,
   PRIMARY KEY (`CodigoE`),
   KEY `FK_ESTANCIA_USUARIO` (`LoginU`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
@@ -102,13 +102,13 @@ CREATE TABLE IF NOT EXISTS `estancia` (
 --
 DROP TABLE IF EXISTS `tesis`;
 CREATE TABLE IF NOT EXISTS `tesis` (
-  `CodigoTesis` varchar(10)COLLATE latin1_spanish_ci NOT NULL default '',
-  `AutorTesis` varchar(100)COLLATE latin1_spanish_ci NOT NULL default '',
-  `FechaInscripcion` date NOT NULL default '0000-00-00',
-  `FechaLectura` date NOT NULL default '0000-00-00',
-  `CalificacionTesis` enum('Aprobado','Notable','Sobresaliente','Matricula') default NULL,
-  `URLTesis` varchar(100)COLLATE latin1_spanish_ci NOT NULL default '',
-  `LoginU` varchar(15)COLLATE latin1_spanish_ci NOT NULL default '',
+  `CodigoTesis` varchar(10)COLLATE latin1_spanish_ci NOT NULL ,
+  `AutorTesis` varchar(100)COLLATE latin1_spanish_ci NOT NULL ,
+  `FechaInscripcion` date NOT NULL ,
+  `FechaLectura` date NOT NULL ,
+  `CalificacionTesis` enum('Aprobado','Notable','Sobresaliente','Matricula') NOT NULL,
+  `URLTesis` varchar(100)COLLATE latin1_spanish_ci NOT NULL ,
+  `LoginU` varchar(15)COLLATE latin1_spanish_ci NOT NULL ,
   PRIMARY KEY (`CodigoTesis`),
   KEY `FK_TESIS_USUARIO` (`LoginU`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
@@ -126,16 +126,16 @@ CREATE TABLE IF NOT EXISTS `tesis` (
 DROP TABLE IF EXISTS `libro`;
 CREATE TABLE IF NOT EXISTS `libro` (
   `CodigoL` int(11) NOT NULL ,
-  `AutoresL` varchar(200)COLLATE latin1_spanish_ci NOT NULL default '',
-  `TituloL` varchar(100)COLLATE latin1_spanish_ci NOT NULL default '',
-  `ISBN` varchar(13)COLLATE latin1_spanish_ci NOT NULL default '',
-  `PagIniL` varchar(4)COLLATE latin1_spanish_ci default NULL,
-  `PagFinL` varchar(4)COLLATE latin1_spanish_ci default NULL,
-  `VolumenL` varchar(4)COLLATE latin1_spanish_ci default NULL,
-  `EditorialL` varchar(100)COLLATE latin1_spanish_ci default NULL,
-  `FechaPublicacionL` date NOT NULL default '0000-00-00',
-  `EditorL` varchar(100)COLLATE latin1_spanish_ci default NULL,
-  `PaisEdicionL` varchar(20)COLLATE latin1_spanish_ci NOT NULL default '',
+  `AutoresL` varchar(200)COLLATE latin1_spanish_ci NOT NULL ,
+  `TituloL` varchar(100)COLLATE latin1_spanish_ci NOT NULL ,
+  `ISBN` varchar(13)COLLATE latin1_spanish_ci NOT NULL ,
+  `PagIniL` varchar(4)COLLATE latin1_spanish_ci NOT NULL,
+  `PagFinL` varchar(4)COLLATE latin1_spanish_ci NOT NULL,
+  `VolumenL` varchar(4)COLLATE latin1_spanish_ci NOT NULL,
+  `EditorialL` varchar(100)COLLATE latin1_spanish_ci NOT NULL,
+  `FechaPublicacionL` date NOT NULL ,
+  `EditorL` varchar(100)COLLATE latin1_spanish_ci NOT NULL,
+  `PaisEdicionL` varchar(20)COLLATE latin1_spanish_ci NOT NULL ,
     PRIMARY KEY (`CodigoL`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
@@ -148,14 +148,14 @@ CREATE TABLE IF NOT EXISTS `libro` (
 --
 DROP TABLE IF EXISTS `proyectodirigido`;
 CREATE TABLE IF NOT EXISTS `proyectoDirigido` (
-  `CodigoPD` varchar(10)COLLATE latin1_spanish_ci NOT NULL default '',
-  `TituloPD` varchar(100)COLLATE latin1_spanish_ci NOT NULL default '',
-  `AlumnoPD` varchar(40)COLLATE latin1_spanish_ci NOT NULL default '',
-  `FechaLecturaPD` date default NULL,
-  `CalificacionPD` enum('Aprobado','Notable','Sobresaliente','Matricula') default NULL,
-  `URLPD` varchar(100)COLLATE latin1_spanish_ci NOT NULL default '',
-  `CotutorPD` varchar(100)COLLATE latin1_spanish_ci NOT NULL default '',
-  `TipoPD` enum('PFC','TFG','TFM') default NULL,
+  `CodigoPD` varchar(10)COLLATE latin1_spanish_ci NOT NULL ,
+  `TituloPD` varchar(100)COLLATE latin1_spanish_ci NOT NULL ,
+  `AlumnoPD` varchar(40)COLLATE latin1_spanish_ci NOT NULL,
+  `FechaLecturaPD` date NOT NULL,
+  `CalificacionPD` enum('Aprobado','Notable','Sobresaliente','Matricula') NOT NULL,
+  `URLPD` varchar(100)COLLATE latin1_spanish_ci NOT NULL ,
+  `CotutorPD` varchar(100)COLLATE latin1_spanish_ci NOT NULL ,
+  `TipoPD` enum('PFC','TFG','TFM') NOT NULL,
     PRIMARY KEY (`CodigoPD`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
@@ -177,13 +177,13 @@ INSERT INTO `proyectoDirigido` VALUES ('1246783', 'titulo1', 'maria guillermes v
 DROP TABLE IF EXISTS `ponencia`;
 CREATE TABLE IF NOT EXISTS `ponencia` (
   `CodigoP` int(11) NOT NULL ,
-  `AutoresP` varchar(200)COLLATE latin1_spanish_ci NOT NULL default '',
-  `TituloP` varchar(100)COLLATE latin1_spanish_ci NOT NULL default '',
-  `CongresoP` varchar(40)COLLATE latin1_spanish_ci NOT NULL default '',
-  `FechaIniCP` date NOT NULL default '0000-00-00',
-  `FechaFinCP` date NOT NULL default '0000-00-00',
-  `LugarCP` varchar(20)COLLATE latin1_spanish_ci NOT NULL default '',
-  `PaisCP` varchar(20)COLLATE latin1_spanish_ci NOT NULL default '',
+  `AutoresP` varchar(200)COLLATE latin1_spanish_ci NOT NULL ,
+  `TituloP` varchar(100)COLLATE latin1_spanish_ci NOT NULL ,
+  `CongresoP` varchar(40)COLLATE latin1_spanish_ci NOT NULL ,
+  `FechaIniCP` date NOT NULL ,
+  `FechaFinCP` date NOT NULL ,
+  `LugarCP` varchar(20)COLLATE latin1_spanish_ci NOT NULL ,
+  `PaisCP` varchar(20)COLLATE latin1_spanish_ci NOT NULL ,
    PRIMARY KEY (`CodigoP`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
@@ -195,12 +195,12 @@ CREATE TABLE IF NOT EXISTS `ponencia` (
 DROP TABLE IF EXISTS `proyecto`;
 CREATE TABLE IF NOT EXISTS `proyecto` (
   `CodigoProy` int(11) NOT NULL ,
-  `TituloProy` varchar(100)COLLATE latin1_spanish_ci NOT NULL default '',
-  `EntidadFinanciadora` varchar(40)COLLATE latin1_spanish_ci NOT NULL default '',
-  `AcronimoProy` varchar(20)COLLATE latin1_spanish_ci NOT NULL default '',
-  `AnhoInicioProy` year(4) NOT NULL default '0000',
-  `AnhoFinProy` year(4) NOT NULL default '0000',
-  `Importe` int(11) NOT NULL default '0',
+  `TituloProy` varchar(100)COLLATE latin1_spanish_ci NOT NULL ,
+  `EntidadFinanciadora` varchar(40)COLLATE latin1_spanish_ci NOT NULL ,
+  `AcronimoProy` varchar(20)COLLATE latin1_spanish_ci NOT NULL ,
+  `AnhoInicioProy` year(4) NOT NULL ,
+  `AnhoFinProy` year(4) NOT NULL ,
+  `Importe` int(11) NOT NULL ,
      PRIMARY KEY (`CodigoProy`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
@@ -211,11 +211,11 @@ CREATE TABLE IF NOT EXISTS `proyecto` (
 --
 DROP TABLE IF EXISTS `tad`;
 CREATE TABLE IF NOT EXISTS `tad` (
-  `CodigoTAD` varchar(10)COLLATE latin1_spanish_ci NOT NULL default '',
-  `TituloTAD` varchar(100)COLLATE latin1_spanish_ci NOT NULL default '',
-  `AlumnoTAD` varchar(40)COLLATE latin1_spanish_ci NOT NULL default '',
-  `FechaLecturaTAD` date default NULL,
-  `LoginU` varchar(15)COLLATE latin1_spanish_ci NOT NULL default '',
+  `CodigoTAD` varchar(10)COLLATE latin1_spanish_ci NOT NULL ,
+  `TituloTAD` varchar(100)COLLATE latin1_spanish_ci NOT NULL ,
+  `AlumnoTAD` varchar(40)COLLATE latin1_spanish_ci NOT NULL ,
+  `FechaLecturaTAD` date NOT NULL,
+  `LoginU` varchar(15)COLLATE latin1_spanish_ci NOT NULL ,
    PRIMARY KEY (`CodigoTad`),
   KEY `FK_TAD_USUARIO` (`LoginU`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
@@ -235,15 +235,15 @@ CREATE TABLE IF NOT EXISTS `tad` (
 --
 DROP TABLE IF EXISTS `materia`;
 CREATE TABLE IF NOT EXISTS `materia` (
-  `CodigoM` varchar(10)COLLATE latin1_spanish_ci NOT NULL default '',
-  `TipoM` enum('Grado','Tercer Ciclo','Curso','Master','Postgrado') NOT NULL default 'Grado',
-  `TipoParticipacionM` enum('Docente','Director') NOT NULL default 'Docente',
-  `DenominacionM` varchar(100) NOT NULL default '',
-  `TitulacionM` varchar(100) NOT NULL default '',
-  `AnhoAcademicoM` varchar(11) NOT NULL default '',
-  `CreditosM` char(3) NOT NULL default '0',
-  `CuatrimestreM` enum('Primero','Segundo','Anual') NOT NULL default 'Primero',
-  `LoginU` varchar(15)COLLATE latin1_spanish_ci NOT NULL default '',
+  `CodigoM` varchar(10)COLLATE latin1_spanish_ci NOT NULL,
+  `TipoM` enum('Grado','Tercer Ciclo','Curso','Master','Postgrado') NOT NULL  ,
+  `TipoParticipacionM` enum('Docente','Director') NOT NULL ,
+  `DenominacionM` varchar(100) NOT NULL ,
+  `TitulacionM` varchar(100) NOT NULL ,
+  `AnhoAcademicoM` varchar(11) NOT NULL ,
+  `CreditosM` int(3) NOT NULL ,
+  `CuatrimestreM` enum('Primero','Segundo','Anual') NOT NULL ,
+  `LoginU` varchar(15)COLLATE latin1_spanish_ci NOT NULL ,
   PRIMARY KEY  (`CodigoM`),
    KEY `FK_MATERIA_USUARIO` (`LoginU`)
 )ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
@@ -265,10 +265,10 @@ CREATE TABLE IF NOT EXISTS `materia` (
 DROP TABLE IF EXISTS `technicalreport`;
 CREATE TABLE IF NOT EXISTS `technicalreport` (
   `CodigoTR` int(11) NOT NULL ,
-  `TituloTR` varchar(100)COLLATE latin1_spanish_ci NOT NULL default '',
-  `DepartamentoTR` varchar(100)COLLATE latin1_spanish_ci NOT NULL default '',
-  `UniversidadTR` varchar(40)COLLATE latin1_spanish_ci NOT NULL default '',
-  `FechaTR` date NOT NULL default '0000-00-00',
+  `TituloTR` varchar(100)COLLATE latin1_spanish_ci NOT NULL ,
+  `DepartamentoTR` varchar(100)COLLATE latin1_spanish_ci NOT NULL ,
+  `UniversidadTR` varchar(40)COLLATE latin1_spanish_ci NOT NULL ,
+  `FechaTR` date NOT NULL ,
    PRIMARY KEY (`CodigoTR`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
@@ -279,17 +279,17 @@ CREATE TABLE IF NOT EXISTS `technicalreport` (
 --
 DROP TABLE IF EXISTS `usuario`;
 CREATE TABLE IF NOT EXISTS `usuario` (
-  `LoginU` varchar(15)COLLATE latin1_spanish_ci NOT NULL default '',
-  `PasswordU` varchar(32)COLLATE latin1_spanish_ci NOT NULL default '',
-  `NombreU` varchar(15)COLLATE latin1_spanish_ci NOT NULL default '',
-  `ApellidosU` varchar(30)COLLATE latin1_spanish_ci NOT NULL default '',
-  `Telefono` varchar(15)COLLATE latin1_spanish_ci NOT NULL default '',
-  `Mail` varchar(100)COLLATE latin1_spanish_ci NOT NULL default '',
-  `DNI` varchar(10)COLLATE latin1_spanish_ci NOT NULL default '',
-  `FechaNacimiento` date default NULL,
-  `TipoContrato` varchar(40)COLLATE latin1_spanish_ci NOT NULL default '',
-  `Centro` varchar(100)COLLATE latin1_spanish_ci NOT NULL default '',
-  `Departamento` varchar(100)COLLATE latin1_spanish_ci NOT NULL default '',
+  `LoginU` varchar(15)COLLATE latin1_spanish_ci NOT NULL ,
+  `PasswordU` varchar(32)COLLATE latin1_spanish_ci NOT NULL ,
+  `NombreU` varchar(15)COLLATE latin1_spanish_ci NOT NULL ,
+  `ApellidosU` varchar(30)COLLATE latin1_spanish_ci NOT NULL ,
+  `Telefono` varchar(15)COLLATE latin1_spanish_ci NOT NULL ,
+  `Mail` varchar(100)COLLATE latin1_spanish_ci NOT NULL ,
+  `DNI` varchar(10)COLLATE latin1_spanish_ci NOT NULL ,
+  `FechaNacimiento` date NOT NULL,
+  `TipoContrato` varchar(40)COLLATE latin1_spanish_ci NOT NULL ,
+  `Centro` varchar(100)COLLATE latin1_spanish_ci NOT NULL ,
+  `Departamento` varchar(100)COLLATE latin1_spanish_ci NOT NULL ,
   `TipoUsuario` enum('U','A') NOT NULL default 'U',
    PRIMARY KEY (`LoginU`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
@@ -309,10 +309,10 @@ INSERT INTO `usuario` VALUES ('admin', MD5('admin'), 'Administrador', '','','','
 --
 DROP TABLE IF EXISTS `universidad`;
 CREATE TABLE IF NOT EXISTS `universidad` (
-  `NombreUniversidad` varchar(40)COLLATE latin1_spanish_ci NOT NULL default '',
-   `FechaInicio` date NOT NULL default '0000-00-00',
-    `FechaFin` date NOT NULL default '0000-00-00',
-  `LoginU` varchar(15)COLLATE latin1_spanish_ci NOT NULL default '',
+  `NombreUniversidad` varchar(40)COLLATE latin1_spanish_ci NOT NULL ,
+   `FechaInicio` date NOT NULL ,
+    `FechaFin` date NOT NULL ,
+  `LoginU` varchar(15)COLLATE latin1_spanish_ci NOT NULL ,
  PRIMARY KEY (`NombreUniversidad`,`FechaInicio`,`LoginU`),
   KEY `FK_UNIVERSIDAD_USUARIO` (`LoginU`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
@@ -332,8 +332,8 @@ CREATE TABLE IF NOT EXISTS `universidad` (
 DROP TABLE IF EXISTS `autor`;
 CREATE TABLE IF NOT EXISTS `autor` (
   `CodigoAutor` int(11) NOT NULL AUTO_INCREMENT,
-  `NombreAutor` varchar(40)COLLATE latin1_spanish_ci NOT NULL default '',
-  `LoginU` varchar(15)COLLATE latin1_spanish_ci NOT NULL default '',
+  `NombreAutor` varchar(40)COLLATE latin1_spanish_ci NOT NULL ,
+  `LoginU` varchar(15)COLLATE latin1_spanish_ci NOT NULL ,
  PRIMARY KEY (`CodigoAutor`),
   KEY `FK_AUTOR_USUARIO` (`LoginU`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
@@ -343,10 +343,10 @@ CREATE TABLE IF NOT EXISTS `autor` (
 --
 DROP TABLE IF EXISTS `titulo_academico`;
 CREATE TABLE IF NOT EXISTS `titulo_academico` (
-  `NombreTitulo` varchar(40)COLLATE latin1_spanish_ci NOT NULL default '',
-  `CentroTitulo` varchar(40)COLLATE latin1_spanish_ci NOT NULL default '',
+  `NombreTitulo` varchar(40)COLLATE latin1_spanish_ci NOT NULL ,
+  `CentroTitulo` varchar(40)COLLATE latin1_spanish_ci NOT NULL ,
    `FechaTitulo` date NOT NULL default '0000-00-00',
-  `LoginU` varchar(15)COLLATE latin1_spanish_ci NOT NULL default '',
+  `LoginU` varchar(15)COLLATE latin1_spanish_ci NOT NULL ,
   PRIMARY KEY (`NombreTitulo`,`LoginU`),
   KEY `FK_TITULO_ACADEMICO_USUARIO` (`LoginU`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
@@ -365,9 +365,9 @@ CREATE TABLE IF NOT EXISTS `titulo_academico` (
 --
 DROP TABLE IF EXISTS `docente_congreso`;
 CREATE TABLE IF NOT EXISTS `docente_congreso` (
-  `LoginU` varchar(15)COLLATE latin1_spanish_ci NOT NULL default '',
-  `CodigoC` int(11) NOT NULL default '0',
-  `TipoParticipacionC` enum('MCO','MCC','R','C','PCO','PCC') NOT NULL default 'MCO',
+  `LoginU` varchar(15)COLLATE latin1_spanish_ci NOT NULL ,
+  `CodigoC` int(11) NOT NULL ,
+  `TipoParticipacionC` enum('MCO','MCC','R','C','PCO','PCC') NOT NULL ,
    PRIMARY KEY (`LoginU`,`CodigoC`),
   KEY `FK_DOCENTE_CONGRESO_USUARIO` (`LoginU`),
   KEY `FK_DOCENTE_CONGRESO_CONGRESO` (`CodigoC`)
@@ -390,8 +390,8 @@ CREATE TABLE IF NOT EXISTS `docente_congreso` (
 --
 DROP TABLE IF EXISTS `docente_proyectodirigido`;
 CREATE TABLE IF NOT EXISTS `docente_proyectoDirigido` (
-  `CodigoPD` varchar(10)COLLATE latin1_spanish_ci NOT NULL default '',
-  `LoginU` varchar(15)COLLATE latin1_spanish_ci NOT NULL default '',
+  `CodigoPD` varchar(10)COLLATE latin1_spanish_ci NOT NULL ,
+  `LoginU` varchar(15)COLLATE latin1_spanish_ci NOT NULL ,
    PRIMARY KEY (`LoginU`,`CodigoPD`),
   KEY `FK_DOCENTE_PD_USUARIO` (`LoginU`),
   KEY `FK_DOCENTE_PD_PD` (`CodigoPD`)
@@ -412,8 +412,8 @@ CREATE TABLE IF NOT EXISTS `docente_proyectoDirigido` (
 DROP TABLE IF EXISTS `docente_proyecto`;
 CREATE TABLE IF NOT EXISTS `docente_proyecto` (
   `CodigoProy` int(11) NOT NULL default '0',
-  `LoginU` varchar(15)COLLATE latin1_spanish_ci NOT NULL default '',
-  `TipoParticipacionProy` enum('Investigador','Investigador Principal') NOT NULL default 'Investigador',
+  `LoginU` varchar(15)COLLATE latin1_spanish_ci NOT NULL ,
+  `TipoParticipacionProy` enum('Investigador','Investigador Principal') NOT NULL ,
    PRIMARY KEY (`LoginU`,`CodigoProy`),
   KEY `FK_DOCENTE_PROYECTO_USUARIO` (`LoginU`),
   KEY `FK_DOCENTE_PROYECTO_PROYECTO` (`CodigoProy`)
