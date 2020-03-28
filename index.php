@@ -12,8 +12,6 @@
  if(isset($_GET["controlador"])){
     $controlador = $_GET["controlador"];
  }
- 
-
 
 if( empty($controlador) ){  // Si el controlador está vacio incluimos a la vista de login
 

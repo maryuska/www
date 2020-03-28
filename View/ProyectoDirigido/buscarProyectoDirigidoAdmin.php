@@ -86,10 +86,36 @@ $usuario = $_SESSION["listarBusqueda"];
                                             <strong>Cotutor:</strong>
                                             <span><?php echo $row['CotutorPD']; ?></span>
                                         </p>
+
                                         <p class="margin-bottom5">
                                             <strong>Tipo:</strong>
                                             <span><?php echo $row['TipoPD']; ?></span>
                                         </p>
+
+                                        <p class="margin-bottom5">
+                                            <strong>Adjunto:</strong>
+                                            <span>
+                                                <?php 
+                                                    if(empty($row['AdjuntoPD'])){
+                                                        echo "No tiene.";
+                                                    }
+                                                    else{
+                                                        echo "<a href='Archivos/proyectos_dirigidos/{$row['AdjuntoPD']}' target='_blank'>Ver adjunto</a>";
+                                                    }
+                                                ?>
+                                            </span>
+                                        </p>
+
+                                        <div class="margin-bottom5 text-center">
+                                            <form name="formBorrarPD<?php echo $contador; ?>" id="formBorrarPD<?php echo $contador; ?>" class="text-center" action="index.php" method="get">
+                                                <input type="hidden" name="controlador" value="ProyectosDirigidos">
+                                                <input type="hidden" name="evento" value="borrarProyectoDirigido">
+                                                <input type="hidden" name="CodigoPD" value="<?php echo $row['CodigoPD']; ?>">
+                                                <button type="button" class="btn btn-transparent btn-orange" onClick="abrirConfirmPD('formBorrarPD<?php echo $contador; ?>', '<?php echo $row['CodigoPD']." ".$row['TituloPD']; ?>');">
+                                                    Borrar
+                                                </button>
+                                            </form>
+                                        </div>
 
                                     </div>
 
@@ -110,6 +136,7 @@ $usuario = $_SESSION["listarBusqueda"];
 
     </div>
 </div>
+
 
 
 <?php

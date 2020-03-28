@@ -40,61 +40,125 @@ require_once 'View/Structure/Nav.php';
 
 
 
-                    <h2 class="col-md-offset-5 col-lg-offset-4 text-center">¿Qué quieres ver en el pdf?</h2>
+                    <h2 class="text-center">¿Qué quieres ver en el pdf?</h2>
 
                     <br>
 
                     <div class="row">
-                        <div class="col-md-offset-5 col-md-5 col-lg-offset-6 col-lg-4">
 
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="formacionAcademica" id="formacionAcademica" value="1">
-                                <label class="form-check-label" for="formacionAcademica">
-                                    Formación académica
-                                </label>
+                        <div class="panel">
+                            <div class="panel-body">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="formacionAcademica" id="formacionAcademica" value="1">
+                                    <label class="form-check-label" for="formacionAcademica">
+                                        Formación académica
+                                    </label>
+                                </div>
                             </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="proyectosDirigidos" id="proyectosDirigidos" value="1">
-                                <label class="form-check-label" for="proyectosDirigidos">
-                                    Proyectos Dirigidos
-                                </label>
+                        </div>
+
+                        <div class="panel">
+                            <div class="panel-body">
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="proyectosDirigidos" id="proyectosDirigidos" value="1">
+                                    <label class="form-check-label" for="proyectosDirigidos">
+                                        Proyectos Dirigidos
+                                    </label>
+                                </div>
+
+                                <div class="col-xs-12">
+                                    <label>Tipo</label>
+                                    <select name="proyectosDirigidosTipo">
+                                        <option value="">--</option>
+                                        <option value="PFC">PFC</option>
+                                        <option value="TFG">TFG</option>
+                                        <option value="TFM">TFM</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-xs-12">
+                                    <br>
+                                    <label for="proyectosDirigidosDesde">Desde</label>
+                                    <input type="date" id="proyectosDirigidosDesde" name="proyectosDirigidosDesde" autocomplete="off">
+                                    <label for="proyectosDirigidosHasta">Hasta</label>
+                                    <input type="date" id="proyectosDirigidosHasta" name="proyectosDirigidosHasta" autocomplete="off">
+
+
+
+                                </div>
+
+
+
+
+
+
+
+
+
+
+
                             </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="materias" id="materias" value="1">
-                                <label class="form-check-label" for="materias">
-                                    Materias
-                                </label>
+                        </div>
+
+                        <div class="panel">
+                            <div class="panel-body">                    
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="materias" id="materias" value="1">
+                                    <label class="form-check-label" for="materias">
+                                        Materias
+                                    </label>
+                                </div>
                             </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="congresos" id="congresos" value="1">
-                                <label class="form-check-label" for="congresos">
-                                    Congresos
-                                </label>
+                        </div>
+
+                        <div class="panel">
+                            <div class="panel-body">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="congresos" id="congresos" value="1">
+                                    <label class="form-check-label" for="congresos">
+                                        Congresos
+                                    </label>
+                                </div>
                             </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="proyectos" id="proyectos" value="1">
-                                <label class="form-check-label" for="proyectos">
-                                    Proyectos
-                                </label>
+                        </div>
+
+                        <div class="panel">
+                            <div class="panel-body">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="proyectos" id="proyectos" value="1">
+                                    <label class="form-check-label" for="proyectos">
+                                        Proyectos
+                                    </label>
+                                </div>
                             </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="tad" id="tad" value="1">
-                                <label class="form-check-label" for="tad">
-                                    Tad
-                                </label>
+                        </div>
+
+                        <div class="panel">
+                            <div class="panel-body">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="tad" id="tad" value="1">
+                                    <label class="form-check-label" for="tad">
+                                        Tad
+                                    </label>
+                                </div>
                             </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="tesis" id="tesis" value="1">
-                                <label class="form-check-label" for="tesis">
-                                    Tesis
-                                </label>
+                        </div>
+
+                        <div class="panel">
+                            <div class="panel-body">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="tesis" id="tesis" value="1">
+                                    <label class="form-check-label" for="tesis">
+                                        Tesis
+                                    </label>
+                                </div>
                             </div>
-                            
                         </div>
 
                     </div>
                     <div class="row">
-                        <div class="col-md-offset-4 col-lg-offset-3 text-center">
+                        <div class="text-center">
                             <br>
                             <button type="submit" name="evento" value="generar" class="btn btn-orange"> 
                                 Generar

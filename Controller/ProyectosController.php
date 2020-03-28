@@ -28,11 +28,21 @@ switch ($evento) {
 
 //Dar de alta un proyecto
     case 'altaProyecto':
+
+        // Subimos el fichero si viene alguno
+        $Adjunto = '';
+        if(isset($_FILES['AdjuntoProy']) && $_FILES['AdjuntoProy']['error'] == 0){
+            $dir_subida = 'Archivos/proyectos/';
+            $fichero_subido = $dir_subida . basename($_FILES['AdjuntoProy']['name']);
+            if (move_uploaded_file($_FILES['AdjuntoProy']['tmp_name'], $fichero_subido))
+                $Adjunto = basename($_FILES['AdjuntoProy']['name']);
+        }
     
         $Proyecto = new Proyecto($_POST["CodigoProy"],$_POST["TituloProy"],$_POST["EntidadFinanciadora"],$_POST["AcronimoProy"],$_POST["AnhoInicioProy"],$_POST["AnhoFinProy"],$_POST["Importe"]);
 		$CodigoProy = $_REQUEST['CodigoProy'];
         $Login=$_REQUEST["Login"];
         $TipoParticipacionProy = $_REQUEST['TipoParticipacionProy'];
+        $AdjuntoProy = $Adjunto;
 
         $Usuario = new Usuarios("","","","","","","","","");
         $consultarUsuarios = $Usuario->ListarUsuarios();
@@ -69,6 +79,7 @@ switch ($evento) {
 
             } else {
                 $Proyecto->AltaProyecto();
+                $Proyecto->Adjunto($CodigoProy,$AdjuntoProy);
                 $Proyecto->Participa($CodigoProy, $Login, $TipoParticipacionProy);
                 if ($tipou == 'U') {
                     header("Location: index.php?controlador=Proyectos&evento=listarProyectos&LoginU=$Login");

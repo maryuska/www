@@ -41,8 +41,28 @@ switch ($evento) {
                 $html    .= $objetoPDF->formacionAcademica($_POST["loginU"]);
 
             // Si se ha seleccionado Proyectos dirigidos la concatenamos al html
-            if( isset($_POST["proyectosDirigidos"]) && $_POST["proyectosDirigidos"] == 1)
-                $html    .= $objetoPDF->proyectosDirigidos($_POST["loginU"]);
+            if( isset($_POST["proyectosDirigidos"]) && $_POST["proyectosDirigidos"] == 1){
+
+                // Aplicamos filtros a la consulta
+                $tipoPD = "";
+                if(isset($_POST["proyectosDirigidosTipo"])){
+                    $tipoPD = $_POST["proyectosDirigidosTipo"];
+                }
+
+                $fechaDesdePD = "";
+                if(isset($_POST["proyectosDirigidosDesde"])){
+                    $fechaDesdePD = $_POST["proyectosDirigidosDesde"];
+                }
+
+                $fechaHastaPD = "";
+                if(isset($_POST["proyectosDirigidosHasta"])){
+                    $fechaHastaPD = $_POST["proyectosDirigidosHasta"];
+                }
+
+                var_dump($tipoPD);
+                $html    .= $objetoPDF->proyectosDirigidos($_POST["loginU"], $tipoPD, $fechaDesdePD, $fechaHastaPD);
+
+            }
 
             // Si se ha seleccionado materias la concatenamos al html
             if( isset($_POST["materias"]) && $_POST["materias"] == 1)

@@ -41,7 +41,7 @@ require_once 'View/Structure/Nav.php';
 
                     <!-- Formulario -->
 
-                    <form id="formularioModificarProyectoDirigido" action="index.php?controlador=ProyectosDirigidos" method="post">
+                    <form id="formularioModificarProyectoDirigido" enctype="multipart/form-data" action="index.php?controlador=ProyectosDirigidos" method="post">
 
                         <!-- proyecto dirigido -->
 
@@ -134,6 +134,32 @@ require_once 'View/Structure/Nav.php';
                                     ?>
 
                                 </select></p>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label" for="AdjuntoPD">Adjunto</label>
+                            <input id="AdjuntoPD" name="AdjuntoPD" type="file" class="form-control <?php if(isset($errores) && in_array("AdjuntoPD", $errores)){ echo " error"; } ?>" value="<?=isset($_POST["AdjuntoPD"])?$_POST["AdjuntoPD"]:$row['AdjuntoPD']?>" >
+                            <?php
+                            if(!empty($row["AdjuntoPD"])){
+
+                                $url = "Archivos/proyectos_dirigidos/".$row["AdjuntoPD"];                            ?>
+                            
+                                <div class="text-center" style="margin:20px auto;">
+                                    <input type="hidden" name="AdjuntoPD_old" value="<?=$row["AdjuntoPD"]?>">
+                                    <a href='<?=$url?>' target='_blank'>Ver adjunto</a>
+                                    <br>
+                                    <label>
+                                        <input type="checkbox" value="1" name="AdjuntoPD_delete">
+                                        Eliminar fichero adjunto
+                                    </label>
+                                    <br>
+                                    <small>Si sube un fichero nuevo el anterior será eliminado.<small>
+                                </div>
+
+                            <?php
+                            }
+                            ?>
+
                         </div>
 
                         <br>

@@ -15,17 +15,19 @@ class ProyectosDirigidos{
   private $URLPD;
   private $CotutorPD;
   private $TipoPD;
+  private $AdjuntoPD;
 
 //constructor de proyectos dirigidos
-  public function __construct($CodigoPD = NULL, $TituloPD = NULL, $AlumnoPD = NULL, $FechaLecturaPD = NULL, $CalificacionPD = NULL, $URLPD = NULL, $CotutorPD = NULL, $TipoPD = NULL ){
+  public function __construct($CodigoPD = NULL, $TituloPD = NULL, $AlumnoPD = NULL, $FechaLecturaPD = NULL, $CalificacionPD = NULL, $URLPD = NULL, $CotutorPD = NULL, $TipoPD = NULL, $AdjuntoPD = NULL ){
     $this->CodigoPD = $CodigoPD;
     $this->TituloPD = $TituloPD;
     $this->AlumnoPD = $AlumnoPD;
     $this->FechaLecturaPD = $FechaLecturaPD;
     $this->CalificacionPD = $CalificacionPD;
     $this->URLPD = $URLPD;
-    $this->CotutorPD= $CotutorPD;
-    $this->TipoPD= $TipoPD;
+    $this->CotutorPD = $CotutorPD;
+    $this->TipoPD = $TipoPD;
+    $this->AdjuntoPD = $AdjuntoPD;
   }
 
 //Función para conectarnos a la Base de datos
@@ -38,16 +40,21 @@ class ProyectosDirigidos{
         }
     }
 
+// Set adjunto
+    public function setAdjunto($AdjuntoPD){
+        $this->AdjuntoPD = $AdjuntoPD;
+    }
+
 //Alta de un nuevo proyecto dirigido
   public function AltaProyectoDirigido() {
       $this->ConectarBD();
-    $insertarProyectoDirigido  = "INSERT INTO proyectoDirigido(CodigoPD,TituloPD, AlumnoPD, FechaLecturaPD, CalificacionPD,URLPD, CotutorPD,TipoPD)
-                          VALUES ('$this->CodigoPD', '$this->TituloPD', '$this->AlumnoPD', '$this->FechaLecturaPD','$this->CalificacionPD','$this->URLPD', '$this->CotutorPD', '$this->TipoPD')";
+    $insertarProyectoDirigido  = "INSERT INTO proyectoDirigido(CodigoPD,TituloPD, AlumnoPD, FechaLecturaPD, CalificacionPD,URLPD, CotutorPD, TipoPD, AdjuntoPD)
+                          VALUES ('$this->CodigoPD', '$this->TituloPD', '$this->AlumnoPD', '$this->FechaLecturaPD','$this->CalificacionPD','$this->URLPD', '$this->CotutorPD', '$this->TipoPD', '$this->AdjuntoPD')";
 	$resultado = $this->mysqli->query($insertarProyectoDirigido) or die(mysqli_error($this->mysqli));
 	}
 
 //Alta de un usuario dirige un proyecto dirigido
-  public function Dirige($Login,$CodigoPD){
+  public function Dirige($CodigoPD,$Login){
       $this->ConectarBD();
         $dirigir = "INSERT INTO docente_proyectodirigido (CodigoPD, LoginU)
 			VALUES ('$CodigoPD','$Login')";
@@ -77,7 +84,8 @@ public function ConsultarDirige($CodigoPD){
                                                             CalificacionPD='$this->CalificacionPD',
                                                             URLPD='$this->URLPD',
                                                             CotutorPD='$this->CotutorPD',
-                                                            TipoPD='$this->TipoPD' 
+                                                            TipoPD='$this->TipoPD',
+                                                            AdjuntoPD='$this->AdjuntoPD'
                                                             where CodigoPD = '$CodigoPD'") or die (mysqli_error($this->mysqli));
     }
 
@@ -87,6 +95,33 @@ public function ConsultarDirige($CodigoPD){
         $sql= $this->mysqli->query("SELECT * FROM proyectoDirigido p, docente_proyectoDirigido dp WHERE p.CodigoPD = dp.CodigoPD  AND dp.LoginU = '$Login'  ORDER BY FechaLecturaPD DESC");
         return $sql;
 
+    }
+    
+//Lista de todos los proyectos dirigidos del usuario usado para crear el pdf
+    public function ListarProyectosDirigidosPDF($loginU, $tipoPD, $fechaDesdePD, $fechaHastaPD){
+        $this->ConectarBD();
+
+        $where = "";
+        if(!empty($tipoPD)){
+            $where .= " AND p.TipoPD = '$tipoPD' ";
+        }
+
+        if(!empty($fechaDesdePD) && !empty($fechaHastaPD)){
+            $fechaDesdePD = date("Y-m-d", strtotime($fechaDesdePD));
+            $fechaHastaPD = date("Y-m-d", strtotime($fechaHastaPD));
+            $where .= " AND p.FechaLecturaPD BETWEEN '$fechaDesdePD' AND '$fechaHastaPD'";
+        }
+        elseif(!empty($fechaDesdePD)){
+            $fechaDesdePD = date("Y-m-d", strtotime($fechaDesdePD));
+            $where .= " AND p.FechaLecturaPD > '$fechaDesdePD'";
+        }
+        elseif(!empty($fechaHastaPD)){
+            $fechaHastaPD = date("Y-m-d", strtotime($fechaHastaPD));
+            $where .= " AND p.FechaLecturaPD < '$fechaHastaPD'";
+        }
+
+        $sql= $this->mysqli->query("SELECT * FROM proyectoDirigido p, docente_proyectoDirigido dp WHERE p.CodigoPD = dp.CodigoPD  AND dp.LoginU = '$loginU' " . $where . "  ORDER BY FechaLecturaPD DESC");
+        return $sql;
     }
 
 //Lista de todos los proyectos fin de carrera del usuario
@@ -146,11 +181,21 @@ public function ConsultarDirige($CodigoPD){
 //Eliminar un proyecto dirigido
     public function BorrarProyectoDirigido($CodigoPD){
         $this->ConectarBD();
+
+        // Eliminamos el fichero que tuvier adjunto
+        $sql = $this->mysqli->query("SELECT AdjuntoPD FROM proyectoDirigido WHERE CodigoPD = '$CodigoPD'");
+        if( $sql->num_rows > 0 ){
+            $res = mysqli_fetch_array($sql);
+            if(!empty($res["AdjuntoPD"]))
+                @unlink('Archivos/proyectos_dirigidos/' . $res["AdjuntoPD"]);
+        }
+
+        // Eliminamos el registro de BD
         $this->mysqli->query("DELETE FROM proyectoDirigido WHERE CodigoPD = '$CodigoPD'")or die(mysqli_error($this->mysqli));
     }
 
 //Eliminar
-    public function BorrarDirige($LoginU,$CodigoPD){
+    public function BorrarDirige($CodigoPD,$LoginU){
         $this->ConectarBD();
         $this->mysqli->query("DELETE FROM docente_proyectodirigido WHERE CodigoPD = '$CodigoPD' AND LoginU='$LoginU'")or die(mysqli_error($this->mysqli));
     }

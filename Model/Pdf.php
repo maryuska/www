@@ -147,10 +147,11 @@ class Pdf{
         return $html;
     }
 
-    public function proyectosDirigidos($loginU){
+    public function proyectosDirigidos($loginU, $tipoPD, $fechaDesdePD, $fechaHastaPD){
 
         $proyectos      = new ProyectosDirigidos();
         $conProyectos   = $proyectos->ListarProyectosDirigidos($loginU);
+
 
         $html = "<h2 class='negrita marginTop'>";
         $html.= "   PROYECTOS DIRIGIDOS";
@@ -158,23 +159,22 @@ class Pdf{
         $html.= "<hr class='naranja'>";
 
         $html.= "<div class='reset'>";
-       
+
         if($conProyectos->num_rows > 0){
-
-            
             while($row = mysqli_fetch_array($conProyectos)){
+                if($row["TipoPD"]==$tipoPD || $tipoPD==Null){
 
-                $codigo         = $row["CodigoPD"];
-                $titulo         = $row["TituloPD"];
-                $alumno         = $row["AlumnoPD"];
-                $calificacion   = $row["CalificacionPD"];
+                    $codigo         = $row["CodigoPD"];
+                    $titulo         = $row["TituloPD"];
+                    $alumno         = $row["AlumnoPD"];
+                    $calificacion   = $row["CalificacionPD"];
 
-                $html.= "   <p class='reset'><strong>Código:</strong> " . $codigo . "</p>";
-                $html.= "   <p class='reset'><strong>Título:</strong> " . $titulo . "</p>";
-                $html.= "   <p class='reset'><strong>Alumno:</strong> " . $alumno . "</p>";
-                $html.= "   <p class='reset'><strong>Calificación:</strong> " . $calificacion . "</p>";
-                $html.= "   <hr>";
-
+                    $html.= "   <p class='reset'><strong>Código:</strong> " . $codigo . "</p>";
+                    $html.= "   <p class='reset'><strong>Título:</strong> " . $titulo . "</p>";
+                    $html.= "   <p class='reset'><strong>Alumno:</strong> " . $alumno . "</p>";
+                    $html.= "   <p class='reset'><strong>Calificación:</strong> " . $calificacion . "</p>";
+                    $html.= "   <hr>";
+                }
             }
 
         }

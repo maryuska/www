@@ -43,7 +43,13 @@ class Proyecto{
                           VALUES ('$this->CodigoProy', '$this->TituloProy', '$this->EntidadFinanciadora', '$this->AcronimoProy','$this->AnhoInicioProy','$this->AnhoFinProy','$this->Importe')";
         $resultado = $this->mysqli->query($insertarProyecto) or die(mysqli_error($this->mysqli));
     }
-
+//Alta de un adjunto proyecto
+    public function Adjunto($CodigoProy,$AdjuntoProy){
+        $this->ConectarBD();
+        $Adjunto = "INSERT INTO adjuntosProyectos (CodigoProy,AdjuntoProy)
+			VALUES ('$CodigoProy','$AdjuntoProy')";
+        $resultado = $this->mysqli->query($Adjunto) or die(mysqli_error($this->mysqli));
+    }
 //Alta de un usuario proyecto
     public function Participa($CodigoProy,$Login,$TipoParticipacionProy){
         $this->ConectarBD();

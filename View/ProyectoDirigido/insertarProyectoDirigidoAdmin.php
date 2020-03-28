@@ -34,7 +34,7 @@ require_once 'View/Structure/Nav.php';
 
                 <!-- Formulario -->
 
-                <form id="formulario" class="form-horizontal" enctype="multipart/form-data"  action="index.php?controlador=ProyectosDirigidos" method="post">
+                <form id="formulario" class="form-horizontal" enctype="multipart/form-data" action="index.php?controlador=ProyectosDirigidos" method="post">
 
                     <!-- proyecto dirigido -->
 
@@ -118,6 +118,13 @@ require_once 'View/Structure/Nav.php';
                                                     <option value="TFG" <?php if(isset($_POST["TipoPD"]) && $_POST["TipoPD"] == "TFG"){ echo "selected"; } ?>>TFG</option>
                                                     <option value="TFM" <?php if(isset($_POST["TipoPD"]) && $_POST["TipoPD"] == "TFM"){ echo "selected"; } ?>>TFM</option>
                                                 </select></p>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group form-group-md">
+                                        <label class="col-md-4 col-lg-3 control-label" for="AdjuntoPD">Adjunto</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input id="AdjuntoPD" name="AdjuntoPD" type="file" class="form-control <?php if(isset($errores) && in_array("AdjuntoPD", $errores)){ echo " error"; } ?>" value="<?=isset($_POST["AdjuntoPD"])?$_POST["AdjuntoPD"]:''?>" >
                                         </div>
                                     </div>
 

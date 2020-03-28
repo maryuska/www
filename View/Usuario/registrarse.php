@@ -121,11 +121,7 @@ require_once 'View/Structure/Nav.php';
 
                 <!-- Universidad -->
 
-                <h3 class="col-md-offset-4 col-lg-offset-3 text-center">Datos de la Universidad</h3>
-
-                <br>
-
-                <div class="form-group form-group-md">
+                <h3 class="col-md-offset-4 col-lg-offset-3 text-center">Universidades en donde trabajastes <div class="form-group form-group-md">
                     <label class="col-md-4 col-lg-3 control-label" for="NombreUniversidad">Nombre</label>
                     <div class="col-md-8 col-lg-9">
                         <input id="NombreUniversidad" name="NombreUniversidad" type="text" placeholder="Nombre" class="form-control <?php if(isset($errores) && in_array("NombreUniversidad", $errores)){ echo " error"; } ?>" value="<?=isset($_POST["NombreUniversidad"])?$_POST["NombreUniversidad"]:''?>" >
@@ -147,11 +143,7 @@ require_once 'View/Structure/Nav.php';
                 </div>
 
                 <!-- Título -->
-                <h3 class="col-md-offset-4 col-lg-offset-3 text-center">Datos del Titulo</h3>
-                
-                <br>
-
-                <div class="form-group form-group-md">
+                <h3 class="col-md-offset-4 col-lg-offset-3 text-center">Datos Formación Universitaria <div class="form-group form-group-md">
                     <label class="col-md-4 col-lg-3 control-label" for="Titulo">Nombre Titulo</label>
                     <div class="col-md-8 col-lg-9">
                         <input id="Titulo" name="Titulo" type="text" placeholder="Nombre Titulo" class="form-control <?php if(isset($errores) && in_array("Titulo", $errores)){ echo " error"; } ?>" value="<?=isset($_POST["Titulo"])?$_POST["Titulo"]:''?>" >

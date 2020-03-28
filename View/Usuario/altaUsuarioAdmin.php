@@ -129,7 +129,7 @@ require_once 'View/Structure/Nav.php';
 
                     <!-- Universidad -->
 
-                    <h3 class="col-md-offset-4 col-lg-offset-3 text-center">Datos de la Universidad</h3>
+                    <h3 class="col-md-offset-4 col-lg-offset-3 text-center">Universidades en las que trabajó</h3>
 
                     <br>
 
@@ -155,7 +155,7 @@ require_once 'View/Structure/Nav.php';
                     </div>
 
                     <!-- Título -->
-                    <h3 class="col-md-offset-4 col-lg-offset-3 text-center">Datos del Titulo</h3>
+                    <h3 class="col-md-offset-4 col-lg-offset-3 text-center">Datos Formación Universitaria</h3>
                     
                     <br>
 

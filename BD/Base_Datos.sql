@@ -156,18 +156,11 @@ CREATE TABLE IF NOT EXISTS `proyectoDirigido` (
   `URLPD` varchar(100)COLLATE latin1_spanish_ci NOT NULL ,
   `CotutorPD` varchar(100)COLLATE latin1_spanish_ci NOT NULL ,
   `TipoPD` enum('PFC','TFG','TFM') NOT NULL,
+  `AdjuntoPD` varchar(200) COLLATE latin1_spanish_ci NOT NULL,
     PRIMARY KEY (`CodigoPD`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
 
-
-
-
-INSERT INTO `proyectoDirigido` VALUES ('1246783', 'titulo1', 'maria guillermes vazquez', '0000-00-00','Sobresaliente','','','PFC'),
-                                      ('3455r676', 'titulo2', 'maria guillermes vazquez', '0000-00-00','Notable','','','TFG'),
-                                      ('567657', 'titulo3', 'maria guillermes vazquez', '0000-00-00','Sobresaliente','','','PFC'),
-                                      ('46587856', 'titulo4', 'maria guillermes vazquez', '0000-00-00','Matricula','','','TFG'),
-                                      ('5678678', 'titulo5', 'maria guillermes vazquez', '0000-00-00','Notable','','','TFM');
 
 -- --------------------------------------------------------
 
@@ -392,7 +385,7 @@ DROP TABLE IF EXISTS `docente_proyectodirigido`;
 CREATE TABLE IF NOT EXISTS `docente_proyectoDirigido` (
   `CodigoPD` varchar(10)COLLATE latin1_spanish_ci NOT NULL ,
   `LoginU` varchar(15)COLLATE latin1_spanish_ci NOT NULL ,
-   PRIMARY KEY (`LoginU`,`CodigoPD`),
+   PRIMARY KEY (`CodigoPD`,`LoginU`),
   KEY `FK_DOCENTE_PD_USUARIO` (`LoginU`),
   KEY `FK_DOCENTE_PD_PD` (`CodigoPD`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
@@ -411,12 +404,13 @@ CREATE TABLE IF NOT EXISTS `docente_proyectoDirigido` (
 --
 DROP TABLE IF EXISTS `docente_proyecto`;
 CREATE TABLE IF NOT EXISTS `docente_proyecto` (
-  `CodigoProy` int(11) NOT NULL default '0',
+  `CodigoProy` int(11) NOT NULL,
   `LoginU` varchar(15)COLLATE latin1_spanish_ci NOT NULL ,
   `TipoParticipacionProy` enum('Investigador','Investigador Principal') NOT NULL ,
-   PRIMARY KEY (`LoginU`,`CodigoProy`),
-  KEY `FK_DOCENTE_PROYECTO_USUARIO` (`LoginU`),
-  KEY `FK_DOCENTE_PROYECTO_PROYECTO` (`CodigoProy`)
+   PRIMARY KEY (`CodigoProy`,`LoginU`),
+    KEY `FK_DOCENTE_PROYECTO_PROYECTO` (`CodigoProy`),
+  KEY `FK_DOCENTE_PROYECTO_USUARIO` (`LoginU`)
+
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 --
 -- RELACIONES PARA LA TABLA `docente_proyecto`:
@@ -511,12 +505,28 @@ CREATE TABLE IF NOT EXISTS `autor_articulo` (
 --     `CodigoAutor`
 --       `autor` -> `CodigoAutor`
 --
+-- --------------------------------------------------------
+
 --
---
--- Restricciones para tablas volcadas
+-- Estructura tablas para adjuntos
 --
 
+--
+-- --------------------------------------------------------
+-- Tabla adjuntos de proyectos
+--
 
+DROP TABLE IF EXISTS `adjuntosProyectos`;
+CREATE TABLE `adjuntosProyectos` (
+ `AdjuntoProy` varchar(200) COLLATE latin1_spanish_ci NOT NULL,
+ `CodigoProy` int(11) NOT NULL,
+    PRIMARY KEY (`AdjuntoProy`,`CodigoProy`),
+  KEY `FK_ADJUNTO_PROYECTO` (`CodigoProy`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+
+
+--
+-- --------------------------------------------------------
 --
 -- Estructura de tabla para la tabla `usuario_articulo`
 --
@@ -527,15 +537,21 @@ CREATE TABLE `usuario_articulo` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
 --
--- Indices de la tabla `usuario_articulo`
+-- Restricciones para tablas volcadas
 --
+
 ALTER TABLE `usuario_articulo`
   ADD PRIMARY KEY (`CodigoA`,`LoginU`),
   ADD KEY `FK_USUARIO_ARTICULO_ARTICULO` (`CodigoA`),
   ADD KEY `FK_USUARIO_ARTICULO_USUARIO` (`LoginU`);
 
 
+--
+-- Filtros para la tabla `adjuntosProyectos`
+--
 
+ALTER TABLE `adjuntosProyectos`
+  ADD CONSTRAINT `FK_ADJUNTO_PROYECTO` FOREIGN KEY (`CodigoProy`) REFERENCES `proyecto` (`CodigoProy`);
 
 --
 -- Filtros para la tabla `tesis`
@@ -573,9 +589,8 @@ ALTER TABLE `universidad`
 --
 ALTER TABLE `titulo_academico`
  ADD CONSTRAINT `FK_TITULO_ACADEMICO_USUARIO` FOREIGN KEY (`LoginU`) REFERENCES `usuario` (`LoginU`);
---
---
 
+--
 -- Filtros para la tabla `docente_congreso`
 --
 ALTER TABLE `docente_congreso`
@@ -596,9 +611,10 @@ ALTER TABLE `docente_proyectodirigido`
 --
 -- Filtros para la tabla `docente_proyecto`
 --
+
 ALTER TABLE `docente_proyecto`
-  ADD CONSTRAINT `FK_DOCENTE_PROYECTO_USUARIO` FOREIGN KEY (`LoginU`) REFERENCES `usuario` (`LoginU`),
-  ADD CONSTRAINT `FK_DOCENTE_PROYECTO_PROYECTO` FOREIGN KEY (`CodigoProy`) REFERENCES `proyecto` (`CodigoProy`);
+  ADD CONSTRAINT `FK_DOCENTE_PROYECTO_PROYECTO` FOREIGN KEY (`CodigoProy`) REFERENCES `proyecto` (`CodigoProy`),
+  ADD CONSTRAINT `FK_DOCENTE_PROYECTO_USUARIO` FOREIGN KEY (`LoginU`) REFERENCES `usuario` (`LoginU`) ;
 
 
 

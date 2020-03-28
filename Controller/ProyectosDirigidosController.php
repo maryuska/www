@@ -26,17 +26,24 @@ switch ($evento) {
 
         require_once "View/ProyectoDirigido/insertarProyectoDirigidoAdmin.php";
         break;
-		
-//modificado alta proyectos dirigidos
-//alta proyectos dirigidos
+
+//Alta proyectos dirigidos
     case 'altaProyectoDirigido':      
         
+        // Subimos el fichero si viene alguno
+        $AdjuntoPD = '';
+        if(isset($_FILES['AdjuntoPD']) && $_FILES['AdjuntoPD']['error'] == 0){
+            $dir_subida = 'Archivos/proyectos_dirigidos/';
+            $fichero_subido = $dir_subida . basename($_FILES['AdjuntoPD']['name']);
+            if (move_uploaded_file($_FILES['AdjuntoPD']['tmp_name'], $fichero_subido))
+                $AdjuntoPD = basename($_FILES['AdjuntoPD']['name']);
+        }
+
         //recoge los datos del proyecto dirigido
-        $proyectoDirigido = new ProyectosDirigidos($_POST["CodigoPD"],$_POST["TituloPD"],$_POST["AlumnoPD"],$_POST["FechaLecturaPD"],$_POST["CalificacionPD"],$_POST["URLPD"],$_POST["CotutorPD"],$_POST["TipoPD"]);
+        $proyectoDirigido = new ProyectosDirigidos($_POST["CodigoPD"],$_POST["TituloPD"],$_POST["AlumnoPD"],$_POST["FechaLecturaPD"],$_POST["CalificacionPD"],$_POST["URLPD"],$_POST["CotutorPD"],$_POST["TipoPD"],$AdjuntoPD);
         $CodigoPD = $_REQUEST['CodigoPD'];
         $login=$_REQUEST["LoginU"];
 
-        
         $errores = $proyectoDirigido->validarProyectoDirigido($_POST);
 
         if(!empty($errores)){
@@ -53,7 +60,7 @@ switch ($evento) {
                     require_once "View/ProyectoDirigido/insertarProyectoDirigido.php";
                 }else{
                     $proyectoDirigido->AltaProyectoDirigido();
-                    $proyectoDirigido->Dirige($login, $CodigoPD);
+                    $proyectoDirigido->Dirige( $CodigoPD, $login);
                     header("Location: index.php?controlador=ProyectosDirigidos&evento=listarProyectosDirigidos&LoginU=".$login);
                 }
 
@@ -64,7 +71,8 @@ switch ($evento) {
 
 //Alta proyecto dirigido admin
     case 'altaProyectoDirigidoAdmin':
-         //recoge los datos del proyecto dirigido
+
+        //recoge los datos del proyecto dirigido
         $proyectoDirigido = new ProyectosDirigidos($_POST["CodigoPD"],$_POST["TituloPD"],$_POST["AlumnoPD"],$_POST["FechaLecturaPD"],$_POST["CalificacionPD"],$_POST["URLPD"],$_POST["CotutorPD"],$_POST["TipoPD"]);
         $CodigoPD = $_REQUEST['CodigoPD'];
         $login=$_REQUEST["LoginU"];
@@ -88,14 +96,23 @@ switch ($evento) {
             $consultaPD = $proyectoDirigido->ConsultarProyectoDirigido($CodigoPD);
 
             if($consultaPD->num_rows > 0){    // Existe proyecto dirigido
-
                 $errores = array("LoginU", "CodigoPD", "TituloPD", "AlumnoPD", "FechaLecturaPD", "CalificacionPD", "URLPD", "CotutorPD", "TipoPD");
                 $msgError = "El proyecto dirigido: " . $_POST["CodigoPD"] . " ya existe, no puede insertar el mismo.";
                 require_once "View/ProyectoDirigido/insertarProyectoDirigidoAdmin.php";
 
             }else{
+
+                // Si no ha habido errores subimos el fichero
+                if($_FILES['AdjuntoPD']['error'] == 0){
+                    $dir_subida = 'Archivos/proyectos_dirigidos/';
+                    $fichero_subido = $dir_subida . basename($_FILES['AdjuntoPD']['name']);
+                    if (move_uploaded_file($_FILES['AdjuntoPD']['tmp_name'], $fichero_subido))
+                        $AdjuntoPD = basename($_FILES['AdjuntoPD']['name']);
+                }
+                $proyectoDirigido->setAdjunto($AdjuntoPD);
+
                 $proyectoDirigido->AltaProyectoDirigido();
-                $proyectoDirigido->Dirige($login,$CodigoPD);
+                $proyectoDirigido->Dirige($CodigoPD, $login);
                 header("Location: index.php?controlador=ProyectosDirigidos&evento=listarProyectosDirigidosAdmin");
             }
 
@@ -150,8 +167,9 @@ switch ($evento) {
         $CotutorPD = $_POST['CotutorPD'];
         $TipoPD = $_POST['TipoPD'];
 
-        $proyectoDirigido = new ProyectosDirigidos($CodigoPD, $TituloPD, $AlumnoPD, $FechaLecturaPD, $CalificacionPD, $URLPD, $CotutorPD, $TipoPD );
+        $proyectoDirigido = new ProyectosDirigidos($CodigoPD, $TituloPD, $AlumnoPD, $FechaLecturaPD, $CalificacionPD, $URLPD, $CotutorPD, $TipoPD);
         $errores = $proyectoDirigido->validarProyectoDirigido($_POST);
+
 
         if(!empty($errores)){
             $msgError = "Los campos con el borde rojo son obligatorios.";
@@ -179,9 +197,31 @@ switch ($evento) {
         }
         else{ 
 
+            $AdjuntoPD = '';
+
+            // Si tiene marcado el check de eliminar lo eliminamos
+            if( isset($_POST["AdjuntoPD_delete"]) && $_POST["AdjuntoPD_delete"] == '1' )
+                @unlink('Archivos/proyectos_dirigidos/' . $_POST["AdjuntoPD_old"]);
+
+            // Subimos el fichero si viene alguno
+            if(isset($_FILES['AdjuntoPD']) && $_FILES['AdjuntoPD']['error'] == 0){
+                $dir_subida = 'Archivos/proyectos_dirigidos/';
+                $fichero_subido = $dir_subida . basename($_FILES['AdjuntoPD']['name']);
+                if (move_uploaded_file($_FILES['AdjuntoPD']['tmp_name'], $fichero_subido)){
+                    $AdjuntoPD = basename($_FILES['AdjuntoPD']['name']);
+                    
+                    // Si teniamos un archivo anterior lo eliminamos
+                    if( $_POST["AdjuntoPD_old"] )
+                        @unlink('Archivos/proyectos_dirigidos/' . $_POST["AdjuntoPD_old"]);
+
+                }
+            }
+
+            $proyectoDirigido->setAdjunto($AdjuntoPD);
+
             $proyectoDirigido->ModificarProyectoDirigido($CodigoPD);
-            $proyectoDirigido->BorrarDirige($LoginAnt, $CodigoPD);
-            $proyectoDirigido->Dirige($Login,$CodigoPD);
+            $proyectoDirigido->BorrarDirige( $CodigoPD, $LoginAnt);
+            $proyectoDirigido->Dirige($CodigoPD, $Login);
 
             if($tipou == 'U'){
                 header("Location: index.php?controlador=ProyectosDirigidos&evento=listarProyectosDirigidos&LoginU=$Login");
@@ -269,11 +309,11 @@ switch ($evento) {
         $LoginU=$_REQUEST["LoginU"];
         $CodigoPD=$_REQUEST["CodigoPD"];
         $ProyectoDirigido = new ProyectosDirigidos("","","","","","","","");
-        $ProyectoDirigido->BorrarDirige($LoginU, $CodigoPD);
+        $ProyectoDirigido->BorrarDirige($CodigoPD, $LoginU);
         $ProyectoDirigido->BorrarProyectoDirigido($CodigoPD);
         $tipou=$_SESSION["TipoUsuario"];
         if($tipou == 'U'){
-            header("Location: index.php?controlador=ProyectosDirigidos&evento=listarProyectosDirigidos&LoginU=$loginU");
+            header("Location: index.php?controlador=ProyectosDirigidos&evento=listarProyectosDirigidos&LoginU=$LoginU");
         }else{
             header("Location: index.php?controlador=ProyectosDirigidos&evento=listarProyectosDirigidosAdmin");
         }
@@ -297,8 +337,6 @@ switch ($evento) {
                 if($tipou == 'U'){
                 require_once "View/ProyectoDirigido/buscarProyectoDirigido.php";
                 }else{
-
-
                 require_once "View/ProyectoDirigido/buscarProyectoDirigidoAdmin.php";
                 }
         }else{

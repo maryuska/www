@@ -14,10 +14,13 @@
     <script type="text/javascript" src="View/Structure/lib/js/jquery-1.9.1.js"></script>
     <script type="text/javascript" src="View/Structure/lib/bootstrap/js/bootstrap.js"></script>
 
+    <!-- JQuery UI -->
+    <link rel="stylesheet" href="View/Structure/lib/jquery-ui/jquery-ui.min.css">
+    <script src="View/Structure/lib/jquery-ui/jquery-ui.min.js"></script>
+
     <!-- Custom-->
     <link href="View/Structure/lib/css/style.css" rel="stylesheet">
     <script type="text/javascript" src="View/Structure/lib/js/confirmaciones.js"></script>
-    <script type="text/javascript" src="View/Structure/lib/js/validaciones.js"></script>
     <script type="text/javascript" src="View/Structure/lib/js/codigo.js"></script>
 
 </head>

@@ -87,9 +87,24 @@ $LoginU = $_SESSION["loginU"];
                                             <strong>Cotutor:</strong>
                                             <span><?php echo $row['CotutorPD']; ?></span>
                                         </p>
+
                                         <p class="margin-bottom5">
                                             <strong>Tipo:</strong>
                                             <span><?php echo $row['TipoPD']; ?></span>
+                                        </p>
+
+                                        <p class="margin-bottom5">
+                                            <strong>Adjunto:</strong>
+                                            <span>
+                                                <?php 
+                                                    if(empty($row['AdjuntoPD'])){
+                                                        echo "No tiene.";
+                                                    }
+                                                    else{
+                                                        echo "<a href='Archivos/proyectos_dirigidos/{$row['AdjuntoPD']}' target='_blank'>Ver adjunto</a>";
+                                                    }
+                                                ?>
+                                            </span>
                                         </p>
 
                                     </div>

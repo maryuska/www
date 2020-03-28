@@ -58,9 +58,6 @@ $LoginU = $_SESSION["loginU"];
                 <br>
                 <br>
 
-
-
-
                 <div class="tab-content">
                     <!--listado de proyectos dirigidos  -->
                     <div class="tab-pane fade in active" id="tab1">
@@ -103,6 +100,16 @@ $LoginU = $_SESSION["loginU"];
                                                     <br>
                                                     <b name = "TipoPD">Tipo proyecto: </b>
                                                     <?php echo $row['TipoPD']; ?>
+                                                    <br>
+                                                    <b name = "AdjuntoPD">Adjunto: </b>
+                                                    <?php 
+                                                        if(empty($row['AdjuntoPD'])){
+                                                            echo "No tiene.";
+                                                        }
+                                                        else{
+                                                            echo "<a href='Archivos/proyectos_dirigidos/{$row['AdjuntoPD']}' target='_blank'>Ver adjunto</a>";
+                                                        }
+                                                    ?>
                                                     <br>
                                                 </td>
 
@@ -177,6 +184,16 @@ $LoginU = $_SESSION["loginU"];
                                                     <b name = "TipoPD">Tipo proyecto: </b>
                                                     <?php echo $row1['TipoPD']; ?>
                                                     <br>
+                                                    <b name = "AdjuntoPD">Adjunto: </b>
+                                                    <?php 
+                                                        if(empty($row1['AdjuntoPD'])){
+                                                            echo "No tiene.";
+                                                        }
+                                                        else{
+                                                            echo "<a href='Archivos/proyectos_dirigidos/{$row1['AdjuntoPD']}' target='_blank'>Ver adjunto</a>";
+                                                        }
+                                                    ?>
+                                                    <br>
                                                 </td>
 
                                             </tr>
@@ -248,6 +265,16 @@ $LoginU = $_SESSION["loginU"];
                                                     <b name = "TipoPD">Tipo proyecto: </b>
                                                     <?php echo $row2['TipoPD']; ?>
                                                     <br>
+                                                    <b name = "AdjuntoPD">Adjunto: </b>
+                                                    <?php 
+                                                        if(empty($row2['AdjuntoPD'])){
+                                                            echo "No tiene.";
+                                                        }
+                                                        else{
+                                                            echo "<a href='Archivos/proyectos_dirigidos/{$row2['AdjuntoPD']}' target='_blank'>Ver adjunto</a>";
+                                                        }
+                                                    ?>
+                                                    <br>
                                                 </td>
 
                                             </tr>
@@ -317,6 +344,16 @@ $LoginU = $_SESSION["loginU"];
                                                     <br>
                                                     <b name = "TipoPD">Tipo proyecto: </b>
                                                     <?php echo $row3['TipoPD']; ?>
+                                                    <br>
+                                                    <b name = "AdjuntoPD">Adjunto: </b>
+                                                    <?php 
+                                                        if(empty($row3['AdjuntoPD'])){
+                                                            echo "No tiene.";
+                                                        }
+                                                        else{
+                                                            echo "<a href='Archivos/proyectos_dirigidos/{$row3['AdjuntoPD']}' target='_blank'>Ver adjunto</a>";
+                                                        }
+                                                    ?>
                                                     <br>
                                                 </td>
 
