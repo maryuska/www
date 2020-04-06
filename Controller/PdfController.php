@@ -59,7 +59,6 @@ switch ($evento) {
                     $fechaHastaPD = $_POST["proyectosDirigidosHasta"];
                 }
 
-                var_dump($tipoPD);
                 $html    .= $objetoPDF->proyectosDirigidos($_POST["loginU"], $tipoPD, $fechaDesdePD, $fechaHastaPD);
 
             }
