@@ -210,7 +210,8 @@ public function ConsultarDirige($CodigoPD){
                                                             CalificacionPD LIKE '%$buscar'|| CalificacionPD LIKE '%$buscar%' || CalificacionPD LIKE '$buscar%' ||
                                                             URLPD LIKE '%$buscar'|| URLPD LIKE '%$buscar%' || URLPD LIKE '$buscar%' ||
                                                             CotutorPD LIKE '%$buscar'|| CotutorPD LIKE '%$buscar%' || CotutorPD LIKE '$buscar%' ||
-                                                            TipoPD LIKE '%$buscar'|| TipoPD LIKE '%$buscar%' || TipoPD LIKE '$buscar%' 
+                                                            TipoPD LIKE '%$buscar'|| TipoPD LIKE '%$buscar%' || TipoPD LIKE '$buscar%' ||
+                                                            AdjuntoPD LIKE '%$buscar'|| AdjuntoPD LIKE '%$buscar%' || AdjuntoPD LIKE '$buscar%' 
                                                             ") or die(mysqli_error($this->mysqli));
         return $sql;
     }

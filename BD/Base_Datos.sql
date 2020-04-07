@@ -67,6 +67,7 @@ CREATE TABLE IF NOT EXISTS `congreso` (
   `AcronimoC` varchar(20)COLLATE latin1_spanish_ci NOT NULL ,
   `AnhoC` date NOT NULL ,
   `LugarC` varchar(20)COLLATE latin1_spanish_ci NOT NULL ,
+  `AdjuntoC` varchar(200) COLLATE latin1_spanish_ci NOT NULL,
   PRIMARY KEY (`CodigoC`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
@@ -85,6 +86,7 @@ CREATE TABLE IF NOT EXISTS `estancia` (
   `FechaFinE` date NOT NULL ,
   `TipoE` enum('Investigacion','Doctorado','Invitado') NOT NULL ,
   `LoginU` varchar(15)COLLATE latin1_spanish_ci NOT NULL ,
+   `AdjuntoE` varchar(200) COLLATE latin1_spanish_ci NOT NULL,
   PRIMARY KEY (`CodigoE`),
   KEY `FK_ESTANCIA_USUARIO` (`LoginU`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
@@ -109,6 +111,7 @@ CREATE TABLE IF NOT EXISTS `tesis` (
   `CalificacionTesis` enum('Aprobado','Notable','Sobresaliente','Matricula') NOT NULL,
   `URLTesis` varchar(100)COLLATE latin1_spanish_ci NOT NULL ,
   `LoginU` varchar(15)COLLATE latin1_spanish_ci NOT NULL ,
+   `AdjuntoT` varchar(200) COLLATE latin1_spanish_ci NOT NULL,
   PRIMARY KEY (`CodigoTesis`),
   KEY `FK_TESIS_USUARIO` (`LoginU`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
@@ -194,6 +197,7 @@ CREATE TABLE IF NOT EXISTS `proyecto` (
   `AnhoInicioProy` year(4) NOT NULL ,
   `AnhoFinProy` year(4) NOT NULL ,
   `Importe` int(11) NOT NULL ,
+   `AdjuntoProy` varchar(200) COLLATE latin1_spanish_ci NOT NULL,
      PRIMARY KEY (`CodigoProy`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
@@ -209,6 +213,7 @@ CREATE TABLE IF NOT EXISTS `tad` (
   `AlumnoTAD` varchar(40)COLLATE latin1_spanish_ci NOT NULL ,
   `FechaLecturaTAD` date NOT NULL,
   `LoginU` varchar(15)COLLATE latin1_spanish_ci NOT NULL ,
+   `AdjuntoTAD` varchar(200) COLLATE latin1_spanish_ci NOT NULL,
    PRIMARY KEY (`CodigoTad`),
   KEY `FK_TAD_USUARIO` (`LoginU`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
@@ -237,6 +242,7 @@ CREATE TABLE IF NOT EXISTS `materia` (
   `CreditosM` int(3) NOT NULL ,
   `CuatrimestreM` enum('Primero','Segundo','Anual') NOT NULL ,
   `LoginU` varchar(15)COLLATE latin1_spanish_ci NOT NULL ,
+   `AdjuntoM` varchar(200) COLLATE latin1_spanish_ci NOT NULL,
   PRIMARY KEY  (`CodigoM`),
    KEY `FK_MATERIA_USUARIO` (`LoginU`)
 )ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
@@ -507,23 +513,6 @@ CREATE TABLE IF NOT EXISTS `autor_articulo` (
 --
 -- --------------------------------------------------------
 
---
--- Estructura tablas para adjuntos
---
-
---
--- --------------------------------------------------------
--- Tabla adjuntos de proyectos
---
-
-DROP TABLE IF EXISTS `adjuntosProyectos`;
-CREATE TABLE `adjuntosProyectos` (
- `AdjuntoProy` varchar(200) COLLATE latin1_spanish_ci NOT NULL,
- `CodigoProy` int(11) NOT NULL,
-    PRIMARY KEY (`AdjuntoProy`,`CodigoProy`),
-  KEY `FK_ADJUNTO_PROYECTO` (`CodigoProy`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
-
 
 --
 -- --------------------------------------------------------
@@ -544,14 +533,6 @@ ALTER TABLE `usuario_articulo`
   ADD PRIMARY KEY (`CodigoA`,`LoginU`),
   ADD KEY `FK_USUARIO_ARTICULO_ARTICULO` (`CodigoA`),
   ADD KEY `FK_USUARIO_ARTICULO_USUARIO` (`LoginU`);
-
-
---
--- Filtros para la tabla `adjuntosProyectos`
---
-
-ALTER TABLE `adjuntosProyectos`
-  ADD CONSTRAINT `FK_ADJUNTO_PROYECTO` FOREIGN KEY (`CodigoProy`) REFERENCES `proyecto` (`CodigoProy`);
 
 --
 -- Filtros para la tabla `tesis`
