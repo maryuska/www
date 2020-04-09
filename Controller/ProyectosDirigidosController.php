@@ -238,10 +238,10 @@ switch ($evento) {
                         @unlink('Archivos/proyectos_dirigidos/' . $_POST["AdjuntoPD_old"]);
 
                 }
-                $proyectoDirigido->setAdjunto($AdjuntoPD);
+
             }
 
-
+            $proyectoDirigido->setAdjunto($AdjuntoPD);
 
             $proyectoDirigido->ModificarProyectoDirigido($CodigoPD);
             $proyectoDirigido->BorrarDirige( $CodigoPD, $LoginAnt);

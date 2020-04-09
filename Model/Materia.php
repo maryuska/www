@@ -16,9 +16,10 @@ class Materia{
   private $CreditosM;
   private $CuatrimestreM;
   private $LoginU;
+  private $AdjuntoM;
 
 //Constructor de materias
-  public function __construct($CodigoM = NULL, $TipoM = NULL, $TipoParticipacionM = NULL, $DenominacionM = NULL, $TitulacionM = NULL, $AnhoAcademicoM = NULL, $CreditosM = NULL, $CuatrimestreM = NULL , $LoginU = NULL ){
+  public function __construct($CodigoM = NULL, $TipoM = NULL, $TipoParticipacionM = NULL, $DenominacionM = NULL, $TitulacionM = NULL, $AnhoAcademicoM = NULL, $CreditosM = NULL, $CuatrimestreM = NULL , $LoginU = NULL, $AdjuntoM = NULL ){
 
     $this->CodigoM = $CodigoM;
     $this->TipoM = $TipoM;
@@ -29,6 +30,7 @@ class Materia{
     $this->CreditosM= $CreditosM;
     $this->CuatrimestreM= $CuatrimestreM;
     $this->LoginU= $LoginU;
+    $this->AdjuntoM= $AdjuntoM;
   }
   
 //Función para conectarnos a la Base de datos
@@ -40,13 +42,17 @@ class Materia{
             echo "Fallo al conectar a MySQL: (" . $this->mysqli->connect_errno . ") " . $this->mysqli->connect_error;
         }
     }
-	
+
+// Set adjunto
+    public function setAdjunto($AdjuntoM){
+        $this->AdjuntoM = $AdjuntoM;
+    }
 //Alta de una nueva materia
   public function AltaMateria() {
       $this->ConectarBD();
-    $insertarMateria  = "INSERT INTO materia(CodigoM,TipoM, TipoParticipacionM, DenominacionM, TitulacionM,AnhoAcademicoM, CreditosM,CuatrimestreM,LoginU)
+    $insertarMateria  = "INSERT INTO materia(CodigoM,TipoM, TipoParticipacionM, DenominacionM, TitulacionM,AnhoAcademicoM, CreditosM,CuatrimestreM,LoginU, AdjuntoM)
                           VALUES ('$this->CodigoM', '$this->TipoM', '$this->TipoParticipacionM', '$this->DenominacionM','$this->TitulacionM',
-                          '$this->AnhoAcademicoM', '$this->CreditosM', '$this->CuatrimestreM', '$this->LoginU')";
+                          '$this->AnhoAcademicoM', '$this->CreditosM', '$this->CuatrimestreM', '$this->LoginU','$this->AdjuntoM')";
 	$resultado = $this->mysqli->query($insertarMateria) or die(mysqli_error($this->mysqli));
 	}
 
@@ -67,7 +73,8 @@ class Materia{
                                                   TitulacionM='$this->TitulacionM',
                                                   AnhoAcademicoM='$this->AnhoAcademicoM',
                                                   CreditosM='$this->CreditosM',
-                                                  CuatrimestreM='$this->CuatrimestreM' 
+                                                  CuatrimestreM='$this->CuatrimestreM',
+                                                  AdjuntoM='$this->AdjuntoM' 
                               where CodigoM = '$CodigoM'") or die (mysqli_error($this->mysqli));
     }
 
@@ -160,6 +167,14 @@ class Materia{
 //Eliminar materia
     public function BorrarMateria($CodigoM){
         $this->ConectarBD();
+        // Eliminamos el fichero que tuvier adjunto
+        $sql = $this->mysqli->query("SELECT AdjuntoM FROM materia WHERE CodigoM = '$CodigoM'");
+        if( $sql->num_rows > 0 ){
+            $res = mysqli_fetch_array($sql);
+            if(!empty($res["AdjuntoM"]))
+                @unlink('Archivos/materias/' . $res["AdjuntoM"]);
+        }
+        // Eliminamos el registro de BD
         $this->mysqli->query("DELETE FROM materia WHERE CodigoM= '$CodigoM'")or die(mysqli_error($this->mysqli));
     }
 
@@ -219,7 +234,8 @@ class Materia{
                                                             TitulacionM LIKE '%$buscar'|| TitulacionM LIKE '%$buscar%' || TitulacionM LIKE '$buscar%' ||
                                                             AnhoAcademicoM LIKE '%$buscar'|| AnhoAcademicoM LIKE '%$buscar%' || AnhoAcademicoM LIKE '$buscar%' ||
                                                             CreditosM LIKE '%$buscar'|| CreditosM LIKE '%$buscar%' || CreditosM LIKE '$buscar%' ||
-                                                            CuatrimestreM LIKE '%$buscar'|| CuatrimestreM LIKE '%$buscar%' || CuatrimestreM LIKE '$buscar%' 
+                                                            CuatrimestreM LIKE '%$buscar'|| CuatrimestreM LIKE '%$buscar%' || CuatrimestreM LIKE '$buscar%' ||
+                                                            AdjuntoM LIKE '%$buscar'|| AdjuntoM LIKE '%$buscar%' || AdjuntoM LIKE '$buscar%'
                                                             ") or die(mysqli_error($this->mysqli));
         return $sql;
     }

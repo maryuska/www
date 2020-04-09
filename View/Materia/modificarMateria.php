@@ -150,6 +150,32 @@ require_once 'View/Structure/Nav.php';
 
                                 </select></p>
                         </div>
+
+                        <div class="form-group">
+                            <label class="control-label" for="AdjuntoM">Adjunto</label>
+                            <input id="AdjuntoM" name="AdjuntoM" type="file" class="form-control <?php if(isset($errores) && in_array("AdjuntoM", $errores)){ echo " error"; } ?>" value="<?=isset($_POST["AdjuntoM"])?$_POST["AdjuntoM"]:$row['AdjuntoM']?>" >
+                            <?php
+                            if(!empty($row["AdjuntoM"])){
+
+                                $url = "Archivos/materias/".$row["AdjuntoM"];                            ?>
+
+                                <div class="text-center" style="margin:20px auto;">
+                                    <input type="hidden" name="AdjuntoM_old" value="<?=$row["AdjuntoM"]?>">
+                                    <a href='<?=$url?>' target='_blank'>Ver adjunto</a>
+                                    <br>
+                                    <label>
+                                        <input type="checkbox" value="1" name="AdjuntoM_delete">
+                                        Eliminar fichero adjunto
+                                    </label>
+                                    <br>
+                                    <small>Si sube un fichero nuevo el anterior será eliminado.<small>
+                                </div>
+
+                                <?php
+                            }
+                            ?>
+
+                        </div>
                         <br>
 
                         <div class="text-center">

@@ -32,7 +32,17 @@ switch ($evento) {
     case 'altaMateria':
     $loginU=$_POST["LoginU"];
 	$codigoM = $_REQUEST["CodigoM"];
-    $materia = new Materia($_POST["CodigoM"],$_POST["TipoM"],$_POST["TipoParticipacionM"],$_POST["DenominacionM"],$_POST["TitulacionM"],$_POST["AnhoAcademicoM"],$_POST["CreditosM"],$_POST["CuatrimestreM"],$_POST["LoginU"]);
+
+        // Subimos el fichero si viene alguno
+        $AdjuntoM = '';
+        if(isset($_FILES['AdjuntoM']) && $_FILES['AdjuntoM']['error'] == 0){
+            $dir_subida = 'Archivos/materias/';
+            $fichero_subido = $dir_subida . basename($_FILES['AdjuntoM']['name']);
+            if (move_uploaded_file($_FILES['AdjuntoM']['tmp_name'], $fichero_subido))
+                $AdjuntoM = basename($_FILES['AdjuntoM']['name']);
+        }
+
+    $materia = new Materia($_POST["CodigoM"],$_POST["TipoM"],$_POST["TipoParticipacionM"],$_POST["DenominacionM"],$_POST["TitulacionM"],$_POST["AnhoAcademicoM"],$_POST["CreditosM"],$_POST["CuatrimestreM"],$_POST["LoginU"],$_POST["AdjuntoM"]);
     $materia -> consultarMateria($codigoM);
 
     $errores = $materia->validarMateria($_POST);
@@ -46,10 +56,19 @@ switch ($evento) {
             $consultaM = $materia->ConsultarMateria($codigoM);
 
             if ($consultaM->num_rows > 0) {    // Existe la materia
-                $errores = array("CodigoM", "TipoM", "TipoParticipacionM", "DenominacionM", "TitulacionM", "AnhoAcademicoM", "CreditosM", "CuatrimestreM","LoginU");
+                $errores = array("CodigoM", "TipoM", "TipoParticipacionM", "DenominacionM", "TitulacionM", "AnhoAcademicoM", "CreditosM", "CuatrimestreM","LoginU","AdjuntoM");
                 $msgError = "La materia: ". $_POST["CodigoM"]. " ". $_POST["DenominacionM"]. " ya existe, no puede insertar la misma.";
                 require_once "View/Materia/insertarMateria.php";
             } else {
+                // Si no ha habido errores subimos el fichero
+                if($_FILES['AdjuntoM']['error'] == 0){
+                    $dir_subida = 'Archivos/materias/';
+                    $fichero_subido = $dir_subida . basename($_FILES['AdjuntoM']['name']);
+                    if (move_uploaded_file($_FILES['AdjuntoM']['tmp_name'], $fichero_subido))
+                        $AdjuntoM = basename($_FILES['AdjuntoM']['name']);
+                }
+                $materia->setAdjunto($AdjuntoM);
+
                 $materia->AltaMateria();
 
                 header("Location: index.php?controlador=Materias&evento=listarMaterias&LoginU=" . $loginU);
@@ -61,8 +80,17 @@ switch ($evento) {
 //Alta materia como Admin
     case 'altaMateriaAdmin':
 
+        // Subimos el fichero si viene alguno
+        $AdjuntoM = '';
+        if(isset($_FILES['AdjuntoM']) && $_FILES['AdjuntoM']['error'] == 0){
+            $dir_subida = 'Archivos/materias/';
+            $fichero_subido = $dir_subida . basename($_FILES['AdjuntoM']['name']);
+            if (move_uploaded_file($_FILES['AdjuntoM']['tmp_name'], $fichero_subido))
+                $AdjuntoM = basename($_FILES['AdjuntoM']['name']);
+        }
+
         $codigoM = $_REQUEST["CodigoM"];
-		$materia = new Materia($_POST["CodigoM"],$_POST["TipoM"],$_POST["TipoParticipacionM"],$_POST["DenominacionM"],$_POST["TitulacionM"],$_POST["AnhoAcademicoM"],$_POST["CreditosM"],$_POST["CuatrimestreM"],$_POST["Login"]);
+		$materia = new Materia($_POST["CodigoM"],$_POST["TipoM"],$_POST["TipoParticipacionM"],$_POST["DenominacionM"],$_POST["TitulacionM"],$_POST["AnhoAcademicoM"],$_POST["CreditosM"],$_POST["CuatrimestreM"],$_POST["Login"],$_POST["AdjuntoM"]);
 		$materia -> consultarMateria($codigoM);
 
         $Usuario = new Usuarios("","","","","","","","","");
@@ -88,6 +116,15 @@ switch ($evento) {
                 $msgError = "La materia: ". $_POST["CodigoM"]. " ". $_POST["DenominacionM"]. " ya existe, no puede insertar la misma.";
                 require_once "View/Materia/insertarMateriaAdmin.php";
             } else {
+                // Si no ha habido errores subimos el fichero
+                if($_FILES['AdjuntoM']['error'] == 0){
+                    $dir_subida = 'Archivos/materias/';
+                    $fichero_subido = $dir_subida . basename($_FILES['AdjuntoM']['name']);
+                    if (move_uploaded_file($_FILES['AdjuntoM']['tmp_name'], $fichero_subido))
+                        $AdjuntoM = basename($_FILES['AdjuntoM']['name']);
+                }
+                $materia->setAdjunto($AdjuntoM);
+
                 $materia->AltaMateria();
 
                 header("Location: index.php?controlador=Materias&evento=listarMateriasAdmin");
@@ -99,7 +136,7 @@ switch ($evento) {
 //Consultar materia para modificar
     case 'consultarMateria':
 
-        $materia = new Materia("","","","","","","","","");
+        $materia = new Materia("","","","","","","","","","");
         $CodigoM = $_REQUEST['CodigoM'];
         $consultaM = $materia->ConsultarMateria($CodigoM);
         $consulta = array();
@@ -124,7 +161,7 @@ switch ($evento) {
         }
         $_SESSION["listarUsuarios"] = $consulta;
 
-        $materia = new Materia("","","","","","","","","");
+        $materia = new Materia("","","","","","","","","","");
         $CodigoM = $_REQUEST['CodigoM'];
         $consultaM = $materia->ConsultarMateria($CodigoM);
         $consulta = array();
@@ -133,12 +170,21 @@ switch ($evento) {
         }
         $_SESSION["consultarMateria"] = $consulta;
 
-        require_once "View/Materia/modificarMateria.php";
+        require_once "View/Materia/modificarMateriaAdmin.php";
 
         break;
 
 //Modificar Materia
     case 'modificarMateria':
+
+        // Subimos el fichero si viene alguno
+        $AdjuntoM = '';
+        if(isset($_FILES['AdjuntoM']) && $_FILES['AdjuntoM']['error'] == 0){
+            $dir_subida = 'Archivos/materias/';
+            $fichero_subido = $dir_subida . basename($_FILES['AdjuntoM']['name']);
+            if (move_uploaded_file($_FILES['AdjuntoM']['tmp_name'], $fichero_subido))
+                $AdjuntoM = basename($_FILES['AdjuntoM']['name']);
+        }
 
         $tipou=$_SESSION["TipoUsuario"];
 
@@ -152,7 +198,7 @@ switch ($evento) {
         $CuatrimestreM = $_POST['CuatrimestreM'];
         $LoginU = $_POST['LoginU'];
 
-        $materia = new Materia( $CodigoM,$TipoM, $TipoParticipacionM ,$DenominacionM ,$TitulacionM ,$AnhoAcademicoM ,$CreditosM,$CuatrimestreM, $LoginU  );
+        $materia = new Materia( $CodigoM,$TipoM, $TipoParticipacionM ,$DenominacionM ,$TitulacionM ,$AnhoAcademicoM ,$CreditosM,$CuatrimestreM, $LoginU,$AdjuntoM );
         $errores    = $materia->validarMateria($_POST);
         if(!empty($errores)){
             $msgError = "Los campos con el borde rojo son obligatorios.";
@@ -170,6 +216,26 @@ switch ($evento) {
             }
         }
         else{
+            // Si tiene marcado el check de eliminar lo eliminamos
+            if( isset($_POST["AdjuntoM_delete"]) && $_POST["AdjuntoM_delete"] == '1' )
+                @unlink('Archivos/materias/' . $_POST["AdjuntoM_old"]);
+
+            // Subimos el fichero si viene alguno
+
+            if(isset($_FILES['AdjuntoM']) && $_FILES['AdjuntoM']['error'] == 0){
+                $dir_subida = 'Archivos/materias/';
+                $fichero_subido = $dir_subida . basename($_FILES['AdjuntoM']['name']);
+                if (move_uploaded_file($_FILES['AdjuntoM']['tmp_name'], $fichero_subido)){
+                    $AdjuntoPD = basename($_FILES['AdjuntoM']['name']);
+
+                    // Si teniamos un archivo anterior lo eliminamos
+                    if( $_POST["AdjuntoM_old"] )
+                        @unlink('Archivos/materias/' . $_POST["AdjuntoM_old"]);
+
+                }
+
+            }
+            $materia->setAdjunto($AdjuntoM);
 
             $materia->ModificarMateria($CodigoM);
 
@@ -180,6 +246,7 @@ switch ($evento) {
             }
         }
     break;
+
 
 //Listar materias por usuario
     case 'listarMaterias':
@@ -290,7 +357,7 @@ switch ($evento) {
     case 'buscarMateria':
         $buscar= $_POST['textoBusqueda'];
 
-        $Materia = new Materia("","","","","","","","","");
+        $Materia = new Materia("","","","","","","","","","");
         $consultarMateria = $Materia->BuscarMateria($buscar);
 
         if(!empty($consultarMateria)){
@@ -316,7 +383,7 @@ switch ($evento) {
     case 'borrarMateria':
         $CodigoM=$_REQUEST["CodigoM"];
         $loginU = $_REQUEST["LoginU"];
-        $Materia = new Materia("","","","","","","","","");
+        $Materia = new Materia("","","","","","","","","","");
         $Materia->BorrarMateria($CodigoM);
         $tipou=$_SESSION["TipoUsuario"];
 

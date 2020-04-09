@@ -107,6 +107,16 @@ require_once 'View/Structure/Nav.php';
                                                     <b name = "CuatrimestreM">Cuatrimestre: </b>
                                                     <?php echo $row['CuatrimestreM']; ?>
                                                     <br>
+                                                    <b name = "AdjuntoM">Adjunto: </b>
+                                                    <?php
+                                                    if(empty($row['AdjuntoM'])){
+                                                        echo "No tiene.";
+                                                    }
+                                                    else{
+                                                        echo "<a href='Archivos/materias/{$row['AdjuntoM']}' target='_blank'>Ver adjunto</a>";
+                                                    }
+                                                    ?>
+                                                    <br>
                                                 </td>
 
                                             </tr>
@@ -180,6 +190,16 @@ require_once 'View/Structure/Nav.php';
                                                     <b name = "CuatrimestreM">Cuatrimestre: </b>
                                                     <?php echo $row1['CuatrimestreM']; ?>
                                                     <br>
+                                                    <b name = "AdjuntoM">Adjunto: </b>
+                                                    <?php
+                                                    if(empty($row['AdjuntoM'])){
+                                                        echo "No tiene.";
+                                                    }
+                                                    else{
+                                                        echo "<a href='Archivos/materias/{$row['AdjuntoM']}' target='_blank'>Ver adjunto</a>";
+                                                    }
+                                                    ?>
+                                                    <br>
                                                 </td>
 
                                             </tr>
@@ -252,6 +272,16 @@ require_once 'View/Structure/Nav.php';
                                                     <b name = "CuatrimestreM">Cuatrimestre: </b>
                                                     <?php echo $row2['CuatrimestreM']; ?>
                                                     <br>
+                                                    <b name = "AdjuntoM">Adjunto: </b>
+                                                    <?php
+                                                    if(empty($row['AdjuntoM'])){
+                                                        echo "No tiene.";
+                                                    }
+                                                    else{
+                                                        echo "<a href='Archivos/materias/{$row['AdjuntoM']}' target='_blank'>Ver adjunto</a>";
+                                                    }
+                                                    ?>
+                                                    <br>
                                                 </td>
 
                                             </tr>
@@ -322,6 +352,16 @@ require_once 'View/Structure/Nav.php';
                                                     <br>
                                                     <b name = "CuatrimestreM">Cuatrimestre: </b>
                                                     <?php echo $row3['CuatrimestreM']; ?>
+                                                    <br>
+                                                    <b name = "AdjuntoM">Adjunto: </b>
+                                                    <?php
+                                                    if(empty($row['AdjuntoM'])){
+                                                        echo "No tiene.";
+                                                    }
+                                                    else{
+                                                        echo "<a href='Archivos/materias/{$row['AdjuntoM']}' target='_blank'>Ver adjunto</a>";
+                                                    }
+                                                    ?>
                                                     <br>
                                                 </td>
 
@@ -395,6 +435,16 @@ require_once 'View/Structure/Nav.php';
                                                     <b name = "CuatrimestreM">Cuatrimestre: </b>
                                                     <?php echo $row4['CuatrimestreM']; ?>
                                                     <br>
+                                                    <b name = "AdjuntoM">Adjunto: </b>
+                                                    <?php
+                                                    if(empty($row['AdjuntoM'])){
+                                                        echo "No tiene.";
+                                                    }
+                                                    else{
+                                                        echo "<a href='Archivos/materias/{$row['AdjuntoM']}' target='_blank'>Ver adjunto</a>";
+                                                    }
+                                                    ?>
+                                                    <br>
                                                 </td>
 
                                             </tr>
@@ -464,6 +514,16 @@ require_once 'View/Structure/Nav.php';
                                                     <br>
                                                     <b name = "CuatrimestreM">Cuatrimestre: </b>
                                                     <?php echo $row5['CuatrimestreM']; ?>
+                                                    <br>
+                                                    <b name = "AdjuntoM">Adjunto: </b>
+                                                    <?php
+                                                    if(empty($row['AdjuntoM'])){
+                                                        echo "No tiene.";
+                                                    }
+                                                    else{
+                                                        echo "<a href='Archivos/materias/{$row['AdjuntoM']}' target='_blank'>Ver adjunto</a>";
+                                                    }
+                                                    ?>
                                                     <br>
                                                 </td>
 

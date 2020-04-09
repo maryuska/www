@@ -88,6 +88,19 @@ $usuario = $_SESSION["listarBusqueda"];
                                             <strong>Año académico:</strong>
                                             <span><?php echo $row['AnhoAcademicoM']; ?></span>
                                         </p>
+                                        <p class="margin-bottom5">
+                                            <strong>Adjunto:</strong>
+                                            <span>
+                                                <?php
+                                                if(empty($row['AdjuntoM'])){
+                                                    echo "No tiene.";
+                                                }
+                                                else{
+                                                    echo "<a href='Archivos/materias/{$row['AdjuntoM']}' target='_blank'>Ver adjunto</a>";
+                                                }
+                                                ?>
+                                            </span>
+                                        </p>
 
                                     </div>
 
