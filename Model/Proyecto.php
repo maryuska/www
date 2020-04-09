@@ -14,9 +14,10 @@ class Proyecto{
     private $AnhoInicioProy;
     private $AnhoFinProy;
     private $Importe;
+    private $AdjuntoProy;
 
 //constructor de proyecto
-    public function __construct($CodigoProy = NULL, $TituloProy = NULL, $EntidadFinanciadora = NULL, $AcronimoProy = NULL, $AnhoInicioProy = NULL, $AnhoFinProy = NULL, $Importe = NULL ){
+    public function __construct($CodigoProy = NULL, $TituloProy = NULL, $EntidadFinanciadora = NULL, $AcronimoProy = NULL, $AnhoInicioProy = NULL, $AnhoFinProy = NULL, $Importe = NULL ,$AdjuntoProy = NULL){
         $this->CodigoProy = $CodigoProy;
         $this->TituloProy = $TituloProy;
         $this->EntidadFinanciadora = $EntidadFinanciadora;
@@ -24,6 +25,7 @@ class Proyecto{
         $this->AnhoInicioProy = $AnhoInicioProy;
         $this->AnhoFinProy = $AnhoFinProy;
         $this->Importe= $Importe;
+        $this->AdjuntoProy= $AdjuntoProy;
     }
 	
 //Función para conectarnos a la Base de datos
@@ -36,19 +38,17 @@ class Proyecto{
         }
     }
 
+// Set adjunto
+    public function setAdjunto($AdjuntoProy){
+        $this->AdjuntoProy = $AdjuntoProy;
+    }
+
 //Alta de un nuevo proyecto
     public function AltaProyecto() {
         $this->ConectarBD();
-        $insertarProyecto  = "INSERT INTO proyecto(CodigoProy,TituloProy, EntidadFinanciadora, AcronimoProy, AnhoInicioProy,AnhoFinProy,Importe)
-                          VALUES ('$this->CodigoProy', '$this->TituloProy', '$this->EntidadFinanciadora', '$this->AcronimoProy','$this->AnhoInicioProy','$this->AnhoFinProy','$this->Importe')";
+        $insertarProyecto  = "INSERT INTO proyecto(CodigoProy,TituloProy, EntidadFinanciadora, AcronimoProy, AnhoInicioProy,AnhoFinProy,Importe, AdjuntoProy)
+                          VALUES ('$this->CodigoProy', '$this->TituloProy', '$this->EntidadFinanciadora', '$this->AcronimoProy','$this->AnhoInicioProy','$this->AnhoFinProy','$this->Importe', '$this->AdjuntoProy')";
         $resultado = $this->mysqli->query($insertarProyecto) or die(mysqli_error($this->mysqli));
-    }
-//Alta de un adjunto proyecto
-    public function Adjunto($CodigoProy,$AdjuntoProy){
-        $this->ConectarBD();
-        $Adjunto = "INSERT INTO adjuntosProyectos (CodigoProy,AdjuntoProy)
-			VALUES ('$CodigoProy','$AdjuntoProy')";
-        $resultado = $this->mysqli->query($Adjunto) or die(mysqli_error($this->mysqli));
     }
 //Alta de un usuario proyecto
     public function Participa($CodigoProy,$Login,$TipoParticipacionProy){
@@ -66,17 +66,18 @@ class Proyecto{
     }
 
 //Modificar un Proyecto
-    public function ModificarProyecto($CodigoProy,$TipoParticipacionProy){
+    public function ModificarProyecto($CodigoProy){
         $this->ConectarBD();
-        $this->mysqli->query("UPDATE proyecto p, docente_proyecto dp 
+        $this->mysqli->query("UPDATE proyecto p
                                               SET p.TituloProy='$this->TituloProy',
                                                   p.EntidadFinanciadora='$this->EntidadFinanciadora',
                                                   p.AcronimoProy='$this->AcronimoProy' ,
                                                   p.AnhoInicioProy='$this->AnhoInicioProy',
                                                   p.AnhoFinProy='$this->AnhoFinProy',
-                                                  p.Importe='$this->Importe',
-                                                  dp.TipoParticipacionProy='$TipoParticipacionProy'                                     
-                      where p.CodigoProy = '$CodigoProy' AND p.CodigoProy=dp.CodigoProy") or die (mysqli_error($this->mysqli));
+                                                  p.Importe='$this->Importe',                                
+                                                  p.AdjuntoProy='$this->AdjuntoProy'                                     
+                                 where p.CodigoProy = '$CodigoProy' ") or die (mysqli_error($this->mysqli));
+
     }
 
 //Lista de todos los proyecto del usuario
@@ -130,6 +131,16 @@ class Proyecto{
 //Eliminar un proyecto
     public function BorrarProyecto($CodigoProy){
         $this->ConectarBD();
+
+        // Eliminamos el fichero que tuvier adjunto
+        $sql = $this->mysqli->query("SELECT AdjuntoProy FROM proyecto WHERE CodigoProy = '$CodigoProy'");
+        if( $sql->num_rows > 0 ){
+            $res = mysqli_fetch_array($sql);
+            if(!empty($res["AdjuntoProy"]))
+                @unlink('Archivos/proyectos/' . $res["AdjuntoProy"]);
+        }
+
+        // Eliminamos el registro de BD
         $this->mysqli->query("DELETE FROM proyecto WHERE CodigoProy = '$CodigoProy'")or die(mysqli_error($this->mysqli));
     }
 
@@ -148,11 +159,12 @@ class Proyecto{
                                                             c.CodigoProy LIKE '%$buscar' || c.CodigoProy LIKE '%$buscar%' || c.CodigoProy LIKE '$buscar%' ||
                                                             c.TituloProy LIKE '%$buscar'|| c.TituloProy LIKE '%$buscar%' || c.TituloProy LIKE '$buscar%' ||
                                                             c.EntidadFinanciadora LIKE '%$buscar'|| c.EntidadFinanciadora LIKE '%$buscar%' || c.EntidadFinanciadora LIKE '$buscar%' ||
-                                                            c.Acronimo LIKE '%$buscar'|| c.Acronimo LIKE '%$buscar%' || c.Acronimo LIKE '$buscar%' ||
+                                                            c.AcronimoProy LIKE '%$buscar'|| c.AcronimoProy LIKE '%$buscar%' || c.AcronimoProy LIKE '$buscar%' ||
                                                             c.AnhoInicioProy LIKE '%$buscar'|| c.AnhoInicioProy LIKE '%$buscar%' || c.AnhoInicioProy LIKE '$buscar%' ||
                                                             c.AnhoFinProy LIKE '%$buscar'|| c.AnhoFinProy LIKE '%$buscar%' || c.AnhoFinProy LIKE '$buscar%' ||
-                                                            c.Importe LIKE '%$buscar'|| c.Importe LIKE '%$buscar%' || c.Importe LIKE '$buscar%' 
-                                                                                                       
+                                                            c.Importe LIKE '%$buscar'|| c.Importe LIKE '%$buscar%' || c.Importe LIKE '$buscar%'  ||
+                                                            c.AdjuntoProy LIKE '%$buscar'|| c.AdjuntoProy LIKE '%$buscar%' || c.AdjuntoProy LIKE '$buscar%' 
+                                                                
                                                             ") or die(mysqli_error($this->mysqli));
         return $sql;
     }

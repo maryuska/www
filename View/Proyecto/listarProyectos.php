@@ -98,6 +98,16 @@ $LoginU = $_SESSION["loginU"];
                                                     <b name = "TipoParticipacionProy">Tipo participacion: </b>
                                                     <?php echo $row['TipoParticipacionProy']; ?>
                                                     <br>
+                                                    <b name = "AdjuntoProy">Adjunto: </b>
+                                                    <?php
+                                                    if(empty($row['AdjuntoProy'])){
+                                                        echo "No tiene.";
+                                                    }
+                                                    else{
+                                                        echo "<a href='Archivos/proyectos/{$row['AdjuntoProy']}' target='_blank'>Ver adjunto</a>";
+                                                    }
+                                                    ?>
+                                                    <br>
                                                 </td>
 
                                             </tr>
@@ -168,6 +178,16 @@ $LoginU = $_SESSION["loginU"];
                                                     <b name = "TipoParticipacionProy">Tipo participacion: </b>
                                                     <?php echo $row1['TipoParticipacionProy']; ?>
                                                     <br>
+                                                    <b name = "AdjuntoProy">Adjunto: </b>
+                                                    <?php
+                                                    if(empty($row['AdjuntoProy'])){
+                                                        echo "No tiene.";
+                                                    }
+                                                    else{
+                                                        echo "<a href='Archivos/proyectos/{$row['AdjuntoProy']}' target='_blank'>Ver adjunto</a>";
+                                                    }
+                                                    ?>
+                                                    <br>
                                                 </td>
 
                                             </tr>
@@ -235,6 +255,16 @@ $LoginU = $_SESSION["loginU"];
                                                     <br>
                                                     <b name = "TipoParticipacionProy">Tipo participacion: </b>
                                                     <?php echo $row2['TipoParticipacionProy']; ?>
+                                                    <br>
+                                                    <b name = "AdjuntoProy">Adjunto: </b>
+                                                    <?php
+                                                    if(empty($row['AdjuntoProy'])){
+                                                        echo "No tiene.";
+                                                    }
+                                                    else{
+                                                        echo "<a href='Archivos/proyectos/{$row['AdjuntoProy']}' target='_blank'>Ver adjunto</a>";
+                                                    }
+                                                    ?>
                                                     <br>
                                                 </td>
 

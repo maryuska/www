@@ -28,22 +28,7 @@ switch ($evento) {
 
 //Dar de alta un proyecto
     case 'altaProyecto':
-
-        // Subimos el fichero si viene alguno
-        $Adjunto = '';
-        if(isset($_FILES['AdjuntoProy']) && $_FILES['AdjuntoProy']['error'] == 0){
-            $dir_subida = 'Archivos/proyectos/';
-            $fichero_subido = $dir_subida . basename($_FILES['AdjuntoProy']['name']);
-            if (move_uploaded_file($_FILES['AdjuntoProy']['tmp_name'], $fichero_subido))
-                $Adjunto = basename($_FILES['AdjuntoProy']['name']);
-        }
-    
-        $Proyecto = new Proyecto($_POST["CodigoProy"],$_POST["TituloProy"],$_POST["EntidadFinanciadora"],$_POST["AcronimoProy"],$_POST["AnhoInicioProy"],$_POST["AnhoFinProy"],$_POST["Importe"]);
-		$CodigoProy = $_REQUEST['CodigoProy'];
-        $Login=$_REQUEST["Login"];
-        $TipoParticipacionProy = $_REQUEST['TipoParticipacionProy'];
-        $AdjuntoProy = $Adjunto;
-
+        $tipou=$_SESSION["TipoUsuario"];
         $Usuario = new Usuarios("","","","","","","","","");
         $consultarUsuarios = $Usuario->ListarUsuarios();
         $consulta = array();
@@ -51,6 +36,19 @@ switch ($evento) {
             array_push($consulta, $row);
         }
         $_SESSION["listarUsuarios"] = $consulta;
+        // Subimos el fichero si viene alguno
+        $AdjuntoProy = '';
+        if(isset($_FILES['AdjuntoProy']) && $_FILES['AdjuntoProy']['error'] == 0){
+            $dir_subida = 'Archivos/proyectos/';
+            $fichero_subido = $dir_subida . basename($_FILES['AdjuntoProy']['name']);
+            if (move_uploaded_file($_FILES['AdjuntoProy']['tmp_name'], $fichero_subido))
+                $AdjuntoProy = basename($_FILES['AdjuntoProy']['name']);
+        }
+        //recoge los datos del proyecto
+        $Proyecto = new Proyecto($_POST["CodigoProy"],$_POST["TituloProy"],$_POST["EntidadFinanciadora"],$_POST["AcronimoProy"],$_POST["AnhoInicioProy"],$_POST["AnhoFinProy"],$_POST["Importe"],$AdjuntoProy);
+		$CodigoProy = $_REQUEST['CodigoProy'];
+        $Login=$_REQUEST["Login"];
+        $TipoParticipacionProy = $_REQUEST['TipoParticipacionProy'];
 
         $errores = $Proyecto->validarProyecto($_POST);
 
@@ -78,8 +76,17 @@ switch ($evento) {
                 }
 
             } else {
+
+                // Si no ha habido errores subimos el fichero
+                if($_FILES['AdjuntoProy']['error'] == 0){
+                    $dir_subida = 'Archivos/proyectos/';
+                    $fichero_subido = $dir_subida . basename($_FILES['AdjuntoProy']['name']);
+                    if (move_uploaded_file($_FILES['AdjuntoProy']['tmp_name'], $fichero_subido))
+                        $AdjuntoProy = basename($_FILES['AdjuntoProy']['name']);
+                }
+
+                $Proyecto->setAdjunto($AdjuntoProy);
                 $Proyecto->AltaProyecto();
-                $Proyecto->Adjunto($CodigoProy,$AdjuntoProy);
                 $Proyecto->Participa($CodigoProy, $Login, $TipoParticipacionProy);
                 if ($tipou == 'U') {
                     header("Location: index.php?controlador=Proyectos&evento=listarProyectos&LoginU=$Login");
@@ -93,8 +100,8 @@ switch ($evento) {
 
 //Consultar un proyecto para modificar
     case 'consultarProyecto':
-
-        $proyecto = new Proyecto("","","","","","","");
+        $tipou=$_SESSION["TipoUsuario"];
+        $proyecto = new Proyecto("","","","","","","","");
         $CodigoProy = $_REQUEST['CodigoProy'];
         $consultaP = $proyecto->ConsultarProyecto($CodigoProy);
         $consulta = array();
@@ -103,39 +110,44 @@ switch ($evento) {
         }
         $_SESSION["consultarProyecto"] = $consulta;
 
-        require_once "View/Proyecto/modificarProyecto.php";
+        if($tipou == 'U') {
+            require_once "View/Proyecto/modificarProyecto.php";
+        }
+        else {
+            $Usuario = new Usuarios("", "", "", "", "", "", "", "", "");
+            $consultarUsuarios = $Usuario->ListarUsuarios();
+            $consulta = array();
+            while ($row = mysqli_fetch_array($consultarUsuarios)) {
+                array_push($consulta, $row);
+            }
+            $_SESSION["listarUsuarios"] = $consulta;
 
-        break;
+            require_once "View/Proyecto/modificarProyectoAdmin.php";
 
-//Consultar un proyecto para modificar como admin
-    case 'consultarProyectoAdmin':
+        }
+            break;
 
+
+//Modificar un proyecto
+    case 'modificarProyecto':
+
+        // Subimos el fichero si viene alguno
+        $AdjuntoProy = '';
+        if(isset($_FILES['AdjuntoProy']) && $_FILES['AdjuntoProy']['error'] == 0){
+            $dir_subida = 'Archivos/proyectos/';
+            $fichero_subido = $dir_subida . basename($_FILES['AdjuntoProy']['name']);
+            if (move_uploaded_file($_FILES['AdjuntoProy']['tmp_name'], $fichero_subido))
+                $AdjuntoProy = basename($_FILES['AdjuntoProy']['name']);
+        }
+
+        $tipou=$_SESSION["TipoUsuario"];
         $Usuario = new Usuarios("","","","","","","","","");
         $consultarUsuarios = $Usuario->ListarUsuarios();
-
         $consulta = array();
         while($row = mysqli_fetch_array($consultarUsuarios)){
             array_push($consulta, $row);
         }
         $_SESSION["listarUsuarios"] = $consulta;
-
-        $proyecto = new Proyecto("","","","","","","");
-        $CodigoProy = $_REQUEST['CodigoProy'];
-        $consultaP = $proyecto->ConsultarProyecto($CodigoProy);
-        $consulta = array();
-        while($row1 = mysqli_fetch_array($consultaP)){
-            array_push($consulta, $row1);
-        }
-        $_SESSION["consultarProyecto"] = $consulta;
-
-        require_once "View/Proyecto/modificarProyectoAdmin.php";
-
-        break;
-
-//Modificar un proyecto
-    case 'modificarProyecto':
-
-        $tipou=$_SESSION["TipoUsuario"];
 
         $CodigoProy = $_POST['CodigoProy'];
         $TipoParticipacionProy = $_POST['TipoParticipacionProy'];
@@ -146,8 +158,10 @@ switch ($evento) {
         $AnhoFinProy = $_POST['AnhoFinProy'];
         $Importe = $_POST['Importe'];
         $Login = $_POST['LoginU'];
-        $Proyecto = new Proyecto( $CodigoProy,$TituloProy, $EntidadFinanciadora ,$AcronimoProy ,$AnhoInicioProy,$AnhoFinProy,$Importe );
+
+        $Proyecto = new Proyecto( $CodigoProy,$TituloProy, $EntidadFinanciadora ,$AcronimoProy ,$AnhoInicioProy,$AnhoFinProy,$Importe,$AdjuntoProy );
         $errores  = $Proyecto->validarProyecto($_POST);
+
           if(!empty($errores)) {
               $msgError = "Los campos con el borde rojo son obligatorios.";
               $consultaProy = $Proyecto->ConsultarProyecto($CodigoProy);
@@ -164,17 +178,35 @@ switch ($evento) {
               }
           }
          else{
+             // Si tiene marcado el check de eliminar lo eliminamos
+             if( isset($_POST["AdjuntoProy_delete"]) && $_POST["AdjuntoProy_delete"] == '1' )
+                 @unlink('Archivos/proyectos/' . $_POST["AdjuntoProy_old"]);
 
-        $Proyecto->ModificarProyecto($CodigoProy,$TipoParticipacionProy);
+             // Subimos el fichero si viene alguno
+             if(isset($_FILES['AdjuntoProy']) && $_FILES['AdjuntoProy']['error'] == 0){
+                 $dir_subida = 'Archivos/proyectos/';
+                 $fichero_subido = $dir_subida . basename($_FILES['AdjuntoProy']['name']);
+                 if (move_uploaded_file($_FILES['AdjuntoProy']['tmp_name'], $fichero_subido)){
+                     $AdjuntoProy = basename($_FILES['AdjuntoProy']['name']);
 
-        $tipou=$_SESSION["TipoUsuario"];
-        $loginU = $_POST['LoginU'];
+                     // Si teniamos un archivo anterior lo eliminamos
+                     if( $_POST["AdjuntoProy_old"] )
+                         @unlink('Archivos/proyectos/' . $_POST["AdjuntoProy_old"]);
+
+                 }
+
+             }
+        $Proyecto->setAdjunto($AdjuntoProy);
+
+        $Proyecto->ModificarProyecto($CodigoProy);
+        $Proyecto->BorrarParticipa($Login,$CodigoProy);
+        $Proyecto->Participa($CodigoProy,$Login,$TipoParticipacionProy);
+
         if($tipou == 'U'){
-
-            header("Location: index.php?controlador=Proyectos&evento=listarProyectos&LoginU=$loginU");
-        }else{
-            header("Location: index.php?controlador=Proyectos&evento=listarProyectosAdmin");
-        }
+            header("Location: index.php?controlador=Proyectos&evento=listarProyectos&LoginU=$Login");
+            }else{
+                header("Location: index.php?controlador=Proyectos&evento=listarProyectosAdmin");
+            }
         }
 
         break;
@@ -183,7 +215,7 @@ switch ($evento) {
     case 'listarProyectos':
 
         $Login = $_REQUEST['LoginU'];
-        $lista = new Proyecto("","","","","","","");
+        $lista = new Proyecto("","","","","","","","");
 
         //todos los Proyecto
         $listaProyectos= $lista->ListarProyectos($Login);
@@ -216,7 +248,7 @@ switch ($evento) {
 ///Listar proyectos nivel administrador
     case 'listarProyectosAdmin':
 
-        $lista = new Proyecto("","","","","","","");
+        $lista = new Proyecto("","","","","","","", "");
 
         //todos los Proyecto Admin
         $listaProyectosAdmin= $lista->ListarProyectosAdmin();
@@ -250,7 +282,7 @@ switch ($evento) {
     case 'buscarProyecto':
         $buscar= $_POST['textoBusqueda'];
 
-        $Proyecto = new Proyecto("","","","","","","");
+        $Proyecto = new Proyecto("","","","","","","","");
         $consultarProyecto = $Proyecto->BuscarProyecto($buscar);
 
         if(!empty($consultarProyecto)){
@@ -264,6 +296,13 @@ switch ($evento) {
             if($tipou == 'U'){
                 require_once "View/Proyecto/buscarProyecto.php";
             }else{
+                $Usuario = new Usuarios("","","","","","","","","");
+                $consultarUsuarios = $Usuario->ListarUsuarios();
+                $consulta = array();
+                while($row = mysqli_fetch_array($consultarUsuarios)){
+                    array_push($consulta, $row);
+                }
+                $_SESSION["listarUsuarios"] = $consulta;
                 require_once "View/Proyecto/BuscarProyectoAdmin.php";
             }
 
@@ -275,9 +314,9 @@ switch ($evento) {
 //Borrar proyecto
     case 'borrarProyecto':
         $CodigoProy=$_REQUEST["CodigoProy"];
-        $Login=$_REQUEST["LoginU"];
-        $Proyecto = new Proyecto("","","","","","","");
-        $Proyecto->BorrarParticipa($Login,$CodigoProy);
+        $LoginU=$_REQUEST["LoginU"];
+        $Proyecto = new Proyecto("","","","","","","","");
+        $Proyecto->BorrarParticipa($LoginU,$CodigoProy);
         $Proyecto->BorrarProyecto($CodigoProy);
 
         $tipou=$_SESSION["TipoUsuario"];

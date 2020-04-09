@@ -7,7 +7,7 @@ require_once 'View/Structure/Header.php';
 require_once 'View/Structure/Nav.php';
 
 $usuario = $_SESSION["listarBusqueda"];
-$LoginU = $_SESSION["loginU"];
+
 ?>
 
 <div class="container-fluid">
@@ -83,29 +83,27 @@ $LoginU = $_SESSION["loginU"];
 
                                         <p class="margin-bottom5">
                                             <strong>Año fin:</strong>
-                                            <span><?php echo $row['AnhoFinProyecto']; ?></span>
+                                            <span><?php echo $row['AnhoFinProy']; ?></span>
                                         </p>
 
                                         <p class="margin-bottom5">
                                             <strong>Importe:</strong>
                                             <span><?php echo $row['Importe']; ?></span>
                                         </p>
+
                                         <p class="margin-bottom5">
-                                            <strong>Tipo participacion:</strong>
-                                            <span><?php echo $row['TipoParticipacionProy']; ?></span>
+                                            <strong>Adjunto:</strong>
+                                            <span>
+                                                <?php
+                                                if(empty($row['AdjuntoProy'])){
+                                                    echo "No tiene.";
+                                                }
+                                                else{
+                                                    echo "<a href='Archivos/proyectos/{$row['AdjuntoProy']}' target='_blank'>Ver adjunto</a>";
+                                                }
+                                                ?>
+                                            </span>
                                         </p>
-
-                                        <div class="margin-bottom5 text-center">
-                                            <form name="formBorrarProyecto<?php echo $contador; ?>" id="formBorrarProyecto<?php echo $contador; ?>" class="text-center" action="index.php" method="get">
-                                                <input type="hidden" name="controlador" value="Proyectos">
-                                                <input type="hidden" name="evento" value="borrarProyecto">
-                                                <input type="hidden" name="CodigoProy" value="<?php echo $row['CodigoProy']; ?>">
-                                                <button type="button" class="btn btn-transparent btn-orange" onClick="abrirConfirmBorrarProyecto('formBorrarProyecto<?php echo $contador; ?>', '<?php echo $row['CodigoProy']." ".$row['TituloProy']; ?>');">
-                                                    Borrar
-                                                </button>
-                                            </form>
-                                        </div>
-
 
                                     </div>
 

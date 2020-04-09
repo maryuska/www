@@ -64,7 +64,7 @@ $LoginU = $_SESSION["loginU"];
                                         </p>
                                         <p class="margin-bottom5">
                                             <strong>Docente:</strong>
-                                            <span><?php echo $row['LoginU']; ?></span>
+                                            <span><?php echo $LoginU ?></span>
                                         </p>
                                         <p class="margin-bottom5">
                                             <strong>Entidad Financiadora:</strong>
@@ -83,19 +83,27 @@ $LoginU = $_SESSION["loginU"];
 
                                         <p class="margin-bottom5">
                                             <strong>Año fin:</strong>
-                                            <span><?php echo $row['AnhoFinProyecto']; ?></span>
+                                            <span><?php echo $row['AnhoFinProy']; ?></span>
                                         </p>
 
                                         <p class="margin-bottom5">
                                             <strong>Importe:</strong>
                                             <span><?php echo $row['Importe']; ?></span>
                                         </p>
+
                                         <p class="margin-bottom5">
-                                            <strong>Tipo participacion:</strong>
-                                            <span><?php echo $row['TipoParticipacionProy']; ?></span>
+                                            <strong>Adjunto:</strong>
+                                            <span>
+                                                <?php
+                                                if(empty($row['AdjuntoProy'])){
+                                                    echo "No tiene.";
+                                                }
+                                                else{
+                                                    echo "<a href='Archivos/proyectos/{$row['AdjuntoProy']}' target='_blank'>Ver adjunto</a>";
+                                                }
+                                                ?>
+                                            </span>
                                         </p>
-
-
 
                                     </div>
 

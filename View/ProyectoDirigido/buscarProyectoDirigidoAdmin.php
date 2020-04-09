@@ -106,17 +106,6 @@ $usuario = $_SESSION["listarBusqueda"];
                                             </span>
                                         </p>
 
-                                        <div class="margin-bottom5 text-center">
-                                            <form name="formBorrarPD<?php echo $contador; ?>" id="formBorrarPD<?php echo $contador; ?>" class="text-center" action="index.php" method="get">
-                                                <input type="hidden" name="controlador" value="ProyectosDirigidos">
-                                                <input type="hidden" name="evento" value="borrarProyectoDirigido">
-                                                <input type="hidden" name="CodigoPD" value="<?php echo $row['CodigoPD']; ?>">
-                                                <button type="button" class="btn btn-transparent btn-orange" onClick="abrirConfirmPD('formBorrarPD<?php echo $contador; ?>', '<?php echo $row['CodigoPD']." ".$row['TituloPD']; ?>');">
-                                                    Borrar
-                                                </button>
-                                            </form>
-                                        </div>
-
                                     </div>
 
                                 </div>

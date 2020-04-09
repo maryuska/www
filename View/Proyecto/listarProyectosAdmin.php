@@ -98,6 +98,16 @@ $LoginU = $_SESSION["loginU"];
                                                     <b name = "TipoParticipacionProy">Tipo participacion: </b>
                                                     <?php echo $row['TipoParticipacionProy']; ?>
                                                     <br>
+                                                    <b name = "AdjuntoProy">Adjunto: </b>
+                                                    <?php
+                                                    if(empty($row['AdjuntoProy'])){
+                                                        echo "No tiene.";
+                                                    }
+                                                    else{
+                                                        echo "<a href='Archivos/proyectos/{$row['AdjuntoProy']}' target='_blank'>Ver adjunto</a>";
+                                                    }
+                                                    ?>
+                                                    <br>
                                                 </td>
 
                                             </tr>
@@ -107,7 +117,7 @@ $LoginU = $_SESSION["loginU"];
                                                     <input type="hidden" name="evento" value="borrarProyecto">
                                                     <input type="hidden" name="CodigoProy" value="<?php echo $row['CodigoProy']; ?>">
                                                     <input type="hidden" name="LoginU" value="<?php echo $row['LoginU']; ?>">
-                                                    <button type="button" class="btn btn-transparent btn-orange" onClick="window.location.href='index.php?controlador=Proyectos&evento=consultarProyectoAdmin&CodigoProy=<?php echo $row['CodigoProy']; ?>'">
+                                                    <button type="button" class="btn btn-transparent btn-orange" onClick="window.location.href='index.php?controlador=Proyectos&evento=consultarProyecto&CodigoProy=<?php echo $row['CodigoProy']; ?>'">
                                                         Modificar
                                                     </button>
                                                     <button type="button" class="btn btn-transparent btn-orange" onClick="abrirConfirmBorrarP('formBorrarP<?php echo $contador; ?>', '<?php echo $row['CodigoProy']." ".$row['TituloProy']; ?>');">
@@ -168,6 +178,16 @@ $LoginU = $_SESSION["loginU"];
                                                     <b name = "TipoParticipacionProy">Tipo participacion: </b>
                                                     <?php echo $row1['TipoParticipacionProy']; ?>
                                                     <br>
+                                                    <b name = "AdjuntoProy">Adjunto: </b>
+                                                    <?php
+                                                    if(empty($row['AdjuntoProy'])){
+                                                        echo "No tiene.";
+                                                    }
+                                                    else{
+                                                        echo "<a href='Archivos/proyectos/{$row['AdjuntoProy']}' target='_blank'>Ver adjunto</a>";
+                                                    }
+                                                    ?>
+                                                    <br>
                                                 </td>
 
                                             </tr>
@@ -177,7 +197,7 @@ $LoginU = $_SESSION["loginU"];
                                                     <input type="hidden" name="evento" value="borrarProyecto">
                                                     <input type="hidden" name="CodigoProy" value="<?php echo $row1['CodigoProy']; ?>">
                                                     <input type="hidden" name="LoginU" value="<?php echo $row1['LoginU']; ?>">
-                                                    <button type="button" class="btn btn-transparent btn-orange" onClick="window.location.href='index.php?controlador=Proyectos&evento=consultarProyectoAdmin&CodigoProy=<?php echo $row1['CodigoProy']; ?>'">
+                                                    <button type="button" class="btn btn-transparent btn-orange" onClick="window.location.href='index.php?controlador=Proyectos&evento=consultarProyecto&CodigoProy=<?php echo $row1['CodigoProy']; ?>'">
                                                         Modificar
                                                     </button>
                                                     <button type="button" class="btn btn-transparent btn-orange" onClick="abrirConfirmBorrarP('formBorrarP<?php echo $contador1; ?>', '<?php echo $row1['CodigoProy']." ".$row1['TituloProy']; ?>');">
@@ -236,6 +256,16 @@ $LoginU = $_SESSION["loginU"];
                                                     <b name = "TipoParticipacionProy">Tipo participacion: </b>
                                                     <?php echo $row2['TipoParticipacionProy']; ?>
                                                     <br>
+                                                    <b name = "AdjuntoProy">Adjunto: </b>
+                                                    <?php
+                                                    if(empty($row['AdjuntoProy'])){
+                                                        echo "No tiene.";
+                                                    }
+                                                    else{
+                                                        echo "<a href='Archivos/proyectos/{$row['AdjuntoProy']}' target='_blank'>Ver adjunto</a>";
+                                                    }
+                                                    ?>
+                                                    <br>
                                                 </td>
 
                                             </tr>
@@ -245,7 +275,7 @@ $LoginU = $_SESSION["loginU"];
                                                     <input type="hidden" name="evento" value="borrarProyecto">
                                                     <input type="hidden" name="CodigoProy" value="<?php echo $row2['CodigoProy']; ?>">
                                                     <input type="hidden" name="LoginU" value="<?php echo $row2['LoginU']; ?>">
-                                                    <button type="button" class="btn btn-transparent btn-orange" onClick="window.location.href='index.php?controlador=Proyectos&evento=consultarProyectoAdmin&CodigoProy=<?php echo $row2['CodigoProy']; ?>'">
+                                                    <button type="button" class="btn btn-transparent btn-orange" onClick="window.location.href='index.php?controlador=Proyectos&evento=consultarProyecto&CodigoProy=<?php echo $row2['CodigoProy']; ?>'">
                                                         Modificar
                                                     </button>
                                                     <button type="button" class="btn btn-transparent btn-orange" onClick="abrirConfirmBorrarP('formBorrarP<?php echo $contador2; ?>', '<?php echo $row2['CodigoProy']." ".$row2['TituloProy']; ?>');">

@@ -182,6 +182,14 @@ switch ($evento) {
         }
 
         $tipou=$_SESSION["TipoUsuario"];
+        $Usuario = new Usuarios("","","","","","","","","");
+        $consultarUsuarios = $Usuario->ListarUsuarios();
+        $consulta = array();
+        while($row = mysqli_fetch_array($consultarUsuarios)){
+            array_push($consulta, $row);
+        }
+        $_SESSION["listarUsuarios"] = $consulta;
+
         $Login=$_REQUEST["LoginU"];
         $LoginAnt=$_REQUEST["LoginU_ant"];
         $CodigoPD = $_POST['CodigoPD'];
@@ -209,15 +217,6 @@ switch ($evento) {
             if($tipou == 'U') {
                 require_once "View/ProyectoDirigido/modificarProyectoDirigido.php";
             }else{
-
-                $Usuario = new Usuarios("","","","","","","","","");
-                $consultarUsuarios = $Usuario->ListarUsuarios();
-                $consulta = array();
-                while($row = mysqli_fetch_array($consultarUsuarios)){
-                    array_push($consulta, $row);
-                }
-                $_SESSION["listarUsuarios"] = $consulta;
-
                 require_once "View/ProyectoDirigido/modificarProyectoDirigidoAdmin.php";
             }
         }
@@ -239,9 +238,10 @@ switch ($evento) {
                         @unlink('Archivos/proyectos_dirigidos/' . $_POST["AdjuntoPD_old"]);
 
                 }
+                $proyectoDirigido->setAdjunto($AdjuntoPD);
             }
 
-            $proyectoDirigido->setAdjunto($AdjuntoPD);
+
 
             $proyectoDirigido->ModificarProyectoDirigido($CodigoPD);
             $proyectoDirigido->BorrarDirige( $CodigoPD, $LoginAnt);
