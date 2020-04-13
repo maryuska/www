@@ -11,14 +11,16 @@ class Tad{
   private $AlumnoTAD;
   private $FechaLecturaTAD;
   private $LoginU;
+  private $AdjuntoTAD;
 
 //Constructor de TAD
-  public function __construct($CodigoTAD = NULL, $TituloTAD = NULL, $AlumnoTAD = NULL, $FechaLecturaTAD = NULL, $LoginU = NULL ){
+  public function __construct($CodigoTAD = NULL, $TituloTAD = NULL, $AlumnoTAD = NULL, $FechaLecturaTAD = NULL, $LoginU = NULL, $AdjuntoTAD = NULL ){
     $this->CodigoTAD = $CodigoTAD;
     $this->TituloTAD = $TituloTAD;
     $this->AlumnoTAD = $AlumnoTAD;
     $this->FechaLecturaTAD = $FechaLecturaTAD;
     $this->LoginU= $LoginU;
+    $this->AdjuntoTAD= $AdjuntoTAD;
   }
   
 //Función para conectarnos a la Base de datos
@@ -31,11 +33,15 @@ class Tad{
         }
     }
 
+// Set adjunto
+    public function setAdjunto($AdjuntoTAD){
+        $this->AdjuntoTAD = $AdjuntoTAD;
+    }
 //Alta de un nuevo TAD
   public function AltaTad() {
-      $this->ConectarBD();
-    $insertarTad  = "INSERT INTO tad (CodigoTAD,TituloTAD, AlumnoTAD, FechaLecturaTAD, LoginU)
-                          VALUES ('$this->CodigoTAD', '$this->TituloTAD', '$this->AlumnoTAD', '$this->FechaLecturaTAD','$this->LoginU')";
+    $this->ConectarBD();
+    $insertarTad  = "INSERT INTO tad (CodigoTAD,TituloTAD, AlumnoTAD, FechaLecturaTAD, LoginU, AdjuntoTAD)
+                          VALUES ('$this->CodigoTAD', '$this->TituloTAD', '$this->AlumnoTAD', '$this->FechaLecturaTAD','$this->LoginU','$this->AdjuntoTAD')";
 	$resultado = $this->mysqli->query($insertarTad) or die(mysqli_error($this->mysqli));
 	}
 
@@ -51,7 +57,8 @@ class Tad{
         $this->ConectarBD();
         $this->mysqli->query("UPDATE tad SET  TituloTAD='$this->TituloTAD',
                                                   AlumnoTAD='$this->AlumnoTAD',
-                                                  FechaLecturaTAD='$this->FechaLecturaTAD'
+                                                  FechaLecturaTAD='$this->FechaLecturaTAD',
+                                                  AdjuntoTAD='$this->AdjuntoTAD'
                               where CodigoTAD = '$CodigoTAD'") or die (mysqli_error($this->mysqli));
     }
 
@@ -72,6 +79,14 @@ class Tad{
 //Eliminar tad
     public function BorrarTad($CodigoTAD){
         $this->ConectarBD();
+        // Eliminamos el fichero que tuvier adjunto
+        $sql = $this->mysqli->query("SELECT AdjuntoTAD FROM tad WHERE CodigoPD = '$CodigoTAD'");
+        if( $sql->num_rows > 0 ){
+            $res = mysqli_fetch_array($sql);
+            if(!empty($res["AdjuntoTAD"]))
+                @unlink('Archivos/tads/' . $res["AdjuntoTAD"]);
+        }
+        // Eliminamos el registro de BD
         $this->mysqli->query("DELETE FROM tad WHERE CodigoTAD= '$CodigoTAD'")or die(mysqli_error($this->mysqli));
     }
 

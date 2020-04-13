@@ -72,6 +72,32 @@ require_once 'View/Structure/Nav.php';
                             <input id="FechaLecturaTAD" type="date" name="FechaLecturaTAD" class="form-control "<?php if(isset($errores) && in_array("FechaLecturaTAD", $errores)){ echo " error"; } ?>" value="<?=isset($_POST["FechaLecturaTAD"])?$_POST["FechaLecturaTAD"]:$row['FechaLecturaTAD']?>" >
                         </div>
 
+                        <div class="form-group">
+                            <label class="control-label" for="AdjuntoTAD">Adjunto</label>
+                            <input id="AdjuntoTAD" name="AdjuntoTAD" type="file" class="form-control <?php if(isset($errores) && in_array("AdjuntoTAD", $errores)){ echo " error"; } ?>" value="<?=isset($_POST["AdjuntoTAD"])?$_POST["AdjuntoTAD"]:$row['AdjuntoTAD']?>" >
+                            <?php
+                            if(!empty($row["AdjuntoTAD"])){
+
+                                $url = "Archivos/tads/".$row["AdjuntoTAD"];                            ?>
+
+                                <div class="text-center" style="margin:20px auto;">
+                                    <input type="hidden" name="AdjuntoTAD_old" value="<?=$row["AdjuntoTAD"]?>">
+                                    <a href='<?=$url?>' target='_blank'>Ver adjunto</a>
+                                    <br>
+                                    <label>
+                                        <input type="checkbox" value="1" name="AdjuntoTAD_delete">
+                                        Eliminar fichero adjunto
+                                    </label>
+                                    <br>
+                                    <small>Si sube un fichero nuevo el anterior será eliminado.<small>
+                                </div>
+
+                                <?php
+                            }
+                            ?>
+
+                        </div>
+
                         <br>
 
                         <div class="text-center">

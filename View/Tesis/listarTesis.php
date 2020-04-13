@@ -5,7 +5,7 @@ require_once 'View/Structure/Header.php';
 
 // Menu
 require_once 'View/Structure/Nav.php';
-
+$LoginU = $_SESSION["loginU"];
 ?>
 
 <div class="container-fluid">
@@ -81,6 +81,16 @@ require_once 'View/Structure/Nav.php';
                                         <b  name = "URLTesis" >URL: </b>
                                         <?php echo $row['URLTesis']; ?>
                                         <br>
+                                        <b name = "AdjuntoT">Adjunto: </b>
+                                        <?php
+                                        if(empty($row['AdjuntoT'])){
+                                            echo "No tiene.";
+                                        }
+                                        else{
+                                            echo "<a href='Archivos/tesis/{$row['AdjuntoT']}' target='_blank'>Ver adjunto</a>";
+                                        }
+                                        ?>
+                                        <br>
                                     </td>
 
                                 </tr>
@@ -88,6 +98,7 @@ require_once 'View/Structure/Nav.php';
                                     <form name="formBorrarTesis<?php echo $contador; ?>" id="formBorrarTesis<?php echo $contador; ?>" class="text-center" action="index.php" method="get">
                                         <input type="hidden" name="controlador" value="Tesis">
                                         <input type="hidden" name="evento" value="borrarTesis">
+                                        <input type="hidden" name="LoginU" value="<?php echo $row['LoginU'] ?>">
                                         <input type="hidden" name="CodigoTesis" value="<?php echo $row['CodigoTesis']; ?>">
                                         <button type="button" class="btn btn-transparent btn-orange" onClick="window.location.href='index.php?controlador=Tesis&evento=consultarTesis&CodigoTesis=<?php echo $row['CodigoTesis']; ?>'">
                                             Modificar

@@ -104,6 +104,32 @@ require_once 'View/Structure/Nav.php';
                         </div>
                         <br>
 
+                        <div class="form-group">
+                            <label class="control-label" for="AdjuntoT">Adjunto</label>
+                            <input id="AdjuntoT" name="AdjuntoT" type="file" class="form-control <?php if(isset($errores) && in_array("AdjuntoT", $errores)){ echo " error"; } ?>" value="<?=isset($_POST["AdjuntoT"])?$_POST["AdjuntoT"]:$row['AdjuntoT']?>" >
+                            <?php
+                            if(!empty($row["AdjuntoT"])){
+
+                                $url = "Archivos/tesis/".$row["AdjuntoT"];                            ?>
+
+                                <div class="text-center" style="margin:20px auto;">
+                                    <input type="hidden" name="AdjuntoT_old" value="<?=$row["AdjuntoT"]?>">
+                                    <a href='<?=$url?>' target='_blank'>Ver adjunto</a>
+                                    <br>
+                                    <label>
+                                        <input type="checkbox" value="1" name="AdjuntoT_delete">
+                                        Eliminar fichero adjunto
+                                    </label>
+                                    <br>
+                                    <small>Si sube un fichero nuevo el anterior será eliminado.<small>
+                                </div>
+
+                                <?php
+                            }
+                            ?>
+
+                        </div>
+
                         <div class="text-center">
                             <input type="hidden" name="evento" value="modificarTesis">
                             <button type="button" class="btn btn-orange" onclick="abrirConfirmModificarTesis();">

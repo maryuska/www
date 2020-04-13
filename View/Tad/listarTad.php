@@ -75,6 +75,16 @@ require_once 'View/Structure/Nav.php';
                                         <b  name = "FechaLecturaTAD" >Fecha Lectura: </b>
                                         <?php echo $row['FechaLecturaTAD']; ?>
                                         <br>
+                                        <b name = "AdjuntoTAD">Adjunto: </b>
+                                        <?php
+                                        if(empty($row['AdjuntoTAD'])){
+                                            echo "No tiene.";
+                                        }
+                                        else{
+                                            echo "<a href='Archivos/tads/{$row['AdjuntoTAD']}' target='_blank'>Ver adjunto</a>";
+                                        }
+                                        ?>
+                                        <br>
                                     </td>
 
                                 </tr>

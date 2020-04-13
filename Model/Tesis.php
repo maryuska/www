@@ -12,9 +12,10 @@ class Tesis{
     private $CalificacionTesis;
     private $URLTesis;
     private $LoginU;
+    private $AdjuntoT;
 
 //Constructor de tesis
-    public function __construct($CodigoTesis = NULL, $AutorTesis = NULL, $FechaInscripcion = NULL, $FechaLectura = NULL, $CalificacionTesis= NULL, $URLTesis = NULL, $LoginU = NULL ){
+    public function __construct($CodigoTesis = NULL, $AutorTesis = NULL, $FechaInscripcion = NULL, $FechaLectura = NULL, $CalificacionTesis= NULL, $URLTesis = NULL, $LoginU = NULL, $AdjuntoT = NULL ){
         $this->CodigoTesis = $CodigoTesis;
         $this->AutorTesis = $AutorTesis;
         $this->FechaInscripcion = $FechaInscripcion;
@@ -22,6 +23,7 @@ class Tesis{
         $this->CalificacionTesis = $CalificacionTesis;
         $this->URLTesis = $URLTesis;
         $this->LoginU= $LoginU;
+        $this->AdjuntoT= $AdjuntoT;
     }
 	
 //Función para conectarnos a la Base de datos
@@ -34,17 +36,23 @@ class Tesis{
         }
     }
 
+// Set adjunto
+    public function setAdjunto($AdjuntoT){
+        $this->AdjuntoT = $AdjuntoT;
+    }
+
 //Alta de una nueva tesis
     public function AltaTesis() {
         $this->ConectarBD();
-        $insertarTesis  = "INSERT INTO tesis(CodigoTesis,AutorTesis, FechaInscripcion, FechaLectura,CalificacionTesis ,URLTesis, LoginU)
+        $insertarTesis  = "INSERT INTO tesis(CodigoTesis,AutorTesis, FechaInscripcion, FechaLectura,CalificacionTesis ,URLTesis, LoginU,AdjuntoT)
                           VALUES ('$this->CodigoTesis',
                                    '$this->AutorTesis', 
                                    '$this->FechaInscripcion',
                                    '$this->FechaLectura',
                                   '$this->CalificacionTesis',
                                   '$this->URLTesis',
-                                   '$this->LoginU')";
+                                   '$this->LoginU',
+                                   '$this->AdjuntoT')";
         $resultado =  $this->mysqli->query($insertarTesis) or die(mysqli_error($this->mysqli));
     }
 
@@ -61,7 +69,8 @@ class Tesis{
         $this->mysqli->query("UPDATE tesis SET AutorTesis='$this->AutorTesis',
                                               FechaInscripcion='$this->FechaInscripcion' ,
                                               FechaLectura='$this->FechaLectura',
-                                              URLTesis='$this->URLTesis'
+                                              URLTesis='$this->URLTesis',
+                                              AdjuntoT='$this->AdjuntoT'
                                                where CodigoTesis = '$CodigoTesis'") or die (mysqli_error($this->mysqli));
     }
 
@@ -83,6 +92,15 @@ class Tesis{
 //Eliminar tesis
     public function BorrarTesis($CodigoTesis){
         $this->ConectarBD();
+        // Eliminamos el fichero que tuvier adjunto
+        $sql = $this->mysqli->query("SELECT AdjuntoT FROM tesis WHERE CodigoTesis = '$CodigoTesis'");
+        if( $sql->num_rows > 0 ){
+            $res = mysqli_fetch_array($sql);
+            if(!empty($res["AdjuntoT"]))
+                @unlink('Archivos/tesis/' . $res["AdjuntoT"]);
+        }
+
+        // Eliminamos el registro de BD
         $this->mysqli->query("DELETE FROM tesis WHERE CodigoTesis= '$CodigoTesis'")or die(mysqli_error($this->mysqli));
     }
 	
@@ -94,7 +112,8 @@ class Tesis{
                                                             FechaInscripcion LIKE '%$buscar'|| FechaInscripcion LIKE '%$buscar%' || FechaInscripcion LIKE '$buscar%' ||
                                                             FechaLectura LIKE '%$buscar'|| FechaLectura LIKE '%$buscar%' || FechaLectura LIKE '$buscar%' ||
                                                             CalificacionTesis LIKE '%$buscar'|| CalificacionTesis LIKE '%$buscar%' || CalificacionTesis LIKE '$buscar%' ||
-                                                            URLTesis LIKE '%$buscar'|| URLTesis LIKE '%$buscar%' || URLTesis LIKE '$buscar%'
+                                                            URLTesis LIKE '%$buscar'|| URLTesis LIKE '%$buscar%' || URLTesis LIKE '$buscar%'||
+                                                            AdjuntoT LIKE '%$buscar'|| AdjuntoT LIKE '%$buscar%' || AdjuntoT LIKE '$buscar%'
                                                             ") or die(mysqli_error($this->mysqli));
         return $sql;
     }

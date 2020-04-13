@@ -29,10 +29,22 @@ switch ($evento) {
 
 //Dar de alta un tad
     case 'altaTad':
-		$loginU=$_POST["LoginU"];
-        $tad = new Tad($_POST["CodigoTAD"],$_POST["TituloTAD"],$_POST["AlumnoTAD"],$_POST["FechaLecturaTAD"],$_POST["LoginU"]);
-		$codigoTad = $_REQUEST["CodigoTAD"];
 
+        $loginU=$_POST["LoginU"];
+        $codigoTad = $_REQUEST["CodigoTAD"];
+
+        // Subimos el fichero si viene alguno
+        $AdjuntoTAD = '';
+        if(isset($_FILES['AdjuntoTAD']) && $_FILES['AdjuntoTAD']['error'] == 0){
+            $dir_subida = 'Archivos/tads/';
+            $fichero_subido = $dir_subida . basename($_FILES['AdjuntoTAD']['name']);
+            if (move_uploaded_file($_FILES['AdjuntoTAD']['tmp_name'], $fichero_subido))
+                $AdjuntoPD = basename($_FILES['AdjuntoTAD']['name']);
+        }
+
+        //recoge los datos del TAD
+        $tad = new Tad($_POST["CodigoTAD"],$_POST["TituloTAD"],$_POST["AlumnoTAD"],$_POST["FechaLecturaTAD"],$_POST["LoginU"],$AdjuntoTAD);
+        $tad->ConsultarTad($codigoTad);
         $errores = $tad->validarTad($_POST);
 
         if(!empty($errores)){
@@ -48,8 +60,17 @@ switch ($evento) {
                 $msgError = "El Tad: " . $_POST["CodigoTAD"] . " ya existe, no puede insertar el mismo.";
                 require_once "View/Tad/insertarTad.php";
             }else{
+                // Si no ha habido errores subimos el fichero
+                if($_FILES['AdjuntoTAD']['error'] == 0){
+                    $dir_subida = 'Archivos/tads/';
+                    $fichero_subido = $dir_subida . basename($_FILES['AdjuntoTAD']['name']);
+                    if (move_uploaded_file($_FILES['AdjuntoTAD']['tmp_name'], $fichero_subido))
+                        $AdjuntoTAD = basename($_FILES['AdjuntoTAD']['name']);
+                    $tad->setAdjunto($AdjuntoTAD);
+                }
+
                 $tad->AltaTad();
-                header("Location: index.php?controlador=Tad&evento=listarTad&LoginU=".$login);
+                header("Location: index.php?controlador=Tad&evento=listarTad&LoginU=".$loginU);
             }
 
         }
@@ -58,8 +79,18 @@ switch ($evento) {
 
 //Dar de alta un tad como Admin
     case 'altaTadAdmin':
+        // Subimos el fichero si viene alguno
+        $AdjuntoTAD = '';
+        if(isset($_FILES['AdjuntoTAD']) && $_FILES['AdjuntoTAD']['error'] == 0){
+            $dir_subida = 'Archivos/tads/';
+            $fichero_subido = $dir_subida . basename($_FILES['AdjuntoTAD']['name']);
+            if (move_uploaded_file($_FILES['AdjuntoTAD']['tmp_name'], $fichero_subido))
+                $AdjuntoPD = basename($_FILES['AdjuntoTAD']['name']);
+        }
+
+        //recoge los datos del TAD
 		$loginU=$_POST["LoginU"];
-        $tad = new Tad($_POST["CodigoTAD"],$_POST["TituloTAD"],$_POST["AlumnoTAD"],$_POST["FechaLecturaTAD"],$_POST["LoginU"]);
+        $tad = new Tad($_POST["CodigoTAD"],$_POST["TituloTAD"],$_POST["AlumnoTAD"],$_POST["FechaLecturaTAD"],$_POST["LoginU"],$AdjuntoTAD);
 		$codigoTad = $_REQUEST["CodigoTAD"];
 
         $Usuario = new Usuarios("","","","","","","","","");
@@ -85,6 +116,14 @@ switch ($evento) {
                 $msgError = "El Tad: " . $_POST["CodigoTAD"] . " ya existe, no puede insertar el mismo.";
                 require_once "View/Tad/insertarTadAdmin.php";
             }else{
+                // Si no ha habido errores subimos el fichero
+                if($_FILES['AdjuntoTAD']['error'] == 0){
+                    $dir_subida = 'Archivos/tads/';
+                    $fichero_subido = $dir_subida . basename($_FILES['AdjuntoTAD']['name']);
+                    if (move_uploaded_file($_FILES['AdjuntoTAD']['tmp_name'], $fichero_subido))
+                        $AdjuntoTAD = basename($_FILES['AdjuntoTAD']['name']);
+                }
+                $tad->setAdjunto($AdjuntoTAD);
                 $tad->AltaTad();
                 header("Location: index.php?controlador=Tad&evento=listarTadAdmin");
             }
@@ -97,7 +136,7 @@ switch ($evento) {
 //Consultar un tad para modificar
     case 'consultarTad':
 
-        $Tad = new Tad("","","","","");
+        $Tad = new Tad("","","","","","");
         $CodigoTAD = $_REQUEST['CodigoTAD'];
         $consultaT = $Tad->ConsultarTad($CodigoTAD);
         $consulta = array();
@@ -122,7 +161,7 @@ switch ($evento) {
         }
         $_SESSION["listarUsuarios"] = $consulta;
 
-        $Tad = new Tad("","","","","");
+        $Tad = new Tad("","","","","","");
         $CodigoTAD = $_REQUEST['CodigoTAD'];
         $consultaT = $Tad->ConsultarTad($CodigoTAD);
         $consulta = array();
@@ -138,6 +177,15 @@ switch ($evento) {
 //Modificar un Tad
     case 'modificarTad':
 
+        // Subimos el fichero si viene alguno
+        $AdjuntoTAD = '';
+        if(isset($_FILES['AdjuntoTAD']) && $_FILES['AdjuntoTAD']['error'] == 0){
+            $dir_subida = 'Archivos/tads/';
+            $fichero_subido = $dir_subida . basename($_FILES['AdjuntoTAD']['name']);
+            if (move_uploaded_file($_FILES['AdjuntoTAD']['tmp_name'], $fichero_subido))
+                $AdjuntoTAD = basename($_FILES['AdjuntoTAD']['name']);
+        }
+
         $CodigoTAD = $_POST['CodigoTAD'];
         $TituloTAD = $_POST['TituloTAD'];
         $AlumnoTAD = $_POST['AlumnoTAD'];
@@ -145,7 +193,7 @@ switch ($evento) {
         $LoginU = $_POST['LoginU'];
 
 
-        $tad = new Tad( $CodigoTAD,$TituloTAD, $AlumnoTAD ,$FechaLecturaTAD, $LoginU  );
+        $tad = new Tad( $CodigoTAD,$TituloTAD, $AlumnoTAD ,$FechaLecturaTAD, $LoginU, $AdjuntoTAD );
         $errores    = $tad->validarTad($_POST);
         if(!empty($errores)){
             $msgError = "Los campos con el borde rojo son obligatorios.";
@@ -163,6 +211,26 @@ switch ($evento) {
             }
         }
         else{
+            // Si tiene marcado el check de eliminar lo eliminamos
+            if( isset($_POST["AdjuntoTAD_delete"]) && $_POST["AdjuntoTAD_delete"] == '1' )
+                @unlink('Archivos/tads/' . $_POST["AdjuntoTAD_old"]);
+
+            // Subimos el fichero si viene alguno
+            if(isset($_FILES['AdjuntoTAD']) && $_FILES['AdjuntoTAD']['error'] == 0){
+                $dir_subida = 'Archivos/tads/';
+                $fichero_subido = $dir_subida . basename($_FILES['AdjuntoTAD']['name']);
+                if (move_uploaded_file($_FILES['AdjuntoTAD']['tmp_name'], $fichero_subido)){
+                    $AdjuntoPD = basename($_FILES['AdjuntoTAD']['name']);
+
+                    // Si teniamos un archivo anterior lo eliminamos
+                    if( $_POST["AdjuntoTAD_old"] )
+                        @unlink('Archivos/tads/' . $_POST["AdjuntoTAD_old"]);
+
+                }
+
+            }
+
+            $tad->setAdjunto($AdjuntoTAD);
 
             $tad->ModificarTad($CodigoTAD);
             $tipou=$_SESSION["TipoUsuario"];
