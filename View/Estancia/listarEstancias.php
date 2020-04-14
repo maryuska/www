@@ -97,6 +97,16 @@ require_once 'View/Structure/Nav.php';
                                                     <b name = "TipoE">Tipo de estancia: </b>
                                                     <?php echo $row['TipoE']; ?>
                                                     <br>
+                                                    <b name = "AdjuntoE">Adjunto: </b>
+                                                    <?php
+                                                    if(empty($row['AdjuntoE'])){
+                                                        echo "No tiene.";
+                                                    }
+                                                    else{
+                                                        echo "<a href='Archivos/estancias/{$row['AdjuntoE']}' target='_blank'>Ver adjunto</a>";
+                                                    }
+                                                    ?>
+                                                    <br>
                                                 </td>
 
                                             </tr>
@@ -163,6 +173,16 @@ require_once 'View/Structure/Nav.php';
                                                     <b name = "TipoE">Tipo de estancia: </b>
                                                     <?php echo $row1['TipoE']; ?>
                                                     <br>
+                                                    <b name = "AdjuntoE">Adjunto: </b>
+                                                    <?php
+                                                    if(empty($row['AdjuntoE'])){
+                                                        echo "No tiene.";
+                                                    }
+                                                    else{
+                                                        echo "<a href='Archivos/estancias/{$row['AdjuntoE']}' target='_blank'>Ver adjunto</a>";
+                                                    }
+                                                    ?>
+                                                    <br>
                                                 </td>
 
                                             </tr>
@@ -228,6 +248,16 @@ require_once 'View/Structure/Nav.php';
                                                     <b name = "TipoE">Tipo de estancia: </b>
                                                     <?php echo $row2['TipoE']; ?>
                                                     <br>
+                                                    <b name = "AdjuntoE">Adjunto: </b>
+                                                    <?php
+                                                    if(empty($row['AdjuntoE'])){
+                                                        echo "No tiene.";
+                                                    }
+                                                    else{
+                                                        echo "<a href='Archivos/estancias/{$row['AdjuntoE']}' target='_blank'>Ver adjunto</a>";
+                                                    }
+                                                    ?>
+                                                    <br>
                                                 </td>
 
                                             </tr>
@@ -292,6 +322,16 @@ require_once 'View/Structure/Nav.php';
                                                     <br>
                                                     <b name = "TipoE">Tipo de estancia: </b>
                                                     <?php echo $row3['TipoE']; ?>
+                                                    <br>
+                                                    <b name = "AdjuntoE">Adjunto: </b>
+                                                    <?php
+                                                    if(empty($row['AdjuntoE'])){
+                                                        echo "No tiene.";
+                                                    }
+                                                    else{
+                                                        echo "<a href='Archivos/estancias/{$row['AdjuntoE']}' target='_blank'>Ver adjunto</a>";
+                                                    }
+                                                    ?>
                                                     <br>
                                                 </td>
 

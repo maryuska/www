@@ -13,9 +13,10 @@ class Estancias{
   private $FechaFinE;
   private $TipoE;
   private $LoginU;
+  private $AdjuntoE;
 
 //Constructor de estancia
-  public function __construct($CodigoE = NULL, $CentroE = NULL, $UniversidadE = NULL, $PaisE = NULL, $FechaInicioE = NULL, $FechaFinE = NULL, $TipoE = NULL, $LoginU = NULL ){
+  public function __construct($CodigoE = NULL, $CentroE = NULL, $UniversidadE = NULL, $PaisE = NULL, $FechaInicioE = NULL, $FechaFinE = NULL, $TipoE = NULL, $LoginU = NULL, $AdjuntoE = NULL ){
     $this->CodigoE = $CodigoE;
     $this->CentroE = $CentroE;
     $this->UniversidadE = $UniversidadE;
@@ -24,6 +25,7 @@ class Estancias{
     $this->FechaFinE = $FechaFinE;
     $this->TipoE= $TipoE;
     $this->LoginU= $LoginU;
+    $this->AdjuntoE= $AdjuntoE;
   }
 
 //Función para conectarnos a la Base de datos
@@ -36,12 +38,17 @@ class Estancias{
         }
     }
 
+// Set adjunto
+    public function setAdjunto($AdjuntoE){
+        $this->AdjuntoE = $AdjuntoE;
+    }
+
 //Alta de una nueva estancia
   public function AltaEstancia() {
       $this->ConectarBD();
-    $insertarEstancia  = "INSERT INTO estancia(CodigoE,CentroE, UniversidadE, PaisE, FechaInicioE,FechaFinE, TipoE,LoginU)
+    $insertarEstancia  = "INSERT INTO estancia(CodigoE,CentroE, UniversidadE, PaisE, FechaInicioE,FechaFinE, TipoE,LoginU,AdjuntoE)
                           VALUES ('$this->CodigoE', '$this->CentroE', '$this->UniversidadE', '$this->PaisE','$this->FechaInicioE','$this->FechaFinE',
-                           '$this->TipoE', '$this->LoginU')";
+                           '$this->TipoE', '$this->LoginU', '$this->AdjuntoE')";
 	$resultado = $this->mysqli->query($insertarEstancia) or die(mysqli_error($this->mysqli));
 	}
 
@@ -60,7 +67,8 @@ class Estancias{
                                                     PaisE='$this->PaisE' ,
                                                     FechaInicioE='$this->FechaInicioE',
                                                     FechaFinE='$this->FechaFinE',
-                                                    TipoE='$this->TipoE'
+                                                    TipoE='$this->TipoE',
+                                                    AdjuntoE='$this->AdjuntoE'
                                                     where CodigoE = '$CodigoE'") or die (mysqli_error($this->mysqli));
     }
 
@@ -135,7 +143,8 @@ class Estancias{
                                                             FechaInicioE LIKE '%$buscar'|| FechaInicioE LIKE '%$buscar%' || FechaInicioE LIKE '$buscar%' ||
                                                             FechaFinE LIKE '%$buscar'|| FechaFinE LIKE '%$buscar%' || FechaFinE LIKE '$buscar%' ||
                                                             TipoE LIKE '%$buscar'|| TipoE LIKE '%$buscar%' || TipoE LIKE '$buscar%' ||
-                                                            LoginU LIKE '%$buscar'|| LoginU LIKE '%$buscar%' || LoginU LIKE '$buscar%' 
+                                                            LoginU LIKE '%$buscar'|| LoginU LIKE '%$buscar%' || LoginU LIKE '$buscar%' ||
+                                                            AdjuntoE LIKE '%$buscar'|| AdjuntoE LIKE '%$buscar%' || AdjuntoE LIKE '$buscar%' 
                                                             ") or die(mysqli_error($this->mysqli));
         return $sql;
     }
@@ -143,6 +152,15 @@ class Estancias{
 //Eliminar estancia
     public function BorrarEstancia($CodigoE){
         $this->ConectarBD();
+        // Eliminamos el fichero que tuvier adjunto
+        $sql = $this->mysqli->query("SELECT AdjuntoE FROM estancia WHERE CodigoE = '$CodigoE'");
+        if( $sql->num_rows > 0 ){
+            $res = mysqli_fetch_array($sql);
+            if(!empty($res["AdjuntoE"]))
+                @unlink('Archivos/estancias/' . $res["AdjuntoE"]);
+        }
+
+        // Eliminamos el registro de BD
         $this->mysqli->query("DELETE FROM estancia WHERE CodigoE= '$CodigoE'")or die(mysqli_error($this->mysqli));
     }
 

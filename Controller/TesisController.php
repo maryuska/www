@@ -41,7 +41,7 @@ switch ($evento) {
                 $AdjuntoT = basename($_FILES['AdjuntoT']['name']);
         }
 
-        //recoge los datos del proyecto dirigido
+        //recoge los datos de la tesis
         $login=$_POST["LoginU"];
         $tesis = new Tesis($_POST["CodigoTesis"],$_POST["AutorTesis"],$_POST["FechaInscripcion"],$_POST["FechaLectura"],$_POST["CalificacionTesis"],$_POST["URLTesis"],$_POST["LoginU"],$AdjuntoT);
         $codigoTesis = $_REQUEST["CodigoTesis"];
@@ -89,7 +89,7 @@ switch ($evento) {
                 $AdjuntoT = basename($_FILES['AdjuntoT']['name']);
         }
 
-        //recoge los datos del proyecto dirigido
+        //recoge los datos de la tesis
         $tesis = new Tesis($_POST["CodigoTesis"],$_POST["AutorTesis"],$_POST["FechaInscripcion"],$_POST["FechaLectura"],$_POST["CalificacionTesis"],$_POST["URLTesis"],$_POST["Login"],$AdjuntoT);
         $codigoTesis = $_REQUEST["CodigoTesis"];
 

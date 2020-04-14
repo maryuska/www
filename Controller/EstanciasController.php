@@ -30,11 +30,20 @@ switch ($evento) {
 
 //Dar alta una estancia
     case 'altaEstancia':
-        $loginU=$_POST["LoginU"];
-        $estancia = new Estancias($_POST["CodigoE"],$_POST["CentroE"],$_POST["UniversidadE"],$_POST["PaisE"],$_POST["FechaInicioE"],$_POST["FechaFinE"],$_POST["TipoE"],$_POST["LoginU"]);
-        $CodigoE = $_REQUEST['CodigoE'];
 
-        $estancia -> consultarEstancia($CodigoE);
+        // Subimos el fichero si viene alguno
+        $AdjuntoE = '';
+        if(isset($_FILES['AdjuntoE']) && $_FILES['AdjuntoE']['error'] == 0){
+            $dir_subida = 'Archivos/estancias/';
+            $fichero_subido = $dir_subida . basename($_FILES['AdjuntoE']['name']);
+            if (move_uploaded_file($_FILES['AdjuntoE']['tmp_name'], $fichero_subido))
+                $AdjuntoE = basename($_FILES['AdjuntoE']['name']);
+        }
+
+        //recoge los datos de la estancia
+        $loginU=$_POST["LoginU"];
+        $estancia = new Estancias($_POST["CodigoE"],$_POST["CentroE"],$_POST["UniversidadE"],$_POST["PaisE"],$_POST["FechaInicioE"],$_POST["FechaFinE"],$_POST["TipoE"],$_POST["LoginU"],$AdjuntoE);
+        $CodigoE = $_REQUEST['CodigoE'];
 
         $errores = $estancia->validarEstancia($_POST);
 
@@ -51,6 +60,15 @@ switch ($evento) {
                     $msgError = "La estancia: " . $_POST["CodigoE"] . " ya existe, no puede insertar la misma.";
                     require_once "View/Estancia/insertarEstancia.php";
                 } else {
+                    // Si no ha habido errores subimos el fichero
+                    if($_FILES['AdjuntoE']['error'] == 0){
+                        $dir_subida = 'Archivos/estancias/';
+                        $fichero_subido = $dir_subida . basename($_FILES['AdjuntoE']['name']);
+                        if (move_uploaded_file($_FILES['AdjuntoE']['tmp_name'], $fichero_subido))
+                            $AdjuntoE = basename($_FILES['AdjuntoE']['name']);
+                    }
+                    $estancia->setAdjunto($AdjuntoE);
+
                     $estancia->AltaEstancia();
                     $login = $_REQUEST["LoginU"];
                     header("Location: index.php?controlador=Estancias&evento=listarEstancias&LoginU=" . $login);
@@ -61,9 +79,18 @@ switch ($evento) {
 
 //Dar alta una estancia como Admin
     case 'altaEstanciaAdmin':
-       $estancia = new Estancias($_POST["CodigoE"],$_POST["CentroE"],$_POST["UniversidadE"],$_POST["PaisE"],$_POST["FechaInicioE"],$_POST["FechaFinE"],$_POST["TipoE"],$_POST["Login"]);
-        $CodigoE = $_REQUEST['CodigoE'];		
-        $estancia -> consultarEstancia($CodigoE);
+        // Subimos el fichero si viene alguno
+        $AdjuntoE = '';
+        if(isset($_FILES['AdjuntoE']) && $_FILES['AdjuntoE']['error'] == 0){
+            $dir_subida = 'Archivos/estancias/';
+            $fichero_subido = $dir_subida . basename($_FILES['AdjuntoE']['name']);
+            if (move_uploaded_file($_FILES['AdjuntoE']['tmp_name'], $fichero_subido))
+                $AdjuntoE = basename($_FILES['AdjuntoE']['name']);
+        }
+
+        //recoge los datos de la estancia
+       $estancia = new Estancias($_POST["CodigoE"],$_POST["CentroE"],$_POST["UniversidadE"],$_POST["PaisE"],$_POST["FechaInicioE"],$_POST["FechaFinE"],$_POST["TipoE"],$_POST["Login"],$AdjuntoE);
+        $CodigoE = $_REQUEST['CodigoE'];
 
         $Usuario = new Usuarios("","","","","","","","","");
         $consultarUsuarios = $Usuario->ListarUsuarios();
@@ -88,6 +115,14 @@ switch ($evento) {
                 $msgError = "La estancia: " . $_POST["CodigoE"] . " ya existe, no puede insertar la misma.";
                 require_once "View/Estancia/insertarEstanciaAdmin.php";
             } else {
+                // Si no ha habido errores subimos el fichero
+                if($_FILES['AdjuntoE']['error'] == 0){
+                    $dir_subida = 'Archivos/estancias/';
+                    $fichero_subido = $dir_subida . basename($_FILES['AdjuntoE']['name']);
+                    if (move_uploaded_file($_FILES['AdjuntoE']['tmp_name'], $fichero_subido))
+                        $AdjuntoE = basename($_FILES['AdjuntoE']['name']);
+                }
+                $estancia->setAdjunto($AdjuntoE);
                 $estancia->AltaEstancia();
                 header("Location: index.php?controlador=Estancias&evento=listarEstanciasAdmin");
             }
@@ -97,7 +132,7 @@ switch ($evento) {
 //Consultar una estancia para modificar
     case 'consultarEstancia':
 
-        $estancia = new Estancias("","","","","","","","");
+        $estancia = new Estancias("","","","","","","","","");
         $CodigoE = $_REQUEST['CodigoE'];
         $consultaE = $estancia->ConsultarEstancia($CodigoE);
         $consulta = array();
@@ -122,7 +157,7 @@ switch ($evento) {
         }
         $_SESSION["listarUsuarios"] = $consulta;
 
-        $estancia = new Estancias("","","","","","","","");
+        $estancia = new Estancias("","","","","","","","","");
         $CodigoE = $_REQUEST['CodigoE'];
         $consultaE = $estancia->ConsultarEstancia($CodigoE);
         $consulta = array();
@@ -137,8 +172,22 @@ switch ($evento) {
 
 //Modificar una estancia
     case 'modificarEstancia':
-
+        // Subimos el fichero si viene alguno
+        $AdjuntoE = '';
+        if(isset($_FILES['AdjuntoE']) && $_FILES['AdjuntoE']['error'] == 0){
+            $dir_subida = 'Archivos/estancias/';
+            $fichero_subido = $dir_subida . basename($_FILES['AdjuntoE']['name']);
+            if (move_uploaded_file($_FILES['AdjuntoE']['tmp_name'], $fichero_subido))
+                $AdjuntoE = basename($_FILES['AdjuntoE']['name']);
+        }
         $tipou=$_SESSION["TipoUsuario"];
+        $Usuario = new Usuarios("","","","","","","","","");
+        $consultarUsuarios = $Usuario->ListarUsuarios();
+        $consulta = array();
+        while($row = mysqli_fetch_array($consultarUsuarios)){
+            array_push($consulta, $row);
+        }
+        $_SESSION["listarUsuarios"] = $consulta;
 
         $CodigoE = $_POST['CodigoE'];
         $CentroE = $_POST['CentroE'];
@@ -149,8 +198,9 @@ switch ($evento) {
         $TipoE = $_POST['TipoE'];
         $LoginU = $_POST['LoginU'];
 
-        $estancia = new Estancias($CodigoE, $CentroE, $UniversidadE, $PaisE, $FechaInicioE, $FechaFinE, $TipoE, $LoginU );
+        $estancia = new Estancias($CodigoE, $CentroE, $UniversidadE, $PaisE, $FechaInicioE, $FechaFinE, $TipoE, $LoginU ,$AdjuntoE);
         $errores    = $estancia->validarEstancia($_POST);
+
         if(!empty($errores)){
             $msgError = "Los campos con el borde rojo son obligatorios.";
             $consultaE = $estancia->ConsultarEstancia($CodigoE);
@@ -167,6 +217,27 @@ switch ($evento) {
             }
         }
         else{
+            // Si tiene marcado el check de eliminar lo eliminamos
+            if( isset($_POST["AdjuntoE_delete"]) && $_POST["AdjuntoE_delete"] == '1' )
+                @unlink('Archivos/estancias/' . $_POST["AdjuntoE_old"]);
+
+            // Subimos el fichero si viene alguno
+            if(isset($_FILES['AdjuntoE']) && $_FILES['AdjuntoE']['error'] == 0){
+                $dir_subida = 'Archivos/estancias/';
+                $fichero_subido = $dir_subida . basename($_FILES['AdjuntoE']['name']);
+                if (move_uploaded_file($_FILES['AdjuntoE']['tmp_name'], $fichero_subido)){
+                    $AdjuntoE = basename($_FILES['AdjuntoE']['name']);
+
+                    // Si teniamos un archivo anterior lo eliminamos
+                    if( $_POST["AdjuntoE_old"] )
+                        @unlink('Archivos/estancias/' . $_POST["AdjuntoE_old"]);
+
+                }
+
+            }
+
+            $estancia->setAdjunto($AdjuntoE);
+
             $estancia->ModificarEstancia($CodigoE);
             $loginU = $_POST['LoginU'];
             if($tipou == 'U'){
@@ -181,7 +252,7 @@ switch ($evento) {
 //Listar estancias de usuario
     case 'listarEstancias':
         $LoginU = $_REQUEST['LoginU'];
-        $lista = new Estancias("","","","","","","","");
+        $lista = new Estancias("","","","","","","","","");
         //todas las estancias
         $listaEstancias = $lista->ListarEstancias($LoginU);
         $listaResultado = array();
@@ -218,7 +289,7 @@ switch ($evento) {
 //Listar todas las estancias como admin
     case 'listarEstanciasAdmin':
 
-        $lista = new Estancias("","","","","","","","");
+        $lista = new Estancias("","","","","","","","","");
 
         //todas las estancias
         $listaEstancias = $lista->ListarEstanciasAdmin();
@@ -257,7 +328,7 @@ switch ($evento) {
 //Borrar estancia
     case 'borrarEstancia':
         $CodigoE=$_REQUEST["CodigoE"];
-        $Estancia = new Estancias("","","","","","","","");
+        $Estancia = new Estancias("","","","","","","","","");
 
         $Estancia->BorrarEstancia($CodigoE);
 
@@ -274,7 +345,7 @@ switch ($evento) {
     case 'buscarEstancia':
         $buscar= $_POST['textoBusqueda'];
 
-        $Estancia = new Estancias("","","","","","","","");
+        $Estancia = new Estancias("","","","","","","","","");
         $consultarEstancia = $Estancia->BuscarEstancia($buscar);
 
         if(!empty($consultarEstancia)){
