@@ -95,6 +95,13 @@ $loginU =$_SESSION["loginU"];
             </div>
         </div>
 
+        <div class="form-group form-group-md">
+            <label class="col-md-4 col-lg-3 control-label" for="AdjuntoC">Adjunto</label>
+            <div class="col-md-8 col-lg-9">
+                <input id="AdjuntoC" name="AdjuntoC" type="file" class="form-control <?php if(isset($errores) && in_array("AdjuntoC", $errores)){ echo " error"; } ?>" value="<?=isset($_POST["AdjuntoC"])?$_POST["AdjuntoC"]:''?>" >
+            </div>
+        </div>
+
 
         <div class="col-md-offset-4 col-lg-offset-3 text-center">
             <button type="submit" id="AltaCongreso" name="evento" value="altaCongreso" class="btn btn-orange">

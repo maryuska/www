@@ -32,12 +32,21 @@ switch ($evento) {
 //alta congreso modificada	
 //Alta de un congreso	
     case 'altaCongreso':
+        // Subimos el fichero si viene alguno
+        $AdjuntoC = '';
+        if(isset($_FILES['AdjuntoC']) && $_FILES['AdjuntoC']['error'] == 0){
+            $dir_subida = 'Archivos/congresos/';
+            $fichero_subido = $dir_subida . basename($_FILES['AdjuntoC']['name']);
+            if (move_uploaded_file($_FILES['AdjuntoC']['tmp_name'], $fichero_subido))
+                $AdjuntoC = basename($_FILES['AdjuntoC']['name']);
+        }
 
+        //recoge los datos del congreso
         $tipou=$_SESSION["TipoUsuario"];
         $Login=$_REQUEST["LoginU"];
         $CodigoC = $_REQUEST['CodigoC'];
         $TipoParticipacionC= $_REQUEST['TipoParticipacionC'];
-        $congreso = new Congreso($_POST["CodigoC"],$_POST["NombreC"],$_POST["AcronimoC"],$_POST["AnhoC"],$_POST["LugarC"]);
+        $congreso = new Congreso($_POST["CodigoC"],$_POST["NombreC"],$_POST["AcronimoC"],$_POST["AnhoC"],$_POST["LugarC"],$AdjuntoC);
 
         $Usuario = new Usuarios("","","","","","","","","");
         $consultarUsuarios = $Usuario->ListarUsuarios();
@@ -73,6 +82,15 @@ switch ($evento) {
                 }
 
             }else{
+                // Si no ha habido errores subimos el fichero
+                if($_FILES['AdjuntoC']['error'] == 0){
+                    $dir_subida = 'Archivos/congresos/';
+                    $fichero_subido = $dir_subida . basename($_FILES['AdjuntoC']['name']);
+                    if (move_uploaded_file($_FILES['AdjuntoC']['tmp_name'], $fichero_subido))
+                        $AdjuntoC = basename($_FILES['AdjuntoC']['name']);
+                }
+                $congreso->setAdjunto($AdjuntoC);
+
                 $congreso->AltaCongreso();
                 $congreso->Participa($Login,$CodigoC,$TipoParticipacionC);
                 if($tipou == 'U') {
@@ -129,6 +147,14 @@ switch ($evento) {
 
 //Modificar un congreso
     case 'modificarCongreso':
+        // Subimos el fichero si viene alguno
+        $AdjuntoC = '';
+        if(isset($_FILES['AdjuntoC']) && $_FILES['AdjuntoC']['error'] == 0){
+            $dir_subida = 'Archivos/congresos/';
+            $fichero_subido = $dir_subida . basename($_FILES['AdjuntoC']['name']);
+            if (move_uploaded_file($_FILES['AdjuntoC']['tmp_name'], $fichero_subido))
+                $AdjuntoC = basename($_FILES['AdjuntoC']['name']);
+        }
 
         $tipou=$_SESSION["TipoUsuario"];
 
@@ -141,7 +167,7 @@ switch ($evento) {
         $Login = $_POST['LoginU'];
         $LoginAnt = $_POST['LoginU_ant'];
 
-        $congreso = new Congreso( $CodigoC,$NombreC, $AcronimoC ,$AnhoC ,$LugarC );
+        $congreso = new Congreso( $CodigoC,$NombreC, $AcronimoC ,$AnhoC ,$LugarC,$AdjuntoC);
 
         $errores = $congreso->validarCongreso($_POST);
 
@@ -160,7 +186,29 @@ switch ($evento) {
                 require_once "View/Congreso/modificarCongresoAdmin.php";
             }
         }
-        else{ 
+        else{
+            // Si tiene marcado el check de eliminar lo eliminamos
+            if( isset($_POST["AdjuntoC_delete"]) && $_POST["AdjuntoC_delete"] == '1' )
+                @unlink('Archivos/congresos/' . $_POST["AdjuntoC_old"]);
+
+            // Subimos el fichero si viene alguno
+            if(isset($_FILES['AdjuntoC']) && $_FILES['AdjuntoC']['error'] == 0){
+                $dir_subida = 'Archivos/congresos/';
+                $fichero_subido = $dir_subida . basename($_FILES['AdjuntoC']['name']);
+                if (move_uploaded_file($_FILES['AdjuntoC']['tmp_name'], $fichero_subido)){
+                    $AdjuntoC = basename($_FILES['AdjuntoC']['name']);
+
+                    // Si teniamos un archivo anterior lo eliminamos
+                    if( $_POST["AdjuntoC_old"] )
+                        @unlink('Archivos/congresos/' . $_POST["AdjuntoC_old"]);
+
+                }
+
+            }
+
+            $congreso->setAdjunto($AdjuntoC);
+
+
             $congreso->ModificarCongreso($CodigoC,$TipoParticipacionC);
             $congreso->BorrarParticipa($LoginAnt, $CodigoC);
             $congreso->Participa($Login,$CodigoC,$TipoParticipacionC);

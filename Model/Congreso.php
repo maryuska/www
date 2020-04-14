@@ -11,14 +11,16 @@ class Congreso{
     private $AcronimoC;
     private $AnhoC;
     private $LugarC;
+    private $AdjuntoC;
 
 //Constructor de congreso
-    public function __construct($CodigoC = NULL, $NombreC = NULL, $AcronimoC = NULL, $AnhoC = NULL, $LugarC = NULL){
+    public function __construct($CodigoC = NULL, $NombreC = NULL, $AcronimoC = NULL, $AnhoC = NULL, $LugarC = NULL ,$AdjuntoC =NULL){
         $this->CodigoC = $CodigoC;
         $this->NombreC = $NombreC;
         $this->AcronimoC = $AcronimoC;
         $this->AnhoC = $AnhoC;
         $this->LugarC = $LugarC;
+        $this->AdjuntoC = $AdjuntoC;
     }
 //Función para conectarnos a la Base de datos
     function ConectarBD()
@@ -30,11 +32,16 @@ class Congreso{
         }
     }
 
+// Set adjunto
+    public function setAdjunto($AdjuntoC){
+        $this->AdjuntoC = $AdjuntoC;
+    }
+
 //Alta de un nuevo congreso
     public function AltaCongreso() {
         $this->ConectarBD();
-        $insertarCongreso  = "INSERT INTO congreso(CodigoC,NombreC, AcronimoC, AnhoC, LugarC)
-                          VALUES ('$this->CodigoC', '$this->NombreC', '$this->AcronimoC', '$this->AnhoC','$this->LugarC')";
+        $insertarCongreso  = "INSERT INTO congreso(CodigoC,NombreC, AcronimoC, AnhoC, LugarC,AdjuntoC)
+                          VALUES ('$this->CodigoC', '$this->NombreC', '$this->AcronimoC', '$this->AnhoC','$this->LugarC','$this->AdjuntoC')";
         $resultado = $this->mysqli->query($insertarCongreso) or die(mysqli_error($this->mysqli));
     }
 
@@ -60,7 +67,8 @@ class Congreso{
                                                   c.AcronimoC='$this->AcronimoC',
                                                   c.AnhoC='$this->AnhoC' ,
                                                   c.LugarC='$this->LugarC',     
-                                                  dc.TipoParticipacionC='$TipoParticipacionC'                                     
+                                                  dc.TipoParticipacionC='$TipoParticipacionC',
+                                                  c.AdjuntoC='$this->AdjuntoC'                                  
                       where c.CodigoC = '$CodigoC' AND c.CodigoC=dc.CodigoC") or die (mysqli_error($this->mysqli));
     }
 
@@ -181,6 +189,14 @@ class Congreso{
 //Eliminar un congreso
     public function BorrarCongreso($CodigoC){
         $this->ConectarBD();
+        // Eliminamos el fichero que tuvier adjunto
+        $sql = $this->mysqli->query("SELECT AdjuntoC FROM congreso WHERE CodigoC = '$CodigoC'");
+        if( $sql->num_rows > 0 ){
+            $res = mysqli_fetch_array($sql);
+            if(!empty($res["AdjuntoC"]))
+                @unlink('Archivos/congresos/' . $res["AdjuntoC"]);
+        }
+        // Eliminamos el registro de BD
         $this->mysqli->query("DELETE FROM congreso WHERE CodigoC = '$CodigoC'")or die(mysqli_error($this->mysqli));
     }
 
@@ -200,8 +216,8 @@ class Congreso{
                                                             c.NombreC LIKE '%$buscar'|| c.NombreC LIKE '%$buscar%' || c.NombreC LIKE '$buscar%' ||
                                                             c.AcronimoC LIKE '%$buscar'|| c.AcronimoC LIKE '%$buscar%' || c.AcronimoC LIKE '$buscar%' ||
                                                             c.AnhoC LIKE '%$buscar'|| c.AnhoC LIKE '%$buscar%' || c.AnhoC LIKE '$buscar%' ||
-                                                            c.LugarC LIKE '%$buscar'|| c.LugarC LIKE '%$buscar%' || c.LugarC LIKE '$buscar%'  
-                                                                                                       
+                                                            c.LugarC LIKE '%$buscar'|| c.LugarC LIKE '%$buscar%' || c.LugarC LIKE '$buscar%' ||
+                                                            c.AdjuntoC LIKE '%$buscar'|| c.AdjuntoC LIKE '%$buscar%' || c.AdjuntoC LIKE '$buscar%'                                                                                                        
                                                             ") or die(mysqli_error($this->mysqli));
         return $sql;
     }

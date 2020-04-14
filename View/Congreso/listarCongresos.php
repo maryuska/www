@@ -92,6 +92,16 @@ require_once 'View/Structure/Nav.php';
                                         <b name = "AnhoC">Año: </b>
                                         <?php echo $row['AnhoC']; ?>
                                         <br>
+                                        <b name = "AdjuntoC">Adjunto: </b>
+                                        <?php
+                                        if(empty($row['AdjuntoC'])){
+                                            echo "No tiene.";
+                                        }
+                                        else{
+                                            echo "<a href='Archivos/congresos/{$row['AdjuntoC']}' target='_blank'>Ver adjunto</a>";
+                                        }
+                                        ?>
+                                        <br>
                                     </td>
 
                                 </tr>
@@ -150,6 +160,16 @@ require_once 'View/Structure/Nav.php';
                                                 <br>
                                                 <b name = "AnhoC">Año: </b>
                                                 <?php echo $row1['AnhoC']; ?>
+                                                <br>
+                                                <b name = "AdjuntoC">Adjunto: </b>
+                                                <?php
+                                                if(empty($row['AdjuntoC'])){
+                                                    echo "No tiene.";
+                                                }
+                                                else{
+                                                    echo "<a href='Archivos/congresos/{$row['AdjuntoC']}' target='_blank'>Ver adjunto</a>";
+                                                }
+                                                ?>
                                                 <br>
                                             </td>
 
@@ -213,6 +233,16 @@ require_once 'View/Structure/Nav.php';
                                                 <b name = "AnhoC">Año: </b>
                                                 <?php echo $row2['AnhoC']; ?>
                                                 <br>
+                                                <b name = "AdjuntoC">Adjunto: </b>
+                                                <?php
+                                                if(empty($row['AdjuntoC'])){
+                                                    echo "No tiene.";
+                                                }
+                                                else{
+                                                    echo "<a href='Archivos/congresos/{$row['AdjuntoC']}' target='_blank'>Ver adjunto</a>";
+                                                }
+                                                ?>
+                                                <br>
                                             </td>
 
                                         </tr>
@@ -274,6 +304,16 @@ require_once 'View/Structure/Nav.php';
                                                 <br>
                                                 <b name = "AnhoC">Año: </b>
                                                 <?php echo $row3['AnhoC']; ?>
+                                                <br>
+                                                <b name = "AdjuntoC">Adjunto: </b>
+                                                <?php
+                                                if(empty($row['AdjuntoC'])){
+                                                    echo "No tiene.";
+                                                }
+                                                else{
+                                                    echo "<a href='Archivos/congresos/{$row['AdjuntoC']}' target='_blank'>Ver adjunto</a>";
+                                                }
+                                                ?>
                                                 <br>
                                             </td>
 
@@ -338,6 +378,16 @@ require_once 'View/Structure/Nav.php';
                                                 <b name = "AnhoC">Año: </b>
                                                 <?php echo $row4['AnhoC']; ?>
                                                 <br>
+                                                <b name = "AdjuntoC">Adjunto: </b>
+                                                <?php
+                                                if(empty($row['AdjuntoC'])){
+                                                    echo "No tiene.";
+                                                }
+                                                else{
+                                                    echo "<a href='Archivos/congresos/{$row['AdjuntoC']}' target='_blank'>Ver adjunto</a>";
+                                                }
+                                                ?>
+                                                <br>
                                             </td>
 
                                         </tr>
@@ -398,6 +448,16 @@ require_once 'View/Structure/Nav.php';
                                                 <br>
                                                 <b name = "AnhoC">Año: </b>
                                                 <?php echo $row5['AnhoC']; ?>
+                                                <br>
+                                                <b name = "AdjuntoC">Adjunto: </b>
+                                                <?php
+                                                if(empty($row['AdjuntoC'])){
+                                                    echo "No tiene.";
+                                                }
+                                                else{
+                                                    echo "<a href='Archivos/congresos/{$row['AdjuntoC']}' target='_blank'>Ver adjunto</a>";
+                                                }
+                                                ?>
                                                 <br>
                                             </td>
 
@@ -461,6 +521,16 @@ require_once 'View/Structure/Nav.php';
                                                 <br>
                                                 <b name = "AnhoC">Año: </b>
                                                 <?php echo $row6['AnhoC']; ?>
+                                                <br>
+                                                <b name = "AdjuntoC">Adjunto: </b>
+                                                <?php
+                                                if(empty($row['AdjuntoC'])){
+                                                    echo "No tiene.";
+                                                }
+                                                else{
+                                                    echo "<a href='Archivos/congresos/{$row['AdjuntoC']}' target='_blank'>Ver adjunto</a>";
+                                                }
+                                                ?>
                                                 <br>
                                             </td>
 
