@@ -1,5 +1,5 @@
 <?php
-// Controlador de Proyectos Dirigidos
+// Controlador de Estancias
 require_once 'Controller/ControllerController.php';
 require_once 'Model/Usuarios.php';
 require_once 'Model/Estancias.php';

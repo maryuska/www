@@ -96,7 +96,7 @@ switch ($evento) {
     // Crear articulo
     case "altaArticulo":
 
-        $loginU = $_POST["loginU"] ?? null;
+        $loginU = $_POST["loginU"] ;
         $codigoA = $_POST["CodigoA"];
         $tituloA = $_POST["TituloA"];
         $estadoA = $_POST["EstadoA"];
@@ -142,7 +142,7 @@ switch ($evento) {
     // Crear articulo para administrador
     case "altaArticuloAdmin":
 
-        $loginU = $_POST["loginU"] ?? null;
+        $loginU = $_POST["loginU"] ;
         $codigoA = $_POST["CodigoA"];
         $tituloA = $_POST["TituloA"];
         $estadoA = $_POST["EstadoA"];
@@ -269,7 +269,7 @@ switch ($evento) {
     // Modifica un articulo
     case "editarArticulo":
 
-        $loginU = $_POST["loginU"] ?? null;
+        $loginU = $_POST["loginU"] ;
         $codigoA = $_POST["CodigoA"];
         $tituloA = $_POST["TituloA"];
         $estadoA = $_POST["EstadoA"];
@@ -324,7 +324,7 @@ switch ($evento) {
     // Modifica un articulo para un administrador
     case "editarArticuloAdmin":
 
-        $loginU = $_POST["loginU"] ?? null;
+        $loginU = $_POST["loginU"] ;
         $codigoA = $_POST["CodigoA"];
         $tituloA = $_POST["TituloA"];
         $estadoA = $_POST["EstadoA"];
