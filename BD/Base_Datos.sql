@@ -297,7 +297,9 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 -- Dumping data for table `usuario`
 --
 
-INSERT INTO `usuario` VALUES ('admin', MD5('admin'), 'Administrador', '','','','','','','','','A');
+INSERT INTO `usuario` VALUES ('admin', MD5('admin'), 'Administrador', '','','','','','','','','A'),
+                             ('maria', MD5('maria'), 'Maria', 'Guillermes','','','','','','','','U'),
+                             ('rosa', MD5('rosa'), 'Rosa', 'Martinez','','','','','','','','U')  ;
 
 
 --
